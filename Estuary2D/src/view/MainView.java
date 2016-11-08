@@ -1,17 +1,14 @@
 package view;
 
-import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.Observable;
-import java.util.Observer;
-
 import javax.swing.JComponent;
 
 import game.Game;
 
 public class MainView extends JComponent{ //extend canvas and use bufferedimage here?
-	public static Game game;
+	//private Game game;
+	//private GameController gc = game.gameControl;
 	
 	public MainView() {
 		
@@ -22,11 +19,14 @@ public class MainView extends JComponent{ //extend canvas and use bufferedimage 
 		g.setColor(Color.RED);
 		g.setColor(Color.CYAN);
 		g.fillRect(0, 0, getWidth(), getHeight());
-		game.gameControl.draw(g);
+		Game.gameControl.draw(g);
+		if(Game.gameControl == null){
+			System.out.println("How");
+		}
 	}
 
 	public void update() {
-		game.gameControl.update();
+		Game.gameControl.update();
 	}
 	
 	

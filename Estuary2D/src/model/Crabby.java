@@ -30,10 +30,10 @@ public class Crabby extends Character{
 		if(this.xPos + this.width >= Game.WIDTH*Game.SCALE){
 			this.xPos = Game.WIDTH*Game.SCALE - this.width;
 		}
-		//Screen-top bound
-		if(this.yPos + this.height >= 750){
-			this.yPos = 750 - this.height;
-		}
+//		//Screen-bottom bound
+//		if(this.yPos + this.height >= 750){
+//			this.yPos = 750 - this.height;
+//		}
 		for(Block b: gamecontrol.blocks){
 			if(!b.isSolid()){
 				break;
@@ -41,7 +41,6 @@ public class Crabby extends Character{
 			switch(b.getType()){
 			case Wall:
 				if(this.getTopBounds().intersects(b.getBounds())){
-					System.out.println("ONE");
 					this.setyVel(0);
 					if(isJumping){
 						isJumping = false;
@@ -54,11 +53,10 @@ public class Crabby extends Character{
 					if(isFalling){
 						isFalling = false;
 					}
-					else if(!isFalling && !isJumping){
-						System.out.println("TWO");
-						gravity = 0.0;
-						//isFalling = true;
-					}
+				}
+				if(!this.getBottomBounds().intersects(b.getBounds()) && !isFalling && !isJumping){
+					gravity = 0.0;
+					isFalling = true;
 				}
 				if(this.getLeftBounds().intersects(b.getBounds())){
 					this.setxVel(0);
@@ -80,11 +78,14 @@ public class Crabby extends Character{
 			}
 		}
 		if(isFalling){
-//			if(this.yPos >= Game.HEIGHT*Game.SCALE){
-//			}
-			System.out.println("OHFUCK");
+			if(this.yPos >= 750){
+				this.isGone = true;
+			}
 			gravity+=0.1;
 			this.setyVel(gravity);
+		}
+		if(isGone){
+			this.setyVel(0);
 		}
 	}
 	

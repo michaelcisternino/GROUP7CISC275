@@ -19,6 +19,7 @@ public abstract class Character {
 	public boolean solid;
 	public boolean isJumping = false;
 	public boolean isFalling = true;
+	public boolean isGone = false;
 	
 	public GameController gamecontrol;
 	

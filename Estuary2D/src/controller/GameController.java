@@ -18,14 +18,19 @@ public class GameController{
 	public Crabby crabby = new Crabby(300,512,64,64,true,ObjectType.Crabby,this);
 	
 	public GameController(){
-		createLevel();
+		
 	}
 	
 	public void draw(Graphics g) {
-		
+		if(crabby == null){
+			System.out.println("Crabby null");
+		}
 		crabby.draw(g);
 		
 		for(Block b: blocks){
+			if(b == null){
+				System.out.println("ohNO");
+			}
 			b.draw(g);
 		}
 	}
@@ -50,12 +55,6 @@ public class GameController{
 		crabby.update();
 		for(Block b: blocks){
 			b.update();
-		}
-	}
-	
-	public void createLevel(){
-		for(int i=0; i<(Game.WIDTH*Game.SCALE/64+1); i++){
-			//addBlock(new Wall(i*64, MainController.HEIGHT*MainController.SCALE-64, 64, 64, true, ObjectType.Wall, this));
 		}
 	}
 	

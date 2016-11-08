@@ -19,7 +19,10 @@ public class Wall extends Block{
 
 	@Override
 	public void update() {
-		//this.xPos-=5;
+		this.xPos-=5;
+		if(this.xPos <= (0-this.width)){
+			this.setXPos(270*4);
+		}
 	}
 
 	

@@ -31,6 +31,7 @@ public class Game extends JFrame implements Runnable{
 			gameControl = new GameController();
 			addKeyListener(new PlayerKeyHandler());
 			gameControl.addBlock(new Wall(300,HEIGHT*SCALE-64,WIDTH*SCALE,64,true,ObjectType.Wall,gameControl));
+			gameControl.addBlock(new Wall(300,300,400,64,true,ObjectType.Wall,gameControl));
 		}
 		
 		//Initialize gameThread
