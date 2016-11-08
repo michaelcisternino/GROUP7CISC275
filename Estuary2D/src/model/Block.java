@@ -7,8 +7,8 @@ import controller.GameController;
 
 public abstract class Block {
 
-	public double xPos, yPos;
-	public double xVel, yVel;
+	public int xPos, yPos;
+	public int xVel, yVel;
 
 	public int width, height;
 	
@@ -18,7 +18,7 @@ public abstract class Block {
 	
 	public GameController gc;
 	
-	public Block(double x, double y, int width, int height, boolean solid, ObjectType t, GameController oc){
+	public Block(int x, int y, int width, int height, boolean solid, ObjectType t, GameController oc){
 		this.xPos = x;
 		this.yPos = y;
 		this.width = width;
@@ -40,19 +40,19 @@ public abstract class Block {
 	
 	public abstract void update();
 	
-	public double getXPos(){
+	public int getXPos(){
 		return this.xPos;
 	}
 	
-	public double getYPos(){
+	public int getYPos(){
 		return this.yPos;
 	}
 	
-	public double getxVel() {
+	public int getxVel() {
 		return xVel;
 	}
 
-	public double getyVel() {
+	public int getyVel() {
 		return yVel;
 	}
 	
@@ -64,19 +64,19 @@ public abstract class Block {
 		return this.type;
 	}
 	
-	public void setxVel(double xVel){
+	public void setxVel(int xVel){
 		this.xVel = xVel;
 	}
 
-	public void setyVel(double yVel) {
+	public void setyVel(int yVel) {
 		this.yVel = yVel;
 	}
 	
-	public void setXPos(double x){
+	public void setXPos(int x){
 		this.xPos = x;
 	}
 	
-	public void setYPos(double y){
+	public void setYPos(int y){
 		this.yPos = y;
 	}
 	
@@ -85,6 +85,6 @@ public abstract class Block {
 	}
 	
 	public Rectangle getBounds() {
-		return new Rectangle((int)this.getXPos(), (int)this.getYPos(), width, height);
+		return new Rectangle(this.getXPos(), this.getYPos(), width, height);
 	}
 }

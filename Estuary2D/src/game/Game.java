@@ -11,7 +11,8 @@ import controller.PlayerKeyHandler;
 import model.Block;
 import model.Crabby;
 import model.ObjectType;
-import model.Wall;
+import model.Platform;
+import model.Floor;
 import view.MainView;
 
 public class Game extends JFrame implements Runnable{
@@ -30,8 +31,9 @@ public class Game extends JFrame implements Runnable{
 		private void init(){
 			gameControl = new GameController();
 			addKeyListener(new PlayerKeyHandler());
-			gameControl.addBlock(new Wall(300,HEIGHT*SCALE-64,WIDTH*SCALE,64,true,ObjectType.Wall,gameControl));
-			gameControl.addBlock(new Wall(300,300,400,64,true,ObjectType.Wall,gameControl));
+			gameControl.addBlock(new Floor(300,HEIGHT*SCALE-64,800,64,true,ObjectType.Wall,gameControl));
+			gameControl.addBlock(new Platform(0,200,400,30,true,ObjectType.Wall,gameControl));
+			gameControl.addBlock(new Platform(800,500,400,30,true,ObjectType.Wall,gameControl));
 		}
 		
 		//Initialize gameThread

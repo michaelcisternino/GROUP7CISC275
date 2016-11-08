@@ -8,7 +8,7 @@ import game.Game;
 
 public class Crabby extends Character{
 
-	public Crabby(double x, double y, int width, int height, boolean solid, ObjectType t, GameController gamecontrol) {
+	public Crabby(int x, int y, int width, int height, boolean solid, ObjectType t, GameController gamecontrol) {
 		super(x, y, width, height, solid, t, gamecontrol);
 	}
 
@@ -34,30 +34,34 @@ public class Crabby extends Character{
 //		if(this.yPos + this.height >= 750){
 //			this.yPos = 750 - this.height;
 //		}
-		for(Block b: gamecontrol.blocks){
-			if(!b.isSolid()){
-				break;
-			}
-			switch(b.getType()){
-			case Wall:
+//		for(Block b: gamecontrol.blocks){
+//			if(!b.isSolid()){
+//				break;
+//			}
+		for(int i = 0; i < gamecontrol.blocks.size(); i++){
+			Block b = gamecontrol.blocks.get(i);
+			if(b.solid){
 				if(this.getTopBounds().intersects(b.getBounds())){
 					this.setyVel(0);
 					if(isJumping){
 						isJumping = false;
-						gravity=0.0;
+						gravity=0.8;
 						isFalling = true;
 					}
 				}
 				if(this.getBottomBounds().intersects(b.getBounds())){
 					this.setyVel(0);
-					if(isFalling){
+					if(isFalling) {
 						isFalling = false;
-					}
+						}
+				}else if (!isFalling&&!isJumping){
+						isFalling = true;
+						gravity = 0.8;
 				}
-				if(!this.getBottomBounds().intersects(b.getBounds()) && !isFalling && !isJumping){
-					gravity = 0.0;
-					isFalling = true;
-				}
+//				if(!this.getBottomBounds().intersects(b.getBounds()) && !isFalling && !isJumping){
+//					gravity = 0.0;
+//					isFalling = true;
+//				}
 				if(this.getLeftBounds().intersects(b.getBounds())){
 					this.setxVel(0);
 					this.xPos = b.getXPos() + b.width;
@@ -66,12 +70,11 @@ public class Crabby extends Character{
 					this.setxVel(0);
 					this.xPos = b.getXPos() - b.width;
 				}
-				break;
 			}
 		}
 		if(isJumping){
 			gravity-=0.1;
-			this.setyVel(-gravity);
+			this.setyVel((int)-gravity);
 			if(gravity<=0.0){
 				isJumping = false;
 				isFalling = true;
@@ -82,7 +85,7 @@ public class Crabby extends Character{
 				this.isGone = true;
 			}
 			gravity+=0.1;
-			this.setyVel(gravity);
+			this.setyVel((int)gravity);
 		}
 		if(isGone){
 			this.setyVel(0);

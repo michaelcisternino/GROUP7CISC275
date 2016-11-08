@@ -9,7 +9,7 @@ import model.Crabby;
 //import model.Blocks;
 import model.Character;
 import model.ObjectType;
-import model.Wall;
+import model.Floor;
 
 public class GameController{
 
