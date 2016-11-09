@@ -8,8 +8,8 @@ import controller.GameController;
 
 public class Floor extends Block{
 
-	public Floor(int x, int y, int width, int height, boolean solid, ObjectType t, GameController oc) {
-		super(x, y, width, height, solid, t, oc);
+	public Floor(int x, int y, int width, int height, ObjectType t, GameController oc) {
+		super(x, y, width, height, t, oc);
 	}
 
 	@Override
@@ -20,7 +20,7 @@ public class Floor extends Block{
 
 	@Override
 	public void update() {
-		this.xPos-=3;
+		this.xPos-=1;
 		if(this.xPos <= (0-this.width)){
 			this.setXPos(270*4);
 		}

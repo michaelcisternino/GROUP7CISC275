@@ -13,6 +13,7 @@ import model.Crabby;
 import model.ObjectType;
 import model.Platform;
 import model.Floor;
+import model.Item;
 import view.MainView;
 
 public class Game extends JFrame implements Runnable{
@@ -24,16 +25,23 @@ public class Game extends JFrame implements Runnable{
 		
 		private Container pane;
 		private Thread gameThread;
+		
 		private boolean run = false;
-		private MainView view;
+		public static boolean playing = true;
+		
+		public MainView view;
 		public static GameController gameControl;
+		private JButton start = new JButton("START");
+		public static Game game;
+		private StartScreen starter;
 		
 		private void init(){
 			gameControl = new GameController();
 			addKeyListener(new PlayerKeyHandler());
-			gameControl.addBlock(new Floor(300,HEIGHT*SCALE-64,800,64,true,ObjectType.Wall,gameControl));
-			gameControl.addBlock(new Platform(0,200,400,30,true,ObjectType.Wall,gameControl));
-			gameControl.addBlock(new Platform(800,500,400,30,true,ObjectType.Wall,gameControl));
+			gameControl.addBlock(new Platform(0,200,400,30,ObjectType.Wall,gameControl));
+			gameControl.addBlock(new Platform(800,500,400,30,ObjectType.Wall,gameControl));
+			gameControl.addObject(new Item(500,0,30,30,ObjectType.Trash, gameControl));
+			gameControl.addBlock(new Floor(300,HEIGHT*SCALE-64,800,64,ObjectType.Wall,gameControl));
 		}
 		
 		//Initialize gameThread
@@ -62,6 +70,7 @@ public class Game extends JFrame implements Runnable{
 		//Implemented method from Runnable
 		@Override
 		public void run() {
+			if(playing){
 			requestFocus();
 			long last = System.nanoTime();
 			long timer = System.currentTimeMillis();
@@ -87,6 +96,7 @@ public class Game extends JFrame implements Runnable{
 				}
 			}
 			stopGame();
+			}
 		}
 		
 //		public void render(){
@@ -116,12 +126,31 @@ public class Game extends JFrame implements Runnable{
 			setMaximumSize(size);
 			setMinimumSize(size);
 			view = new MainView();
-			pane.add(view, BorderLayout.CENTER);			
+			//view.add(start);
+			//start.addActionListener(new StartButton());
+//			starter = new StartScreen();
+//			pane.add(start, BorderLayout.CENTER);
+			
+			pane.add(view, BorderLayout.CENTER);
+			
+		}
+		
+		public void setPlaying(boolean b){
+			this.playing = b;
+			if(playing){
+				this.startGame();
+			}
+		}
+		
+		class StartButton implements ActionListener{
+			public void actionPerformed(ActionEvent e) {
+				Game.game.startGame();
+			}
 		}
 		
 		//Main 
 		public static void main(String[] args) {
-			Game game = new Game();
+			game = new Game();
 //			JFrame frame = new JFrame(TITLE);;
 			game.pack();
 			game.setResizable(false);

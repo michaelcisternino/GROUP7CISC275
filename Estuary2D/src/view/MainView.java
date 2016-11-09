@@ -20,9 +20,6 @@ public class MainView extends JComponent{ //extend canvas and use bufferedimage 
 		g.setColor(Color.CYAN);
 		g.fillRect(0, 0, getWidth(), getHeight());
 		Game.gameControl.draw(g);
-		if(Game.gameControl == null){
-			System.out.println("How");
-		}
 	}
 
 	public void update() {

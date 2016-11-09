@@ -16,29 +16,28 @@ public abstract class Character {
 	
 	public double gravity = 0.0;
 	
-	public boolean solid;
+	//public boolean solid;
 	public boolean isJumping = false;
 	public boolean isFalling = true;
 	public boolean isGone = false;
 	
 	public GameController gamecontrol;
 	
-	public Character(int x, int y, int width, int height, boolean solid, ObjectType t, GameController gamecontrol){
+	public Character(int x, int y, int width, int height, ObjectType t, GameController gamecontrol){
 		this.xPos = x;
 		this.yPos = y;
 		this.width = width;
 		this.height = height;
-		this.solid = solid;
 		this.type = t;
 		this.gamecontrol = gamecontrol;
 	}
 	
 	public void remove(){
-		gamecontrol.objects.remove(this);
+		gamecontrol.entities.remove(this);
 	}
 	
 	public void addObject(Character go){
-		gamecontrol.objects.add(go);
+		gamecontrol.entities.add(go);
 	}
 	
 	public abstract void draw(Graphics g);
@@ -61,9 +60,9 @@ public abstract class Character {
 		return yVel;
 	}
 	
-	public boolean isSolid(){
-		return this.solid;
-	}
+//	public boolean isSolid(){
+//		return this.solid;
+//	}
 	
 	public void setxVel(int xVel){
 		this.xVel = xVel;
@@ -81,9 +80,9 @@ public abstract class Character {
 		this.yPos = y;
 	}
 	
-	public void setSolid(boolean s){
-		this.solid = s;
-	}
+//	public void setSolid(boolean s){
+//		this.solid = s;
+//	}
 	
 	public ObjectType getType(){
 		return this.type;

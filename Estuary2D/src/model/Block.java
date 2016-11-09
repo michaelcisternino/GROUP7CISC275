@@ -18,12 +18,11 @@ public abstract class Block {
 	
 	public GameController gc;
 	
-	public Block(int x, int y, int width, int height, boolean solid, ObjectType t, GameController oc){
+	public Block(int x, int y, int width, int height, ObjectType t, GameController oc){
 		this.xPos = x;
 		this.yPos = y;
 		this.width = width;
 		this.height = height;
-		this.solid = solid;
 		this.type = t;
 		this.gc = oc;
 	}
@@ -56,9 +55,9 @@ public abstract class Block {
 		return yVel;
 	}
 	
-	public boolean isSolid(){
-		return this.solid;
-	}
+//	public boolean isSolid(){
+//		return this.solid;
+//	}
 	
 	public ObjectType getType(){
 		return this.type;
@@ -80,9 +79,9 @@ public abstract class Block {
 		this.yPos = y;
 	}
 	
-	public void setSolid(boolean s){
-		this.solid = s;
-	}
+//	public void setSolid(boolean s){
+//		this.solid = s;
+//	}
 	
 	public Rectangle getBounds() {
 		return new Rectangle(this.getXPos(), this.getYPos(), width, height);
