@@ -48,7 +48,7 @@ public class Item extends Character{
 
 	@Override
 	public void update() {
-		this.xPos+=this.xVel;
+		this.xPos -= 1;
 		this.yPos+=this.yVel;
 		//Screen-left bound
 //		if(this.xPos <= 0){

@@ -21,6 +21,7 @@ public class GameController{
 	public boolean sendNext = false;
 	Random randItem = new Random();
 	int itemNum;
+	int blockNum;
 	
 	public GameController(){
 		
@@ -64,20 +65,28 @@ public class GameController{
 			c.update();
 		}
 		if(sendNext == true){
-			itemNum = randItem.nextInt(3);
+			blockNum = randItem.nextInt(3);
+			itemNum = randItem.nextInt(4);
 			System.out.println(itemNum);
+			System.out.println("Initial block number" + blockNum);
 			// maybe instead of using item numbers, just use count
+//			if(blocks.get(blockNum).getXPos()+50 < crabby.getXPos()){
+//
+//				System.out.println("Updated block number" + blockNum);
+//			}
+			//check to see if the object xpos is off the screen, if true then go back into the if statements.
+			//if(item.getX < leftbound) -> then redraw
 			if(itemNum == 0){
-				addObject(new Item(500,0,30,30,ObjectType.TrashBag, this));
+				addObject(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.TrashBag, this));
 			}
 			else if(itemNum == 1){
-				addObject(new Item(500,0,30,30,ObjectType.Hay, this));
+				addObject(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.Hay, this));
 			}
 			else if(itemNum == 2){
-				addObject(new Item(500,0,30,30,ObjectType.Seeds, this));
+				addObject(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.Seeds, this));
 			}
 			else{
-				addObject(new Item(500,0,30,30,ObjectType.Compost, this));
+				addObject(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.Compost, this));
 			}
 			sendNext = false;
 		}
