@@ -12,7 +12,8 @@ public abstract class Character {
 	public int  xVel, yVel;
 
 	public int width, height;
-	public int colNum; 
+	public int colNum;
+	public int lives = 5;
 	
 	public ObjectType type;
 	
@@ -36,11 +37,11 @@ public abstract class Character {
 	}
 	
 	public void remove(){
-		gamecontrol.entities.remove(this);
+		//gamecontrol.entities.remove(this);
 	}
 	
 	public void addObject(Item go){
-		gamecontrol.entities.add(go);
+		//gamecontrol.entities.add(go);
 	}
 	
 	public abstract void draw(Graphics g);
@@ -89,6 +90,10 @@ public abstract class Character {
 	
 	public ObjectType getType(){
 		return this.type;
+	}
+	
+	public void die(){
+		this.lives--;
 	}
 	
 	public Rectangle getBounds() {
