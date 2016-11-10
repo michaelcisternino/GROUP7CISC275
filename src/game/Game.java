@@ -45,16 +45,16 @@ public class Game extends JFrame implements Runnable{
 			System.out.println(itemNum);
 			gameControl.addBlock(new Platform(800,500,400,30,ObjectType.Wall,gameControl));
 			if(itemNum == 0){
-				gameControl.addObject(new Item(500,0,30,30,ObjectType.TrashBag, gameControl));
+				gameControl.addItem(new Item(500,0,30,30,ObjectType.TrashBag, gameControl));
 			}
 			else if(itemNum == 1){
-				gameControl.addObject(new Item(500,0,30,30,ObjectType.Hay, gameControl));
+				gameControl.addItem(new Item(500,0,30,30,ObjectType.Hay, gameControl));
 			}
 			else if(itemNum == 2){
-				gameControl.addObject(new Item(500,0,30,30,ObjectType.Seeds, gameControl));
+				gameControl.addItem(new Item(500,0,30,30,ObjectType.Seeds, gameControl));
 			}
 			else{
-				gameControl.addObject(new Item(500,0,30,30,ObjectType.Compost, gameControl));
+				gameControl.addItem(new Item(500,0,30,30,ObjectType.Compost, gameControl));
 			}
 			gameControl.addBlock(new Floor(300,HEIGHT*SCALE-64,800,64,ObjectType.Wall,gameControl));
 		}
