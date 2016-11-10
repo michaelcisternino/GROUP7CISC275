@@ -7,10 +7,10 @@ import java.util.LinkedList;
 import controller.GameController;
 import game.Game;
 
-public class Crabby extends Character{
+public class Crabby extends MovingObj{
 	
 	public int trashBagCnt, hayCnt, seedCnt, compCnt;
-	public LinkedList<Item> items = new LinkedList<Item>();
+	public LinkedList<MovingObj> items = new LinkedList<MovingObj>();
 
 	public Crabby(int x, int y, int width, int height, ObjectType t, GameController gamecontrol) {
 		super(x, y, width, height, t, gamecontrol);
@@ -67,7 +67,7 @@ public class Crabby extends Character{
 				}
 			}
 		for(int i = 0; i < gamecontrol.entities.size(); i++){
-			Item c = gamecontrol.entities.get(i);
+			MovingObj c = gamecontrol.entities.get(i);
 			if(this.getBottomBounds().intersects(c.getBounds()) || this.getLeftBounds().intersects(c.getBounds()) || this.getRightBounds().intersects(c.getBounds())){
 				items.add(c);
 				if(c.type == ObjectType.TrashBag){
@@ -82,9 +82,16 @@ public class Crabby extends Character{
 					seedCnt ++;
 					gamecontrol.useSeeds = true;
 				}
-				else{
+				else if(c.type == ObjectType.Compost){
 					compCnt ++;
 					gamecontrol.useComp = true;
+				}
+				else if(c.type == ObjectType.People || c.type == ObjectType.Chemicals || c.type == ObjectType.EmptySoil || c.type == ObjectType.DeadSoil){
+					gamecontrol.pause();
+					while(c.correct != true){
+						
+					}
+					gamecontrol.unpause();
 				}
 				gamecontrol.removeObject(c);
 				gamecontrol.sendNext = true;

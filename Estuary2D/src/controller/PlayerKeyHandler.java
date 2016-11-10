@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import game.Game;
+import model.ObjectType;
 
 public class PlayerKeyHandler implements KeyListener{
 	
@@ -26,8 +27,25 @@ public class PlayerKeyHandler implements KeyListener{
 				Game.gameControl.crabby.gravity = 9.8;
 			}
 			break;
+		case KeyEvent.VK_T:
+			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).correct = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(ObjectType.TrashBag);
+			Game.gameControl.crabby.trashBagCnt -= 1;
+			break;
+		case KeyEvent.VK_H:
+			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).correct = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(ObjectType.Hay);
+			Game.gameControl.crabby.hayCnt -= 1;
+			break;
+		case KeyEvent.VK_S:
+			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).correct = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(ObjectType.Seeds);
+			Game.gameControl.crabby.seedCnt -= 1;
+			break;
+		case KeyEvent.VK_C:
+			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).correct = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(ObjectType.Compost);
+			Game.gameControl.crabby.compCnt -= 1;
+			break;
 		}
 	}
+		
 	
 	@Override
 	public void keyTyped(KeyEvent e) {

@@ -6,7 +6,7 @@ import java.awt.Graphics;
 import controller.GameController;
 import game.Game;
 
-public class Item extends Character{
+public class Item extends MovingObj{
 	Color itemCol;
 	public Item(int x, int y, int width, int height, ObjectType t, GameController gamecontrol) {
 		super(x, y, width, height, t, gamecontrol);

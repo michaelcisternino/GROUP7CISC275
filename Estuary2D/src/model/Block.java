@@ -9,6 +9,8 @@ public abstract class Block {
 
 	public int xPos, yPos;
 	public int xVel, yVel;
+	
+	public int prevXVel, prevYVel;
 
 	public int width, height;
 	
@@ -64,10 +66,12 @@ public abstract class Block {
 	}
 	
 	public void setxVel(int xVel){
+		this.prevXVel = this.xVel;
 		this.xVel = xVel;
 	}
 
 	public void setyVel(int yVel) {
+		this.prevYVel = this.yVel;
 		this.yVel = yVel;
 	}
 	

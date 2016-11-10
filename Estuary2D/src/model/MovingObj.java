@@ -2,14 +2,16 @@ package model;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.util.Random;
 
 import controller.GameController;
 
-public abstract class Character {
+public abstract class MovingObj {
+	
+	public boolean correct = false;
 
 	public int xPos, yPos;
 	public int  xVel, yVel;
+	public int prevXVel, prevYVel;
 
 	public int width, height;
 	public int colNum; 
@@ -25,7 +27,7 @@ public abstract class Character {
 	
 	public GameController gamecontrol;
 	
-	public Character(int x, int y, int width, int height, ObjectType t, GameController gamecontrol){
+	public MovingObj(int x, int y, int width, int height, ObjectType t, GameController gamecontrol){
 		this.xPos = x;
 		this.yPos = y;
 		this.width = width;
@@ -68,10 +70,12 @@ public abstract class Character {
 //	}
 	
 	public void setxVel(int xVel){
+		this.prevXVel = this.xVel;
 		this.xVel = xVel;
 	}
 
 	public void setyVel(int yVel) {
+		this.prevYVel = this.yVel;
 		this.yVel = yVel;
 	}
 	
@@ -109,6 +113,42 @@ public abstract class Character {
 	
 	public Rectangle getRightBounds(){
 		return new Rectangle(this.getXPos()+width-5,this.getYPos()+10, 5, height-20);
+	}
+	
+	public boolean checkItem(ObjectType t){
+		if(this.type == ObjectType.People){
+			if(t == ObjectType.TrashBag){
+				correct = true;
+			}
+			else{
+				correct = false;
+			}
+		}
+		else if(this.type == ObjectType.Chemicals){
+			if(t == ObjectType.Hay){
+				correct = true;
+			}
+			else{
+				correct = false;
+			}
+		}
+		else if(this.type == ObjectType.EmptySoil){
+			if(t == ObjectType.Seeds){
+				correct = true;
+			}
+			else{
+				correct = false;
+			}
+		}
+		else{
+			if(t == ObjectType.Compost){
+				correct = true;
+			}
+			else{
+				correct = false;
+			}
+		}
+		return correct;
 	}
 
 }
