@@ -6,7 +6,7 @@ import java.awt.Graphics;
 import controller.GameController;
 import game.Game;
 
-public class Item extends Character{
+public class Item extends Block{
 	Color itemCol;
 	public Item(int x, int y, int width, int height, ObjectType t, GameController gamecontrol) {
 		super(x, y, width, height, t, gamecontrol);
@@ -107,7 +107,7 @@ public class Item extends Character{
 		}
 		if(isGone){
 			this.setyVel(0);
-			gamecontrol.removeObject(this);
+			gamecontrol.removeItem(this);
 			gamecontrol.sendNext = true;
 		}
 		
