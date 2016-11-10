@@ -36,11 +36,11 @@ public abstract class Character {
 	}
 	
 	public void remove(){
-		gamecontrol.entities.remove(this);
+		//gamecontrol.entities.remove(this);
 	}
 	
 	public void addObject(Item go){
-		gamecontrol.entities.add(go);
+		//gamecontrol.entities.add(go);
 	}
 	
 	public abstract void draw(Graphics g);
