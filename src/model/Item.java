@@ -10,33 +10,32 @@ public class Item extends Block{
 	Color itemCol;
 	public Item(int x, int y, int width, int height, ObjectType t, GameController gamecontrol) {
 		super(x, y, width, height, t, gamecontrol);
-//		switch(t){
-//		
-//		case TrashBag:{
+		switch(t){
+		case TrashBag:
+			itemCol = Color.black;
+			break;
+		case Hay:
+			itemCol = Color.yellow;
+			break;
+		case Seeds:
+			itemCol = Color.green;
+			break;
+		case Compost:
+			itemCol = Color.red;
+			break;
+		}
+//		if(t == ObjectType.TrashBag){
 //			itemCol = Color.black;
 //		}
-//		case Hay:{
+//		else if(t == ObjectType.Hay){
 //			itemCol = Color.yellow;
 //		}
-//		case Seeds:{
+//		else if(t == ObjectType.Seeds){
 //			itemCol = Color.green;
 //		}
-//		case Compost:{
+//		else{
 //			itemCol = Color.red;
 //		}
-//		}
-		if(t == ObjectType.TrashBag){
-			itemCol = Color.black;
-		}
-		else if(t == ObjectType.Hay){
-			itemCol = Color.yellow;
-		}
-		else if(t == ObjectType.Seeds){
-			itemCol = Color.green;
-		}
-		else{
-			itemCol = Color.red;
-		}
 		// TODO Auto-generated constructor stub
 	}
 
@@ -74,6 +73,7 @@ public class Item extends Block{
 //				}
 				if(this.getBottomBounds().intersects(b.getBounds())){
 					this.setyVel(0);
+					this.setxVel(b.getxVel());
 					if(isFalling) {
 						isFalling = false;
 						}

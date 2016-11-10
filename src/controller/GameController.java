@@ -10,6 +10,7 @@ import model.Crabby;
 //import model.Blocks;
 import model.Character;
 import model.ObjectType;
+import model.Oystery;
 import model.Floor;
 import model.Item;
 
@@ -18,8 +19,8 @@ public class GameController{
 	public LinkedList<Block> blocks = new LinkedList<Block>();
 	public LinkedList<Item> items = new LinkedList<Item>();
 	public Crabby crabby = new Crabby(300,512,64,64,ObjectType.Crabby,this);
+	//public Oystery oystery = new Oystery(300,512,64,64,ObjectType.Oystery,this);
 	public boolean sendNext = false;
-	Random randItem = new Random();
 	int itemNum;
 	
 	public GameController(){
@@ -29,6 +30,7 @@ public class GameController{
 	public void draw(Graphics g) {
 		
 		crabby.draw(g);
+		//oystery.draw(g);
 		
 		for(Block b: blocks){
 			b.draw(g);
@@ -58,6 +60,7 @@ public class GameController{
 	
 	public void update(){
 		crabby.update();
+		//oystery.update();
 		for(Block b: blocks){
 			b.update();
 		}
@@ -65,20 +68,22 @@ public class GameController{
 			i.update();
 		}
 		if(sendNext == true){
-			itemNum = randItem.nextInt(3);
+			Random randItem = new Random();
+			itemNum = randItem.nextInt(4);
 			System.out.println(itemNum);
-			// maybe instead of using item numbers, just use count
-			if(itemNum == 0){
+			switch (itemNum){
+			case 0:
 				addItem(new Item(500,0,30,30,ObjectType.TrashBag, this));
-			}
-			else if(itemNum == 1){
+				break;
+			case 1:
 				addItem(new Item(500,0,30,30,ObjectType.Hay, this));
-			}
-			else if(itemNum == 2){
-				addItem(new Item(500,0,30,30,ObjectType.Seeds, this));
-			}
-			else{
+				break;
+			case 2:
 				addItem(new Item(500,0,30,30,ObjectType.Compost, this));
+				break;
+			default:
+				addItem(new Item(500,0,30,30,ObjectType.Seeds, this));
+				break;
 			}
 			sendNext = false;
 		}

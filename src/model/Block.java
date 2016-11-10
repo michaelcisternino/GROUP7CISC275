@@ -62,6 +62,10 @@ public abstract class Block {
 		return yVel;
 	}
 	
+	public double getGravity() {
+		return gravity;
+	}
+	
 //	public boolean isSolid(){
 //		return this.solid;
 //	}
@@ -84,6 +88,10 @@ public abstract class Block {
 	
 	public void setYPos(int y){
 		this.yPos = y;
+	}
+	
+	public void setGravity(double g){
+		this.gravity = g;
 	}
 	
 //	public void setSolid(boolean s){

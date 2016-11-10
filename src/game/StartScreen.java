@@ -1,24 +1,19 @@
 package game;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.GroupLayout;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-
-import view.MainView;
 
 public class StartScreen extends JPanel{
 
@@ -38,21 +33,29 @@ public class StartScreen extends JPanel{
 	}
 	
 	public StartScreen(Game game){
-		this.setLayout(new GridLayout(8,1));
+		this.setLayout(new GridLayout(7,1));
 		setBackground(Color.CYAN);
 		setOpaque(true);
 		TitledBorder title = BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Game1");
 		title.setTitleJustification(TitledBorder.CENTER);
 		setBorder(title);
+		start.setBackground(Color.YELLOW);
+		start.setOpaque(true);
 		this.add(start);
+//        this.add(new Label(" "));
 		start.addActionListener(new Starter(game));
 		this.add(new JLabel("Estuary Game"));
 		this.add(new JLabel("Instructions:"));
-		this.add(new JLabel("Left/right to move"));
-		this.add(new JLabel("Up to jump"));
-		this.add(new JLabel("Collect trash bags, hay, compost, and seeds."));
-		this.add(new JLabel("Use on enemies with "));
-		this.add(new JLabel("Don't fall off!"));
+		this.add(new JLabel("Left/right to move, up to jump."
+				+ " Collect trash bags, hay, compost, and seeds."
+				+ " Use on enemies with these keys."
+				+ " If you fall off, you lose a life."));
+//		this.add(new JLabel("Up to jump"));
+//		this.add(new JLabel("Collect trash bags, hay, compost, and seeds."));
+//		this.add(new JLabel("Use on enemies with "));
+//		this.add(new JLabel("Don't fall off!"));
+		this.add(new Label(" "));
+		this.add(new Label(" "));
 	}
 	
 	class Starter implements ActionListener{

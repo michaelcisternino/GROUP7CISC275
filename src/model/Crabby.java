@@ -7,9 +7,10 @@ import java.util.LinkedList;
 import controller.GameController;
 import game.Game;
 
-public class Crabby extends Character{
-	
+public class Crabby extends Character {
+
 	private int trashcount = 0;
+	private double terminalYVel = 9.8;
 	public int trashBagCnt, hayCnt, seedCnt, compCnt;
 	public LinkedList<Item> items = new LinkedList<Item>();
 
@@ -19,91 +20,99 @@ public class Crabby extends Character{
 
 	@Override
 	public void draw(Graphics g) {
-		g.setColor(Color.RED);	
-		g.fillOval((int)this.getXPos(), (int)this.getYPos(), width, height);
+		g.setColor(Color.RED);
+		g.fillOval((int) this.getXPos(), (int) this.getYPos(), width, height);
 	}
 
+	@SuppressWarnings("incomplete-switch")
 	@Override
 	public void update() {
-		this.xPos+=this.xVel;
-		this.yPos+=this.yVel;
-		//Screen-left bound
-		if(this.xPos <= 0){
+		this.xPos += this.xVel;
+		this.yPos += this.yVel;
+		// Screen-left bound
+		if (this.xPos <= 0) {
 			this.xPos = 0;
 		}
-		//Screen-right bound
-		if(this.xPos + this.width >= Game.WIDTH*Game.SCALE){
-			this.xPos = Game.WIDTH*Game.SCALE - this.width;
+		// Screen-right bound
+		if (this.xPos + this.width >= Game.WIDTH * Game.SCALE) {
+			this.xPos = Game.WIDTH * Game.SCALE - this.width;
 		}
-//		//Screen-bottom bound
-//		if(this.yPos + this.height >= 750){
-//			this.yPos = 750 - this.height;
-//		}
-		for(int i = 0; i < gamecontrol.blocks.size(); i++){
+		// //Screen-bottom bound
+		// if(this.yPos + this.height >= 750){
+		// this.yPos = 750 - this.height;
+		// }
+		for (int i = 0; i < gamecontrol.blocks.size(); i++) {
 			Block b = gamecontrol.blocks.get(i);
-				if(this.getTopBounds().intersects(b.getBounds())){
-					this.setyVel(0);
-					if(isJumping){
-						isJumping = false;
-						gravity=0.8;
-						isFalling = true;
-					}
-				}
-				if(this.getBottomBounds().intersects(b.getBounds())){
-					this.setyVel(0);
-					if(isFalling) {
-						isFalling = false;
-						}
-				}else if (!isFalling&&!isJumping){
-						isFalling = true;
-						gravity = 0.8;
-				}
-				if(this.getLeftBounds().intersects(b.getBounds())){
-					this.setxVel(0);
-					this.xPos = b.getXPos() + b.width;
-				}
-				if(this.getRightBounds().intersects(b.getBounds())){
-					this.setxVel(0);
-					this.xPos = b.getXPos() - b.width;
+			if (this.getTopBounds().intersects(b.getBounds())) {
+				this.setyVel(0);
+				if (isJumping) {
+					isJumping = false;
+					gravity = 0.8;
+					isFalling = true;
 				}
 			}
-		for(int i = 0; i < gamecontrol.items.size(); i++){
+			if (this.getBottomBounds().intersects(b.getBounds())) {
+				this.setyVel(0);
+				if (isFalling) {
+					isFalling = false;
+				}
+			} else if (!isFalling && !isJumping) {
+				isFalling = true;
+				gravity = 0.8;
+			}
+			if (this.getLeftBounds().intersects(b.getRightBounds())) {
+				this.setxVel(0);
+				this.xPos = b.getXPos() + b.width;
+			}
+			if (this.getRightBounds().intersects(b.getLeftBounds())) {
+				this.setxVel(0);
+				this.xPos = b.getXPos() - this.width;
+			}
+		}
+		for (int i = 0; i < gamecontrol.items.size(); i++) {
 			Item c = gamecontrol.items.get(i);
-			if(this.getBottomBounds().intersects(c.getBounds()) || this.getLeftBounds().intersects(c.getBounds()) || this.getRightBounds().intersects(c.getBounds())){
+			if (this.getBottomBounds().intersects(c.getBounds()) || this.getLeftBounds().intersects(c.getBounds())
+					|| this.getRightBounds().intersects(c.getBounds())) {
 				items.add(c);
-				if(c.type == ObjectType.TrashBag){
-					trashBagCnt ++;
-				}
-				else if(c.type == ObjectType.Hay){
-					hayCnt ++;
-				}
-				else if(c.type == ObjectType.Seeds){
-					seedCnt ++;
-				}
-				else{
-					compCnt ++;
+				switch (c.type) {
+				case TrashBag:
+					trashBagCnt++;
+					break;
+				case Hay:
+					hayCnt++;
+					break;
+				case Seeds:
+					seedCnt++;
+					break;
+				case Compost:
+					compCnt++;
+					break;
 				}
 				gamecontrol.removeItem(c);
 				gamecontrol.sendNext = true;
-				System.out.println("trashbag: " + trashBagCnt + ", hay: " + hayCnt + ", seeds: " + seedCnt + ", compost: " + compCnt);
+				System.out.println("trashbag: " + trashBagCnt + ", hay: " + hayCnt + ", seeds: " + seedCnt
+						+ ", compost: " + compCnt);
 			}
 		}
-		if(isJumping){
-			gravity-=0.1;
-			this.setyVel((int)-gravity);
-			if(gravity<=0.0){
+		if (isJumping) {
+			gravity -= 0.1;
+			this.setyVel((int) -gravity);
+			if (gravity <= 0.0) {
 				isJumping = false;
 				isFalling = true;
 			}
 		}
-		if(isFalling){
-			if(this.yPos >= 750){
+		if (isFalling) {
+			if (this.yPos >= 750) {
 				this.isGone = true;
 			}
-			gravity+=0.1;
-			this.setyVel((int)gravity);
+			gravity += 0.1;
+			if (gravity > terminalYVel) {
+				gravity = terminalYVel;
+			}
+			this.setyVel((int) gravity);
 		}
-		if(isGone){
+		if (isGone) {
 			this.yPos = 0;
 			this.isFalling = true;
 			this.die();
@@ -111,5 +120,16 @@ public class Crabby extends Character{
 			System.out.println(this.lives);
 		}
 	}
-	
+
+	public double getGravity() {
+		return this.gravity;
+	}
+
+	public void setGravity(double g) {
+		this.gravity = g;
+		if (gravity > terminalYVel) {
+			gravity = terminalYVel;
+		}
+	}
+
 }

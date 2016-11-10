@@ -9,8 +9,9 @@ public class Platform extends Block{
 
 	public Platform(int x, int y, int width, int height, ObjectType t, GameController oc) {
 		super(x, y, width, height, t, oc);
+		this.xVel = -1;
 	}
-
+	
 	@Override
 	public void draw(Graphics g) {
 		g.setColor(Color.WHITE);
@@ -19,7 +20,7 @@ public class Platform extends Block{
 
 	@Override
 	public void update() {
-		this.xPos -= 1;
+		this.xPos += xVel;
 		if(this.xPos <= (0-this.width)){
 			this.setXPos(270*4);
 		}
