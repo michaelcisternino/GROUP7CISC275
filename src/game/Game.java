@@ -58,6 +58,7 @@ public class Game extends JFrame implements Runnable{
 			}
 			gameControl.addBlock(new Floor(300,HEIGHT*SCALE-64,800,64,ObjectType.Wall,gameControl));
 		}
+		//hehehehehehe
 		
 		//Initialize gameThread
 		private synchronized void startGame(){
