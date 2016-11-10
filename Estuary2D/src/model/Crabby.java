@@ -72,15 +72,19 @@ public class Crabby extends Character{
 				items.add(c);
 				if(c.type == ObjectType.TrashBag){
 					trashBagCnt ++;
+					gamecontrol.useTrashb = true;
 				}
 				else if(c.type == ObjectType.Hay){
 					hayCnt ++;
+					gamecontrol.useHay = true;
 				}
 				else if(c.type == ObjectType.Seeds){
 					seedCnt ++;
+					gamecontrol.useSeeds = true;
 				}
 				else{
 					compCnt ++;
+					gamecontrol.useComp = true;
 				}
 				gamecontrol.removeObject(c);
 				gamecontrol.sendNext = true;
