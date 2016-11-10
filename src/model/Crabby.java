@@ -104,7 +104,11 @@ public class Crabby extends Character{
 			this.setyVel((int)gravity);
 		}
 		if(isGone){
-			this.setyVel(0);
+			this.yPos = 0;
+			this.isFalling = true;
+			this.die();
+			this.isGone = false;
+			System.out.println(this.lives);
 		}
 	}
 	
