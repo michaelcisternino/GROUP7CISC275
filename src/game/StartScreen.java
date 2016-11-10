@@ -1,11 +1,13 @@
 package game;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -31,6 +33,9 @@ public class StartScreen extends JPanel{
 	}
 	
 	public StartScreen(Game game){
+		setBackground(Color.BLACK);
+		setOpaque(false);
+		setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Crabby"));
 		this.add(start);
 		start.addActionListener(new Starter(game));
 	}
