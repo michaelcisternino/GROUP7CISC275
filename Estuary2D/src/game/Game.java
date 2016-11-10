@@ -1,5 +1,6 @@
 package game;
 
+import java.util.Random;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferStrategy;
@@ -22,7 +23,8 @@ public class Game extends JFrame implements Runnable{
 		public static final int HEIGHT = WIDTH/14*10;
 		public static final int SCALE = 4;
 		public static final String TITLE = "Crabby";
-		
+		Random randItem = new Random();
+		int itemNum;
 		private Container pane;
 		private Thread gameThread;
 		
@@ -39,8 +41,21 @@ public class Game extends JFrame implements Runnable{
 			gameControl = new GameController();
 			addKeyListener(new PlayerKeyHandler());
 			gameControl.addBlock(new Platform(0,200,400,30,ObjectType.Wall,gameControl));
+			itemNum = randItem.nextInt()%4;
+			System.out.println(itemNum);
 			gameControl.addBlock(new Platform(800,500,400,30,ObjectType.Wall,gameControl));
-			gameControl.addObject(new Item(500,0,30,30,ObjectType.Trash, gameControl));
+			if(itemNum == 0){
+				gameControl.addObject(new Item(500,0,30,30,ObjectType.TrashBag, gameControl));
+			}
+			else if(itemNum == 1){
+				gameControl.addObject(new Item(500,0,30,30,ObjectType.Hay, gameControl));
+			}
+			else if(itemNum == 2){
+				gameControl.addObject(new Item(500,0,30,30,ObjectType.Seeds, gameControl));
+			}
+			else{
+				gameControl.addObject(new Item(500,0,30,30,ObjectType.Compost, gameControl));
+			}
 			gameControl.addBlock(new Floor(300,HEIGHT*SCALE-64,800,64,ObjectType.Wall,gameControl));
 		}
 		

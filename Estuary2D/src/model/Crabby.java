@@ -9,7 +9,8 @@ import game.Game;
 
 public class Crabby extends Character{
 	
-	public LinkedList<Character> items = new LinkedList<Character>();
+	public int trashBagCnt, hayCnt, seedCnt, compCnt;
+	public LinkedList<Item> items = new LinkedList<Item>();
 
 	public Crabby(int x, int y, int width, int height, ObjectType t, GameController gamecontrol) {
 		super(x, y, width, height, t, gamecontrol);
@@ -66,19 +67,24 @@ public class Crabby extends Character{
 				}
 			}
 		for(int i = 0; i < gamecontrol.entities.size(); i++){
-			Character c = gamecontrol.entities.get(i);
-			if(this.getBottomBounds().intersects(c.getBounds())){
+			Item c = gamecontrol.entities.get(i);
+			if(this.getBottomBounds().intersects(c.getBounds()) || this.getLeftBounds().intersects(c.getBounds()) || this.getRightBounds().intersects(c.getBounds())){
 				items.add(c);
+				if(c.type == ObjectType.TrashBag){
+					trashBagCnt ++;
+				}
+				else if(c.type == ObjectType.Hay){
+					hayCnt ++;
+				}
+				else if(c.type == ObjectType.Seeds){
+					seedCnt ++;
+				}
+				else{
+					compCnt ++;
+				}
 				gamecontrol.removeObject(c);
-				System.out.println("GOT IT!");
-			}
-			if(this.getLeftBounds().intersects(c.getBounds())){
-				items.add(c);
-				gamecontrol.removeObject(c);
-			}
-			if(this.getRightBounds().intersects(c.getBounds())){
-				items.add(c);
-				gamecontrol.removeObject(c);
+				gamecontrol.sendNext = true;
+				System.out.println("trashbag: " + trashBagCnt + ", hay: " + hayCnt + ", seeds: " + seedCnt + ", compost: " + compCnt);
 			}
 		}
 		if(isJumping){

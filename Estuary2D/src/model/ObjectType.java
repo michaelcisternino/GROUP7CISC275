@@ -1,5 +1,5 @@
 package model;
 
 public enum ObjectType {
-	Crabby, Wall, Trash
+	Crabby, Wall, TrashBag, Hay, Seeds, Compost;
 }

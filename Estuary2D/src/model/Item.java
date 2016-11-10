@@ -7,15 +7,42 @@ import controller.GameController;
 import game.Game;
 
 public class Item extends Character{
-
+	Color itemCol;
 	public Item(int x, int y, int width, int height, ObjectType t, GameController gamecontrol) {
 		super(x, y, width, height, t, gamecontrol);
+//		switch(t){
+//		
+//		case TrashBag:{
+//			itemCol = Color.black;
+//		}
+//		case Hay:{
+//			itemCol = Color.yellow;
+//		}
+//		case Seeds:{
+//			itemCol = Color.green;
+//		}
+//		case Compost:{
+//			itemCol = Color.red;
+//		}
+//		}
+		if(t == ObjectType.TrashBag){
+			itemCol = Color.black;
+		}
+		else if(t == ObjectType.Hay){
+			itemCol = Color.yellow;
+		}
+		else if(t == ObjectType.Seeds){
+			itemCol = Color.green;
+		}
+		else{
+			itemCol = Color.red;
+		}
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		g.setColor(Color.BLUE);
+		g.setColor(itemCol);
 		g.fillOval(this.xPos, this.yPos, width, height);
 	}
 
@@ -78,9 +105,11 @@ public class Item extends Character{
 			gravity+=0.1;
 			this.setyVel((int)gravity);
 		}
-//		if(isGone){
-//			this.setyVel(0);
-//		}
+		if(isGone){
+			this.setyVel(0);
+			gamecontrol.removeObject(this);
+			gamecontrol.sendNext = true;
+		}
 		
 	}
 

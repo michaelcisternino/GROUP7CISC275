@@ -2,6 +2,7 @@ package model;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.Random;
 
 import controller.GameController;
 
@@ -11,6 +12,7 @@ public abstract class Character {
 	public int  xVel, yVel;
 
 	public int width, height;
+	public int colNum; 
 	
 	public ObjectType type;
 	
@@ -30,13 +32,14 @@ public abstract class Character {
 		this.height = height;
 		this.type = t;
 		this.gamecontrol = gamecontrol;
+		//this.colNum = color;
 	}
 	
 	public void remove(){
 		gamecontrol.entities.remove(this);
 	}
 	
-	public void addObject(Character go){
+	public void addObject(Item go){
 		gamecontrol.entities.add(go);
 	}
 	
