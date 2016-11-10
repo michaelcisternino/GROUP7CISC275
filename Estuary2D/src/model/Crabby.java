@@ -88,7 +88,7 @@ public class Crabby extends Character{
 			}
 		}
 		if(isJumping){
-			gravity-=0.2;
+			gravity-=0.125;
 			this.setyVel((int)-gravity);
 			if(gravity<=0.0){
 				isJumping = false;
