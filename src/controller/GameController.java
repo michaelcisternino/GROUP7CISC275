@@ -10,17 +10,25 @@ import model.Crabby;
 //import model.Blocks;
 import model.Character;
 import model.ObjectType;
+import model.Obstacle;
 import model.Floor;
+import model.InteractiveObject;
 import model.Item;
 
 public class GameController{
 	
-	public LinkedList<Block> blocks = new LinkedList<Block>();
-	public LinkedList<Item> items = new LinkedList<Item>();
-	public Crabby crabby = new Crabby(300,512,64,64,ObjectType.Crabby,this);
+	public boolean useTrashb, useHay, useSeeds, useComp;
 	public boolean sendNext = false;
 	Random randItem = new Random();
+	
 	int itemNum;
+	int blockNum;
+	int whatsNext;
+	
+	public LinkedList<Block> blocks = new LinkedList<Block>();
+	public LinkedList<InteractiveObject> entities = new LinkedList<InteractiveObject>();
+	public LinkedList<Obstacle> obstacles = new LinkedList<Obstacle>();
+	public Crabby crabby = new Crabby(300,512,64,64,ObjectType.Crabby,this);
 	
 	public GameController(){
 		
@@ -34,19 +42,20 @@ public class GameController{
 			b.draw(g);
 		}
 		
-		for(Item i: items){
-			i.draw(g);
+		for(InteractiveObject entity: entities){
+			entity.draw(g);
 		}
 		
 	}
 	
-	public void addItem(Item g){
-		items.add(g);
+	public void addEntity(InteractiveObject entity){
+		entities.add(entity);
 	}
 	
-	public void removeItem(Item g){
-		items.remove(g);
+	public void removeEntity(InteractiveObject entity){
+		entities.remove(entity);
 	}
+	
 	
 	public void removeBlock(Block b){
 		blocks.remove(b);
@@ -61,27 +70,59 @@ public class GameController{
 		for(Block b: blocks){
 			b.update();
 		}
-		for(Item i: items){
-			i.update();
+		for(InteractiveObject entity: entities){
+			entity.update();
 		}
 		if(sendNext == true){
-			itemNum = randItem.nextInt(3);
-			System.out.println(itemNum);
+			if(useTrashb == false || useHay == false || useSeeds == false || useComp == false){
+			itemNum = randItem.nextInt(4);
+			blockNum = randItem.nextInt(3);
 			// maybe instead of using item numbers, just use count
-			if(itemNum == 0){
-				addItem(new Item(500,0,30,30,ObjectType.TrashBag, this));
-			}
-			else if(itemNum == 1){
-				addItem(new Item(500,0,30,30,ObjectType.Hay, this));
-			}
-			else if(itemNum == 2){
-				addItem(new Item(500,0,30,30,ObjectType.Seeds, this));
-			}
-			else{
-				addItem(new Item(500,0,30,30,ObjectType.Compost, this));
+			switch(itemNum){
+				case 0: addEntity(new Item(500,0,30,30,ObjectType.TrashBag, this));
+				break;
+				case 1: addEntity(new Item(500,0,30,30,ObjectType.Hay, this));
+				break;
+				case 2: addEntity(new Item(500,0,30,30,ObjectType.Seeds, this));
+				break;
+				case 3: addEntity(new Item(500,0,30,30,ObjectType.Compost, this));
+				break;
 			}
 			sendNext = false;
+			}
+			else{
+			whatsNext = randItem.nextInt(2) + 1;
+			if(whatsNext == 0){
+				blockNum = randItem.nextInt(4);
+				itemNum = randItem.nextInt(4);
+				switch(itemNum){
+				case 0: addEntity(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.TrashBag, this));
+				break;
+				case 1: addEntity(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.Hay, this));
+				break;
+				case 2: addEntity(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.Seeds, this));
+				break;
+				case 3: addEntity(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.Compost, this));
+				break;
+				}
+			}
+			else{
+				itemNum = randItem.nextInt(4);
+				System.out.println("sending");
+				switch(itemNum){
+				case 0: addEntity(new Obstacle(Game.WIDTH * Game.SCALE,70,400,100,ObjectType.Person, this));
+				break;
+				case 1: addEntity(new Obstacle(Game.WIDTH * Game.SCALE,70,400,100,ObjectType.Chemicals, this));
+				break;
+				case 2: addEntity(new Obstacle(Game.WIDTH * Game.SCALE,70,400,100,ObjectType.EmptySoil, this));
+				break;
+				case 4: addEntity(new Obstacle(Game.WIDTH * Game.SCALE,70,400,100,ObjectType.DeadSoil, this));
+				break;
+				}
+			}
+			sendNext = false;
+	}
 		}
 	}
-	
 }
+	

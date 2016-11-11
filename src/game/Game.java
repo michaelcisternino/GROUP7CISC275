@@ -42,19 +42,18 @@ public class Game extends JFrame implements Runnable, java.io.Serializable{
 			gameControl.addBlock(new Platform(0,200,400,30,ObjectType.Wall,gameControl));
 			Random randNum = new Random();
 			itemNum = randNum.nextInt(4);
-			System.out.println(itemNum);
 			gameControl.addBlock(new Platform(800,500,400,30,ObjectType.Wall,gameControl));
+			gameControl.addBlock(new Floor(300,HEIGHT*SCALE-64,800,64,ObjectType.Wall,gameControl));
 			switch(itemNum){
-				case 0: gameControl.addItem(new Item(500,0,30,30,ObjectType.TrashBag, gameControl));
+				case 0: gameControl.addEntity(new Item(500,0,30,30,ObjectType.TrashBag, gameControl));
 				break;
-				case 1: gameControl.addItem(new Item(500,0,30,30,ObjectType.Hay, gameControl));
+				case 1: gameControl.addEntity(new Item(500,0,30,30,ObjectType.Hay, gameControl));
 				break;
-				case 2: gameControl.addItem(new Item(500,0,30,30,ObjectType.Seeds, gameControl));
+				case 2: gameControl.addEntity(new Item(500,0,30,30,ObjectType.Seeds, gameControl));
 				break;
-				case 3: gameControl.addItem(new Item(500,0,30,30,ObjectType.Compost, gameControl));
+				case 3: gameControl.addEntity(new Item(500,0,30,30,ObjectType.Compost, gameControl));
 				break;
 			}
-			gameControl.addBlock(new Floor(300,HEIGHT*SCALE-64,800,64,ObjectType.Wall,gameControl));
 		}
 		
 		//Initialize gameThread

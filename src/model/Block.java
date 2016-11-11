@@ -21,6 +21,7 @@ public abstract class Block {
 	public boolean isJumping = false;
 	public boolean isFalling = true;
 	public boolean isGone = false;
+	public boolean useCorrect = false;
 	
 	public GameController gamecontrol;
 	
@@ -88,6 +89,10 @@ public abstract class Block {
 		this.yPos = y;
 	}
 	
+	public void setUsedCorrect(boolean b){
+		this.useCorrect = b;
+	}
+	
 //	public void setSolid(boolean s){
 //		this.solid = s;
 //	}
@@ -110,5 +115,43 @@ public abstract class Block {
 	
 	public Rectangle getRightBounds(){
 		return new Rectangle(this.getXPos()+width-5,this.getYPos()+10, 5, height-20);
+	}
+	
+	public boolean checkItem(ObjectType t){
+		switch(this.type){
+		case TrashBag:
+			if(t == ObjectType.Person){
+			useCorrect = true;
+			}
+			else{
+			useCorrect = false;
+			}
+			break;
+		case Chemicals:
+			if(t == ObjectType.Hay){
+			useCorrect = true;
+			}
+			else{
+			useCorrect = false;
+			}
+			break;
+		case EmptySoil:
+			if(t == ObjectType.Seeds){
+				useCorrect = true;
+			}
+			else{
+				useCorrect = false;
+			}
+			break;
+		case Compost:
+			if(t == ObjectType.DeadSoil){
+				useCorrect = true;
+			}
+			else{
+				useCorrect = false;
+			}
+			break;
+		}
+		return useCorrect;
 	}
 }
