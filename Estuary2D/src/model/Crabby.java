@@ -10,7 +10,7 @@ import game.Game;
 public class Crabby extends Character{
 	
 	public int trashBagCnt, hayCnt, seedCnt, compCnt;
-	public LinkedList<MovingObj> items = new LinkedList<MovingObj>();
+	public LinkedList<InteractiveObject> items = new LinkedList<InteractiveObject>();
 
 	public Crabby(int x, int y, int width, int height, ObjectType t, GameController gamecontrol) {
 		super(x, y, width, height, t, gamecontrol);
@@ -67,38 +67,45 @@ public class Crabby extends Character{
 				}
 			}
 		for(int i = 0; i < gamecontrol.entities.size(); i++){
-			MovingObj c = gamecontrol.entities.get(i);
+			InteractiveObject c = gamecontrol.entities.get(i);
 			if(this.getBottomBounds().intersects(c.getBounds()) || this.getLeftBounds().intersects(c.getBounds()) || this.getRightBounds().intersects(c.getBounds())){
-				items.add(c);
-				if(c.type == ObjectType.TrashBag){
+				switch(c.type){
+				case TrashBag:
 					trashBagCnt ++;
 					gamecontrol.useTrashb = true;
-				}
-				else if(c.type == ObjectType.Hay){
+					break;
+				case Hay:
 					hayCnt ++;
 					gamecontrol.useHay = true;
-				}
-				else if(c.type == ObjectType.Seeds){
+					break;
+				case Seeds:
 					seedCnt ++;
 					gamecontrol.useSeeds = true;
-				}
-				else if(c.type == ObjectType.Compost){
+					break;
+				case Compost:
 					compCnt ++;
 					gamecontrol.useComp = true;
-				}
-				else if(c.type == ObjectType.People || c.type == ObjectType.Chemicals || c.type == ObjectType.EmptySoil || c.type == ObjectType.DeadSoil){
-					//gamecontrol.pause();
-					//System.out.println("just paused!");
-					while(c.correct != true){
+					break;
+				case People:
+					while(c.useCorrect != true){
 						System.out.print("");
 					}
-//					if(c.correct == true){
-//						gamecontrol.removeObject(c);
-//						gamecontrol.unpause();
-//						
-//					}
-//					gamecontrol.removeObject(c);
-//					gamecontrol.unpause();
+					break;
+				case Chemicals:
+					while(c.useCorrect != true){
+						System.out.print("");
+					}
+					break;
+				case EmptySoil:
+					while(c.useCorrect != true){
+						System.out.print("");
+					}
+					break;
+				case DeadSoil:
+					while(c.useCorrect != true){
+						System.out.print("");
+					}
+					break;
 				}
 				gamecontrol.removeObject(c);
 				gamecontrol.sendNext = true;
@@ -106,7 +113,7 @@ public class Crabby extends Character{
 			}
 		}
 		if(isJumping){
-			gravity-=0.125;
+			gravity-=0.1;
 			this.setyVel((int)-gravity);
 			if(gravity<=0.0){
 				isJumping = false;
@@ -121,7 +128,10 @@ public class Crabby extends Character{
 			this.setyVel((int)gravity);
 		}
 		if(isGone){
-			this.setyVel(0);
+			this.yPos = 0;
+			this.isFalling = true;
+			this.die();
+			this.isGone = false;
 		}
 	}
 	

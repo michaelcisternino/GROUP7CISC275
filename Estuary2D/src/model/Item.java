@@ -6,36 +6,23 @@ import java.awt.Graphics;
 import controller.GameController;
 import game.Game;
 
-public class Item extends MovingObj{
+public class Item extends InteractiveObject{
 	Color itemCol;
 	public Item(int x, int y, int width, int height, ObjectType t, GameController gamecontrol) {
 		super(x, y, width, height, t, gamecontrol);
-//		switch(t){
-//		
-//		case TrashBag:{
-//			itemCol = Color.black;
-//		}
-//		case Hay:{
-//			itemCol = Color.yellow;
-//		}
-//		case Seeds:{
-//			itemCol = Color.green;
-//		}
-//		case Compost:{
-//			itemCol = Color.red;
-//		}
-//		}
-		if(t == ObjectType.TrashBag){
-			itemCol = Color.black;
-		}
-		else if(t == ObjectType.Hay){
-			itemCol = Color.yellow;
-		}
-		else if(t == ObjectType.Seeds){
-			itemCol = Color.green;
-		}
-		else{
-			itemCol = Color.red;
+		switch(t){
+		case TrashBag:
+			this.itemCol = Color.black;
+			break;
+		case Hay:
+			this.itemCol = Color.yellow;
+			break;
+		case Compost:
+			this.itemCol = Color.red;
+			break;
+		case Seeds:
+			this.itemCol = Color.green;
+			break;
 		}
 		// TODO Auto-generated constructor stub
 	}

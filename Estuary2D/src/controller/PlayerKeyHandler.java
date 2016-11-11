@@ -28,25 +28,25 @@ public class PlayerKeyHandler implements KeyListener{
 			}
 			break;
 		case KeyEvent.VK_T:
-			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).correct = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(ObjectType.TrashBag);
+			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(ObjectType.TrashBag);
 			Game.gameControl.crabby.trashBagCnt -= 1;
 
 			//Game.gameControl.unpause();
 			break;
 		case KeyEvent.VK_H:
-			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).correct = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(ObjectType.Hay);
+			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(ObjectType.Hay);
 			Game.gameControl.crabby.hayCnt -= 1;
 			
 			//Game.gameControl.unpause();
 			break;
 		case KeyEvent.VK_S:
-			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).correct = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(ObjectType.Seeds);
+			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(ObjectType.Seeds);
 			Game.gameControl.crabby.seedCnt -= 1;
 
 			//Game.gameControl.unpause();
 			break;
 		case KeyEvent.VK_C:
-			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).correct = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(ObjectType.Compost);
+			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(ObjectType.Compost);
 			Game.gameControl.crabby.compCnt -= 1;
 
 			//Game.gameControl.unpause();

@@ -6,28 +6,30 @@ import java.awt.Graphics;
 import controller.GameController;
 import game.Game;
 
-public class Obstacle extends MovingObj{
-	Color itemCol;
+public class Obstacle extends InteractiveObject{
+	Color obsCol;
 	public Obstacle(int x, int y, int width, int height, ObjectType t, GameController gamecontrol) {
 		super(x, y, width, height, t, gamecontrol);
-		if(t == ObjectType.People){
-			itemCol = Color.black;
-		}
-		else if(t == ObjectType.Chemicals){
-			itemCol = Color.yellow;
-		}
-		else if(t == ObjectType.EmptySoil){
-			itemCol = Color.green;
-		}
-		else{
-			itemCol = Color.red;
+		switch(t){
+		case People:
+			this.obsCol = Color.black;
+			break;
+		case Chemicals: 
+			this.obsCol = Color.yellow;
+			break;
+		case EmptySoil:
+			this.obsCol = Color.green;
+			break;
+		case DeadSoil:
+			this.obsCol = Color.red;
+			break;
 		}
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		g.setColor(itemCol);
+		g.setColor(obsCol);
 		g.fillRect(this.xPos, this.yPos, width, height);
 	}
 

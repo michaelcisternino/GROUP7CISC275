@@ -10,6 +10,8 @@ public abstract class Character {
 
 	public int xPos, yPos;
 	public int  xVel, yVel;
+	
+	public int lives = 5;
 
 	public int width, height;
 	public int colNum; 
@@ -33,6 +35,10 @@ public abstract class Character {
 		this.type = t;
 		this.gamecontrol = gamecontrol;
 		//this.colNum = color;
+	}
+	
+	public void die(){
+		this.lives--;
 	}
 	
 	public void remove(){

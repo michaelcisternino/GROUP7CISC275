@@ -5,13 +5,12 @@ import java.awt.Rectangle;
 
 import controller.GameController;
 
-public abstract class MovingObj {
+public abstract class InteractiveObject {
 	
-	public boolean correct = false;
+	public boolean useCorrect = false;
 
 	public int xPos, yPos;
 	public int  xVel, yVel;
-	public int prevXVel, prevYVel;
 
 	public int width, height;
 	public int colNum; 
@@ -27,7 +26,7 @@ public abstract class MovingObj {
 	
 	public GameController gamecontrol;
 	
-	public MovingObj(int x, int y, int width, int height, ObjectType t, GameController gamecontrol){
+	public InteractiveObject(int x, int y, int width, int height, ObjectType t, GameController gamecontrol){
 		this.xPos = x;
 		this.yPos = y;
 		this.width = width;
@@ -70,12 +69,10 @@ public abstract class MovingObj {
 //	}
 	
 	public void setxVel(int xVel){
-		this.prevXVel = this.xVel;
 		this.xVel = xVel;
 	}
 
 	public void setyVel(int yVel) {
-		this.prevYVel = this.yVel;
 		this.yVel = yVel;
 	}
 	
@@ -116,39 +113,41 @@ public abstract class MovingObj {
 	}
 	
 	public boolean checkItem(ObjectType t){
-		if(this.type == ObjectType.People){
-			if(t == ObjectType.TrashBag){
-				correct = true;
+		switch(this.type){
+		case TrashBag:
+			if(t == ObjectType.People){
+			useCorrect = true;
 			}
 			else{
-				correct = false;
+			useCorrect = false;
 			}
-		}
-		else if(this.type == ObjectType.Chemicals){
+			break;
+		case Chemicals:
 			if(t == ObjectType.Hay){
-				correct = true;
+			useCorrect = true;
 			}
 			else{
-				correct = false;
+			useCorrect = false;
 			}
-		}
-		else if(this.type == ObjectType.EmptySoil){
+			break;
+		case EmptySoil:
 			if(t == ObjectType.Seeds){
-				correct = true;
+				useCorrect = true;
 			}
 			else{
-				correct = false;
+				useCorrect = false;
 			}
-		}
-		else{
-			if(t == ObjectType.Compost){
-				correct = true;
+			break;
+		case Compost:
+			if(t == ObjectType.DeadSoil){
+				useCorrect = true;
 			}
 			else{
-				correct = false;
+				useCorrect = false;
 			}
+			break;
 		}
-		return correct;
+		return useCorrect;
 	}
 
 }
