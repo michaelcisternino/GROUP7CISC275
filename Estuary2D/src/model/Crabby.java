@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import controller.GameController;
 import game.Game;
 
-public class Crabby extends MovingObj{
+public class Crabby extends Character{
 	
 	public int trashBagCnt, hayCnt, seedCnt, compCnt;
 	public LinkedList<MovingObj> items = new LinkedList<MovingObj>();
@@ -87,11 +87,18 @@ public class Crabby extends MovingObj{
 					gamecontrol.useComp = true;
 				}
 				else if(c.type == ObjectType.People || c.type == ObjectType.Chemicals || c.type == ObjectType.EmptySoil || c.type == ObjectType.DeadSoil){
-					gamecontrol.pause();
+					//gamecontrol.pause();
+					//System.out.println("just paused!");
 					while(c.correct != true){
-						
+						System.out.print("");
 					}
-					gamecontrol.unpause();
+//					if(c.correct == true){
+//						gamecontrol.removeObject(c);
+//						gamecontrol.unpause();
+//						
+//					}
+//					gamecontrol.removeObject(c);
+//					gamecontrol.unpause();
 				}
 				gamecontrol.removeObject(c);
 				gamecontrol.sendNext = true;

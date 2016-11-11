@@ -34,7 +34,8 @@ public class Obstacle extends MovingObj{
 	@Override
 	public void update() {
 		this.xPos -= 1;
-		this.yPos+=this.yVel;
+		//this.yPos+=this.yVel;
+		this.yPos=0;
 		//Screen-left bound
 //		if(this.xPos <= 0){
 //			this.xPos = 250*4;
