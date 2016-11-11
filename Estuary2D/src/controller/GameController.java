@@ -58,31 +58,44 @@ public class GameController{
 	public void addBlock(Block b){
 		blocks.add(b);
 	}
-	
+	// when we run into an obstacle, it doesnt actually pause. it just stops movement, but then when it unpases
+	// it brings it back to the state it would be in if it kept moving/if the vel didnt go to zero.
+	// need to stop the entire map/timer, not just the velocity.
 	public void pause(){
-		crabby.xVel = 0;
-		crabby.yVel = 0;
+		crabby.setxVel(0);
+		crabby.setyVel(0);
+		System.out.println(crabby.getxVel());
+		System.out.println(crabby.getyVel());
 		for(MovingObj c: entities){
-			c.xVel = 0;
-			c.yVel = 0;
+			c.setxVel(0);
+			c.setyVel(0);
+			System.out.println(c.getxVel());
+			System.out.println(c.getyVel());
 		}
 		for(Block b: blocks){
-			b.xVel = 0;
-			b.yVel = 0;
+			b.setxVel(0);
+			b.setyVel(0);
+			System.out.println(b.getxVel());
+			System.out.println(b.getyVel());
 		}
 	}
 	
 	public void unpause(){
-		crabby.xVel = crabby.prevXVel;
-		crabby.yVel = crabby.prevYVel;
+		System.out.println("made it to unpause!");
+//		crabby.setxVel(crabby.prevXVel);
+//		crabby.setyVel(crabby.prevYVel);
 		for(MovingObj c: entities){
-			c.xVel = c.prevXVel;
-			c.yVel = c.prevYVel;
+			c.setxVel(c.prevXVel);
+			c.setyVel(c.prevYVel);
 		}
 		for(Block b: blocks){
-			b.xVel = b.prevXVel;
-			b.yVel = b.prevYVel;
+			b.setxVel(b.prevXVel);
+			b.setyVel(b.prevYVel);
 		}
+		//sendNext = true;
+		//crabby.update();
+		//update();
+		
 	}
 	public void update(){
 		crabby.update();
@@ -93,70 +106,74 @@ public class GameController{
 			c.update();
 		}
 		if(sendNext == true){
-			if(useTrashb == false || useHay == false || useSeeds == false || useComp == false){
+//			if(useTrashb == false || useHay == false || useSeeds == false || useComp == false){
+//				blockNum = randItem.nextInt(3);
+//				itemNum = randItem.nextInt(4);
+////				System.out.println(itemNum);
+////				System.out.println("Initial block number" + blockNum);
+//				// maybe instead of using item numbers, just use count
+//	//			if(blocks.get(blockNum).getXPos()+50 < crabby.getXPos()){
+//	//
+//	//				System.out.println("Updated block number" + blockNum);
+//	//			}
+//				//check to see if the object xpos is off the screen, if true then go back into the if statements.
+//				//if(item.getX < leftbound) -> then redraw
+//				if(itemNum == 0){
+//					addObject(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.TrashBag, this));
+//				}
+//				else if(itemNum == 1){
+//					addObject(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.Hay, this));
+//				}
+//				else if(itemNum == 2){
+//					addObject(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.Seeds, this));
+//				}
+//				else{
+//					addObject(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.Compost, this));
+//				}
+//				sendNext = false;
+//			}
+//			else{
+			whatsNext = randItem.nextInt(2);
+			if(whatsNext == 0){
 				blockNum = randItem.nextInt(3);
 				itemNum = randItem.nextInt(4);
-//				System.out.println(itemNum);
-//				System.out.println("Initial block number" + blockNum);
-				// maybe instead of using item numbers, just use count
-	//			if(blocks.get(blockNum).getXPos()+50 < crabby.getXPos()){
-	//
-	//				System.out.println("Updated block number" + blockNum);
-	//			}
-				//check to see if the object xpos is off the screen, if true then go back into the if statements.
-				//if(item.getX < leftbound) -> then redraw
 				if(itemNum == 0){
+					//addObject(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.TrashBag, this));
 					addObject(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.TrashBag, this));
 				}
 				else if(itemNum == 1){
-					addObject(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.Hay, this));
+					//addObject(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.Hay, this));
+					addObject(new Item(Game.WIDTH * Game.SCALE + 100,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.Hay, this));
 				}
 				else if(itemNum == 2){
-					addObject(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.Seeds, this));
+					//addObject(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.Seeds, this));
+					addObject(new Item(Game.WIDTH * Game.SCALE + 100,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.Seeds, this));
 				}
 				else{
-					addObject(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.Compost, this));
+					//addObject(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.Compost, this));
+					addObject(new Item(Game.WIDTH * Game.SCALE + 100,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.Compost, this));
 				}
-				sendNext = false;
 			}
 			else{
-				whatsNext = randItem.nextInt(2);
-				if(whatsNext == 0){
-					blockNum = randItem.nextInt(3);
-					itemNum = randItem.nextInt(4);
-					if(itemNum == 0){
-						addObject(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.TrashBag, this));
-					}
-					else if(itemNum == 1){
-						addObject(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.Hay, this));
-					}
-					else if(itemNum == 2){
-						addObject(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.Seeds, this));
-					}
-					else{
-						addObject(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.Compost, this));
-					}
+				blockNum = randItem.nextInt(3);
+				itemNum = randItem.nextInt(4);
+				if(itemNum == 0){
+					addObject(new Obstacle(Game.WIDTH * Game.SCALE + 100,70,100,Game.HEIGHT * Game.SCALE,ObjectType.People, this));
+				}
+				else if(itemNum == 1){
+					addObject(new Obstacle(Game.WIDTH * Game.SCALE + 100,70,100,Game.HEIGHT * Game.SCALE,ObjectType.Chemicals, this));
+				}
+				else if(itemNum == 2){
+					addObject(new Obstacle(Game.WIDTH * Game.SCALE + 100,70,100,Game.HEIGHT * Game.SCALE,ObjectType.EmptySoil, this));
 				}
 				else{
-					itemNum = randItem.nextInt(4);
-					if(itemNum == 0){
-						addObject(new Obstacle(0,70,400,100,ObjectType.People, this));
-					}
-					else if(itemNum == 1){
-						addObject(new Obstacle(0,70,400,100,ObjectType.Chemicals, this));
-					}
-					else if(itemNum == 2){
-						addObject(new Obstacle(0,70,400,100,ObjectType.EmptySoil, this));
-					}
-					else{
-						addObject(new Obstacle(0,70,400,100,ObjectType.DeadSoil, this));
-					}
+					addObject(new Obstacle(Game.WIDTH * Game.SCALE + 100,70,100,Game.HEIGHT * Game.SCALE,ObjectType.DeadSoil, this));
 				}
-				sendNext = false;
 			}
+			sendNext = false;
 		}
 	}
-	
-	
-	
 }
+	
+	
+	
