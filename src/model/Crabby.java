@@ -69,7 +69,7 @@ public class Crabby extends Character{
 			}
 		for(int i = 0; i < gamecontrol.items.size(); i++){
 			Item c = gamecontrol.items.get(i);
-			if(this.getBottomBounds().intersects(c.getBounds()) || this.getLeftBounds().intersects(c.getBounds()) || this.getRightBounds().intersects(c.getBounds())){
+			if(this.getBottomBounds().intersects(c.getBounds()) || this.getLeftBounds().intersects(c.getBounds()) || this.getRightBounds().intersects(c.getBounds()) || this.getTopBounds().intersects(c.getBounds())){
 				items.add(c);
 				if(c.type == ObjectType.TrashBag){
 					trashBagCnt ++;
@@ -85,7 +85,7 @@ public class Crabby extends Character{
 				}
 				gamecontrol.removeItem(c);
 				gamecontrol.sendNext = true;
-				System.out.println("trashbag: " + trashBagCnt + ", hay: " + hayCnt + ", seeds: " + seedCnt + ", compost: " + compCnt);
+				//System.out.println("trashbag: " + trashBagCnt + ", hay: " + hayCnt + ", seeds: " + seedCnt + ", compost: " + compCnt);
 			}
 		}
 		if(isJumping){
@@ -108,7 +108,6 @@ public class Crabby extends Character{
 			this.isFalling = true;
 			this.die();
 			this.isGone = false;
-			System.out.println(this.lives);
 		}
 	}
 	

@@ -7,42 +7,28 @@ import controller.GameController;
 import game.Game;
 
 public class Item extends Block{
-	Color itemCol;
+	public Color itemCol;
 	public Item(int x, int y, int width, int height, ObjectType t, GameController gamecontrol) {
 		super(x, y, width, height, t, gamecontrol);
-//		switch(t){
-//		
-//		case TrashBag:{
-//			itemCol = Color.black;
-//		}
-//		case Hay:{
-//			itemCol = Color.yellow;
-//		}
-//		case Seeds:{
-//			itemCol = Color.green;
-//		}
-//		case Compost:{
-//			itemCol = Color.red;
-//		}
-//		}
-		if(t == ObjectType.TrashBag){
-			itemCol = Color.black;
+		switch(t){
+		case TrashBag:
+			this.itemCol = Color.black;
+			break;
+		case Hay:
+			this.itemCol = Color.yellow;
+			break;
+		case Compost:
+			this.itemCol = Color.red;
+			break;
+		case Seeds:
+			this.itemCol = Color.green;
+			break;
 		}
-		else if(t == ObjectType.Hay){
-			itemCol = Color.yellow;
-		}
-		else if(t == ObjectType.Seeds){
-			itemCol = Color.green;
-		}
-		else{
-			itemCol = Color.red;
-		}
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		g.setColor(itemCol);
+		g.setColor(this.itemCol);
 		g.fillOval(this.xPos, this.yPos, width, height);
 	}
 
@@ -74,6 +60,7 @@ public class Item extends Block{
 //				}
 				if(this.getBottomBounds().intersects(b.getBounds())){
 					this.setyVel(0);
+					this.setxVel(b.getxVel());
 					if(isFalling) {
 						isFalling = false;
 						}
@@ -86,7 +73,7 @@ public class Item extends Block{
 					this.setxVel(2);
 				}
 				if(this.getRightBounds().intersects(b.getBounds())){
-					this.setxVel(-6);
+					this.setxVel(-2);
 					//this.xPos = b.getXPos() - b.width;
 				}
 		}

@@ -11,6 +11,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import view.MainView;
@@ -18,17 +19,17 @@ import view.MainView;
 public class StartScreen extends JPanel{
 
 	public static JButton start = new JButton("Start!");
+	public static JLabel j = new JLabel("Hey");
 	public Container pane;
 	//public static StartScreen ss = new StartScreen();
 	
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		Game game = new Game();
-//		JFrame frame = new JFrame(TITLE);;
-		game.pack();
-		game.setResizable(false);
-		game.setLocationRelativeTo(null);
-		//start.addActionListener(new Starter());
-		game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		game.pack();
+//		game.setResizable(false);
+//		game.setLocationRelativeTo(null);
+//		game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//game.add(j);
 		game.setVisible(true);
 	}
 	

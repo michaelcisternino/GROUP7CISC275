@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -24,6 +25,7 @@ public abstract class Block {
 	public GameController gamecontrol;
 	
 	public boolean solid;
+	
 	
 	public Block(int x, int y, int width, int height, ObjectType t, GameController gc){
 		this.xPos = x;
