@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import game.Game;
+import model.Item;
 import model.ObjectType;
 
 public class PlayerKeyHandler implements KeyListener{
@@ -28,26 +29,49 @@ public class PlayerKeyHandler implements KeyListener{
 			}
 			break;
 		case KeyEvent.VK_T:
-			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(ObjectType.TrashBag);
-			Game.gameControl.crabby.trashBagCnt -= 1;
+			System.out.println("in key handler");
+			Game.gameControl.thrownType = ObjectType.TrashBag;
+			Game.gameControl.itemThrownC = true;
+//			thrownT.itemThrown = true;
+//			Game.gameControl.addItem(thrownT);
+//			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(thrownT.getType());
+//			Game.gameControl.crabby.trashBagCnt -= 1;
 
 			//Game.gameControl.unpause();
 			break;
 		case KeyEvent.VK_H:
-			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(ObjectType.Hay);
-			Game.gameControl.crabby.hayCnt -= 1;
+			System.out.println("in key handler");
+			Game.gameControl.thrownType = ObjectType.Hay;
+			Game.gameControl.itemThrownC = true;
+//			Item thrownH = new Item(Game.gameControl.crabby.xPos,Game.gameControl.crabby.yPos,30,30,ObjectType.Hay, Game.gameControl);
+//			thrownH.itemThrown = true;
+//			Game.gameControl.addItem(thrownH);
+//			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(thrownH.getType());
+//			Game.gameControl.crabby.hayCnt -= 1;
 			
 			//Game.gameControl.unpause();
 			break;
 		case KeyEvent.VK_S:
-			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(ObjectType.Seeds);
-			Game.gameControl.crabby.seedCnt -= 1;
+			System.out.println("in key handler");
+			Game.gameControl.thrownType = ObjectType.Seeds;
+			Game.gameControl.itemThrownC = true;
+//			Item thrownS = new Item(Game.gameControl.crabby.xPos,Game.gameControl.crabby.yPos,30,30,ObjectType.Seeds, Game.gameControl);
+//			thrownS.itemThrown = true;
+//			Game.gameControl.addItem(thrownS);
+//			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(thrownS.getType());
+//			Game.gameControl.crabby.seedCnt -= 1;
 
 			//Game.gameControl.unpause();
 			break;
 		case KeyEvent.VK_C:
-			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(ObjectType.Compost);
-			Game.gameControl.crabby.compCnt -= 1;
+			System.out.println("in key handler");
+			Game.gameControl.thrownType = ObjectType.Compost;
+			Game.gameControl.itemThrownC = true;
+//			Item thrownC = new Item(Game.gameControl.crabby.xPos,Game.gameControl.crabby.yPos,30,30,ObjectType.Compost, Game.gameControl);
+//			thrownC.itemThrown = true;
+//			Game.gameControl.addItem(thrownC);
+//			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(thrownC.getType());
+//			Game.gameControl.crabby.compCnt -= 1;
 
 			//Game.gameControl.unpause();
 			break;

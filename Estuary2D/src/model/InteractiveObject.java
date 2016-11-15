@@ -114,8 +114,8 @@ public abstract class InteractiveObject {
 	
 	public boolean checkItem(ObjectType t){
 		switch(this.type){
-		case TrashBag:
-			if(t == ObjectType.People){
+		case People:
+			if(t == ObjectType.TrashBag){
 			useCorrect = true;
 			}
 			else{
@@ -146,6 +146,11 @@ public abstract class InteractiveObject {
 				useCorrect = false;
 			}
 			break;
+		}
+		System.out.println(useCorrect);
+		if(useCorrect == true){
+			gamecontrol.removeObject(gamecontrol.entities.getLast());
+			gamecontrol.sendNext = true;
 		}
 		return useCorrect;
 	}

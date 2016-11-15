@@ -7,6 +7,7 @@ import controller.GameController;
 import game.Game;
 
 public class Item extends InteractiveObject{
+	public boolean itemThrown = false;
 	Color itemCol;
 	public Item(int x, int y, int width, int height, ObjectType t, GameController gamecontrol) {
 		super(x, y, width, height, t, gamecontrol);
@@ -35,13 +36,27 @@ public class Item extends InteractiveObject{
 
 	@Override
 	public void update() {
-		this.xPos -= 1;
-		this.yPos+=this.yVel;
-		//Screen-left bound
-//		if(this.xPos <= 0){
-//			this.xPos = 250*4;
-//		}
-		//Screen-right bound
+		if(!itemThrown){
+			this.xPos -= 1;
+			this.yPos+=this.yVel;
+		}
+		else{
+			System.out.println("being thrown is true!");
+			this.xPos += 2;
+			for(int i = 0; i < gamecontrol.entities.size(); i++){
+				InteractiveObject c = gamecontrol.entities.get(i);
+				if(this.getBottomBounds().intersects(c.getBounds()) || this.getLeftBounds().intersects(c.getBounds()) || this.getRightBounds().intersects(c.getBounds())){
+					c.checkItem(type);
+					gamecontrol.removeItem(this); 
+					itemThrown = false;
+				}
+			}
+		}
+			//Screen-left bound
+	//		if(this.xPos <= 0){
+	//			this.xPos = 250*4;
+	//		}
+			//Screen-right bound
 		if(this.xPos + this.width >= Game.WIDTH*Game.SCALE){
 			this.xPos = Game.WIDTH*Game.SCALE - this.width;
 		}
@@ -85,6 +100,9 @@ public class Item extends InteractiveObject{
 //				isFalling = true;
 //			}
 //		}
+		if(this.xPos <= 0){
+			this.isGone = true;
+		}
 		if(isFalling){
 			if(this.yPos >= 750){
 				this.isGone = true;
@@ -97,6 +115,7 @@ public class Item extends InteractiveObject{
 			gamecontrol.removeObject(this);
 			gamecontrol.sendNext = true;
 		}
+		//this.yPos+=this.yVel;
 		
 	}
 

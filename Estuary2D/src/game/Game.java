@@ -41,7 +41,7 @@ public class Game extends JFrame implements Runnable{
 			gameControl = new GameController();
 			addKeyListener(new PlayerKeyHandler());
 			gameControl.addBlock(new Platform(0,200,400,30,ObjectType.Wall,gameControl));
-			itemNum = randItem.nextInt()%4;
+			itemNum = randItem.nextInt(4);
 			//System.out.println(itemNum);
 			gameControl.addBlock(new Platform(800,500,400,30,ObjectType.Wall,gameControl));
 			gameControl.addBlock(new Floor(300,HEIGHT*SCALE-64,800,64,ObjectType.Wall,gameControl));

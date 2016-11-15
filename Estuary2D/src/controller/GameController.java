@@ -17,8 +17,11 @@ import model.Item;
 public class GameController{
 	
 	public boolean useTrashb, useHay, useSeeds, useComp;
+	public ObjectType thrownType;
+	public boolean itemThrownC = false;
 	public LinkedList<Block> blocks = new LinkedList<Block>();
 	public LinkedList<InteractiveObject> entities = new LinkedList<InteractiveObject>();
+	public LinkedList<Item> thrownItems = new LinkedList<Item>();
 	public Crabby crabby = new Crabby(300,512,64,64,ObjectType.Crabby,this);
 	public boolean sendNext = false;
 	Random randItem = new Random();
@@ -41,6 +44,10 @@ public class GameController{
 			c.draw(g);
 		}
 		
+		for(InteractiveObject i: thrownItems){
+			i.draw(g);
+		}
+		
 	}
 	
 	public void addEntity(InteractiveObject g){
@@ -58,6 +65,14 @@ public class GameController{
 	public void addBlock(Block b){
 		blocks.add(b);
 	}
+	
+	public void addItem(Item i){
+		thrownItems.add(i);
+	}
+	
+	public void removeItem(Item i){
+		thrownItems.remove(i);
+	}
 	// when we run into an obstacle, it doesnt actually pause. it just stops movement, but then when it unpases
 	// it brings it back to the state it would be in if it kept moving/if the vel didnt go to zero.
 	// need to stop the entire map/timer, not just the velocity.
@@ -70,7 +85,12 @@ public class GameController{
 		for(InteractiveObject c: entities){
 			c.update();
 		}
+		for(Item i: thrownItems){
+			System.out.println("throwing items!");
+			i.update();
+		}
 		if(sendNext == true){
+			sendNext = false;
 			if(!useTrashb || !useHay || !useSeeds || !useComp){
 				blockNum = randItem.nextInt(3);
 				itemNum = randItem.nextInt(4);
@@ -88,7 +108,7 @@ public class GameController{
 			else{
 				whatsNext = randItem.nextInt(2);
 				if(whatsNext == 0){
-					blockNum = randItem.nextInt(4);
+					blockNum = randItem.nextInt(3);
 					itemNum = randItem.nextInt(4);
 					switch(itemNum){
 					case 0: addEntity(new Item(blocks.get(blockNum).getXPos()+50,blocks.get(blockNum).getYPos()-30,30,30,ObjectType.TrashBag, this));
@@ -115,7 +135,13 @@ public class GameController{
 					}
 				}
 			}
-			sendNext = false;
+		}
+		
+		if(itemThrownC == true){
+			itemThrownC = false;
+			Item thrownItem = new Item(crabby.getXPos(),crabby.getYPos(),30,30,thrownType,this);
+			thrownItem.itemThrown = true;
+			addItem(thrownItem);
 		}
 	}
 }

@@ -63,7 +63,7 @@ public class Crabby extends Character{
 				}
 				if(this.getRightBounds().intersects(b.getBounds())){
 					this.setxVel(0);
-					this.xPos = b.getXPos() - b.width;
+					this.xPos = b.getXPos() - this.width;
 				}
 			}
 		for(int i = 0; i < gamecontrol.entities.size(); i++){
@@ -86,26 +86,26 @@ public class Crabby extends Character{
 					compCnt ++;
 					gamecontrol.useComp = true;
 					break;
-				case People:
-					while(c.useCorrect != true){
-						System.out.print("");
-					}
-					break;
-				case Chemicals:
-					while(c.useCorrect != true){
-						System.out.print("");
-					}
-					break;
-				case EmptySoil:
-					while(c.useCorrect != true){
-						System.out.print("");
-					}
-					break;
-				case DeadSoil:
-					while(c.useCorrect != true){
-						System.out.print("");
-					}
-					break;
+//				case People:
+//					while(c.useCorrect != true){
+//						System.out.print("");
+//					}
+//					break;
+//				case Chemicals:
+//					while(c.useCorrect != true){
+//						System.out.print("");
+//					}
+//					break;
+//				case EmptySoil:
+//					while(c.useCorrect != true){
+//						System.out.print("");
+//					}
+//					break;
+//				case DeadSoil:
+//					while(c.useCorrect != true){
+//						System.out.print("");
+//					}
+//					break;
 				}
 				gamecontrol.removeObject(c);
 				gamecontrol.sendNext = true;
@@ -130,7 +130,7 @@ public class Crabby extends Character{
 		if(isGone){
 			this.yPos = 0;
 			this.isFalling = true;
-			this.die();
+			//this.die();
 			this.isGone = false;
 		}
 	}
