@@ -7,7 +7,7 @@ import controller.GameController;
 import game.Game;
 
 public class Item extends InteractiveObject{
-	public boolean itemThrown = false;
+	public boolean isThrown = false;
 	Color itemCol;
 	public Item(int x, int y, int width, int height, ObjectType t, GameController gamecontrol) {
 		super(x, y, width, height, t, gamecontrol);
@@ -36,19 +36,18 @@ public class Item extends InteractiveObject{
 
 	@Override
 	public void update() {
-		if(!itemThrown){
+		if(!isThrown){
 			this.xPos -= 1;
 			this.yPos+=this.yVel;
 		}
 		else{
-			System.out.println("being thrown is true!");
 			this.xPos += 2;
 			for(int i = 0; i < gamecontrol.entities.size(); i++){
 				InteractiveObject c = gamecontrol.entities.get(i);
 				if(this.getBottomBounds().intersects(c.getBounds()) || this.getLeftBounds().intersects(c.getBounds()) || this.getRightBounds().intersects(c.getBounds())){
 					c.checkItem(type);
 					gamecontrol.removeItem(this); 
-					itemThrown = false;
+					isThrown = false;
 				}
 			}
 		}

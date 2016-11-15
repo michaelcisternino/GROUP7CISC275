@@ -29,18 +29,16 @@ public class PlayerKeyHandler implements KeyListener{
 			}
 			break;
 		case KeyEvent.VK_T:
-			System.out.println("in key handler");
 			Game.gameControl.thrownType = ObjectType.TrashBag;
 			Game.gameControl.itemThrownC = true;
 //			thrownT.itemThrown = true;
 //			Game.gameControl.addItem(thrownT);
 //			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(thrownT.getType());
-//			Game.gameControl.crabby.trashBagCnt -= 1;
+			Game.gameControl.crabby.trashBagCnt -= 1;
 
 			//Game.gameControl.unpause();
 			break;
 		case KeyEvent.VK_H:
-			System.out.println("in key handler");
 			Game.gameControl.thrownType = ObjectType.Hay;
 			Game.gameControl.itemThrownC = true;
 //			Item thrownH = new Item(Game.gameControl.crabby.xPos,Game.gameControl.crabby.yPos,30,30,ObjectType.Hay, Game.gameControl);
@@ -52,7 +50,6 @@ public class PlayerKeyHandler implements KeyListener{
 			//Game.gameControl.unpause();
 			break;
 		case KeyEvent.VK_S:
-			System.out.println("in key handler");
 			Game.gameControl.thrownType = ObjectType.Seeds;
 			Game.gameControl.itemThrownC = true;
 //			Item thrownS = new Item(Game.gameControl.crabby.xPos,Game.gameControl.crabby.yPos,30,30,ObjectType.Seeds, Game.gameControl);
@@ -64,7 +61,6 @@ public class PlayerKeyHandler implements KeyListener{
 			//Game.gameControl.unpause();
 			break;
 		case KeyEvent.VK_C:
-			System.out.println("in key handler");
 			Game.gameControl.thrownType = ObjectType.Compost;
 			Game.gameControl.itemThrownC = true;
 //			Item thrownC = new Item(Game.gameControl.crabby.xPos,Game.gameControl.crabby.yPos,30,30,ObjectType.Compost, Game.gameControl);

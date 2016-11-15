@@ -134,5 +134,4 @@ public class Crabby extends Character{
 			this.isGone = false;
 		}
 	}
-	
 }

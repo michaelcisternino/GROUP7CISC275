@@ -86,7 +86,6 @@ public class GameController{
 			c.update();
 		}
 		for(Item i: thrownItems){
-			System.out.println("throwing items!");
 			i.update();
 		}
 		if(sendNext == true){
@@ -130,21 +129,66 @@ public class GameController{
 					break;
 					case 2: addEntity(new Obstacle(Game.WIDTH * Game.SCALE+100,70,100,Game.HEIGHT*Game.SCALE,ObjectType.EmptySoil, this));
 					break;
-					case 4: addEntity(new Obstacle(Game.WIDTH * Game.SCALE+100,70,100,Game.HEIGHT*Game.SCALE,ObjectType.DeadSoil, this));
+					case 3: addEntity(new Obstacle(Game.WIDTH * Game.SCALE+100,70,100,Game.HEIGHT*Game.SCALE,ObjectType.DeadSoil, this));
 					break;
 					}
 				}
 			}
 		}
 		
-		if(itemThrownC == true){
+		if(itemThrownC){
+			boolean haveItem = false;
 			itemThrownC = false;
-			Item thrownItem = new Item(crabby.getXPos(),crabby.getYPos(),30,30,thrownType,this);
-			thrownItem.itemThrown = true;
-			addItem(thrownItem);
+			switch(thrownType){
+			case TrashBag:
+				if(useTrashb){
+					haveItem = true;
+					crabby.trashBagCnt -= 1;
+					if(crabby.trashBagCnt == 0){
+						useTrashb = false;
+					}
+				}
+				break;
+			case Hay:
+				if(useHay){
+					haveItem = true;
+					crabby.hayCnt -= 1;
+					if(crabby.hayCnt == 0){
+						useHay = false;
+					}
+				}
+				break;
+			case Seeds:
+				if(useSeeds){
+					haveItem = true;
+					crabby.seedCnt-= 1;
+					if(crabby.seedCnt == 0){
+						useSeeds = false;
+					}
+				}
+				break;
+			case Compost: 
+				if(useComp){
+					haveItem = true;
+					crabby.compCnt -= 1;
+					if(crabby.compCnt == 0){
+						useComp = false;
+					}
+				}
+				break;
+			}
+			if(haveItem){
+				Item thrownItem = new Item(crabby.getXPos(),crabby.getYPos(),30,30,thrownType,this);
+				thrownItem.isThrown = true;
+				addItem(thrownItem);
+			}
+			else{
+				System.out.println("Can't use that item!");
+			}
 		}
 	}
 }
+
 	
 	
 	
