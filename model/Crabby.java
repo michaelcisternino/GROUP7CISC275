@@ -26,7 +26,7 @@ public class Crabby extends Character{
 	@Override
 	public void update() {
 		this.xPos+=this.xVel;
-		this.yPos+=this.yVel;
+		this.yPos+=this.yVel;	
 		//Screen-left bound
 		if(this.xPos <= 50){
 			this.xPos = 51;
