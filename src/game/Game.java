@@ -17,12 +17,13 @@ import model.Floor;
 import model.Item;
 import view.MainView;
 
-public class Game extends JFrame implements Runnable, java.io.Serializable{
+public class Game extends JFrame implements Runnable{
 
 		public static final int WIDTH = 270;
 		public static final int HEIGHT = WIDTH/14*10;
 		public static final int SCALE = 4;
 		public static final String TITLE = "Crabby";
+		Random randItem = new Random();
 		int itemNum;
 		private Container pane;
 		private Thread gameThread;
@@ -40,20 +41,21 @@ public class Game extends JFrame implements Runnable, java.io.Serializable{
 			gameControl = new GameController();
 			addKeyListener(new PlayerKeyHandler());
 			gameControl.addBlock(new Platform(0,200,400,30,ObjectType.Wall,gameControl));
-			Random randNum = new Random();
-			itemNum = randNum.nextInt(4);
+			itemNum = randItem.nextInt(4);
+			//System.out.println(itemNum);
 			gameControl.addBlock(new Platform(800,500,400,30,ObjectType.Wall,gameControl));
 			gameControl.addBlock(new Floor(300,HEIGHT*SCALE-64,800,64,ObjectType.Wall,gameControl));
 			switch(itemNum){
-				case 0: gameControl.addEntity(new Item(500,0,30,30,ObjectType.TrashBag, gameControl));
-				break;
-				case 1: gameControl.addEntity(new Item(500,0,30,30,ObjectType.Hay, gameControl));
-				break;
-				case 2: gameControl.addEntity(new Item(500,0,30,30,ObjectType.Seeds, gameControl));
-				break;
-				case 3: gameControl.addEntity(new Item(500,0,30,30,ObjectType.Compost, gameControl));
-				break;
-			}
+			case 0: gameControl.addEntity(new Item(500,0,30,30,ObjectType.TrashBag, gameControl));
+			break;
+			case 1: gameControl.addEntity(new Item(500,0,30,30,ObjectType.Hay, gameControl));
+			break;
+			case 2: gameControl.addEntity(new Item(500,0,30,30,ObjectType.Seeds, gameControl));
+			break;
+			case 3: gameControl.addEntity(new Item(500,0,30,30,ObjectType.Compost, gameControl));
+			break;
+		}
+
 		}
 		
 		//Initialize gameThread
@@ -137,41 +139,40 @@ public class Game extends JFrame implements Runnable, java.io.Serializable{
 			setPreferredSize(size);
 			setMaximumSize(size);
 			setMinimumSize(size);
-			//pane.add(start);
+			view = new MainView();
 			//view.add(start);
 			//start.addActionListener(new StartButton());
-			starter = new StartScreen(this);
-			//pane.add(view, BorderLayout.CENTER);
-			pane.add(starter, BorderLayout.CENTER);
-			pack();
-			setResizable(false);
-			setLocationRelativeTo(null);
-			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			add(new JLabel("hey"));
+//			starter = new StartScreen();
+//			pane.add(start, BorderLayout.CENTER);
+			
+			pane.add(view, BorderLayout.CENTER);
+			
 		}
 		
 		public void setPlaying(boolean b){
-			this.getContentPane().remove(starter);
-			view = new MainView();
-			pane.add(view, BorderLayout.CENTER);
-			JLabel l = new JLabel("HEY!");
-			l.setBounds(10, 20, 50, 50);
-			//pane.add(start, BorderLayout.CENTER);
-			pane.validate();
 			this.playing = b;
-			this.startGame();
+			if(playing){
+				this.startGame();
+			}
+		}
+		
+		class StartButton implements ActionListener{
+			public void actionPerformed(ActionEvent e) {
+				Game.game.startGame();
+			}
 		}
 		
 		//Main 
-//		public static void main(String[] args){
-//			game = new Game();
-////			JFrame frame = new JFrame(TITLE);;
-//			game.pack();
-//			game.setResizable(false);
-//			game.setLocationRelativeTo(null);
-//			game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//			game.setVisible(true);
-//			game.startGame();
-//		}
+		public static void main(String[] args) {
+			game = new Game();
+//			JFrame frame = new JFrame(TITLE);;
+			game.pack();
+			game.setResizable(false);
+			game.setLocationRelativeTo(null);
+			game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			game.setVisible(true);
+			game.startGame();
+		}
 
+		
 }
