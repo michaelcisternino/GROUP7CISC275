@@ -9,7 +9,7 @@ import game.Game;
 
 public class Crabby extends Character{
 	
-	public int trashBagCnt = 0, hayCnt, seedCnt, compCnt;
+	public int trashBagCnt, hayCnt, seedCnt, compCnt;
 	public LinkedList<InteractiveObject> items = new LinkedList<InteractiveObject>();
 
 	public Crabby(int x, int y, int width, int height, ObjectType t, GameController gamecontrol) {
@@ -32,12 +32,14 @@ public class Crabby extends Character{
 		this.xPos+=this.xVel;
 		this.yPos+=this.yVel;
 		//Screen-left bound
-		if(this.xPos <= 0){
-			this.xPos = 0;
+		if(this.xPos <= Game.WIDTH){
+			this.xPos = Game.WIDTH + 1;
+			Game.gameControl.goingLeft = true;
 		}
 		//Screen-right bound
-		if(this.xPos + this.width >= Game.WIDTH*Game.SCALE){
-			this.xPos = Game.WIDTH*Game.SCALE - this.width;
+		if(this.xPos + this.width >= Game.WIDTH*3){
+			this.xPos = Game.WIDTH*3 - this.width - 1;
+			Game.gameControl.goingRight = true;
 		}
 //		//Screen-bottom bound
 //		if(this.yPos + this.height >= 750){
@@ -45,32 +47,32 @@ public class Crabby extends Character{
 //		}
 		for(int i = 0; i < gamecontrol.blocks.size(); i++){
 			Block b = gamecontrol.blocks.get(i);
-				if(this.getTopBounds().intersects(b.getBounds())){
-					this.setyVel(0);
-					if(isJumping){
-						isJumping = false;
-						gravity=0.8;
-						isFalling = true;
-					}
-				}
-				if(this.getBottomBounds().intersects(b.getBounds())){
-					this.setyVel(0);
-					if(isFalling) {
-						isFalling = false;
-						}
-				}else if (!isFalling&&!isJumping){
-						isFalling = true;
-						gravity = 0.8;
-				}
-				if(this.getLeftBounds().intersects(b.getBounds())){
-					this.setxVel(0);
-					this.xPos = b.getXPos() + b.width;
-				}
-				if(this.getRightBounds().intersects(b.getBounds())){
-					this.setxVel(0);
-					this.xPos = b.getXPos() - this.width;
+			if(this.getTopBounds().intersects(b.getBounds())){
+				this.setyVel(0);
+				if(isJumping){
+					isJumping = false;
+					gravity=0.8;
+					isFalling = true;
 				}
 			}
+			if(this.getBottomBounds().intersects(b.getBounds())){
+				this.setyVel(0);
+				if(isFalling) {
+					isFalling = false;
+					}
+			}else if (!isFalling&&!isJumping){
+					isFalling = true;
+					gravity = 0.8;
+			}
+			if(this.getLeftBounds().intersects(b.getBounds())){
+				this.setxVel(0);
+				this.xPos = b.getXPos() + this.width;
+			}
+			if(this.getRightBounds().intersects(b.getBounds())){
+				this.setxVel(0);
+				this.xPos = b.getXPos() - this.width;
+			}
+		}
 		for(int i = 0; i < gamecontrol.entities.size(); i++){
 			InteractiveObject c = gamecontrol.entities.get(i);
 			if(this.getBottomBounds().intersects(c.getBounds()) || this.getLeftBounds().intersects(c.getBounds()) || this.getRightBounds().intersects(c.getBounds())){

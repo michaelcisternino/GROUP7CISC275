@@ -6,35 +6,44 @@ import java.awt.Rectangle;
 import controller.GameController;
 
 public abstract class Block {
-
+	
+	public int erryXVel;
+	public boolean isFinal = false;
+	
 	public int xPos, yPos;
 	public int xVel, yVel;
-	
-	public int prevXVel, prevYVel;
 
 	public int width, height;
 	
 	public ObjectType type;
 	
+	public double gravity = 0.0;
+	
+	//public boolean solid;
+	public boolean isJumping = false;
+	public boolean isFalling = true;
+	public boolean isGone = false;
+	
+	public GameController gamecontrol;
+	
 	public boolean solid;
 	
-	public GameController gc;
-	
-	public Block(int x, int y, int width, int height, ObjectType t, GameController oc){
+	public Block(int x, int y, int width, int height, ObjectType t, GameController gc){
 		this.xPos = x;
 		this.yPos = y;
 		this.width = width;
 		this.height = height;
 		this.type = t;
-		this.gc = oc;
+		this.gamecontrol = gc;
+		this.erryXVel = 0;
 	}
 	
 	public void remove(){
-		gc.blocks.remove(this);
+		gamecontrol.blocks.remove(this);
 	}
 	
 	public void addBlock(Block b){
-		gc.blocks.add(b);
+		gamecontrol.blocks.add(b);
 	}
 	
 	public abstract void draw(Graphics g);
@@ -57,10 +66,6 @@ public abstract class Block {
 		return yVel;
 	}
 	
-	public int getWidth(){
-		return width;
-	}
-	
 //	public boolean isSolid(){
 //		return this.solid;
 //	}
@@ -70,12 +75,10 @@ public abstract class Block {
 	}
 	
 	public void setxVel(int xVel){
-		this.prevXVel = this.xVel;
 		this.xVel = xVel;
 	}
 
 	public void setyVel(int yVel) {
-		this.prevYVel = this.yVel;
 		this.yVel = yVel;
 	}
 	
@@ -93,5 +96,21 @@ public abstract class Block {
 	
 	public Rectangle getBounds() {
 		return new Rectangle(this.getXPos(), this.getYPos(), width, height);
+	}
+	
+	public Rectangle getTopBounds(){
+		return new Rectangle(this.getXPos()+10,this.getYPos(), width-20, 5);
+	}
+	
+	public Rectangle getBottomBounds(){
+		return new Rectangle(this.getXPos()+10,this.getYPos()+height-5, width-20, 5);
+	}
+	
+	public Rectangle getLeftBounds(){
+		return new Rectangle(this.getXPos(),this.getYPos()+10, 5, height-20);
+	}
+	
+	public Rectangle getRightBounds(){
+		return new Rectangle(this.getXPos()+width-5,this.getYPos()+10, 5, height-20);
 	}
 }

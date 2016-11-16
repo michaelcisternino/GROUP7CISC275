@@ -34,7 +34,7 @@ public class PlayerKeyHandler implements KeyListener{
 //			thrownT.itemThrown = true;
 //			Game.gameControl.addItem(thrownT);
 //			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(thrownT.getType());
-			Game.gameControl.crabby.trashBagCnt -= 1;
+			//Game.gameControl.crabby.trashBagCnt -= 1;
 
 			//Game.gameControl.unpause();
 			break;
@@ -45,7 +45,7 @@ public class PlayerKeyHandler implements KeyListener{
 //			thrownH.itemThrown = true;
 //			Game.gameControl.addItem(thrownH);
 //			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(thrownH.getType());
-//			Game.gameControl.crabby.hayCnt -= 1;
+			//Game.gameControl.crabby.hayCnt -= 1;
 			
 			//Game.gameControl.unpause();
 			break;
@@ -56,7 +56,7 @@ public class PlayerKeyHandler implements KeyListener{
 //			thrownS.itemThrown = true;
 //			Game.gameControl.addItem(thrownS);
 //			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(thrownS.getType());
-//			Game.gameControl.crabby.seedCnt -= 1;
+			//Game.gameControl.crabby.seedCnt -= 1;
 
 			//Game.gameControl.unpause();
 			break;
@@ -67,7 +67,7 @@ public class PlayerKeyHandler implements KeyListener{
 //			thrownC.itemThrown = true;
 //			Game.gameControl.addItem(thrownC);
 //			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(thrownC.getType());
-//			Game.gameControl.crabby.compCnt -= 1;
+			//Game.gameControl.crabby.compCnt -= 1;
 
 			//Game.gameControl.unpause();
 			break;

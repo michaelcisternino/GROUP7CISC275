@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import controller.GameController;
+import game.Game;
 
 public class Platform extends Block{
 
@@ -13,19 +14,32 @@ public class Platform extends Block{
 
 	@Override
 	public void draw(Graphics g) {
-		g.setColor(Color.WHITE);
-		g.fillRect(this.xPos,this.yPos,width,height);
+	if (this.isFinal == true){
+	g.setColor(Color.YELLOW);
+	}
+	else{
+	g.setColor(Color.WHITE);
+	}
+	g.fillRect(this.xPos,this.yPos,width,height);
 	}
 
 	@Override
 	public void update() {
-		this.xPos -= 1;
-		if(this.xPos <= (0-this.width)){
-			this.setXPos(270*4);
+		if (isFinal == true){
+			if (this.yPos == 200){
+				Game.startNextLevel(Game.getLevel());
+				return;
+			}
+			if (this.xPos == 500){
+				this.yPos -= 5;	
+				return;
+			}
 		}
-		
+		if (Game.gameControl.goingRight == true){
+			this.xPos -= 5;
+		}
+		else if (Game.gameControl.goingLeft == true){
+			this.xPos += 5;
+		}
 	}
-	
-	
-
 }

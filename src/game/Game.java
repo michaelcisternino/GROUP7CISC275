@@ -16,6 +16,9 @@ import model.Platform;
 import model.Status;
 import model.Floor;
 import model.Item;
+import model.LevelOne;
+import model.LevelThree;
+import model.LevelTwo;
 import view.MainView;
 
 public class Game extends JFrame implements Runnable{
@@ -34,19 +37,21 @@ public class Game extends JFrame implements Runnable{
 		
 		public MainView view;
 		public static GameController gameControl;
-		private JButton start = new JButton("START");
 		public static Game game;
 		private StartScreen starter;
 		public static Status status;
+		private static int level = 2;
+		private static boolean gameOver = false;
 		
 		private void init(){
 			gameControl = new GameController();
 			addKeyListener(new PlayerKeyHandler());
-			gameControl.addBlock(new Platform(0,200,400,30,ObjectType.Wall,gameControl));
+			setFocusable(true);
+//			gameControl.addBlock(new Platform(0,200,400,30,ObjectType.Wall,gameControl));
 			itemNum = randItem.nextInt(4);
 			//System.out.println(itemNum);
-			gameControl.addBlock(new Platform(800,500,400,30,ObjectType.Wall,gameControl));
-			gameControl.addBlock(new Floor(300,HEIGHT*SCALE-64,800,64,ObjectType.Wall,gameControl));
+//			gameControl.addBlock(new Platform(800,500,400,30,ObjectType.Wall,gameControl));
+//			gameControl.addBlock(new Floor(300,HEIGHT*SCALE-64,800,64,ObjectType.Wall,gameControl));
 			switch(itemNum){
 			case 0: gameControl.addEntity(new Item(500,0,30,30,ObjectType.TrashBag, gameControl));
 			break;
@@ -56,10 +61,55 @@ public class Game extends JFrame implements Runnable{
 			break;
 			case 3: gameControl.addEntity(new Item(500,0,30,30,ObjectType.Compost, gameControl));
 			break;
-		}
+			}
 
 		}
 		
+		private static void initLevelOne(){
+			LevelOne levelOne = new LevelOne();
+			// gameControl.blocks.clear();
+			levelOne.fillBlocks();
+			gameControl.blocks = levelOne.getBlocks();
+			System.out.println("this big" +gameControl.blocks.size());
+			// for(Block b: levelOne.getBlocks()){
+			// gameControl.addBlock(b);
+			// }
+			level = 2;
+		}
+
+		public static void initLevelTwo(){
+			LevelTwo levelTwo = new LevelTwo();
+			//gameControl.blocks.clear();
+			levelTwo.fillBlocks();
+			gameControl.blocks = levelTwo.getBlocks();
+			// for(Block b: levelTwo.getBlocks()){
+			// gameControl.addBlock(b);
+			// }
+			gameControl.crabby.setXPos(gameControl.blocks.getFirst().getXPos() + 200);
+			gameControl.crabby.setYPos(gameControl.blocks.getFirst().getYPos() - 100);
+			gameControl.crabby.isFalling = true;
+			level = 3;
+			System.out.println("HERE");
+		}
+		
+		public static void initLevelThree(){
+			LevelThree levelThree = new LevelThree();
+			//gameControl.blocks.clear();
+			levelThree.fillBlocks();
+			gameControl.blocks = levelThree.getBlocks();
+			// for(Block b: levelTwo.getBlocks()){
+			// gameControl.addBlock(b);
+			// }
+			gameControl.crabby.setXPos(gameControl.blocks.getFirst().getXPos() + 200);
+			gameControl.crabby.setYPos(gameControl.blocks.getFirst().getYPos() - 100);
+			gameControl.crabby.isFalling = true;
+			System.out.println("HERE");
+		}
+
+		public static void gameOver(){
+			gameOver = true;
+		}
+			
 		//Initialize gameThread
 		private synchronized void startGame(){
 			init();
@@ -81,6 +131,14 @@ public class Game extends JFrame implements Runnable{
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+		}
+		
+		public void pauseThread() throws InterruptedException{
+			run = false;
+		}
+
+		public void resumeThread(){
+			run = true;
 		}
 		
 		//Implemented method from Runnable
@@ -136,6 +194,7 @@ public class Game extends JFrame implements Runnable{
 		
 		//Game constructor
 		public Game() {
+			System.out.println("in game constructor");
 			setPane(getContentPane());
 			Dimension size = new Dimension(WIDTH*SCALE, HEIGHT*SCALE);
 			setPreferredSize(size);
@@ -145,17 +204,39 @@ public class Game extends JFrame implements Runnable{
 			status = new Status();
 			//view.add(start);
 			//start.addActionListener(new StartButton());
-//			starter = new StartScreen();
-//			pane.add(start, BorderLayout.CENTER);
-			getPane().add(view, BorderLayout.CENTER);
+			starter = new StartScreen(this);
+			getPane().add(starter, BorderLayout.CENTER);
 			getPane().add(status, BorderLayout.SOUTH);
 		}
 		
 		public void setPlaying(boolean b){
+			this.getContentPane().remove(starter);
+			view = new MainView();
+			pane.add(view, BorderLayout.CENTER);
+			pane.validate();
+			pane.addKeyListener(new PlayerKeyHandler());
 			this.playing = b;
-			if(playing){
-				this.startGame();
+			// if(playing){
+			this.startGame();
+			// }
+			level = 1;
+			startNextLevel(level);
+			// this.initLevelOne();
+		}
+		
+		public static void startNextLevel(int level){
+			switch(level){
+			case 1: initLevelOne();
+			break;
+			case 2: initLevelTwo();
+			break;
+			case 3: initLevelThree();
+			break;
 			}
+		}
+
+		public static int getLevel(){
+			return level;
 		}
 		
 		class StartButton implements ActionListener{
