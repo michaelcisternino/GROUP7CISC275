@@ -19,6 +19,7 @@ public abstract class Character {
 	public ObjectType type;
 	
 	public double gravity = 0.0;
+	private double terminalGravity = 9.8;
 	
 	//public boolean solid;
 	public boolean isJumping = false;
