@@ -9,7 +9,6 @@ import game.Game;
 
 public class Crabby extends Character{
 	
-	private int trashcount = 0;
 	public int trashBagCnt, hayCnt, seedCnt, compCnt;
 	public LinkedList<InteractiveObject> items = new LinkedList<InteractiveObject>();
 
@@ -64,12 +63,12 @@ public class Crabby extends Character{
 				}
 				if(this.getRightBounds().intersects(b.getBounds())){
 					this.setxVel(0);
-					this.xPos = b.getXPos() - b.width;
+					this.xPos = b.getXPos() - this.width;
 				}
 			}
 		for(int i = 0; i < gamecontrol.entities.size(); i++){
 			InteractiveObject c = gamecontrol.entities.get(i);
-			if(this.getBottomBounds().intersects(c.getBounds()) || this.getLeftBounds().intersects(c.getBounds()) || this.getRightBounds().intersects(c.getBounds()) || this.getTopBounds().intersects(c.getBounds())){
+			if(this.getBottomBounds().intersects(c.getBounds()) || this.getLeftBounds().intersects(c.getBounds()) || this.getRightBounds().intersects(c.getBounds())){
 				switch(c.type){
 				case TrashBag:
 					trashBagCnt ++;
@@ -87,9 +86,31 @@ public class Crabby extends Character{
 					compCnt ++;
 					gamecontrol.useComp = true;
 					break;
+//				case People:
+//					while(c.useCorrect != true){
+//						System.out.print("");
+//					}
+//					break;
+//				case Chemicals:
+//					while(c.useCorrect != true){
+//						System.out.print("");
+//					}
+//					break;
+//				case EmptySoil:
+//					while(c.useCorrect != true){
+//						System.out.print("");
+//					}
+//					break;
+//				case DeadSoil:
+//					while(c.useCorrect != true){
+//						System.out.print("");
+//					}
+//					break;
 				}
-				gamecontrol.removeEntity(c);
+				gamecontrol.removeObject(c);
 				gamecontrol.sendNext = true;
+				System.out.println("trashbag: " + trashBagCnt + ", hay: " + hayCnt + ", seeds: " + seedCnt + ", compost: " + compCnt);
+			}
 		}
 		if(isJumping){
 			gravity-=0.1;
@@ -109,9 +130,8 @@ public class Crabby extends Character{
 		if(isGone){
 			this.yPos = 0;
 			this.isFalling = true;
-			this.die();
+			//this.die();
 			this.isGone = false;
 		}
-	}
 	}
 }

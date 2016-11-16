@@ -10,7 +10,6 @@ public class Floor extends Block{
 
 	public Floor(int x, int y, int width, int height, ObjectType t, GameController oc) {
 		super(x, y, width, height, t, oc);
-		this.xVel = -1;
 	}
 
 	@Override
@@ -21,7 +20,7 @@ public class Floor extends Block{
 
 	@Override
 	public void update() {
-		this.xPos += this.xVel;
+		this.xPos-=1;
 		if(this.xPos <= (0-this.width)){
 			this.setXPos(270*4);
 		}
