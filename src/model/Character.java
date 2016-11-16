@@ -49,6 +49,9 @@ public abstract class Character {
 		gamecontrol.entities.add(go);
 	}
 	
+	public int getLives(){
+		return lives;
+	}
 	public abstract void draw(Graphics g);
 	
 	public abstract void update();

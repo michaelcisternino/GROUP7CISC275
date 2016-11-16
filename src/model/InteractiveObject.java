@@ -138,7 +138,7 @@ public abstract class InteractiveObject {
 				useCorrect = false;
 			}
 			break;
-		case Compost:
+		case DeadSoil:
 			if(t == ObjectType.Compost){
 				useCorrect = true;
 			}

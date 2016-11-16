@@ -5,12 +5,17 @@ import java.awt.Graphics;
 import java.util.LinkedList;
 import java.util.concurrent.ThreadLocalRandom;
 
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.BevelBorder;
+
 import game.Game;
 import model.Block;
 import model.Crabby;
 //import model.Blocks;
 import model.ObjectType;
 import model.Obstacle;
+import model.Status;
 import model.Floor;
 import model.InteractiveObject;
 import model.Item;
@@ -31,6 +36,7 @@ public class GameController{
 	int whatsNext;
 	int spawnXpos;
 	int spawnYpos;
+	//Status statusPanel = new Status();
 	
 	public GameController(){
 		
@@ -38,7 +44,6 @@ public class GameController{
 	
 	public void draw(Graphics g) {
 		crabby.draw(g);
-		
 		for(Block b: blocks){
 			b.draw(g);
 		}
@@ -50,7 +55,6 @@ public class GameController{
 		for(InteractiveObject i: thrownItems){
 			i.draw(g);
 		}
-		
 	}
 	
 	public void addEntity(InteractiveObject g){
@@ -91,6 +95,7 @@ public class GameController{
 		for(Item i: thrownItems){
 			i.update();
 		}
+		Game.status.update();
 		if(sendNext == true){
 			sendNext = false;
 			if(!useTrashb || !useHay || !useSeeds || !useComp){

@@ -9,7 +9,7 @@ import game.Game;
 
 public class Crabby extends Character{
 	
-	public int trashBagCnt, hayCnt, seedCnt, compCnt;
+	public int trashBagCnt = 0, hayCnt, seedCnt, compCnt;
 	public LinkedList<InteractiveObject> items = new LinkedList<InteractiveObject>();
 
 	public Crabby(int x, int y, int width, int height, ObjectType t, GameController gamecontrol) {
@@ -24,6 +24,11 @@ public class Crabby extends Character{
 
 	@Override
 	public void update() {
+		if(this.getLives() == 0){
+			System.out.println("dead");
+			//game stop
+			System.exit(0);
+		}
 		this.xPos+=this.xVel;
 		this.yPos+=this.yVel;
 		//Screen-left bound
@@ -86,26 +91,13 @@ public class Crabby extends Character{
 					compCnt ++;
 					gamecontrol.useComp = true;
 					break;
-//				case People:
-//					while(c.useCorrect != true){
-//						System.out.print("");
-//					}
-//					break;
-//				case Chemicals:
-//					while(c.useCorrect != true){
-//						System.out.print("");
-//					}
-//					break;
-//				case EmptySoil:
-//					while(c.useCorrect != true){
-//						System.out.print("");
-//					}
-//					break;
-//				case DeadSoil:
-//					while(c.useCorrect != true){
-//						System.out.print("");
-//					}
-//					break;
+				case People:
+				case Chemicals:	
+				case EmptySoil:
+				case DeadSoil:
+					System.out.println(this.getLives());
+					this.die();
+					break;
 				}
 				gamecontrol.removeObject(c);
 				gamecontrol.sendNext = true;
@@ -130,7 +122,7 @@ public class Crabby extends Character{
 		if(isGone){
 			this.yPos = 0;
 			this.isFalling = true;
-			//this.die();
+			this.die();
 			this.isGone = false;
 		}
 	}

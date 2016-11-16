@@ -13,6 +13,7 @@ import model.Block;
 import model.Crabby;
 import model.ObjectType;
 import model.Platform;
+import model.Status;
 import model.Floor;
 import model.Item;
 import view.MainView;
@@ -25,7 +26,7 @@ public class Game extends JFrame implements Runnable{
 		public static final String TITLE = "Crabby";
 		Random randItem = new Random();
 		int itemNum;
-		private Container pane;
+		private static Container pane;
 		private Thread gameThread;
 		
 		private boolean run = false;
@@ -36,6 +37,7 @@ public class Game extends JFrame implements Runnable{
 		private JButton start = new JButton("START");
 		public static Game game;
 		private StartScreen starter;
+		public static Status status;
 		
 		private void init(){
 			gameControl = new GameController();
@@ -134,19 +136,19 @@ public class Game extends JFrame implements Runnable{
 		
 		//Game constructor
 		public Game() {
-			pane = getContentPane();
+			setPane(getContentPane());
 			Dimension size = new Dimension(WIDTH*SCALE, HEIGHT*SCALE);
 			setPreferredSize(size);
 			setMaximumSize(size);
 			setMinimumSize(size);
 			view = new MainView();
+			status = new Status();
 			//view.add(start);
 			//start.addActionListener(new StartButton());
 //			starter = new StartScreen();
 //			pane.add(start, BorderLayout.CENTER);
-			
-			pane.add(view, BorderLayout.CENTER);
-			
+			getPane().add(view, BorderLayout.CENTER);
+			getPane().add(status, BorderLayout.SOUTH);
 		}
 		
 		public void setPlaying(boolean b){
@@ -172,6 +174,14 @@ public class Game extends JFrame implements Runnable{
 			game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			game.setVisible(true);
 			game.startGame();
+		}
+
+		public static Container getPane() {
+			return pane;
+		}
+
+		public void setPane(Container pane) {
+			this.pane = pane;
 		}
 
 		
