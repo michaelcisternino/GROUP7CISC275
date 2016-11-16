@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import game.Game;
+import model.Item;
 import model.ObjectType;
 
 public class PlayerKeyHandler implements KeyListener{
@@ -28,28 +29,52 @@ public class PlayerKeyHandler implements KeyListener{
 			}
 			break;
 		case KeyEvent.VK_T:
-			System.out.println(Game.gameControl.entities.getLast().type);
-			Game.gameControl.entities.getLast().setUsedCorrect(Game.gameControl.entities.getLast().checkItem(ObjectType.TrashBag));
+			Game.gameControl.thrownType = ObjectType.TrashBag;
+			Game.gameControl.itemThrownC = true;
+//			thrownT.itemThrown = true;
+//			Game.gameControl.addItem(thrownT);
+//			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(thrownT.getType());
 			Game.gameControl.crabby.trashBagCnt -= 1;
-			System.out.println(e.toString());
+
+			//Game.gameControl.unpause();
 			break;
 		case KeyEvent.VK_H:
-			Game.gameControl.entities.getLast().setUsedCorrect(Game.gameControl.entities.getLast().checkItem(ObjectType.Hay));
-			Game.gameControl.crabby.hayCnt -= 1;
-			System.out.println(e.toString());
+			Game.gameControl.thrownType = ObjectType.Hay;
+			Game.gameControl.itemThrownC = true;
+//			Item thrownH = new Item(Game.gameControl.crabby.xPos,Game.gameControl.crabby.yPos,30,30,ObjectType.Hay, Game.gameControl);
+//			thrownH.itemThrown = true;
+//			Game.gameControl.addItem(thrownH);
+//			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(thrownH.getType());
+//			Game.gameControl.crabby.hayCnt -= 1;
+			
+			//Game.gameControl.unpause();
 			break;
 		case KeyEvent.VK_S:
-			Game.gameControl.entities.getLast().setUsedCorrect(Game.gameControl.entities.getLast().checkItem(ObjectType.Seeds));
-			Game.gameControl.crabby.seedCnt -= 1;
-			System.out.println(e.toString());
+			Game.gameControl.thrownType = ObjectType.Seeds;
+			Game.gameControl.itemThrownC = true;
+//			Item thrownS = new Item(Game.gameControl.crabby.xPos,Game.gameControl.crabby.yPos,30,30,ObjectType.Seeds, Game.gameControl);
+//			thrownS.itemThrown = true;
+//			Game.gameControl.addItem(thrownS);
+//			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(thrownS.getType());
+//			Game.gameControl.crabby.seedCnt -= 1;
+
+			//Game.gameControl.unpause();
 			break;
 		case KeyEvent.VK_C:
-			Game.gameControl.entities.getLast().setUsedCorrect(Game.gameControl.entities.getLast().checkItem(ObjectType.Compost));
-			Game.gameControl.crabby.compCnt -= 1;
-			System.out.println(e.toString());
+			Game.gameControl.thrownType = ObjectType.Compost;
+			Game.gameControl.itemThrownC = true;
+//			Item thrownC = new Item(Game.gameControl.crabby.xPos,Game.gameControl.crabby.yPos,30,30,ObjectType.Compost, Game.gameControl);
+//			thrownC.itemThrown = true;
+//			Game.gameControl.addItem(thrownC);
+//			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(thrownC.getType());
+//			Game.gameControl.crabby.compCnt -= 1;
+
+			//Game.gameControl.unpause();
 			break;
 		}
 	}
+	//want to do a throw method so we can throw objects at the obstacles instead of just pausing it, and if obstacle hits then you lose health or some shit.
+		
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
