@@ -27,6 +27,7 @@ public class Platform extends Block{
 	public void update() {
 		if (isFinal == true){
 			if (this.yPos == 200){
+				Game.startNextLevel(Game.getLevel());
 				return;
 			}
 			if (this.xPos == 500){

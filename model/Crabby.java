@@ -28,8 +28,8 @@ public class Crabby extends Character{
 		this.xPos+=this.xVel;
 		this.yPos+=this.yVel;	
 		//Screen-left bound
-		if(this.xPos <= 50){
-			this.xPos = 51;
+		if(this.xPos <= Game.WIDTH){
+			this.xPos = 271;
 			Game.gameControl.GoingLeft = true;
 		}
 		//Screen-right bound
@@ -62,11 +62,11 @@ public class Crabby extends Character{
 				}
 				if(this.getLeftBounds().intersects(b.getBounds())){
 					this.setxVel(0);
-					this.xPos = b.getXPos() + b.width;
+					this.xPos = b.getXPos() + this.width;
 				}
 				if(this.getRightBounds().intersects(b.getBounds())){
 					this.setxVel(0);
-					this.xPos = b.getXPos() - b.width;
+					this.xPos = b.getXPos() - this.width;
 				}
 			}
 		for(int i = 0; i < gamecontrol.items.size(); i++){
