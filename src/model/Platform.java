@@ -27,10 +27,12 @@ public class Platform extends Block{
 	public void update() {
 		if (isFinal == true){
 			if (this.yPos == 200){
+				Game.setLevel(Game.getLevel()+1);
 				Game.startNextLevel(Game.getLevel());
 				return;
 			}
-			if (this.xPos == 500){
+			if (this.xPos == 600){
+				Game.gameControl.crabby.isRising = true;
 				this.yPos -= 5;	
 				return;
 			}

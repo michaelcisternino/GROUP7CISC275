@@ -9,17 +9,20 @@ import game.Game;
 
 public class Crabby extends Character{
 	
-	public int trashBagCnt, hayCnt, seedCnt, compCnt;
+	public int trashBagCnt, hayCnt, seedCnt, compCnt, oysterCnt;
 	public LinkedList<InteractiveObject> items = new LinkedList<InteractiveObject>();
 
 	public Crabby(int x, int y, int width, int height, ObjectType t, GameController gamecontrol) {
 		super(x, y, width, height, t, gamecontrol);
+		file = "Final Images/Animals/bluecrab_0.png";
+		character = createImage(file);
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		g.setColor(Color.RED);	
-		g.fillOval((int)this.getXPos(), (int)this.getYPos(), width, height);
+//		g.setColor(Color.RED);	
+//		g.fillOval((int)this.getXPos(), (int)this.getYPos(), width, height);
+		g.drawImage(character, (int)this.getXPos(), (int)this.getYPos(), width, height, null);
 	}
 
 	@Override
@@ -93,6 +96,10 @@ public class Crabby extends Character{
 					compCnt ++;
 					gamecontrol.useComp = true;
 					break;
+				case Oyster:
+					oysterCnt ++;
+					gamecontrol.useOyster = true;
+					break;
 				case People:
 				case Chemicals:	
 				case EmptySoil:
@@ -127,5 +134,11 @@ public class Crabby extends Character{
 			this.die();
 			this.isGone = false;
 		}
+		if(isRising){
+			this.setyVel(-5);
+			if(this.yPos <= 200){
+				this.isRising = false;
+			}
+	}
 	}
 }

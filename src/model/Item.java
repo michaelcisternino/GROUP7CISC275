@@ -8,44 +8,61 @@ import game.Game;
 
 public class Item extends InteractiveObject{
 	public boolean isThrown = false;
-	Color itemCol;
+	//Color itemCol;
 	public Item(int x, int y, int width, int height, ObjectType t, GameController gamecontrol) {
 		super(x, y, width, height, t, gamecontrol);
 		switch(t){
-		case TrashBag:
-			this.itemCol = Color.black;
-			break;
-		case Hay:
-			this.itemCol = Color.yellow;
-			break;
-		case Compost:
-			this.itemCol = Color.red;
-			break;
-		case Seeds:
-			this.itemCol = Color.green;
-			break;
+			case TrashBag:
+				file = "Final Images/Objects/trashbag.png";
+				item = createImage(file);
+				break;
+			case Hay:
+				file = "Final Images/Objects/hay.png";
+				item = createImage(file);
+				break;
+			case Compost:
+				file = "Final Images/Objects/compost.png";
+				item = createImage(file);
+				break;
+			case Seeds:
+				file = "Final Images/Plants/seed.png";
+				item = createImage(file);
+				break;
+			case Oyster:
+				file = "Final Images/Animals/clam_left_2.png";
+				item = createImage(file);
+				break;
+				
 		}
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		g.setColor(itemCol);
-		g.fillOval(this.xPos, this.yPos, width, height);
+//		g.setColor(itemCol);
+//		g.fillOval(this.xPos, this.yPos, width, height);
+		g.drawImage(item, this.xPos, this.yPos, width, height, null);
 	}
 
 	@Override
 	public void update() {
 		if(!isThrown){
-			this.xPos -= 1;
-			this.yPos+=this.yVel;
+			this.yPos += this.yVel;
+			if (Game.gameControl.goingRight == true){
+				this.xPos -= 5;
+			}
+			else if (Game.gameControl.goingLeft == true){
+				this.xPos += 5;
+			}
 		}
-		else{
-			this.xPos += 2;
+		if(isThrown){
+			this.xPos += 7;
 			for(int i = 0; i < gamecontrol.entities.size(); i++){
 				InteractiveObject c = gamecontrol.entities.get(i);
 				if(this.getBottomBounds().intersects(c.getBounds()) || this.getLeftBounds().intersects(c.getBounds()) || this.getRightBounds().intersects(c.getBounds())){
-					c.checkItem(type);
+					if(c.checkItem(type)){
+						gamecontrol.removeObject(c);
+					};
 					gamecontrol.removeItem(this); 
 					isThrown = false;
 				}
@@ -56,9 +73,9 @@ public class Item extends InteractiveObject{
 	//			this.xPos = 250*4;
 	//		}
 			//Screen-right bound
-		if(this.xPos + this.width >= Game.WIDTH*Game.SCALE){
-			this.xPos = Game.WIDTH*Game.SCALE - this.width;
-		}
+//		if(this.xPos + this.width >= Game.WIDTH*Game.SCALE){
+//			this.xPos = Game.WIDTH*Game.SCALE - this.width;
+//		}
 //		//Screen-bottom bound
 //		if(this.yPos + this.height >= 750){
 //			this.yPos = 750 - this.height;
@@ -99,21 +116,21 @@ public class Item extends InteractiveObject{
 //				isFalling = true;
 //			}
 //		}
-		if(this.xPos <= 0){
-			this.isGone = true;
-		}
+//		if(this.xPos <= 0){
+//			this.isGone = true;
+		//}
 		if(isFalling){
 			if(this.yPos >= 750){
-				this.isGone = true;
+				this.setyVel(0);
 			}
 			gravity+=0.1;
 			this.setyVel((int)gravity);
 		}
-		if(isGone){
-			this.setyVel(0);
-			gamecontrol.removeObject(this);
-			gamecontrol.sendNext = true;
-		}
+//		if(isGone){
+//			this.setyVel(0);
+//			gamecontrol.removeObject(this);
+//			gamecontrol.sendNext = true;
+//		}
 		//this.yPos+=this.yVel;
 		
 	}

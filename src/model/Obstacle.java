@@ -35,16 +35,35 @@ public class Obstacle extends InteractiveObject{
 
 	@Override
 	public void update() {
-		this.xPos -= 1;
 		//this.yPos+=this.yVel;
-		this.yPos=0;
 		//Screen-left bound
 //		if(this.xPos <= 0){
 //			this.xPos = 250*4;
 //		}
 		//Screen-right bound
-		if(this.xPos + this.width >= Game.WIDTH*Game.SCALE){
-			this.xPos = Game.WIDTH*Game.SCALE - this.width;
+		
+		this.yPos += this.yVel;
+		// TODO
+//		if (Game.gameControl.isXMover == true){
+//			if (Game.gameControl.goingRight == true){
+//				this.xPos -= 5;
+//			}
+//			else if (Game.gameControl.goingLeft == true){
+//				this.xPos += 5;
+//			}
+//			if (this.up == true){
+//				this.yPos -= 5;
+//			}
+//			else if (this.up == false){
+//				this.yPos += 5;
+//			}
+//		}
+		
+		if (Game.gameControl.goingRight == true){
+			this.xPos -= 5;
+		}
+		else if (Game.gameControl.goingLeft == true){
+			this.xPos += 5;
 		}
 //		//Screen-bottom bound
 //		if(this.yPos + this.height >= 750){
@@ -88,16 +107,15 @@ public class Obstacle extends InteractiveObject{
 //		}
 		if(isFalling){
 			if(this.yPos >= 750){
-				this.isGone = true;
+				this.setyVel(0);
 			}
 			gravity+=0.1;
 			this.setyVel((int)gravity);
 		}
-		if(isGone){
-			this.setyVel(0);
-			gamecontrol.removeObject(this);
-			gamecontrol.sendNext = true;
-		}
-		
+//		if(isGone){
+//			this.setyVel(0);
+//			gamecontrol.removeObject(this);
+//			gamecontrol.sendNext = true;
+//		}
 	}
 }

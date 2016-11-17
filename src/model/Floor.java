@@ -1,5 +1,7 @@
 package model;
 
+import game.Game;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
@@ -20,9 +22,15 @@ public class Floor extends Block{
 
 	@Override
 	public void update() {
-		this.xPos-=1;
-		if(this.xPos <= (0-this.width)){
-			this.setXPos(270*4);
+		//this.xPos-=1;
+//		if(this.xPos <= (0-this.width)){
+//			this.setXPos(270*4);
+//		}
+		if (Game.gameControl.goingRight == true){
+			this.xPos -= 5;
+		}
+		else if (Game.gameControl.goingLeft == true){
+			this.xPos += 5;
 		}
 	}
 

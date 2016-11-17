@@ -2,6 +2,11 @@ package model;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import controller.GameController;
 
@@ -25,6 +30,9 @@ public abstract class InteractiveObject {
 	public boolean isGone = false;
 	
 	public GameController gamecontrol;
+	
+	String file;
+	BufferedImage item;
 	
 	public InteractiveObject(int x, int y, int width, int height, ObjectType t, GameController gamecontrol){
 		this.xPos = x;
@@ -153,6 +161,18 @@ public abstract class InteractiveObject {
 			gamecontrol.sendNext = true;
 		}
 		return useCorrect;
+	}
+	
+	public BufferedImage createImage(String file) {
+		BufferedImage img;
+		try{
+			img = ImageIO.read(new File(file));
+			return img;
+		}
+		catch (IOException e){
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

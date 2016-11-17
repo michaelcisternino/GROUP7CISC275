@@ -23,7 +23,7 @@ public class Status extends JPanel {
 		add(statusLabel);
 	}
 	public void update(){
-		statusLabel.setText("Trash Bags: " + Game.gameControl.crabby.trashBagCnt + " Hay: " + Game.gameControl.crabby.hayCnt + " Seeds: " + Game.gameControl.crabby.seedCnt + " Compost: " + Game.gameControl.crabby.compCnt);
+		statusLabel.setText("Trash Bags: " + Game.gameControl.crabby.trashBagCnt + " Hay: " + Game.gameControl.crabby.hayCnt + " Seeds: " + Game.gameControl.crabby.seedCnt + " Compost: " + Game.gameControl.crabby.compCnt + " Oysters: " + Game.gameControl.crabby.oysterCnt);
 	}
 
 }

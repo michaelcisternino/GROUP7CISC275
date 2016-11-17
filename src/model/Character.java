@@ -1,8 +1,14 @@
 package model;
 
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
+
+import javax.imageio.ImageIO;
 
 import controller.GameController;
 
@@ -24,8 +30,12 @@ public abstract class Character {
 	public boolean isJumping = false;
 	public boolean isFalling = true;
 	public boolean isGone = false;
+	public boolean isRising = false;
 	
 	public GameController gamecontrol;
+	
+	String file;
+	BufferedImage character;
 	
 	public Character(int x, int y, int width, int height, ObjectType t, GameController gamecontrol){
 		this.xPos = x;
@@ -118,6 +128,18 @@ public abstract class Character {
 	
 	public Rectangle getRightBounds(){
 		return new Rectangle(this.getXPos()+width-5,this.getYPos()+10, 5, height-20);
+	}
+	
+	public BufferedImage createImage(String file) {
+		BufferedImage img;
+		try{
+			img = ImageIO.read(new File(file));
+			return img;
+		}
+		catch (IOException e){
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
