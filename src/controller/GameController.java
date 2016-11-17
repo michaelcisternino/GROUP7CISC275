@@ -22,12 +22,13 @@ import model.Item;
 
 public class GameController{
 	
-	public boolean useTrashb, useHay, useSeeds, useComp;
+	public boolean useTrashb, useHay, useSeeds, useComp, useOyster;
 	public ObjectType thrownType;
 	public boolean itemThrownC = false;
 	public LinkedList<Block> blocks = new LinkedList<Block>();
 	public LinkedList<InteractiveObject> entities = new LinkedList<InteractiveObject>();
 	public LinkedList<Item> thrownItems = new LinkedList<Item>();
+	public LinkedList<Item> items = new LinkedList<Item>();
 	public Crabby crabby = new Crabby(300,512,64,64,ObjectType.Crabby,this);
 	public boolean sendNext = false;
 	Random randItem = new Random();
@@ -52,6 +53,7 @@ public class GameController{
 		}
 		this.goingRight = false;
 		this.goingLeft = false;
+		
 		for(InteractiveObject c: entities){
 			c.draw(g);
 		}
@@ -59,6 +61,9 @@ public class GameController{
 		for(InteractiveObject i: thrownItems){
 			i.draw(g);
 		}
+//		for(Item item: items){
+//			item.draw(g);
+//		}
 	}
 	
 	public void addEntity(InteractiveObject g){
@@ -99,56 +104,59 @@ public class GameController{
 		for(Item i: thrownItems){
 			i.update();
 		}
-		Game.status.update();
-		if(sendNext == true){
-			sendNext = false;
-			if(!useTrashb || !useHay || !useSeeds || !useComp){
-				blockNum = randItem.nextInt(3);
-				itemNum = randItem.nextInt(4);
-				spawnXpos = ThreadLocalRandom.current().nextInt(blocks.get(blockNum).getXPos(), blocks.get(blockNum).getXPos()+blocks.get(blockNum).width);
-				spawnYpos = blocks.get(blockNum).getYPos()-30;
-				switch(itemNum){
-				case 0: addEntity(new Item(spawnXpos,spawnYpos,30,30,ObjectType.TrashBag, this));
-				break;
-				case 1: addEntity(new Item(spawnXpos,spawnYpos,30,30,ObjectType.Hay, this));
-				break;
-				case 2: addEntity(new Item(spawnXpos,spawnYpos,30,30,ObjectType.Seeds, this));
-				break;
-				case 3: addEntity(new Item(spawnXpos,spawnYpos,30,30,ObjectType.Compost, this));
-				break;
-				}
-			}
-			else{
-				whatsNext = randItem.nextInt(2);
-				if(whatsNext == 0){
-					blockNum = randItem.nextInt(3);
-					itemNum = randItem.nextInt(4);
-					switch(itemNum){
-					case 0: addEntity(new Item(spawnXpos,spawnYpos,30,30,ObjectType.TrashBag, this));
-					break;
-					case 1: addEntity(new Item(spawnXpos,spawnYpos,30,30,ObjectType.Hay, this));
-					break;
-					case 2: addEntity(new Item(spawnXpos,spawnYpos,30,30,ObjectType.Seeds, this));
-					break;
-					case 3: addEntity(new Item(spawnXpos,spawnYpos,30,30,ObjectType.Compost, this));
-					break;
-					}
-				}
-				else{
-					itemNum = randItem.nextInt(4);
-					switch(itemNum){
-					case 0: addEntity(new Obstacle(Game.WIDTH * Game.SCALE+100,70,100,Game.HEIGHT*Game.SCALE,ObjectType.People, this));
-					break;
-					case 1: addEntity(new Obstacle(Game.WIDTH * Game.SCALE+100,70,100,Game.HEIGHT*Game.SCALE,ObjectType.Chemicals, this));
-					break;
-					case 2: addEntity(new Obstacle(Game.WIDTH * Game.SCALE+100,70,100,Game.HEIGHT*Game.SCALE,ObjectType.EmptySoil, this));
-					break;
-					case 3: addEntity(new Obstacle(Game.WIDTH * Game.SCALE+100,70,100,Game.HEIGHT*Game.SCALE,ObjectType.DeadSoil, this));
-					break;
-					}
-				}
-			}
+		for(Item item: items){
+			item.update();
 		}
+		Game.status.update();
+//		if(sendNext == true){
+//			sendNext = false;
+//			if(!useTrashb || !useHay || !useSeeds || !useComp){
+//				blockNum = randItem.nextInt(3);
+//				itemNum = randItem.nextInt(4);
+//				spawnXpos = ThreadLocalRandom.current().nextInt(blocks.get(blockNum).getXPos(), blocks.get(blockNum).getXPos()+blocks.get(blockNum).width);
+//				spawnYpos = blocks.get(blockNum).getYPos()-30;
+//				switch(itemNum){
+//				case 0: addEntity(new Item(spawnXpos,spawnYpos,30,30,ObjectType.TrashBag, this));
+//				break;
+//				case 1: addEntity(new Item(spawnXpos,spawnYpos,30,30,ObjectType.Hay, this));
+//				break;
+//				case 2: addEntity(new Item(spawnXpos,spawnYpos,30,30,ObjectType.Seeds, this));
+//				break;
+//				case 3: addEntity(new Item(spawnXpos,spawnYpos,30,30,ObjectType.Compost, this));
+//				break;
+//				}
+//			}
+//			else{
+//				whatsNext = randItem.nextInt(2);
+//				if(whatsNext == 0){
+//					blockNum = randItem.nextInt(3);
+//					itemNum = randItem.nextInt(4);
+//					switch(itemNum){
+//					case 0: addEntity(new Item(spawnXpos,spawnYpos,30,30,ObjectType.TrashBag, this));
+//					break;
+//					case 1: addEntity(new Item(spawnXpos,spawnYpos,30,30,ObjectType.Hay, this));
+//					break;
+//					case 2: addEntity(new Item(spawnXpos,spawnYpos,30,30,ObjectType.Seeds, this));
+//					break;
+//					case 3: addEntity(new Item(spawnXpos,spawnYpos,30,30,ObjectType.Compost, this));
+//					break;
+//					}
+//				}
+//				else{
+//					itemNum = randItem.nextInt(4);
+//					switch(itemNum){
+//					case 0: addEntity(new Obstacle(Game.WIDTH * Game.SCALE+100,70,100,Game.HEIGHT*Game.SCALE,ObjectType.People, this));
+//					break;
+//					case 1: addEntity(new Obstacle(Game.WIDTH * Game.SCALE+100,70,100,Game.HEIGHT*Game.SCALE,ObjectType.Chemicals, this));
+//					break;
+//					case 2: addEntity(new Obstacle(Game.WIDTH * Game.SCALE+100,70,100,Game.HEIGHT*Game.SCALE,ObjectType.EmptySoil, this));
+//					break;
+//					case 3: addEntity(new Obstacle(Game.WIDTH * Game.SCALE+100,70,100,Game.HEIGHT*Game.SCALE,ObjectType.DeadSoil, this));
+//					break;
+//					}
+//				}
+//			}
+//		}
 		if(itemThrownC){
 			boolean haveItem = false;
 			itemThrownC = false;
@@ -185,6 +193,15 @@ public class GameController{
 					haveItem = true;
 					crabby.compCnt -= 1;
 					if(crabby.compCnt == 0){
+						useComp = false;
+					}
+				}
+				break;
+			case Oyster: 
+				if(useOyster){
+					haveItem = true;
+					crabby.oysterCnt -= 1;
+					if(crabby.oysterCnt == 0){
 						useComp = false;
 					}
 				}

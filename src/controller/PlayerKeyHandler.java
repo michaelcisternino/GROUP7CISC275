@@ -9,7 +9,6 @@ import model.ObjectType;
 
 public class PlayerKeyHandler implements KeyListener{
 	
-	@Override
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 		switch(key){
@@ -25,7 +24,7 @@ public class PlayerKeyHandler implements KeyListener{
 		case KeyEvent.VK_UP:
 			if(!Game.gameControl.crabby.isJumping){
 				Game.gameControl.crabby.isJumping = true;
-				Game.gameControl.crabby.gravity = 9.8;
+				Game.gameControl.crabby.gravity = 7.2;
 			}
 			break;
 		case KeyEvent.VK_T:
@@ -71,18 +70,20 @@ public class PlayerKeyHandler implements KeyListener{
 
 			//Game.gameControl.unpause();
 			break;
+		case KeyEvent.VK_X:
+			Game.gameControl.thrownType = ObjectType.Oyster;
+			Game.gameControl.itemThrownC = true;
+			break;
 		}
 	}
 	//want to do a throw method so we can throw objects at the obstacles instead of just pausing it, and if obstacle hits then you lose health or some shit.
 		
 	
-	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void keyReleased(KeyEvent e) {
 		int key = e.getKeyCode();
 		switch(key){
