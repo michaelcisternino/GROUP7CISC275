@@ -52,43 +52,46 @@ public class Game extends JFrame implements Runnable{
 			//System.out.println(itemNum);
 //			gameControl.addBlock(new Platform(800,500,400,30,ObjectType.Wall,gameControl));
 //			gameControl.addBlock(new Floor(300,HEIGHT*SCALE-64,800,64,ObjectType.Wall,gameControl));
-			switch(itemNum){
-			case 0: gameControl.addEntity(new Item(500,0,30,30,ObjectType.TrashBag, gameControl));
-			break;
-			case 1: gameControl.addEntity(new Item(500,0,30,30,ObjectType.Hay, gameControl));
-			break;
-			case 2: gameControl.addEntity(new Item(500,0,30,30,ObjectType.Seeds, gameControl));
-			break;
-			case 3: gameControl.addEntity(new Item(500,0,30,30,ObjectType.Compost, gameControl));
-			break;
-			}
-
+//			switch(itemNum){
+//			case 0: gameControl.addEntity(new Item(500,0,30,30,ObjectType.TrashBag, gameControl));
+//			break;
+//			case 1: gameControl.addEntity(new Item(500,0,30,30,ObjectType.Hay, gameControl));
+//			break;
+//			case 2: gameControl.addEntity(new Item(500,0,30,30,ObjectType.Seeds, gameControl));
+//			break;
+//			case 3: gameControl.addEntity(new Item(500,0,30,30,ObjectType.Compost, gameControl));
+//			break;
+//			}
 		}
 		
 		private static void initLevelOne(){
 			LevelOne levelOne = new LevelOne();
 			// gameControl.blocks.clear();
 			levelOne.fillBlocks();
+			levelOne.fillObjects();
+			levelOne.fillObstacles();
+			gameControl.entities = levelOne.getObjects();
 			gameControl.blocks = levelOne.getBlocks();
-			System.out.println("this big" +gameControl.blocks.size());
+			//System.out.println("this big" +gameControl.blocks.size());
 			// for(Block b: levelOne.getBlocks()){
 			// gameControl.addBlock(b);
 			// }
-			level = 2;
 		}
 
 		public static void initLevelTwo(){
 			LevelTwo levelTwo = new LevelTwo();
 			//gameControl.blocks.clear();
 			levelTwo.fillBlocks();
+			levelTwo.fillObjects();
+			levelTwo.fillObstacles();
 			gameControl.blocks = levelTwo.getBlocks();
+			gameControl.entities = levelTwo.getObjects();
 			// for(Block b: levelTwo.getBlocks()){
 			// gameControl.addBlock(b);
 			// }
 			gameControl.crabby.setXPos(gameControl.blocks.getFirst().getXPos() + 200);
 			gameControl.crabby.setYPos(gameControl.blocks.getFirst().getYPos() - 100);
 			gameControl.crabby.isFalling = true;
-			level = 3;
 			System.out.println("HERE");
 		}
 		
@@ -96,6 +99,9 @@ public class Game extends JFrame implements Runnable{
 			LevelThree levelThree = new LevelThree();
 			//gameControl.blocks.clear();
 			levelThree.fillBlocks();
+			levelThree.fillObjects();
+			levelThree.fillObstacles();
+			gameControl.entities = levelThree.getObjects();
 			gameControl.blocks = levelThree.getBlocks();
 			// for(Block b: levelTwo.getBlocks()){
 			// gameControl.addBlock(b);
@@ -142,7 +148,6 @@ public class Game extends JFrame implements Runnable{
 		}
 		
 		//Implemented method from Runnable
-		@Override
 		public void run() {
 			if(playing){
 			requestFocus();
@@ -232,11 +237,17 @@ public class Game extends JFrame implements Runnable{
 			break;
 			case 3: initLevelThree();
 			break;
+			case 4: System.out.println("Game over!");
+			break;
 			}
 		}
 
 		public static int getLevel(){
 			return level;
+		}
+		
+		public static void setLevel(int n){
+			level = n;
 		}
 		
 		class StartButton implements ActionListener{
@@ -254,7 +265,7 @@ public class Game extends JFrame implements Runnable{
 			game.setLocationRelativeTo(null);
 			game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			game.setVisible(true);
-			game.startGame();
+			//game.startGame();
 		}
 
 		public static Container getPane() {
