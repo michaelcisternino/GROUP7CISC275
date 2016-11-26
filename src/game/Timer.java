@@ -1,5 +1,13 @@
 package game;
-
+/**
+ * Timer information. Not currently used.
+ * @author Alex Addeo
+ * @author Zion Aranda
+ * @author Katie Black
+ * @author Michael Cisternino
+ * @author Nick Hoffman
+ *
+ */
 public class Timer {
 	long lastTime = System.nanoTime();
 	long timer = System.currentTimeMillis();

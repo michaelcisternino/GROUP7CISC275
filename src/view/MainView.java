@@ -21,7 +21,15 @@ import javax.swing.border.BevelBorder;
 
 import game.Game;
 import model.Status;
-
+/**
+ * The main view class.
+ * @author Alex Addeo
+ * @author Zion Aranda
+ * @author Katie Black
+ * @author Michael Cisternino
+ * @author Nick Hoffman
+ *
+ */
 public class MainView extends JComponent{ //extend canvas and use bufferedimage here?
 	//private Game game;
 	//private GameController gc = game.gameControl;
@@ -31,7 +39,10 @@ public class MainView extends JComponent{ //extend canvas and use bufferedimage 
 	public MainView() {
 
 	}
-
+	/**
+	 * Paints the game on the pane. Gets the level from the game, and based on the level, sets the background to the appropriate image.
+	 * Draws the background on the image, adds the status panel to the game, and draws everything.
+	 */
 	public void paintComponent(Graphics g){
 		int curr_level = Game.getLevel();
 		switch(curr_level){
@@ -54,10 +65,19 @@ public class MainView extends JComponent{ //extend canvas and use bufferedimage 
 	Game.getPane().add(statusPanel, BorderLayout.SOUTH);
 	Game.gameControl.draw(g);
 	}
+	
+	/**
+	 * Updates the game controller.
+	 */
 	public void update() {
 	Game.gameControl.update();
 	}
 
+	/**
+	 * Attempts to load an image given the filename.
+	 * @param file
+	 * @return img
+	 */
 	private Image createImage(String file) {
 		Image img;
 		try{

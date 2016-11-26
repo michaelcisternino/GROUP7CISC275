@@ -19,7 +19,15 @@ import model.Status;
 import model.Floor;
 import model.InteractiveObject;
 import model.Item;
-
+/**
+ * Controller for the game.
+ * @author Alex Addeo
+ * @author Zion Aranda
+ * @author Katie Black
+ * @author Michael Cisternino
+ * @author Nick Hoffman
+ *
+ */
 public class GameController{
 	
 	public boolean useTrashb, useHay, useSeeds, useComp, useOyster;
@@ -45,7 +53,10 @@ public class GameController{
 	public GameController(){
 		
 	}
-	
+	/**
+	 * Draws objects on the screen. Draws blocks, the entities, and the thrown items.	
+	 * @param g
+	 */
 	public void draw(Graphics g) {
 		crabby.draw(g);
 		for(Block b: blocks){
@@ -65,27 +76,50 @@ public class GameController{
 //			item.draw(g);
 //		}
 	}
-	
+	/**
+	 * Adds an interactive object to the list of entities.
+	 * @param g
+	 */
 	public void addEntity(InteractiveObject g){
 		entities.add(g);
 	}
 	
+	/**
+	 * Removes the given interactive object from the list of entities.
+	 * @param g
+	 */
 	public void removeObject(InteractiveObject g){
 		entities.remove(g);
 	}
 	
+	/**
+	 * Removes the given block from the list of blocks.
+	 * @param b
+	 */
 	public void removeBlock(Block b){
 		blocks.remove(b);
 	}
 	
+	/**
+	 * Adds a block to the list of blocks.
+	 * @param b
+	 */
 	public void addBlock(Block b){
 		blocks.add(b);
 	}
 	
+	/**
+	 * Adds an item to the list of items.
+	 * @param i
+	 */
 	public void addItem(Item i){
 		thrownItems.add(i);
 	}
 	
+	/**
+	 * Removes the given item from the list of items.
+	 * @param i
+	 */
 	public void removeItem(Item i){
 		thrownItems.remove(i);
 	}
@@ -93,6 +127,12 @@ public class GameController{
 	// it brings it back to the state it would be in if it kept moving/if the vel didnt go to zero.
 	// need to stop the entire map/timer, not just the velocity.
 	
+	/**
+	 * Updates the game. Updates the character.
+	 * Updates each block, interactive object, thrown item, and item. Updates the status bar.
+	 * If an item is thrown, the corresponding counter is decremented. An item is created with the thrown velocity.
+	 * If the player attempts to throw and item they don't have, a message is printed.
+	 */
 	public void update(){
 		crabby.update();
 		for(Block b: blocks){

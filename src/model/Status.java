@@ -10,9 +10,20 @@ import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
 import game.Game;
-
+/**
+ * On-screen status bar.
+ * @author Alex Addeo
+ * @author Zion Aranda
+ * @author Katie Black
+ * @author Michael Cisternino
+ * @author Nick Hoffman
+ *
+ */
 public class Status extends JPanel {
 	JLabel statusLabel = new JLabel();
+	/**
+	 * Creates the status bar and adds it to the frame.
+	 */
 	public Status(){
 //		super();
 //		super.setPreferredSize(new Dimension(Game.WIDTH*Game.SCALE, Game.HEIGHT*Game.SCALE));
@@ -22,6 +33,10 @@ public class Status extends JPanel {
 		statusLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		add(statusLabel);
 	}
+	
+	/**
+	 * Updates the status bar. Gets information on the quantities of items from the controller.
+	 */
 	public void update(){
 		statusLabel.setText("Trash Bags: " + Game.gameControl.crabby.trashBagCnt + " Hay: " + Game.gameControl.crabby.hayCnt + " Seeds: " + Game.gameControl.crabby.seedCnt + " Compost: " + Game.gameControl.crabby.compCnt + " Oysters: " + Game.gameControl.crabby.oysterCnt);
 	}

@@ -15,6 +15,15 @@ import javax.swing.JPanel;
 
 import view.MainView;
 
+/**
+ * A start screen for the game.
+ * @author Alex Addeo
+ * @author Zion Aranda
+ * @author Katie Black
+ * @author Michael Cisternino
+ * @author Nick Hoffman
+ *
+ */
 public class StartScreen extends JPanel{
 
 	public static JButton start = new JButton("Start!");
@@ -32,7 +41,11 @@ public class StartScreen extends JPanel{
 //		game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //		game.setVisible(true);
 //	}
-//	
+//
+	/**
+	 * Constructor for the start screen. Sets the background, draws a nice border, and adds a button with an ActionListener.
+	 * @param game
+	 */
 	public StartScreen(Game game){
 		setBackground(Color.BLACK);
 		setOpaque(false);
@@ -45,14 +58,24 @@ public class StartScreen extends JPanel{
 		
 		Game g;
 		
+		/**
+		 * Constructor for the starter actionlistener.
+		 * Takes in a game.
+		 * @param g
+		 */
 		Starter(Game g){
 			this.g = g;
 		}
 		
+		/**
+		 * Action listener calls DoIt().
+		 */
 		public void actionPerformed(ActionEvent e) {
 			DoIt();
 		}
-		
+		/**
+		 * Sets the game playing status to true.
+		 */
 		public void DoIt(){
 			g.setPlaying(true);
 		}

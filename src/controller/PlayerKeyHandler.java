@@ -6,9 +6,27 @@ import java.awt.event.KeyListener;
 import game.Game;
 import model.Item;
 import model.ObjectType;
-
+/**
+ * Takes player input and sends it to the the controller.
+ * @author Alex Addeo
+ * @author Zion Aranda
+ * @author Katie Black
+ * @author Michael Cisternino
+ * @author Nick Hoffman
+ *
+ */
 public class PlayerKeyHandler implements KeyListener{
-	
+	/**
+	 * Translates a pressed key into an in-game event.
+	 * When a key is pressed, the actionlistener switches it and calls the gamecontrol method related to that action.
+	 * Left and right alter the character's x velocity.
+	 * Up sets the character's jump status to true and modifies the gravity so it will jump.
+	 * T throws a trash bag to collect trash.
+	 * H throws hay to soak up chemicals.
+	 * S throws seeds to fix bare soil.
+	 * C throws compost to fix bad soil.
+	 * X throws oysters to practice throwing.
+	 */
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 		switch(key){
@@ -84,6 +102,9 @@ public class PlayerKeyHandler implements KeyListener{
 		
 	}
 
+	/**
+	 * When the key is released, movement is stopped.
+	 */
 	public void keyReleased(KeyEvent e) {
 		int key = e.getKeyCode();
 		switch(key){

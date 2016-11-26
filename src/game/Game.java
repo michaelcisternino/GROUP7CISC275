@@ -20,7 +20,15 @@ import model.LevelOne;
 import model.LevelThree;
 import model.LevelTwo;
 import view.MainView;
-
+/**
+ * The master game class. Starts and runs the game, contains variables and game parts.
+ * @author Alex Addeo
+ * @author Zion Aranda
+ * @author Katie Black
+ * @author Michael Cisternino
+ * @author Nick Hoffman
+ *
+ */
 public class Game extends JFrame implements Runnable{
 
 		public static final int WIDTH = 270;
@@ -43,6 +51,9 @@ public class Game extends JFrame implements Runnable{
 		private static int level = 2;
 		private static boolean gameOver = false;
 		
+		/**
+		 *  Initializes the game. Creates a game controller and the key listener. Sets focus on the game.
+		 */
 		private void init(){
 			gameControl = new GameController();
 			addKeyListener(new PlayerKeyHandler());
@@ -64,6 +75,10 @@ public class Game extends JFrame implements Runnable{
 //			}
 		}
 		
+		/**
+		 * Creates level one. Fills level one with blocks, objects, and obstacles.
+		 * The game controller receives the obstacles and blocks, overwriting the previous level.
+		 */
 		private static void initLevelOne(){
 			LevelOne levelOne = new LevelOne();
 			// gameControl.blocks.clear();
@@ -78,6 +93,11 @@ public class Game extends JFrame implements Runnable{
 			// }
 		}
 
+		/**
+		 * Creates level two. Fills level two with blocks, objects, and obstacles.
+		 * The game controller receives the obstacles and blocks, overwriting the previous level.
+		 * The character's position is reset back to the beginning of the level.
+		 */
 		public static void initLevelTwo(){
 			LevelTwo levelTwo = new LevelTwo();
 			//gameControl.blocks.clear();
@@ -95,6 +115,11 @@ public class Game extends JFrame implements Runnable{
 			System.out.println("HERE");
 		}
 		
+		/**
+		 * Creates level three. Fills level three with blocks, objects, and obstacles.
+		 * The game controller receives the obstacles and blocks, overwriting the previous level.
+		 * The character's position is reset back to the beginning of the level.
+		 */
 		public static void initLevelThree(){
 			LevelThree levelThree = new LevelThree();
 			//gameControl.blocks.clear();
@@ -112,11 +137,16 @@ public class Game extends JFrame implements Runnable{
 			System.out.println("HERE");
 		}
 
+		/**
+		 * Sets the game over flag to true.
+		 */
 		public static void gameOver(){
 			gameOver = true;
 		}
 			
-		//Initialize gameThread
+		/**
+		 * Starts the game thread. Sets run to true.
+		 */
 		private synchronized void startGame(){
 			init();
 			if(run){
@@ -127,7 +157,9 @@ public class Game extends JFrame implements Runnable{
 			gameThread.start();
 		}
 		
-		//Terminate gameThread
+		/**
+		 * Stops the game thread. If the thread is interrupted, the exception is printed.
+		 */
 		private synchronized void stopGame(){
 			if(!run){
 				return;
@@ -139,15 +171,25 @@ public class Game extends JFrame implements Runnable{
 			}
 		}
 		
+		/**
+		 * Pauses the game thread. Run is set to false.
+		 */
 		public void pauseThread() throws InterruptedException{
 			run = false;
 		}
 
+		/**
+		 * Resumes the game thread. Run is set to true.
+		 */
 		public void resumeThread(){
 			run = true;
 		}
 		
 		//Implemented method from Runnable
+		/**
+		 * Controls timing by creating ticks and frames.
+		 * Divides system time into ticks and frames. If the timer runs out, the game is stopped.
+		 */
 		public void run() {
 			if(playing){
 			requestFocus();
@@ -198,6 +240,11 @@ public class Game extends JFrame implements Runnable{
 //		}
 		
 		//Game constructor
+		/**
+		 * Constructor for the game.
+		 * Creates a pane for the game with specified size and creates the view and status bars.
+		 * The start screen and the status bar are added to the pane.
+		 */
 		public Game() {
 			System.out.println("in game constructor");
 			setPane(getContentPane());
@@ -214,6 +261,12 @@ public class Game extends JFrame implements Runnable{
 			getPane().add(status, BorderLayout.SOUTH);
 		}
 		
+		/**
+		 * Sets the game playing status.
+		 * When the start button is clicked, it is removed from the view. The main game is added to the view and the game is started.
+		 * A key listener is added to the pane and level is set to one. The level is passed to StartNextLevel.
+		 * @param b
+		 */
 		public void setPlaying(boolean b){
 			this.getContentPane().remove(starter);
 			view = new MainView();
@@ -229,6 +282,10 @@ public class Game extends JFrame implements Runnable{
 			// this.initLevelOne();
 		}
 		
+		/**
+		 * Switch statement to select which level to initialize. Calls the chosen level.
+		 * @param level
+		 */
 		public static void startNextLevel(int level){
 			switch(level){
 			case 1: initLevelOne();
@@ -242,21 +299,36 @@ public class Game extends JFrame implements Runnable{
 			}
 		}
 
+		/**
+		 * Gets the current level.
+		 * @return level
+		 */
 		public static int getLevel(){
 			return level;
 		}
 		
+		/**
+		 * Sets the level to the given int.
+		 * @param n
+		 */
 		public static void setLevel(int n){
 			level = n;
 		}
 		
 		class StartButton implements ActionListener{
+			/**
+			 * Listens for the start button being clicked. When it happens, the game is started.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				Game.game.startGame();
 			}
 		}
 		
 		//Main 
+		/**
+		 * Main function for the game. Links the thread and sets visible.
+		 * @param args
+		 */
 		public static void main(String[] args) {
 			game = new Game();
 //			JFrame frame = new JFrame(TITLE);;
@@ -268,10 +340,18 @@ public class Game extends JFrame implements Runnable{
 			//game.startGame();
 		}
 
+		/**
+		 * Gets the pane container.
+		 * @return pane
+		 */
 		public static Container getPane() {
 			return pane;
 		}
 
+		/**
+		 * Sets the pane to the given container.
+		 * @param pane
+		 */
 		public void setPane(Container pane) {
 			this.pane = pane;
 		}

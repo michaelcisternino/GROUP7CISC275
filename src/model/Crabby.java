@@ -6,18 +6,38 @@ import java.util.LinkedList;
 
 import controller.GameController;
 import game.Game;
-
+/**
+ * Our main character, the Crabby. Crabby is a character.
+ * @author Alex Addeo
+ * @author Zion Aranda
+ * @author Katie Black
+ * @author Michael Cisternino
+ * @author Nick Hoffman
+ *
+ */
 public class Crabby extends Character{
 	
 	public int trashBagCnt, hayCnt, seedCnt, compCnt, oysterCnt;
 	public LinkedList<InteractiveObject> items = new LinkedList<InteractiveObject>();
 
+	/**
+	 * Constructor for crabby. The image file containing the crab is defined in here.
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @param t
+	 * @param gamecontrol
+	 */
 	public Crabby(int x, int y, int width, int height, ObjectType t, GameController gamecontrol) {
 		super(x, y, width, height, t, gamecontrol);
 		file = "Final Images/Animals/bluecrab_0.png";
 		character = createImage(file);
 	}
 
+	/**
+	 * Draws the image of the crab based on the parameters.
+	 */
 	@Override
 	public void draw(Graphics g) {
 //		g.setColor(Color.RED);	
@@ -25,6 +45,20 @@ public class Crabby extends Character{
 		g.drawImage(character, (int)this.getXPos(), (int)this.getYPos(), width, height, null);
 	}
 
+	/**
+	 * Updates the character based on the controller.
+	 * If the character has 0 lives, it is dead and the game exits.
+	 * If the character reaches the bounds of the panel, the controller is set so the view appears to be moving.
+	 * If the character lands on a block, it is no longer falling and y velocity is set to 0.
+	 * If the character is not on a platform and not jumping, it is falling.
+	 * If the character intersects a block, the character's position is updated based on the block's position.
+	 * If the character contacts an item, the item is collected and the counter is incremented.
+	 * If the character contacts an obstacle, the lives counter is decremented and it is checked if the character is dead.
+	 * If the character is jumping, the current gravity is subtracted from the current y velocity.
+	 * If the character is falling, the current gravity is added to the current y velocity.
+	 * If the character falls off the screen, the lives counter is decremented and the character respawns at the top.
+	 * If the character is on the final platform, it will rise with the platform up to a certain height.
+	 */
 	@Override
 	public void update() {
 		if(this.getLives() == 0){
