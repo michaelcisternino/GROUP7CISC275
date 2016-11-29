@@ -60,5 +60,109 @@ public class Platform extends Block{
 		else if (Game.gameControl.goingLeft == true){
 			this.xPos += 5;
 		}
+		if (horiMover == true){
+			switch (this.range) {
+			case Short:
+				if(this.initX <0){
+					this.xPos -=4;
+					this.initX--;
+				}
+				if(this.initX >=0){
+					this.xPos += 4;
+					this.initX++;
+				}
+				if(this.initX == -50){
+					this.initX = 0;
+				}
+				if(this.initX == 50){
+					this.initX = -1;
+				}
+				break;
+			case Mid:
+				if(this.initX <0){
+					this.xPos -=3;
+					this.initX--;
+				}
+				if(this.initX >=0){
+					this.xPos += 3;
+					this.initX++;
+				}
+				if(this.initX == -75){
+					this.initX = 0;
+				}
+				if(this.initX == 75){
+					this.initX = -1;
+				}
+				break;
+			case Long:
+				if(this.initX <0){
+					this.xPos -=4;
+					this.initX--;
+				}
+				if(this.initX >=0){
+					this.xPos += 4;
+					this.initX++;
+				}
+				if(this.initX == -100){
+					this.initX = 0;
+				}
+				if(this.initX == 100){
+					this.initX = -1;
+				}
+				break;
+			}
+		}
+		if (vertMover == true){
+			switch (this.range) {
+			case Short:
+				if(this.initY <0){
+					this.yPos -= 4;
+					this.initY--;
+				}
+				if(this.initY >=0){
+					this.yPos += 4;
+					this.initY++;
+				}
+				if(this.initY == -50){
+					this.initY = 0;
+				}
+				if(this.initY == 50){
+					this.initY = -1;
+				}
+				break;
+			case Mid:
+				if(this.initY <0){
+					this.yPos -=3;
+					this.initY--;
+				}
+				if(this.initY >=0){
+					this.yPos += 3;
+					this.initY++;
+				}
+				if(this.initY == -75){
+					this.initY = 0;
+				}
+				if(this.initY == 75){
+					this.initY = -1;
+				}
+				break;
+			case Long:
+				if(this.initY <0){
+					this.yPos -=4;
+					this.initY--;
+				}
+				if(this.initY >=0){
+					this.yPos += 4;
+					this.initY++;
+				}
+				if(this.initY == -100){
+					this.initY = 0;
+				}
+				if(this.initY == 100){
+					this.initY = -1;
+				}
+				break;
+			}
+		}
 	}
 }
