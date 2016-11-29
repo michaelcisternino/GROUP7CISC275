@@ -25,9 +25,11 @@ public abstract class Block {
 	public int initX = 0;	// The center of horizontal movement
 	public int initY = 0;	// The center of vertical movement
 
+	
 	public int width, height;
 	
 	public ObjectType type;
+	public RangeType range;
 	
 	public double gravity = 0.0;
 	
@@ -49,12 +51,17 @@ public abstract class Block {
 	 * @param t
 	 * @param gc
 	 */
-	public Block(int x, int y, int width, int height, ObjectType t, GameController gc){
+	public Block(int x, int y, int initx, int inity, int width, int height, ObjectType t, RangeType r, Boolean isVert, Boolean isHor, GameController gc){
 		this.xPos = x;
 		this.yPos = y;
+		this.initX = initx;
+		this.initY = inity;
 		this.width = width;
 		this.height = height;
 		this.type = t;
+		this.range = r;
+		this.vertMover = isVert;
+		this.horiMover = isHor;
 		this.gamecontrol = gc;
 		this.erryXVel = 0;
 	}

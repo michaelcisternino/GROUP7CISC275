@@ -24,23 +24,23 @@ public class LevelOne {
 	 * Floors are then created and added to the list.
 	 */
 	public void fillBlocks(){
-		blocks.add(new Platform(1000,500,300,30,ObjectType.Wall,Game.gameControl));
-		blocks.add(new Platform(1600,300,200,30,ObjectType.Wall,Game.gameControl));
-		blocks.add(new Platform(2200,400,400,30,ObjectType.Wall,Game.gameControl));
-		blocks.add(new Platform(2700,200,300,30,ObjectType.Wall,Game.gameControl));
-		blocks.add(new Platform(3200,300,200,30,ObjectType.Wall,Game.gameControl));
-		blocks.add(new Platform(3700,500,300,30,ObjectType.Wall,Game.gameControl));
-		blocks.add(new Platform(4200,400,200,30,ObjectType.Wall,Game.gameControl));
-		blocks.add(new Platform(4700,400,400,30,ObjectType.Wall,Game.gameControl));
-		blocks.add(new Platform(5200,200,300,30,ObjectType.Wall,Game.gameControl));
-		blocks.add(new Platform(5700,300,200,30,ObjectType.Wall,Game.gameControl));
-		blocks.add(new Platform(6200,500,300,30,ObjectType.Wall,Game.gameControl));
+		blocks.add(new Platform(1000,500,0,0,300,30,ObjectType.Wall,RangeType.None,false,false, Game.gameControl));
+		blocks.add(new Platform(1600,300,0,0,200,30,ObjectType.Wall,RangeType.None,false,false, Game.gameControl));
+		blocks.add(new Platform(2200,400,0,0,400,30,ObjectType.Wall,RangeType.None,false,false, Game.gameControl));
+		blocks.add(new Platform(2700,200,0,0,300,30,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
+		blocks.add(new Platform(3200,300,0,0,200,30,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
+		blocks.add(new Platform(3700,500,0,0,300,30,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
+		blocks.add(new Platform(4200,400,0,0,200,30,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
+		blocks.add(new Platform(4700,400,0,0,400,30,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
+		blocks.add(new Platform(5200,200,0,0,300,30,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
+		blocks.add(new Platform(5700,300,0,0,200,30,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
+		blocks.add(new Platform(6200,500,0,0,300,30,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
 	//	blocks.add(new Platform(500,200,400,30,ObjectType.Wall,Game.gameControl));
 		
 		blocks.getLast().isFinal = true;
-		blocks.add(new Floor(300,Game.HEIGHT*Game.SCALE-100,1000,100,ObjectType.Wall,Game.gameControl));
-		blocks.add(new Floor(2400,Game.HEIGHT*Game.SCALE-100,600,100,ObjectType.Wall,Game.gameControl));
-		blocks.add(new Floor(3000,Game.HEIGHT*Game.SCALE-100,1000,100,ObjectType.Wall,Game.gameControl));
+		blocks.add(new Floor(300,Game.HEIGHT*Game.SCALE-100,0,0,1000,100,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
+		blocks.add(new Floor(2400,Game.HEIGHT*Game.SCALE-100,0,0,600,100,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
+		blocks.add(new Floor(3000,Game.HEIGHT*Game.SCALE-100,0,0,1000,100,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
 		//Game.gameControl.blocks = blocks;
 	}
 	

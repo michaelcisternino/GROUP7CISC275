@@ -23,51 +23,20 @@ public class LevelTwo {
 	 * Floors are then created and added to the list.
 	 */
 	public void fillBlocks(){
-		blocks.add(new Platform(1200,600,300,30,ObjectType.Wall,Game.gameControl));
-		blocks.getLast().vertMover = true;
-		blocks.getLast().range = ObjectType.Short;
-		blocks.getLast().initY = -1;
-		blocks.add(new Platform(1600,400,200,30,ObjectType.Wall,Game.gameControl));
-		blocks.getLast().vertMover = true;
-		blocks.getLast().range = ObjectType.Mid;
-		blocks.getLast().initY = -1;
-		blocks.add(new Platform(2000,400,400,30,ObjectType.Wall,Game.gameControl));
-		blocks.getLast().vertMover = true;
-		blocks.getLast().range = ObjectType.Short;
-		blocks.getLast().initY = -1;
-		blocks.add(new Platform(2700,300,300,30,ObjectType.Wall,Game.gameControl));
-		blocks.getLast().vertMover = true;
-		blocks.getLast().range = ObjectType.Mid;
-		blocks.getLast().initY = 0;
-		blocks.add(new Platform(3400,300,200,30,ObjectType.Wall,Game.gameControl));
-		blocks.getLast().horiMover = true;
-		blocks.getLast().range = ObjectType.Long;
-		blocks.getLast().initX = -1;
-		blocks.add(new Platform(3700,500,300,30,ObjectType.Wall,Game.gameControl));
-		blocks.getLast().horiMover = true;
-		blocks.getLast().range = ObjectType.Mid;
-		blocks.getLast().initX = 0;
-		blocks.add(new Platform(4400,400,200,30,ObjectType.Wall,Game.gameControl));
-		blocks.getLast().vertMover = true;
-		blocks.getLast().range = ObjectType.Mid;
-		blocks.getLast().initY = 0;
-		blocks.add(new Platform(4700,400,400,30,ObjectType.Wall,Game.gameControl));
-		blocks.getLast().horiMover = true;
-		blocks.getLast().range = ObjectType.Short;
-		blocks.getLast().initX = -1;
-		blocks.add(new Platform(5200,200,300,30,ObjectType.Wall,Game.gameControl));
-		blocks.getLast().vertMover = true;
-		blocks.getLast().range = ObjectType.Mid;
-		blocks.getLast().initY = 0;
-		blocks.add(new Platform(5700,300,200,30,ObjectType.Wall,Game.gameControl));
-		blocks.getLast().horiMover = true;
-		blocks.getLast().range = ObjectType.Short;
-		blocks.getLast().initX = 0;
-		blocks.add(new Platform(6200,500,300,30,ObjectType.Wall,Game.gameControl));
-		
+		blocks.add(new Platform(1200,600,0,-1,300,30,ObjectType.Wall, RangeType.Short, true, false, Game.gameControl));
+		blocks.add(new Platform(1600,400,0,-1,200,30,ObjectType.Wall, RangeType.Mid, true, false, Game.gameControl));
+		blocks.add(new Platform(2000,400,0,-1,400,30,ObjectType.Wall, RangeType.Short, true, false, Game.gameControl));
+		blocks.add(new Platform(2700,300,0,0,300,30,ObjectType.Wall,RangeType.Mid, true, false, Game.gameControl));
+		blocks.add(new Platform(3400,300,-1,0,200,30,ObjectType.Wall,RangeType.Long, false, true, Game.gameControl));
+		blocks.add(new Platform(3700,500,0,0,300,30,ObjectType.Wall,RangeType.Mid, false, true, Game.gameControl));
+		blocks.add(new Platform(4400,400,0,0,200,30,ObjectType.Wall,RangeType.Mid, true, false, Game.gameControl));
+		blocks.add(new Platform(4700,400,-1,0,400,30,ObjectType.Wall,RangeType.Short, false, true, Game.gameControl));
+		blocks.add(new Platform(5200,200,0,0,300,30,ObjectType.Wall,RangeType.Mid, true, false, Game.gameControl));
+		blocks.add(new Platform(5700,300,0,0,200,30,ObjectType.Wall,RangeType.Short, false, true, Game.gameControl));
+		blocks.add(new Platform(6200,500,0,0,300,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 		
 		blocks.getLast().isFinal = true;
-		blocks.add(new Floor(300,Game.HEIGHT*Game.SCALE-100,1000,100,ObjectType.Wall,Game.gameControl));
+		blocks.add(new Floor(300,Game.HEIGHT*Game.SCALE-100,0,0,1000,100,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 		//Game.gameControl.blocks = blocks;
 	}
 	

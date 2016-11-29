@@ -16,8 +16,8 @@ import game.Game;
  */
 public class Platform extends Block{
 
-	public Platform(int x, int y, int width, int height, ObjectType t, GameController oc) {
-		super(x, y, width, height, t, oc);
+	public Platform(int x, int y, int initx, int inity, int width, int height, ObjectType t, RangeType r, Boolean isVert, Boolean isHor, GameController gc){
+		super(x, y, initx, inity, width, height, t, r, isVert, isHor, gc);
 	}
 
 	/**

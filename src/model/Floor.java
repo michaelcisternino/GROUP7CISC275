@@ -19,8 +19,8 @@ import controller.GameController;
  */
 public class Floor extends Block{
 
-	public Floor(int x, int y, int width, int height, ObjectType t, GameController oc) {
-		super(x, y, width, height, t, oc);
+	public Floor(int x, int y, int initx, int inity, int width, int height, ObjectType t, RangeType r, Boolean isVert, Boolean isHor, GameController gc) {
+		super(x, y, initx, inity, width, height, t, r, isVert, isHor, gc);
 	}
 
 	/**
@@ -37,10 +37,6 @@ public class Floor extends Block{
 	 * Updates the floor's position based on the direction the game is moving.
 	 */
 	public void update() {
-		//this.xPos-=1;
-//		if(this.xPos <= (0-this.width)){
-//			this.setXPos(270*4);
-//		}
 		if (Game.gameControl.goingRight == true){
 			this.xPos -= 5;
 		}

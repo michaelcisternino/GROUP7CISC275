@@ -94,6 +94,7 @@ public class Crabby extends Character{
 			}
 			if(this.getBottomBounds().intersects(b.getBounds())){
 				this.setyVel(0);
+				this.setYPos(b.getYPos()-64);
 				if(isFalling) {
 					isFalling = false;
 					}
