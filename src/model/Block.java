@@ -17,9 +17,13 @@ public abstract class Block {
 	
 	public int erryXVel;
 	public boolean isFinal = false;
+	public boolean vertMover = false;
+	public boolean horiMover = false;
 	
 	public int xPos, yPos;
 	public int xVel, yVel;
+	public int initX = 0;	// The center of horizontal movement
+	public int initY = 0;	// The center of vertical movement
 
 	public int width, height;
 	
