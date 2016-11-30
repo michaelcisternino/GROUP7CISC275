@@ -111,7 +111,7 @@ public class Game extends JFrame implements Runnable{
 			// }
 			gameControl.crabby.setXPos(gameControl.blocks.getFirst().getXPos() + 200);
 			gameControl.crabby.setYPos(gameControl.blocks.getFirst().getYPos() - 100);
-			gameControl.crabby.isFalling = true;
+			gameControl.crabby.setFalling(true);
 			System.out.println("HERE");
 		}
 		
@@ -133,7 +133,7 @@ public class Game extends JFrame implements Runnable{
 			// }
 			gameControl.crabby.setXPos(gameControl.blocks.getFirst().getXPos() + 200);
 			gameControl.crabby.setYPos(gameControl.blocks.getFirst().getYPos() - 100);
-			gameControl.crabby.isFalling = true;
+			gameControl.crabby.setFalling(true);
 			System.out.println("HERE");
 		}
 

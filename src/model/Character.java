@@ -22,23 +22,21 @@ import controller.GameController;
  */
 public abstract class Character {
 
-	public int xPos, yPos;
-	public int  xVel, yVel;
+	private int xPos, yPos;
+	private int  xVel, yVel;
 	
-	public int lives = 5;
+	private int lives = 5;
 
-	public int width, height;
-	public int colNum; 
+	private int width, height;
 	
-	public ObjectType type;
+	private ObjectType type;
 	
-	public double gravity = 0.0;
+	private double gravity = 0.0;
 	
-	//public boolean solid;
-	public boolean isJumping = false;
-	public boolean isFalling = true;
-	public boolean isGone = false;
-	public boolean isRising = false;
+	private boolean isJumping = false;
+	private boolean isFalling = true;
+	private boolean isGone = false;
+	private boolean isRising = false;
 	
 	public GameController gamecontrol;
 	
@@ -61,7 +59,29 @@ public abstract class Character {
 		this.height = height;
 		this.type = t;
 		this.gamecontrol = gamecontrol;
-		//this.colNum = color;
+	}
+	
+	public abstract void draw(Graphics g);
+	
+	public abstract void update();
+	
+	public void move(){
+		this.xPos+=this.xVel;
+		this.yPos+=this.yVel;
+	}
+	
+	public void jump(){
+		this.gravity -= 0.1;
+		this.yVel = -(int)this.gravity;
+	}
+	
+	public void fall(){
+		this.gravity += 0.1;
+		this.yVel = (int)this.gravity;
+	}
+	
+	public void rise(){
+		this.yVel = -5;
 	}
 	
 	/**
@@ -93,60 +113,117 @@ public abstract class Character {
 	public int getLives(){
 		return lives;
 	}
-	public abstract void draw(Graphics g);
 	
-	public abstract void update();
+	/**
+	 * Sets the number of lives the character has.
+	 * @param l
+	 */
+	public void setLives(int l){
+		this.lives = l;
+	}
 	
+	/**
+	 * Gets the character's jumping status
+	 * @return isJumping
+	 */
+	public boolean isJumping() {
+		return isJumping;
+	}
+	
+	/**
+	 * Set's the character's jumping status
+	 * @param isJumping
+	 */
+	public void setJumping(boolean isJumping) {
+		this.isJumping = isJumping;
+	}
+
+	/**
+	 * Gets the character's falling status
+	 * @return isFalling
+	 */
+	public boolean isFalling() {
+		return isFalling;
+	}
+
+	/**
+	 * Set's the character's falling status
+	 * @param isFalling
+	 */
+	public void setFalling(boolean isFalling) {
+		this.isFalling = isFalling;
+	}
+
+	/**
+	 * Returns true if character is off screen, false if not
+	 * @return isGone
+	 */
+	public boolean isGone() {
+		return isGone;
+	}
+
+	/**
+	 * Set's the character's gone status
+	 * @param isGone
+	 */
+	public void setGone(boolean isGone) {
+		this.isGone = isGone;
+	}
+
+	/**
+	 * Gets the character's rising status
+	 * @return isRising
+	 */
+	public boolean isRising() {
+		return isRising;
+	}
+
+	/**
+	 * Set's the character's rising status
+	 * @param isRising
+	 */
+	public void setRising(boolean isRising) {
+		this.isRising = isRising;
+	}
+	
+	/**
+	 * Gets the character's width
+	 * @return width
+	 */
+	public int getWidth(){
+		return this.width;
+	}
+	
+	/**
+	 * Set's the character's width
+	 * @param w
+	 */
+	public void setWidth(int w){
+		this.width = w;
+	}
+	
+	/**
+	 * Gets the character's rising status
+	 * @return height
+	 */
+	public int getHeight(){
+		return this.height;
+	}
+	
+	/**
+	 * Set's the character's height
+	 * @param h
+	 */
+	public void setHeight(int h){
+		this.height = h;
+	}
+
 	/**
 	 * Gets the character's x position.
 	 * @return xPos
 	 */
 	public int getXPos(){
 		return this.xPos;
-	}
-	
-	/**
-	 * Gets the character's y position.
-	 * @return yPos
-	 */
-	public int getYPos(){
-		return this.yPos;
-	}
-	
-	/**
-	 * Gets the character's x velocity.
-	 * @return xVel
-	 */
-	public int getxVel() {
-		return xVel;
-	}
-
-	/**
-	 * Gets the character's y velocity.
-	 * @return yVel
-	 */
-	public int getyVel() {
-		return yVel;
-	}
-	
-//	public boolean isSolid(){
-//		return this.solid;
-//	}
-	
-	/**
-	 * Sets the character's x velocity.
-	 * @param xVel
-	 */
-	public void setxVel(int xVel){
-		this.xVel = xVel;
-	}
-
-	/**
-	 * Sets the character's y velocity.
-	 * @param yVel
-	 */
-	public void setyVel(int yVel) {
-		this.yVel = yVel;
 	}
 	
 	/**
@@ -158,6 +235,14 @@ public abstract class Character {
 	}
 	
 	/**
+	 * Gets the character's y position.
+	 * @return yPos
+	 */
+	public int getYPos(){
+		return this.yPos;
+	}
+	
+	/**
 	 * Set's the character's y position.
 	 * @param y
 	 */
@@ -165,9 +250,38 @@ public abstract class Character {
 		this.yPos = y;
 	}
 	
-//	public void setSolid(boolean s){
-//		this.solid = s;
-//	}
+	/**
+	 * Gets the character's x velocity.
+	 * @return xVel
+	 */
+	public int getxVel() {
+		return xVel;
+	}
+	
+	/**
+	 * Sets the character's x velocity.
+	 * @param xVel
+	 */
+	public void setxVel(int xVel){
+		this.xVel = xVel;
+	}
+
+	/**
+	 * Gets the character's y velocity.
+	 * @return yVel
+	 */
+	public int getyVel() {
+		return yVel;
+	}
+
+	/**
+	 * Sets the character's y velocity.
+	 * @param yVel
+	 */
+	public void setyVel(int yVel) {
+		this.yVel = yVel;
+	}
+	
 	
 	/**
 	 * Gets the type of the objects.
@@ -177,6 +291,22 @@ public abstract class Character {
 		return this.type;
 	}
 	
+	/**
+	 * Gets the current gravity value of the objects.
+	 * @return this.gravity
+	 */
+	public double getGravity() {
+		return gravity;
+	}
+
+	/**
+	 * Sets the character's gravity
+	 * @param gravity
+	 */
+	public void setGravity(double gravity) {
+		this.gravity = gravity;
+	}
+
 	/**
 	 * Gets the bounds of the block. Used when determining collisions. Returns a Java Rectangle.
 	 * @return Rectangle

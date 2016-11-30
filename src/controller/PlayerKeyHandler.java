@@ -40,9 +40,9 @@ public class PlayerKeyHandler implements KeyListener{
 //			MainController.gameControl.crabby.setyVel(5);
 //			break;
 		case KeyEvent.VK_UP:
-			if(!Game.gameControl.crabby.isJumping){
-				Game.gameControl.crabby.isJumping = true;
-				Game.gameControl.crabby.gravity = 7.2;
+			if(!Game.gameControl.crabby.isJumping()){
+				Game.gameControl.crabby.setJumping(true);
+				Game.gameControl.crabby.setGravity(7.2);
 			}
 			break;
 		case KeyEvent.VK_T:

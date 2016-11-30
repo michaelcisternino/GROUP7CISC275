@@ -1,6 +1,5 @@
 package model;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.util.LinkedList;
 
@@ -40,9 +39,7 @@ public class Crabby extends Character{
 	 */
 	@Override
 	public void draw(Graphics g) {
-//		g.setColor(Color.RED);	
-//		g.fillOval((int)this.getXPos(), (int)this.getYPos(), width, height);
-		g.drawImage(character, (int)this.getXPos(), (int)this.getYPos(), width, height, null);
+		g.drawImage(character, this.getXPos(), this.getYPos(), getWidth(), getHeight(), null);
 	}
 
 	/**
@@ -61,59 +58,54 @@ public class Crabby extends Character{
 	 */
 	@Override
 	public void update() {
-		if(this.getLives() == 0){
+		if(getLives() == 0){
 			System.out.println("dead");
 			//game stop
 			System.exit(0);
 		}
-		this.xPos+=this.xVel;
-		this.yPos+=this.yVel;
+		move();
 		//Screen-left bound
-		if(this.xPos <= Game.WIDTH){
-			this.xPos = Game.WIDTH + 1;
+		if(getXPos() <= Game.WIDTH){
+			setXPos(Game.WIDTH + 1);
 			Game.gameControl.goingLeft = true;
 		}
 		//Screen-right bound
-		if(this.xPos + this.width >= Game.WIDTH*3){
-			this.xPos = Game.WIDTH*3 - this.width - 1;
+		if(getXPos() + getWidth() >= Game.WIDTH*3){
+			setXPos(Game.WIDTH*3 - getWidth() - 1);
 			Game.gameControl.goingRight = true;
 		}
-//		//Screen-bottom bound
-//		if(this.yPos + this.height >= 750){
-//			this.yPos = 750 - this.height;
-//		}
 		for(int i = 0; i < gamecontrol.blocks.size(); i++){
 			Block b = gamecontrol.blocks.get(i);
-			if(this.getTopBounds().intersects(b.getBounds())){
-				this.setyVel(0);
-				if(isJumping){
-					isJumping = false;
-					gravity=0.8;
-					isFalling = true;
+			if(getTopBounds().intersects(b.getBounds())){
+				setyVel(0);
+				if(isJumping()){
+					setJumping(false);
+					setGravity(0.8);
+					setFalling(true);
 				}
 			}
-			if(this.getBottomBounds().intersects(b.getBounds())){
-				this.setyVel(0);
-				this.setYPos(b.getYPos()-64);
-				if(isFalling) {
-					isFalling = false;
+			if(getBottomBounds().intersects(b.getBounds())){
+				setyVel(0);
+				setYPos(b.getYPos()-64);
+				if(isFalling()) {
+					setFalling(false);
 					}
-			}else if (!isFalling&&!isJumping){
-					isFalling = true;
-					gravity = 0.8;
+			}else if (!isFalling()&&!isJumping()){
+					setFalling(true);
+					setGravity(0.8);
 			}
-			if(this.getLeftBounds().intersects(b.getBounds())){
-				this.setxVel(0);
-				this.xPos = b.getXPos() + this.width;
+			if(getLeftBounds().intersects(b.getBounds())){
+				setxVel(0);
+				setXPos(b.getXPos() + getWidth());
 			}
-			if(this.getRightBounds().intersects(b.getBounds())){
-				this.setxVel(0);
-				this.xPos = b.getXPos() - this.width;
+			if(getRightBounds().intersects(b.getBounds())){
+				setxVel(0);
+				setXPos(b.getXPos() - getWidth());
 			}
 		}
 		for(int i = 0; i < gamecontrol.entities.size(); i++){
 			InteractiveObject c = gamecontrol.entities.get(i);
-			if(this.getBottomBounds().intersects(c.getBounds()) || this.getLeftBounds().intersects(c.getBounds()) || this.getRightBounds().intersects(c.getBounds())){
+			if(getBottomBounds().intersects(c.getBounds()) || getLeftBounds().intersects(c.getBounds()) || getRightBounds().intersects(c.getBounds())){
 				switch(c.type){
 				case TrashBag:
 					trashBagCnt ++;
@@ -148,31 +140,29 @@ public class Crabby extends Character{
 				System.out.println("trashbag: " + trashBagCnt + ", hay: " + hayCnt + ", seeds: " + seedCnt + ", compost: " + compCnt);
 			}
 		}
-		if(isJumping){
-			gravity-=0.1;
-			this.setyVel((int)-gravity);
-			if(gravity<=0.0){
-				isJumping = false;
-				isFalling = true;
+		if(isJumping()){
+			jump();
+			if(getGravity()<=0.0){
+				setJumping(false);
+				setFalling(true);
 			}
 		}
-		if(isFalling){
-			if(this.yPos >= 750){
-				this.isGone = true;
+		if(isFalling()){
+			if(getYPos() >= 750){
+				setGone(true);
 			}
-			gravity+=0.1;
-			this.setyVel((int)gravity);
+			fall();
 		}
-		if(isGone){
-			this.yPos = 0;
-			this.isFalling = true;
-			this.die();
-			this.isGone = false;
+		if(isGone()){
+			setYPos(0);
+			setFalling(true);
+			die();
+			setGone(false);
 		}
-		if(isRising){
-			this.setyVel(-5);
-			if(this.yPos <= 200){
-				this.isRising = false;
+		if(isRising()){
+			rise();
+			if(getYPos() <= 200){
+				setRising(false);
 			}
 	}
 	}

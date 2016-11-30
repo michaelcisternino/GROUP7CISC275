@@ -49,7 +49,7 @@ public class Platform extends Block{
 				return;
 			}
 			if (this.xPos == 600){
-				Game.gameControl.crabby.isRising = true;
+				Game.gameControl.crabby.setRising(true);
 				this.yPos -= 5;	
 				return;
 			}
