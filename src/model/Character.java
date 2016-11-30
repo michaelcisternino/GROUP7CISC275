@@ -91,7 +91,7 @@ public abstract class Character {
 		this.lives--;
 	}
 	
-	/*
+	/**
 	 * Removes this character from the game controller's list of entities.
 	 */
 	public void remove(){

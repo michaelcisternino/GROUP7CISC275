@@ -21,22 +21,19 @@ import controller.GameController;
  */
 public abstract class InteractiveObject {
 	
-	public boolean useCorrect = false;
+	private boolean useCorrect = false;
 
-	public int xPos, yPos;
-	public int  xVel, yVel;
+	private int xPos, yPos;
+	private int  xVel, yVel;
 
-	public int width, height;
-	public int colNum; 
+	private int width, height;
+	private int colNum; 
 	
-	public ObjectType type;
+	private ObjectType type;
 	
-	public double gravity = 0.0;
+	private double gravity = 0.0;
 	
-	//public boolean solid;
-	public boolean isJumping = false;
-	public boolean isFalling = true;
-	public boolean isGone = false;
+	private boolean isFalling = true;
 	
 	public GameController gamecontrol;
 	
@@ -81,44 +78,90 @@ public abstract class InteractiveObject {
 	
 	public abstract void update();
 	
+	public void move(){
+		this.yPos+=this.yVel;
+	}
+	
+	public void fall(){
+		this.gravity += 0.1;
+		this.yVel = (int)this.gravity;
+	}
+
+	
 	/**
-	 * Gets the current object's x position.
-	 * @return this.xPos
+	 * Gets the object's width
+	 * @return width
+	 */
+	public int getWidth(){
+		return this.width;
+	}
+	
+	/**
+	 * Set's the object's width
+	 * @param w
+	 */
+	public void setWidth(int w){
+		this.width = w;
+	}
+	
+	/**
+	 * Gets the object's rising status
+	 * @return height
+	 */
+	public int getHeight(){
+		return this.height;
+	}
+	
+	/**
+	 * Set's the object's height
+	 * @param h
+	 */
+	public void setHeight(int h){
+		this.height = h;
+	}
+
+	/**
+	 * Gets the object's x position.
+	 * @return xPos
 	 */
 	public int getXPos(){
 		return this.xPos;
 	}
 	
 	/**
-	 * Gets the current object's y position.
-	 * @return this.yPos
+	 * Set's the object's x position.
+	 * @param x
+	 */
+	public void setXPos(int x){
+		this.xPos = x;
+	}
+	
+	/**
+	 * Gets the object's y position.
+	 * @return yPos
 	 */
 	public int getYPos(){
 		return this.yPos;
 	}
 	
 	/**
-	 * Gets the current object's x velocity.
+	 * Set's the obejct's y position.
+	 * @param y
+	 */
+	public void setYPos(int y){
+		this.yPos = y;
+	}
+	
+	/**
+	 * Gets the object's x velocity.
 	 * @return xVel
 	 */
 	public int getxVel() {
 		return xVel;
 	}
-
-	/**
-	 * Gets the current object's y velocity.
-	 * @return yVel
-	 */
-	public int getyVel() {
-		return yVel;
-	}
-	
-//	public boolean isSolid(){
-//		return this.solid;
-//	}
 	
 	/**
-	 * Sets the current object's x velocity.
+	 * Sets the object's x velocity.
 	 * @param xVel
 	 */
 	public void setxVel(int xVel){
@@ -126,7 +169,15 @@ public abstract class InteractiveObject {
 	}
 
 	/**
-	 * Sets the current object's y velocity.
+	 * Gets the object's y velocity.
+	 * @return yVel
+	 */
+	public int getyVel() {
+		return yVel;
+	}
+
+	/**
+	 * Sets the object's y velocity.
 	 * @param yVel
 	 */
 	public void setyVel(int yVel) {
@@ -134,31 +185,44 @@ public abstract class InteractiveObject {
 	}
 	
 	/**
-	 * Sets the current object's x position.
-	 * @param xPos
+	 * Gets the character's falling status
+	 * @return isFalling
 	 */
-	public void setXPos(int x){
-		this.xPos = x;
+	public boolean isFalling() {
+		return isFalling;
+	}
+
+	/**
+	 * Set's the character's falling status
+	 * @param isFalling
+	 */
+	public void setFalling(boolean isFalling) {
+		this.isFalling = isFalling;
 	}
 	
-	/**
-	 * Sets the current object's y position.
-	 * @param yPos
-	 */
-	public void setYPos(int y){
-		this.yPos = y;
-	}
-	
-//	public void setSolid(boolean s){
-//		this.solid = s;
-//	}
 	
 	/**
-	 * Gets the current object's type.
-	 * @return
+	 * Gets the type of the object.
+	 * @return this.type
 	 */
 	public ObjectType getType(){
 		return this.type;
+	}
+	
+	/**
+	 * Gets the current gravity value of the object.
+	 * @return this.gravity
+	 */
+	public double getGravity() {
+		return gravity;
+	}
+
+	/**
+	 * Sets the object's gravity
+	 * @param gravity
+	 */
+	public void setGravity(double gravity) {
+		this.gravity = gravity;
 	}
 	
 	/**

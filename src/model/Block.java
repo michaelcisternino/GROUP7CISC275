@@ -15,32 +15,22 @@ import controller.GameController;
  */
 public abstract class Block {
 	
-	public int erryXVel;
-	public boolean isFinal = false;
-	public boolean vertMover = false;
-	public boolean horiMover = false;
+	private boolean isFinal = false;
+	private boolean vertMover = false;
+	private boolean horiMover = false;
 	
-	public int xPos, yPos;
-	public int xVel, yVel;
-	public int initX = 0;	// The center of horizontal movement
-	public int initY = 0;	// The center of vertical movement
+	private int xPos, yPos;
+	private int xVel, yVel;
+	private int initX = 0;	// The center of horizontal movement
+	private int initY = 0;	// The center of vertical movement
 
 	
-	public int width, height;
+	private int width, height;
 	
-	public ObjectType type;
-	public RangeType range;
-	
-	public double gravity = 0.0;
-	
-	//public boolean solid;
-	public boolean isJumping = false;
-	public boolean isFalling = true;
-	public boolean isGone = false;
+	private ObjectType type;
+	private RangeType range;
 	
 	public GameController gamecontrol;
-	
-	public boolean solid;
 	
 	/**
 	 * Constructor for block.
@@ -63,7 +53,6 @@ public abstract class Block {
 		this.vertMover = isVert;
 		this.horiMover = isHor;
 		this.gamecontrol = gc;
-		this.erryXVel = 0;
 	}
 	
 	/**
@@ -85,20 +74,110 @@ public abstract class Block {
 	
 	public abstract void update();
 	
+	public void move(){
+		this.xPos+=this.xVel;
+		this.yPos+=this.yVel;
+	}
+	
+	public void rise(){
+		this.yVel = -5;
+	}
+	
 	/**
 	 * Gets the block's x position.
-	 * @return
+	 * @return xPos
 	 */
 	public int getXPos(){
 		return this.xPos;
 	}
 	
 	/**
+	 * Sets the block's x position.
+	 * @param x
+	 */
+	public void setXPos(int x){
+		this.xPos = x;
+	}
+	
+	/**
 	 * Gets the block's y position.
-	 * @return
+	 * @return ypos
 	 */
 	public int getYPos(){
 		return this.yPos;
+	}
+
+	
+	/**
+	 * Sets the block's y position.
+	 * @param y
+	 */
+	public void setYPos(int y){
+		this.yPos = y;
+	}
+	
+	/**
+	 * Gets the block's initial x position
+	 * @return initX
+	 */
+	public int getInitX(){
+		return this.initX;
+	}
+	
+	/**
+	 * Sets the block's initial x position.
+	 * @param x
+	 */
+	public void setInitX(int x){
+		this.initX = x;
+	}
+	
+	/**
+	 * Gets the block's initial y position
+	 * @return initX
+	 */
+	public int getInitY(){
+		return this.initY;
+	}
+	
+	/**
+	 * Sets the block's initial y position.
+	 * @param y
+	 */
+	public void setInitY(int y){
+		this.initY = y;
+	}
+	
+	/**
+	 * Gets the block's width
+	 * @return width
+	 */
+	public int getWidth(){
+		return this.width;
+	}
+	
+	/**
+	 * Set's the block's width
+	 * @param w
+	 */
+	public void setWidth(int w){
+		this.width = w;
+	}
+	
+	/**
+	 * Gets the block's rising status
+	 * @return height
+	 */
+	public int getHeight(){
+		return this.height;
+	}
+	
+	/**
+	 * Set's the block's height
+	 * @param h
+	 */
+	public void setHeight(int h){
+		this.height = h;
 	}
 	
 	/**
@@ -107,26 +186,6 @@ public abstract class Block {
 	 */
 	public int getxVel() {
 		return xVel;
-	}
-
-	/**
-	 * Gets the block's y velocity.
-	 * @return
-	 */
-	public int getyVel() {
-		return yVel;
-	}
-	
-//	public boolean isSolid(){
-//		return this.solid;
-//	}
-	
-	/**
-	 * Gets the block's type.
-	 * @return this.type
-	 */
-	public ObjectType getType(){
-		return this.type;
 	}
 	
 	/**
@@ -138,29 +197,84 @@ public abstract class Block {
 
 	/**
 	 * Gets the block's y velocity.
+	 * @return
+	 */
+	public int getyVel() {
+		return yVel;
+	}
+	
+	/**
+	 * Gets the block's y velocity.
 	 */
 	public void setyVel(int yVel) {
 		this.yVel = yVel;
 	}
 	
 	/**
-	 * Sets the block's x position.
+	 * Gets the block's final status
+	 * @return isFinal
 	 */
-	public void setXPos(int x){
-		this.xPos = x;
+	public boolean isFinal() {
+		return isFinal;
 	}
 	
 	/**
-	 * Sets the block's y position.
+	 * Set's the character's final status
+	 * @param isFinal
 	 */
-	public void setYPos(int y){
-		this.yPos = y;
+	public void setFinal(boolean isFinal) {
+		this.isFinal = isFinal;
 	}
 	
-//	public void setSolid(boolean s){
-//		this.solid = s;
-//	}
+	/**
+	 * Gets the block's vertical status
+	 * @return vertMover
+	 */
+	public boolean isVert() {
+		return vertMover;
+	}
 	
+	/**
+	 * Set's the character's vertical status
+	 * @param isFinal
+	 */
+	public void setVert(boolean isVert) {
+		this.vertMover = isVert;
+	}
+	
+	/**
+	 * Gets the block's horizontal status
+	 * @return horiMover
+	 */
+	public boolean isHor() {
+		return horiMover;
+	}
+	
+	/**
+	 * Set's the character's horizontal status
+	 * @param isHor
+	 */
+	public void setHor(boolean isHor) {
+		this.horiMover = isHor;
+	}
+	
+	/**
+	 * Gets the block's type.
+	 * @return this.type
+	 */
+	public ObjectType getType(){
+		return this.type;
+	}
+	
+	/**
+	 * Gets the range of the block.
+	 * @return range
+	 */
+	public RangeType getRange(){
+		return this.range;
+	}
+	
+
 	/**
 	 * Gets the bounds of the block. Used when determining collisions. Returns a Java Rectangle.
 	 * @return Rectangle

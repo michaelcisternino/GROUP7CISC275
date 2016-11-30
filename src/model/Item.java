@@ -17,7 +17,6 @@ import game.Game;
  */
 public class Item extends InteractiveObject{
 	public boolean isThrown = false;
-	//Color itemCol;
 	/**
 	 * Constructor for items. A switch statement selects the proper image based on the the type.
 	 * @param x
@@ -60,9 +59,11 @@ public class Item extends InteractiveObject{
 	 */
 	@Override
 	public void draw(Graphics g) {
-//		g.setColor(itemCol);
-//		g.fillOval(this.xPos, this.yPos, width, height);
-		g.drawImage(item, this.xPos, this.yPos, width, height, null);
+		g.drawImage(item, getXPos(), getYPos(), getWidth(), getHeight(), null);
+	}
+	
+	public void throwItem(){
+		setxVel(7);
 	}
 
 	/**
@@ -76,20 +77,20 @@ public class Item extends InteractiveObject{
 	@Override
 	public void update() {
 		if(!isThrown){
-			this.yPos += this.yVel;
+			move();
 			if (Game.gameControl.goingRight == true){
-				this.xPos -= 5;
+				setXPos(getXPos()-5);
 			}
 			else if (Game.gameControl.goingLeft == true){
-				this.xPos += 5;
+				setXPos(getXPos()+5);
 			}
 		}
 		if(isThrown){
-			this.xPos += 7;
+			throwItem();
 			for(int i = 0; i < gamecontrol.entities.size(); i++){
 				InteractiveObject c = gamecontrol.entities.get(i);
-				if(this.getBottomBounds().intersects(c.getBounds()) || this.getLeftBounds().intersects(c.getBounds()) || this.getRightBounds().intersects(c.getBounds())){
-					if(c.checkItem(type)){
+				if(getBottomBounds().intersects(c.getBounds()) || getLeftBounds().intersects(c.getBounds()) || getRightBounds().intersects(c.getBounds())){
+					if(c.checkItem(getType())){
 						gamecontrol.removeObject(c);
 					};
 					gamecontrol.removeItem(this); 
@@ -97,70 +98,32 @@ public class Item extends InteractiveObject{
 				}
 			}
 		}
-			//Screen-left bound
-	//		if(this.xPos <= 0){
-	//			this.xPos = 250*4;
-	//		}
-			//Screen-right bound
-//		if(this.xPos + this.width >= Game.WIDTH*Game.SCALE){
-//			this.xPos = Game.WIDTH*Game.SCALE - this.width;
-//		}
-//		//Screen-bottom bound
-//		if(this.yPos + this.height >= 750){
-//			this.yPos = 750 - this.height;
-//		}
 		for(int i = 0; i < gamecontrol.blocks.size(); i++){
 			Block b = gamecontrol.blocks.get(i);
-//				if(this.getTopBounds().intersects(b.getBounds())){
-//					this.setyVel(0);
-//					if(isJumping){
-//						isJumping = false;
-//						gravity=0.8;
-//						isFalling = true;
-//					}
-//				}
-				if(this.getBottomBounds().intersects(b.getBounds())){
-					this.setyVel(0);
-					if(isFalling) {
-						isFalling = false;
+				if(getBottomBounds().intersects(b.getBounds())){
+					setyVel(0);
+					if(isFalling()) {
+						setFalling(false);
 						}
 				}
-				else if (!isFalling&&!isJumping){
-						isFalling = true;
-						gravity = 0.8;
+				else if (!isFalling()){
+						setFalling(true);
+						setGravity(0.8);
 				}
 				if(this.getLeftBounds().intersects(b.getBounds())){
-					this.setxVel(2);
+					setxVel(2);
 				}
 				if(this.getRightBounds().intersects(b.getBounds())){
-					this.setxVel(-6);
-					//this.xPos = b.getXPos() - b.width;
+					setxVel(-6);
 				}
 		}
-//		if(isJumping){
-//			gravity-=0.1;
-//			this.setyVel((int)-gravity);
-//			if(gravity<=0.0){
-//				isJumping = false;
-//				isFalling = true;
-//			}
-//		}
-//		if(this.xPos <= 0){
-//			this.isGone = true;
-		//}
-		if(isFalling){
-			if(this.yPos >= 750){
-				this.setyVel(0);
+
+		if(isFalling()){
+			if(getYPos() >= 750){
+				setyVel(0);
 			}
-			gravity+=0.1;
-			this.setyVel((int)gravity);
+			fall();
 		}
-//		if(isGone){
-//			this.setyVel(0);
-//			gamecontrol.removeObject(this);
-//			gamecontrol.sendNext = true;
-//		}
-		//this.yPos+=this.yVel;
 		
 	}
 

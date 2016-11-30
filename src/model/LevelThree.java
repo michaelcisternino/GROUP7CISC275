@@ -16,7 +16,7 @@ public class LevelThree {
 	
 	private LinkedList<Block> blocks = new LinkedList<Block>();
 	private LinkedList<InteractiveObject> levelObjects = new LinkedList<InteractiveObject>();
-//	private LinkedList<InteractiveObject> enemies = new LinkedList<InteractiveObject>();
+	
 	/**
 	 * Creates blocks for the level and adds them to the level's list of blocks. Block positions are predetermined.
 	 * The last block in the list is set as the level's final block.
@@ -41,9 +41,8 @@ public class LevelThree {
 		blocks.add(new Platform(5400,200,0,0,300,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 		blocks.add(new Platform(5800,300,0,0,200,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 		blocks.add(new Platform(6300,500,0,0,300,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
-	//	blocks.add(new Platform(500,200,400,30,ObjectType.Wall,Game.gameControl));
 		
-		blocks.getLast().isFinal = true;
+		blocks.getLast().setFinal(true);
 		blocks.add(new Floor(300,Game.HEIGHT*Game.SCALE-100,0,0,1000,100,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 		blocks.add(new Floor(2400,Game.HEIGHT*Game.SCALE-100,0,0,600,100,ObjectType.Wall,RangeType.Short,false, false, Game.gameControl));
 	}
@@ -74,7 +73,6 @@ public class LevelThree {
 		levelObjects.add(new Obstacle(3600,550 ,70,70,ObjectType.DeadSoil,Game.gameControl));
 		levelObjects.add(new Obstacle(4100,250,70,70,ObjectType.EmptySoil,Game.gameControl));
 		levelObjects.add(new Obstacle(4950,300,70,70,ObjectType.EmptySoil,Game.gameControl));
-//		levelObjects.add(new Obstacle(5800,450,70,70,ObjectType.People,Game.gameControl));	
 	}
 	
 	/**

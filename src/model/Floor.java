@@ -29,7 +29,7 @@ public class Floor extends Block{
 	@Override
 	public void draw(Graphics g) {
 		g.setColor(Color.darkGray);
-		g.fillRect(this.xPos,this.yPos,width,height);
+		g.fillRect(getXPos(),getYPos(),getWidth(),getHeight());
 	}
 
 	@Override
@@ -38,10 +38,10 @@ public class Floor extends Block{
 	 */
 	public void update() {
 		if (Game.gameControl.goingRight == true){
-			this.xPos -= 5;
+			setXPos(getXPos()-5);
 		}
 		else if (Game.gameControl.goingLeft == true){
-			this.xPos += 5;
+			setXPos(getXPos()+5);
 		}
 	}
 

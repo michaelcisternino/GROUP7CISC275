@@ -50,7 +50,7 @@ public class Obstacle extends InteractiveObject{
 	@Override
 	public void draw(Graphics g) {
 		g.setColor(obsCol);
-		g.fillRect(this.xPos, this.yPos, width, height);
+		g.fillRect(getXPos(), getYPos(), getWidth(), getHeight());
 	}
 
 	/**
@@ -61,14 +61,8 @@ public class Obstacle extends InteractiveObject{
 	 */
 	@Override
 	public void update() {
-		//this.yPos+=this.yVel;
-		//Screen-left bound
-//		if(this.xPos <= 0){
-//			this.xPos = 250*4;
-//		}
-		//Screen-right bound
 		
-		this.yPos += this.yVel;
+		move();
 		// TODO
 //		if (Game.gameControl.isXMover == true){
 //			if (Game.gameControl.goingRight == true){
@@ -86,62 +80,35 @@ public class Obstacle extends InteractiveObject{
 //		}
 		
 		if (Game.gameControl.goingRight == true){
-			this.xPos -= 5;
+			setXPos(getXPos()-5);
 		}
 		else if (Game.gameControl.goingLeft == true){
-			this.xPos += 5;
+			setXPos(getXPos()+5);
 		}
-//		//Screen-bottom bound
-//		if(this.yPos + this.height >= 750){
-//			this.yPos = 750 - this.height;
-//		}
 		for(int i = 0; i < gamecontrol.blocks.size(); i++){
 			Block b = gamecontrol.blocks.get(i);
-//				if(this.getTopBounds().intersects(b.getBounds())){
-//					this.setyVel(0);
-//					if(isJumping){
-//						isJumping = false;
-//						gravity=0.8;
-//						isFalling = true;
-//					}
-//				}
 				if(this.getBottomBounds().intersects(b.getBounds())){
 					this.setyVel(0);
-					if(isFalling) {
-						isFalling = false;
+					if(isFalling()) {
+						setFalling(false);
 						}
 				}
-				else if (!isFalling&&!isJumping){
-						isFalling = true;
-						gravity = 0.8;
+				else if (!isFalling()){
+						setFalling(true);
+						setGravity(0.8);
 				}
-				if(this.getLeftBounds().intersects(b.getBounds())){
-					this.setxVel(2);
+				if(getLeftBounds().intersects(b.getBounds())){
+					setxVel(2);
 				}
-				if(this.getRightBounds().intersects(b.getBounds())){
-					this.setxVel(-6);
-					//this.xPos = b.getXPos() - b.width;
+				if(getRightBounds().intersects(b.getBounds())){
+					setxVel(-6);
 				}
 		}
-//		if(isJumping){
-//			gravity-=0.1;
-//			this.setyVel((int)-gravity);
-//			if(gravity<=0.0){
-//				isJumping = false;
-//				isFalling = true;
-//			}
-//		}
-		if(isFalling){
-			if(this.yPos >= 750){
-				this.setyVel(0);
+		if(isFalling()){
+			if(getYPos() >= 750){
+				setyVel(0);
 			}
-			gravity+=0.1;
-			this.setyVel((int)gravity);
+			fall();
 		}
-//		if(isGone){
-//			this.setyVel(0);
-//			gamecontrol.removeObject(this);
-//			gamecontrol.sendNext = true;
-//		}
 	}
 }

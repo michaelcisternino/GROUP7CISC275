@@ -58,21 +58,6 @@ public class Game extends JFrame implements Runnable{
 			gameControl = new GameController();
 			addKeyListener(new PlayerKeyHandler());
 			setFocusable(true);
-//			gameControl.addBlock(new Platform(0,200,400,30,ObjectType.Wall,gameControl));
-			itemNum = randItem.nextInt(4);
-			//System.out.println(itemNum);
-//			gameControl.addBlock(new Platform(800,500,400,30,ObjectType.Wall,gameControl));
-//			gameControl.addBlock(new Floor(300,HEIGHT*SCALE-64,800,64,ObjectType.Wall,gameControl));
-//			switch(itemNum){
-//			case 0: gameControl.addEntity(new Item(500,0,30,30,ObjectType.TrashBag, gameControl));
-//			break;
-//			case 1: gameControl.addEntity(new Item(500,0,30,30,ObjectType.Hay, gameControl));
-//			break;
-//			case 2: gameControl.addEntity(new Item(500,0,30,30,ObjectType.Seeds, gameControl));
-//			break;
-//			case 3: gameControl.addEntity(new Item(500,0,30,30,ObjectType.Compost, gameControl));
-//			break;
-//			}
 		}
 		
 		/**
@@ -81,16 +66,11 @@ public class Game extends JFrame implements Runnable{
 		 */
 		private static void initLevelOne(){
 			LevelOne levelOne = new LevelOne();
-			// gameControl.blocks.clear();
 			levelOne.fillBlocks();
 			levelOne.fillObjects();
 			levelOne.fillObstacles();
 			gameControl.entities = levelOne.getObjects();
 			gameControl.blocks = levelOne.getBlocks();
-			//System.out.println("this big" +gameControl.blocks.size());
-			// for(Block b: levelOne.getBlocks()){
-			// gameControl.addBlock(b);
-			// }
 		}
 
 		/**
@@ -100,15 +80,11 @@ public class Game extends JFrame implements Runnable{
 		 */
 		public static void initLevelTwo(){
 			LevelTwo levelTwo = new LevelTwo();
-			//gameControl.blocks.clear();
 			levelTwo.fillBlocks();
 			levelTwo.fillObjects();
 			levelTwo.fillObstacles();
 			gameControl.blocks = levelTwo.getBlocks();
 			gameControl.entities = levelTwo.getObjects();
-			// for(Block b: levelTwo.getBlocks()){
-			// gameControl.addBlock(b);
-			// }
 			gameControl.crabby.setXPos(gameControl.blocks.getFirst().getXPos() + 200);
 			gameControl.crabby.setYPos(gameControl.blocks.getFirst().getYPos() - 100);
 			gameControl.crabby.setFalling(true);
@@ -122,15 +98,11 @@ public class Game extends JFrame implements Runnable{
 		 */
 		public static void initLevelThree(){
 			LevelThree levelThree = new LevelThree();
-			//gameControl.blocks.clear();
 			levelThree.fillBlocks();
 			levelThree.fillObjects();
 			levelThree.fillObstacles();
 			gameControl.entities = levelThree.getObjects();
 			gameControl.blocks = levelThree.getBlocks();
-			// for(Block b: levelTwo.getBlocks()){
-			// gameControl.addBlock(b);
-			// }
 			gameControl.crabby.setXPos(gameControl.blocks.getFirst().getXPos() + 200);
 			gameControl.crabby.setYPos(gameControl.blocks.getFirst().getYPos() - 100);
 			gameControl.crabby.setFalling(true);
@@ -220,26 +192,6 @@ public class Game extends JFrame implements Runnable{
 			}
 		}
 		
-//		public void render(){
-////			BufferStrategy buff = getBufferStrategy();
-////			if(buff == null){
-////				createBufferStrategy(3);
-////				return;
-////			}
-////			g.setColor(Color.CYAN);
-////			g.fillRect(0, 0, getWidth(), getHeight());
-////			g.setColor(Color.LIGHT_GRAY);
-////			g.fillRect(0, getHeight()-200, getWidth(), getHeight());
-////			gameControl.draw(g);
-//			//g.dispose();
-//			//g.
-//		}
-		
-//		public void update(){
-//			
-//		}
-		
-		//Game constructor
 		/**
 		 * Constructor for the game.
 		 * Creates a pane for the game with specified size and creates the view and status bars.
@@ -254,8 +206,6 @@ public class Game extends JFrame implements Runnable{
 			setMinimumSize(size);
 			view = new MainView();
 			status = new Status();
-			//view.add(start);
-			//start.addActionListener(new StartButton());
 			starter = new StartScreen(this);
 			getPane().add(starter, BorderLayout.CENTER);
 			getPane().add(status, BorderLayout.SOUTH);
@@ -274,12 +224,9 @@ public class Game extends JFrame implements Runnable{
 			pane.validate();
 			pane.addKeyListener(new PlayerKeyHandler());
 			this.playing = b;
-			// if(playing){
 			this.startGame();
-			// }
 			level = 1;
 			startNextLevel(level);
-			// this.initLevelOne();
 		}
 		
 		/**
@@ -315,15 +262,6 @@ public class Game extends JFrame implements Runnable{
 			level = n;
 		}
 		
-		class StartButton implements ActionListener{
-			/**
-			 * Listens for the start button being clicked. When it happens, the game is started.
-			 */
-			public void actionPerformed(ActionEvent e) {
-				Game.game.startGame();
-			}
-		}
-		
 		//Main 
 		/**
 		 * Main function for the game. Links the thread and sets visible.
@@ -331,13 +269,11 @@ public class Game extends JFrame implements Runnable{
 		 */
 		public static void main(String[] args) {
 			game = new Game();
-//			JFrame frame = new JFrame(TITLE);;
 			game.pack();
 			game.setResizable(false);
 			game.setLocationRelativeTo(null);
 			game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			game.setVisible(true);
-			//game.startGame();
 		}
 
 		/**

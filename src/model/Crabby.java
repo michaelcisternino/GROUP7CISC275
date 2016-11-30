@@ -106,7 +106,7 @@ public class Crabby extends Character{
 		for(int i = 0; i < gamecontrol.entities.size(); i++){
 			InteractiveObject c = gamecontrol.entities.get(i);
 			if(getBottomBounds().intersects(c.getBounds()) || getLeftBounds().intersects(c.getBounds()) || getRightBounds().intersects(c.getBounds())){
-				switch(c.type){
+				switch(c.getType()){
 				case TrashBag:
 					trashBagCnt ++;
 					gamecontrol.useTrashb = true;

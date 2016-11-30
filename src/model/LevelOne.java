@@ -35,13 +35,11 @@ public class LevelOne {
 		blocks.add(new Platform(5200,200,0,0,300,30,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
 		blocks.add(new Platform(5700,300,0,0,200,30,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
 		blocks.add(new Platform(6200,500,0,0,300,30,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
-	//	blocks.add(new Platform(500,200,400,30,ObjectType.Wall,Game.gameControl));
 		
-		blocks.getLast().isFinal = true;
+		blocks.getLast().setFinal(true);
 		blocks.add(new Floor(300,Game.HEIGHT*Game.SCALE-100,0,0,1000,100,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
 		blocks.add(new Floor(2400,Game.HEIGHT*Game.SCALE-100,0,0,600,100,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
 		blocks.add(new Floor(3000,Game.HEIGHT*Game.SCALE-100,0,0,1000,100,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
-		//Game.gameControl.blocks = blocks;
 	}
 	
 	/**
@@ -69,7 +67,6 @@ public class LevelOne {
 		levelObjects.add(new Obstacle(3600,550 ,70,70,ObjectType.People,Game.gameControl));
 		levelObjects.add(new Obstacle(4100,250,70,70,ObjectType.People,Game.gameControl));
 		levelObjects.add(new Obstacle(4950,300,70,70,ObjectType.People,Game.gameControl));
-//		levelObjects.add(new Obstacle(5800,450,70,70,ObjectType.People,Game.gameControl));	
 	}
 	
 	/**
