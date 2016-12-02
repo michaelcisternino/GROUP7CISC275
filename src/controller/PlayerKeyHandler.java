@@ -92,6 +92,14 @@ public class PlayerKeyHandler implements KeyListener{
 			Game.gameControl.thrownType = ObjectType.Oyster;
 			Game.gameControl.itemThrownC = true;
 			break;
+		case KeyEvent.VK_W:
+			Game.gameControl.thrownType = ObjectType.Trash;
+			Game.gameControl.itemThrownC = true;
+			break;
+		case KeyEvent.VK_R:
+			Game.gameControl.thrownType = ObjectType.Recycling;
+			Game.gameControl.itemThrownC = true;
+			break;
 		}
 	}
 	//want to do a throw method so we can throw objects at the obstacles instead of just pausing it, and if obstacle hits then you lose health or some shit.
