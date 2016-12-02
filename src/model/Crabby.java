@@ -16,7 +16,7 @@ import game.Game;
  */
 public class Crabby extends Character{
 	
-	public int trashBagCnt, hayCnt, seedCnt, compCnt, oysterCnt;
+	public int trashBagCnt, hayCnt, seedCnt, compCnt, oysterCnt, trashCnt, recycleCnt;
 	public LinkedList<InteractiveObject> items = new LinkedList<InteractiveObject>();
 
 	/**
@@ -127,10 +127,20 @@ public class Crabby extends Character{
 					oysterCnt ++;
 					gamecontrol.useOyster = true;
 					break;
+				case Trash:
+					trashCnt ++;
+					gamecontrol.useTrash = true;
+					break;
+				case Recycling:
+					recycleCnt ++;
+					gamecontrol.useRecycling = true;
+					break;
 				case People:
 				case Chemicals:	
 				case EmptySoil:
 				case DeadSoil:
+				case TrashBin:
+				case RecycleBin:
 					System.out.println(this.getLives());
 					this.die();
 					break;
