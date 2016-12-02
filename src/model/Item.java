@@ -49,7 +49,14 @@ public class Item extends InteractiveObject{
 				file = "Final Images/Animals/clam_left_2.png";
 				item = createImage(file);
 				break;
-				
+			case Trash:
+				file = "Final Images/Objects/banana.png";
+				item = createImage(file);
+				break;
+			case Recycling:
+				file = "Final Images/Objects/soda.png";
+				item = createImage(file);
+				break;
 		}
 		// TODO Auto-generated constructor stub
 	}
