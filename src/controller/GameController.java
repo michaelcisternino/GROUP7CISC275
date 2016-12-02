@@ -246,6 +246,24 @@ public class GameController{
 					}
 				}
 				break;
+			case Trash: 
+				if(useTrash){
+					haveItem = true;
+					crabby.trashCnt -= 1;
+					if(crabby.trashCnt == 0){
+						useComp = false;
+					}
+				}
+				break;
+			case Recycling: 
+				if(useRecycling){
+					haveItem = true;
+					crabby.recycleCnt -= 1;
+					if(crabby.recycleCnt == 0){
+						useComp = false;
+					}
+				}
+				break;
 			}
 			if(haveItem){
 				Item thrownItem = new Item(crabby.getXPos(),crabby.getYPos(),30,30,thrownType,this);
