@@ -11,7 +11,6 @@ import controller.GameController;
  * @author Katie Black
  * @author Michael Cisternino
  * @author Nick Hoffman
- *
  */
 public abstract class Block {
 	
@@ -34,12 +33,17 @@ public abstract class Block {
 	
 	/**
 	 * Constructor for block.
-	 * @param x
-	 * @param y
-	 * @param width
-	 * @param height
-	 * @param t
-	 * @param gc
+	 * @param x The block's x position.
+	 * @param y The block's y position.
+	 * @param initx The block's initial x position.
+	 * @param inity The block's initial y position.
+	 * @param width The width of the block.
+	 * @param height The height of the block.
+	 * @param t The type of the object.
+	 * @param r The distance the block will move: none, short, medium, long.
+	 * @param isVert If the block will move vertically when it moves.
+	 * @param isHor If the block will move horizontally when it moves. 
+	 * @param gc The game controller.
 	 */
 	public Block(int x, int y, int initx, int inity, int width, int height, ObjectType t, RangeType r, Boolean isVert, Boolean isHor, GameController gc){
 		this.xPos = x;
@@ -64,7 +68,7 @@ public abstract class Block {
 	
 	/**
 	 * Adds a block to the game controller list of blocks.
-	 * @param b
+	 * @param b The block to be added to the list of blocks.
 	 */
 	public void addBlock(Block b){
 		gamecontrol.blocks.add(b);
@@ -74,34 +78,37 @@ public abstract class Block {
 	
 	public abstract void update();
 	
+	/**
+	 * Updates the block's position based on the current x and y velocities.
+	 */
 	public void move(){
 		this.xPos+=this.xVel;
 		this.yPos+=this.yVel;
 	}
 	
+	/**
+	 * When called, sets the block's y velocity to -5 so it will rise.
+	 */
 	public void rise(){
 		this.yVel = -5;
 	}
 	
 	/**
-	 * Gets the block's x position.
-	 * @return xPos
+	 * @return xPos The block's x position.
 	 */
 	public int getXPos(){
 		return this.xPos;
 	}
 	
 	/**
-	 * Sets the block's x position.
-	 * @param x
+	 * @param x Sets the block's x position.
 	 */
 	public void setXPos(int x){
 		this.xPos = x;
 	}
 	
 	/**
-	 * Gets the block's y position.
-	 * @return ypos
+	 * @return yPos The block's y position.
 	 */
 	public int getYPos(){
 		return this.yPos;
@@ -109,166 +116,147 @@ public abstract class Block {
 
 	
 	/**
-	 * Sets the block's y position.
-	 * @param y
+	 * @param y Sets the block's y position.
 	 */
 	public void setYPos(int y){
 		this.yPos = y;
 	}
 	
 	/**
-	 * Gets the block's initial x position
-	 * @return initX
+	 * @return initX The block's initial x position.
 	 */
 	public int getInitX(){
 		return this.initX;
 	}
 	
 	/**
-	 * Sets the block's initial x position.
-	 * @param x
+	 * @param x The block's initial x position.
 	 */
 	public void setInitX(int x){
 		this.initX = x;
 	}
 	
 	/**
-	 * Gets the block's initial y position
-	 * @return initX
+	 * @return inity The block's initial y position.
 	 */
 	public int getInitY(){
 		return this.initY;
 	}
 	
 	/**
-	 * Sets the block's initial y position.
-	 * @param y
+	 * @param y Sets the block's initial y position.
 	 */
 	public void setInitY(int y){
 		this.initY = y;
 	}
 	
 	/**
-	 * Gets the block's width
-	 * @return width
+	 * @return width The block's width.
 	 */
 	public int getWidth(){
 		return this.width;
 	}
 	
 	/**
-	 * Set's the block's width
-	 * @param w
+	 * @param w Sets the block's width.
 	 */
 	public void setWidth(int w){
 		this.width = w;
 	}
 	
 	/**
-	 * Gets the block's rising status
-	 * @return height
+	 * @return height The block's height.
 	 */
 	public int getHeight(){
 		return this.height;
 	}
 	
 	/**
-	 * Set's the block's height
-	 * @param h
+	 * @param h Sets the block's height.
 	 */
 	public void setHeight(int h){
 		this.height = h;
 	}
 	
 	/**
-	 * Gets the block's x velocity.
-	 * @return
+	 * @return xVel The block's x velocity.
 	 */
 	public int getxVel() {
 		return xVel;
 	}
 	
 	/**
-	 * Sets the block's x velocity.
+	 * @param xVel Sets the block's x velocity.
 	 */
 	public void setxVel(int xVel){
 		this.xVel = xVel;
 	}
 
 	/**
-	 * Gets the block's y velocity.
-	 * @return
+	 * @return yVel The block's y velocity.
 	 */
 	public int getyVel() {
 		return yVel;
 	}
 	
 	/**
-	 * Gets the block's y velocity.
+	 * @param yVel Sets the block's y velocity.
 	 */
 	public void setyVel(int yVel) {
 		this.yVel = yVel;
 	}
 	
 	/**
-	 * Gets the block's final status
-	 * @return isFinal
+	 * @return isFinal The block's final status.
 	 */
 	public boolean isFinal() {
 		return isFinal;
 	}
 	
 	/**
-	 * Set's the character's final status
-	 * @param isFinal
+	 * @param isFinal Sets the block's final status.
 	 */
 	public void setFinal(boolean isFinal) {
 		this.isFinal = isFinal;
 	}
 	
 	/**
-	 * Gets the block's vertical status
-	 * @return vertMover
+	 * @return vertMover The block's vertical movement status.
 	 */
 	public boolean isVert() {
 		return vertMover;
 	}
 	
 	/**
-	 * Set's the character's vertical status
-	 * @param isFinal
+	 * @param isVert Sets the block's vertical movement status.
 	 */
 	public void setVert(boolean isVert) {
 		this.vertMover = isVert;
 	}
 	
 	/**
-	 * Gets the block's horizontal status
-	 * @return horiMover
+	 * @return horiMover The block's horizontal movement status.
 	 */
 	public boolean isHor() {
 		return horiMover;
 	}
 	
 	/**
-	 * Set's the character's horizontal status
-	 * @param isHor
+	 * @param isHor Sets the character's horizontal status.
 	 */
 	public void setHor(boolean isHor) {
 		this.horiMover = isHor;
 	}
 	
 	/**
-	 * Gets the block's type.
-	 * @return this.type
+	 * @return type The block's type.
 	 */
 	public ObjectType getType(){
 		return this.type;
 	}
 	
 	/**
-	 * Gets the range of the block.
-	 * @return range
+	 * @return range The range of the block.
 	 */
 	public RangeType getRange(){
 		return this.range;
@@ -276,40 +264,40 @@ public abstract class Block {
 	
 
 	/**
-	 * Gets the bounds of the block. Used when determining collisions. Returns a Java Rectangle.
-	 * @return Rectangle
+	 * Gets the bounds of the block. Used when determining collisions.
+	 * @return Rectangle A rectangle containing the bounds of the block.
 	 */
 	public Rectangle getBounds() {
 		return new Rectangle(this.getXPos(), this.getYPos(), width, height);
 	}
 	
 	/**
-	 * Gets the top bounds of the block. Used when determining collisions. Returns a Java Rectangle.
-	 * @return Rectangle
+	 * Gets the top bounds of the block. Used when determining collisions.
+	 * @return Rectangle A rectangle containing the top bounds of the block.
 	 */
 	public Rectangle getTopBounds(){
 		return new Rectangle(this.getXPos()+10,this.getYPos(), width-20, 5);
 	}
 	
 	/**
-	 * Gets the bottom bounds of the block. Used when determining collisions. Returns a Java Rectangle.
-	 * @return Rectangle
+	 * Gets the bottom bounds of the block. Used when determining collisions.
+	 * @return Rectangle A rectangle containing the bottom bounds of the block.
 	 */
 	public Rectangle getBottomBounds(){
 		return new Rectangle(this.getXPos()+10,this.getYPos()+height-5, width-20, 5);
 	}
 	
 	/**
-	 * Gets the left bounds of the block. Used when determining collisions. Returns a Java Rectangle.
-	 * @return Rectangle
+	 * Gets the left bounds of the block. Used when determining collisions.
+	 * @return Rectangle A rectangle containing the left bounds of the block.
 	 */
 	public Rectangle getLeftBounds(){
 		return new Rectangle(this.getXPos(),this.getYPos()+10, 5, height-20);
 	}
 	
 	/**
-	 * Gets the right bounds of the block. Used when determining collisions. Returns a Java Rectangle.
-	 * @return Rectangle
+	 * Gets the right bounds of the block. Used when determining collisions.
+	 * @return Rectangle A rectangle containing the right bounds of the block.
 	 */
 	public Rectangle getRightBounds(){
 		return new Rectangle(this.getXPos()+width-5,this.getYPos()+10, 5, height-20);

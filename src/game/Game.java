@@ -27,7 +27,6 @@ import view.MainView;
  * @author Katie Black
  * @author Michael Cisternino
  * @author Nick Hoffman
- *
  */
 public class Game extends JFrame implements Runnable{
 
@@ -215,7 +214,7 @@ public class Game extends JFrame implements Runnable{
 		 * Sets the game playing status.
 		 * When the start button is clicked, it is removed from the view. The main game is added to the view and the game is started.
 		 * A key listener is added to the pane and level is set to one. The level is passed to StartNextLevel.
-		 * @param b
+		 * @param b Sets the boolean playing to the boolean b.
 		 */
 		public void setPlaying(boolean b){
 			this.getContentPane().remove(starter);
@@ -231,7 +230,7 @@ public class Game extends JFrame implements Runnable{
 		
 		/**
 		 * Switch statement to select which level to initialize. Calls the chosen level.
-		 * @param level
+		 * @param level Integer to initialize the corresponding level.
 		 */
 		public static void startNextLevel(int level){
 			switch(level){
@@ -248,7 +247,7 @@ public class Game extends JFrame implements Runnable{
 
 		/**
 		 * Gets the current level.
-		 * @return level
+		 * @return level The current level.
 		 */
 		public static int getLevel(){
 			return level;
@@ -256,7 +255,7 @@ public class Game extends JFrame implements Runnable{
 		
 		/**
 		 * Sets the level to the given int.
-		 * @param n
+		 * @param n Integer corresponding to the level to be set to.
 		 */
 		public static void setLevel(int n){
 			level = n;
@@ -278,7 +277,7 @@ public class Game extends JFrame implements Runnable{
 
 		/**
 		 * Gets the pane container.
-		 * @return pane
+		 * @return pane The container pane for the game.
 		 */
 		public static Container getPane() {
 			return pane;
@@ -286,7 +285,7 @@ public class Game extends JFrame implements Runnable{
 
 		/**
 		 * Sets the pane to the given container.
-		 * @param pane
+		 * @param pane A container to set the game pane to.
 		 */
 		public void setPane(Container pane) {
 			this.pane = pane;

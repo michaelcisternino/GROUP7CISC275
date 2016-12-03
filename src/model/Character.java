@@ -45,12 +45,12 @@ public abstract class Character {
 	
 	/**
 	 * Constructor for character.
-	 * @param x
-	 * @param y
-	 * @param width
-	 * @param height
-	 * @param t
-	 * @param gamecontrol
+	 * @param x The character's x position.
+	 * @param y The character's y position.
+	 * @param width The width of the character.
+	 * @param height The height of the character.
+	 * @param t The type of the character.
+	 * @param gamecontrol The game controller.
 	 */
 	public Character(int x, int y, int width, int height, ObjectType t, GameController gamecontrol){
 		this.xPos = x;
@@ -65,21 +65,33 @@ public abstract class Character {
 	
 	public abstract void update();
 	
+	/**
+	 * Updates the character's position based on the current x and y velocities.
+	 */
 	public void move(){
 		this.xPos+=this.xVel;
 		this.yPos+=this.yVel;
 	}
 	
+	/**
+	 * Updates the character's current gravity level and then updates the current y velocity to make the character rise.
+	 */
 	public void jump(){
 		this.gravity -= 0.1;
 		this.yVel = -(int)this.gravity;
 	}
 	
+	/**
+	 * Updates the character's current gravity level and then updates the current y velocity to make the character fall.
+	 */
 	public void fall(){
 		this.gravity += 0.1;
 		this.yVel = (int)this.gravity;
 	}
 	
+	/**
+	 * When called, sets the character's y velocity to -5 so it will rise.
+	 */
 	public void rise(){
 		this.yVel = -5;
 	}
@@ -99,184 +111,164 @@ public abstract class Character {
 	}
 	
 	/**
-	 * Adds a character to the game controller's list of entities.
-	 * @param go
+	 * Adds an item to the game controller's list of entities.
+	 * @param go The item to be added to the list of entities.
 	 */
 	public void addObject(Item go){
 		gamecontrol.entities.add(go);
 	}
 	
 	/**
-	 * Gets the number of lives the character has.
-	 * @return lives
+	 * @return lives The number of lives the character has.
 	 */
 	public int getLives(){
 		return lives;
 	}
 	
 	/**
-	 * Sets the number of lives the character has.
-	 * @param l
+	 * @param l The number of lives the character has.
 	 */
 	public void setLives(int l){
 		this.lives = l;
 	}
 	
 	/**
-	 * Gets the character's jumping status
-	 * @return isJumping
+	 * @return isJumping The character's jumping status.
 	 */
 	public boolean isJumping() {
 		return isJumping;
 	}
 	
 	/**
-	 * Set's the character's jumping status
-	 * @param isJumping
+	 * @param isJumping Sets the character's jumping status.
 	 */
 	public void setJumping(boolean isJumping) {
 		this.isJumping = isJumping;
 	}
 
 	/**
-	 * Gets the character's falling status
-	 * @return isFalling
+	 * @return isFalling The character's falling status.
 	 */
 	public boolean isFalling() {
 		return isFalling;
 	}
 
 	/**
-	 * Set's the character's falling status
-	 * @param isFalling
+	 * @param isFalling Sets the character's falling status.
 	 */
 	public void setFalling(boolean isFalling) {
 		this.isFalling = isFalling;
 	}
 
 	/**
-	 * Returns true if character is off screen, false if not
-	 * @return isGone
+	 * Returns true if character is off screen, false if not.
+	 * @return isGone If the character is off-screen.
 	 */
 	public boolean isGone() {
 		return isGone;
 	}
 
 	/**
-	 * Set's the character's gone status
-	 * @param isGone
+	 * @param isGone Sets the character's gone status.
 	 */
 	public void setGone(boolean isGone) {
 		this.isGone = isGone;
 	}
 
 	/**
-	 * Gets the character's rising status
-	 * @return isRising
+	 * @return isRising The character's rising status.
 	 */
 	public boolean isRising() {
 		return isRising;
 	}
 
 	/**
-	 * Set's the character's rising status
-	 * @param isRising
+	 * @param isRising Sets the character's rising status.
 	 */
 	public void setRising(boolean isRising) {
 		this.isRising = isRising;
 	}
 	
 	/**
-	 * Gets the character's width
-	 * @return width
+	 * @return width The character's width.
 	 */
 	public int getWidth(){
 		return this.width;
 	}
 	
 	/**
-	 * Set's the character's width
-	 * @param w
+	 * @param w Sets the character's width.
 	 */
 	public void setWidth(int w){
 		this.width = w;
 	}
 	
 	/**
-	 * Gets the character's rising status
-	 * @return height
+	 * @return height The character's height.
 	 */
 	public int getHeight(){
 		return this.height;
 	}
 	
 	/**
-	 * Set's the character's height
-	 * @param h
+	 * @param h Sets the character's height.
 	 */
 	public void setHeight(int h){
 		this.height = h;
 	}
 
 	/**
-	 * Gets the character's x position.
-	 * @return xPos
+	 * @return xPos The character's x position.
 	 */
 	public int getXPos(){
 		return this.xPos;
 	}
 	
 	/**
-	 * Set's the character's x position.
-	 * @param x
+	 * @param x Sets the character's x position.
 	 */
 	public void setXPos(int x){
 		this.xPos = x;
 	}
 	
 	/**
-	 * Gets the character's y position.
-	 * @return yPos
+	 * @return yPos The character's y position.
 	 */
 	public int getYPos(){
 		return this.yPos;
 	}
+
 	
 	/**
-	 * Set's the character's y position.
-	 * @param y
+	 * @param y Sets the character's y position.
 	 */
 	public void setYPos(int y){
 		this.yPos = y;
 	}
 	
 	/**
-	 * Gets the character's x velocity.
-	 * @return xVel
+	 * @return xVel The character's x velocity.
 	 */
 	public int getxVel() {
 		return xVel;
 	}
 	
 	/**
-	 * Sets the character's x velocity.
-	 * @param xVel
+	 * @param xVel Sets the character's x velocity.
 	 */
 	public void setxVel(int xVel){
 		this.xVel = xVel;
 	}
 
 	/**
-	 * Gets the character's y velocity.
-	 * @return yVel
+	 * @return yVel The character's y velocity.
 	 */
 	public int getyVel() {
 		return yVel;
 	}
-
+	
 	/**
-	 * Sets the character's y velocity.
-	 * @param yVel
+	 * @param yVel Sets the character's y velocity.
 	 */
 	public void setyVel(int yVel) {
 		this.yVel = yVel;
@@ -284,64 +276,61 @@ public abstract class Character {
 	
 	
 	/**
-	 * Gets the type of the objects.
-	 * @return this.type
+	 * @return type The type of the object.
 	 */
 	public ObjectType getType(){
 		return this.type;
 	}
 	
 	/**
-	 * Gets the current gravity value of the objects.
-	 * @return this.gravity
+	 * @return gravity The current gravity value of the character.
 	 */
 	public double getGravity() {
 		return gravity;
 	}
 
 	/**
-	 * Sets the character's gravity
-	 * @param gravity
+	 * @param gravity Sets the character's gravity.
 	 */
 	public void setGravity(double gravity) {
 		this.gravity = gravity;
 	}
 
 	/**
-	 * Gets the bounds of the block. Used when determining collisions. Returns a Java Rectangle.
-	 * @return Rectangle
+	 * Gets the bounds of the character. Used when determining collisions.
+	 * @return Rectangle A rectangle containing the bounds of the character.
 	 */
 	public Rectangle getBounds() {
 		return new Rectangle(this.getXPos(), this.getYPos(), width, height);
 	}
 	
 	/**
-	 * Gets the top bounds of the block. Used when determining collisions. Returns a Java Rectangle.
-	 * @return Rectangle
+	 * Gets the top bounds of the character. Used when determining collisions.
+	 * @return Rectangle A rectangle containing the top bounds of the character.
 	 */
 	public Rectangle getTopBounds(){
 		return new Rectangle(this.getXPos()+10,this.getYPos(), width-20, 5);
 	}
 	
 	/**
-	 * Gets the bottom bounds of the block. Used when determining collisions. Returns a Java Rectangle.
-	 * @return Rectangle
+	 * Gets the bottom bounds of the character. Used when determining collisions.
+	 * @return Rectangle A rectangle containing the bottom bounds of the character.
 	 */
 	public Rectangle getBottomBounds(){
 		return new Rectangle(this.getXPos()+10,this.getYPos()+height-5, width-20, 5);
 	}
 	
 	/**
-	 * Gets the left bounds of the block. Used when determining collisions. Returns a Java Rectangle.
-	 * @return Rectangle
+	 * Gets the left bounds of the character. Used when determining collisions.
+	 * @return Rectangle A rectangle containing the left bounds of the character.
 	 */
 	public Rectangle getLeftBounds(){
 		return new Rectangle(this.getXPos(),this.getYPos()+10, 5, height-20);
 	}
 	
 	/**
-	 * Gets the right bounds of the block. Used when determining collisions. Returns a Java Rectangle.
-	 * @return Rectangle
+	 * Gets the right bounds of the character. Used when determining collisions.
+	 * @return Rectangle A rectangle containing the right bounds of the character.
 	 */
 	public Rectangle getRightBounds(){
 		return new Rectangle(this.getXPos()+width-5,this.getYPos()+10, 5, height-20);
@@ -349,8 +338,8 @@ public abstract class Character {
 	
 	/**
 	 * Attempts to load an image given a filename.
-	 * @param file
-	 * @return img
+	 * @param file The filename to be loaded.
+	 * @return img The image loaded from the file.
 	 */
 	public BufferedImage createImage(String file) {
 		BufferedImage img;

@@ -2,6 +2,7 @@ package model;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 import controller.GameController;
 import game.Game;
@@ -16,15 +17,16 @@ import game.Game;
  *
  */
 public class Item extends InteractiveObject{
-	public boolean isThrown = false;
+	boolean isThrown = false;
+	BufferedImage item;
 	/**
 	 * Constructor for items. A switch statement selects the proper image based on the the type.
-	 * @param x
-	 * @param y
-	 * @param width
-	 * @param height
-	 * @param t
-	 * @param gamecontrol
+	 * @param x The item x position.
+	 * @param y The item y position.
+	 * @param width The width of the item.
+	 * @param height The height of the item.
+	 * @param t The type of the item.
+	 * @param gamecontrol The game controller.
 	 */
 	public Item(int x, int y, int width, int height, ObjectType t, GameController gamecontrol) {
 		super(x, y, width, height, t, gamecontrol);
@@ -63,12 +65,16 @@ public class Item extends InteractiveObject{
 
 	/**
 	 * Draws the item based on the parameters.
+	 * @param g The graphics to be drawn on.
 	 */
 	@Override
 	public void draw(Graphics g) {
 		g.drawImage(item, getXPos(), getYPos(), getWidth(), getHeight(), null);
 	}
 	
+	/**
+	 * Throws the item. The thrown item has its x velocity set to 7.
+	 */
 	public void throwItem(){
 		setxVel(7);
 	}

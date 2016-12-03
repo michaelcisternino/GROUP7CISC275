@@ -22,7 +22,6 @@ import view.MainView;
  * @author Katie Black
  * @author Michael Cisternino
  * @author Nick Hoffman
- *
  */
 public class StartScreen extends JPanel{
 
@@ -44,7 +43,7 @@ public class StartScreen extends JPanel{
 //
 	/**
 	 * Constructor for the start screen. Sets the background, draws a nice border, and adds a button with an ActionListener.
-	 * @param game
+	 * @param game The game using the start screen.
 	 */
 	public StartScreen(Game game){
 		setBackground(Color.BLACK);
@@ -61,7 +60,7 @@ public class StartScreen extends JPanel{
 		/**
 		 * Constructor for the starter actionlistener.
 		 * Takes in a game.
-		 * @param g
+		 * @param g The game that will use the starter.
 		 */
 		Starter(Game g){
 			this.g = g;
@@ -69,6 +68,7 @@ public class StartScreen extends JPanel{
 		
 		/**
 		 * Action listener calls DoIt().
+		 * @param e The action being performed.
 		 */
 		public void actionPerformed(ActionEvent e) {
 			DoIt();

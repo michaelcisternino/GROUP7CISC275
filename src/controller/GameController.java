@@ -26,7 +26,6 @@ import model.Item;
  * @author Katie Black
  * @author Michael Cisternino
  * @author Nick Hoffman
- *
  */
 public class GameController{
 	
@@ -55,7 +54,7 @@ public class GameController{
 	}
 	/**
 	 * Draws objects on the screen. Draws blocks, the entities, and the thrown items.	
-	 * @param g
+	 * @param g Graphics passed in to be drawn.
 	 */
 	public void draw(Graphics g) {
 		crabby.draw(g);
@@ -78,7 +77,7 @@ public class GameController{
 	}
 	/**
 	 * Adds an interactive object to the list of entities.
-	 * @param g
+	 * @param g The object to be added to the list of entities.
 	 */
 	public void addEntity(InteractiveObject g){
 		entities.add(g);
@@ -86,7 +85,7 @@ public class GameController{
 	
 	/**
 	 * Removes the given interactive object from the list of entities.
-	 * @param g
+	 * @param g The object to be removed from the list of entities.
 	 */
 	public void removeObject(InteractiveObject g){
 		entities.remove(g);
@@ -94,7 +93,7 @@ public class GameController{
 	
 	/**
 	 * Removes the given block from the list of blocks.
-	 * @param b
+	 * @param b The block to be removed from the list of blocks.
 	 */
 	public void removeBlock(Block b){
 		blocks.remove(b);
@@ -102,7 +101,7 @@ public class GameController{
 	
 	/**
 	 * Adds a block to the list of blocks.
-	 * @param b
+	 * @param b The block to be added to the list of blocks.
 	 */
 	public void addBlock(Block b){
 		blocks.add(b);
@@ -110,7 +109,7 @@ public class GameController{
 	
 	/**
 	 * Adds an item to the list of items.
-	 * @param i
+	 * @param i The item to be added to the list of items.
 	 */
 	public void addItem(Item i){
 		thrownItems.add(i);
@@ -118,7 +117,7 @@ public class GameController{
 	
 	/**
 	 * Removes the given item from the list of items.
-	 * @param i
+	 * @param i The item to be removed from the list of items.
 	 */
 	public void removeItem(Item i){
 		thrownItems.remove(i);

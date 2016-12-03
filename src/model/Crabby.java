@@ -12,7 +12,6 @@ import game.Game;
  * @author Katie Black
  * @author Michael Cisternino
  * @author Nick Hoffman
- *
  */
 public class Crabby extends Character{
 	
@@ -21,12 +20,12 @@ public class Crabby extends Character{
 
 	/**
 	 * Constructor for crabby. The image file containing the crab is defined in here.
-	 * @param x
-	 * @param y
-	 * @param width
-	 * @param height
-	 * @param t
-	 * @param gamecontrol
+	 * @param x The character's x position.
+	 * @param y The character's y position.
+	 * @param width The width of the character.
+	 * @param height The height of the character.
+	 * @param t The type of the character.
+	 * @param gamecontrol The game controller.
 	 */
 	public Crabby(int x, int y, int width, int height, ObjectType t, GameController gamecontrol) {
 		super(x, y, width, height, t, gamecontrol);
@@ -36,6 +35,7 @@ public class Crabby extends Character{
 
 	/**
 	 * Draws the image of the crab based on the parameters.
+	 * @param g The graphics to be drawn on.
 	 */
 	@Override
 	public void draw(Graphics g) {
