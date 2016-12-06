@@ -56,13 +56,13 @@ public class LevelThree {
 	 */
 	public void fillObjects(){
 		// Oysters
-		levelObjects.add(new Item(1700,150,40,30,ObjectType.Hay,Game.gameControl));
-		levelObjects.add(new Item(2800,250,40,30,ObjectType.Hay,Game.gameControl));
-		levelObjects.add(new Item(3300,200,40,30,ObjectType.Compost,Game.gameControl));
-		levelObjects.add(new Item(3800,450,40,30,ObjectType.Compost,Game.gameControl));
-		levelObjects.add(new Item(4300,350,40,30,ObjectType.Compost,Game.gameControl));
-		levelObjects.add(new Item(4800,350,40,30,ObjectType.Seeds,Game.gameControl));
-		levelObjects.add(new Item(5800,450,40,30,ObjectType.Seeds,Game.gameControl));		
+		levelObjects.add(new Item(1700,150, 0, 0, 40,30,ObjectType.Hay, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Item(2800,250, 0, 0, 40,30,ObjectType.Hay, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Item(3300,200, 0, 0, 40,30,ObjectType.Compost, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Item(3800,450, 0, 0, 40,30,ObjectType.Compost, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Item(4300,350, 0, 0, 40,30,ObjectType.Compost, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Item(4800,350, 0, 0, 40,30,ObjectType.Seeds, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Item(5800,450, 0, 0, 40,30,ObjectType.Seeds, RangeType.Long, false, false, Game.gameControl));		
 	}
 	
 	/**
@@ -70,12 +70,12 @@ public class LevelThree {
 	 * Level three uses chemicals, dead soil, and empty soil as obstacles.
 	 */
 	public void fillObstacles(){
-		levelObjects.add(new Obstacle(2300,150,70,70,ObjectType.Chemicals,Game.gameControl));
-		levelObjects.add(new Obstacle(3000,550,70,70,ObjectType.Chemicals,Game.gameControl));
-		levelObjects.add(new Obstacle(3300,400,70,70,ObjectType.DeadSoil,Game.gameControl));
-		levelObjects.add(new Obstacle(3600,550 ,70,70,ObjectType.DeadSoil,Game.gameControl));
-		levelObjects.add(new Obstacle(4100,250,70,70,ObjectType.EmptySoil,Game.gameControl));
-		levelObjects.add(new Obstacle(4950,300,70,70,ObjectType.EmptySoil,Game.gameControl));
+		levelObjects.add(new Obstacle(2300,150, 0, 0, 70,70,ObjectType.Chemicals, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Obstacle(3000,550, 0, 0, 70,70,ObjectType.Chemicals, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Obstacle(3300,400, 0, 0, 70,70,ObjectType.DeadSoil, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Obstacle(3600,550 , 0, 0, 70,70,ObjectType.DeadSoil, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Obstacle(4100,250, 0, 0, 70,70,ObjectType.EmptySoil, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Obstacle(4950,300, 0, 0, 70,70,ObjectType.EmptySoil, RangeType.Long, false, false, Game.gameControl));
 	}
 	
 	/**
