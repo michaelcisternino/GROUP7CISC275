@@ -57,6 +57,11 @@ public class GameController{
 	 * @param g Graphics passed in to be drawn.
 	 */
 	public void draw(Graphics g) {
+		if (crabby.getLives() == 0){
+			crabby.setLives(5);
+			Game.setLevel(4);
+			Game.game.gameOver();
+		}
 		crabby.draw(g);
 		for(Block b: blocks){
 			b.draw(g);
