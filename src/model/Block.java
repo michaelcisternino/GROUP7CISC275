@@ -20,6 +20,7 @@ import controller.GameController;
 public abstract class Block {
 	
 	private boolean isFinal = false;
+	public boolean isLegend = false;
 	private boolean vertMover = false;
 	private boolean horiMover = false;
 	
