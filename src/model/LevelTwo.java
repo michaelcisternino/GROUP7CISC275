@@ -22,6 +22,9 @@ public class LevelTwo {
 	 * Floors are then created and added to the list.
 	 */
 	public void fillBlocks(){
+		blocks.add(new Floor(1,1,1,1,1,1,ObjectType.Wall,RangeType.Short,false,false,Game.gameControl));
+		blocks.getLast().isLegend = true;
+		
 		blocks.add(new Platform(1200,600,0,-1,300,30,ObjectType.Wall, RangeType.Short, true, false, Game.gameControl));
 		blocks.add(new Platform(1600,400,0,-1,200,30,ObjectType.Wall, RangeType.Mid, true, false, Game.gameControl));
 		blocks.add(new Platform(2000,400,0,-1,400,30,ObjectType.Wall, RangeType.Short, true, false, Game.gameControl));
