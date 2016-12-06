@@ -15,6 +15,7 @@ import model.Crabby;
 //import model.Blocks;
 import model.ObjectType;
 import model.Obstacle;
+import model.RangeType;
 import model.Status;
 import model.Floor;
 import model.InteractiveObject;
@@ -221,7 +222,7 @@ public class GameController{
  				break;
 			}
 			if(haveItem){
-				Item thrownItem = new Item(crabby.getXPos(),crabby.getYPos(),30,30,thrownType,this);
+				Item thrownItem = new Item(crabby.getXPos(),crabby.getYPos(),-1,0,30,30,ObjectType.Oyster,RangeType.None,false,false,Game.gameControl);
 				thrownItem.setThrown(true);
 				addItem(thrownItem);
 			}

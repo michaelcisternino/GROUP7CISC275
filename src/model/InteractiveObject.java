@@ -207,6 +207,69 @@ public abstract class InteractiveObject {
 		this.yVel = yVel;
 	}
 	
+	/**
+	 * @return initX The block's initial x position.
+	 */
+	public int getInitX(){
+		return this.initX;
+	}
+	
+	/**
+	 * @param x The block's initial x position.
+	 */
+	public void setInitX(int x){
+		this.initX = x;
+	}
+	
+	/**
+	 * @return inity The block's initial y position.
+	 */
+	public int getInitY(){
+		return this.initY;
+	}
+	
+	/**
+	 * @param y Sets the block's initial y position.
+	 */
+	public void setInitY(int y){
+		this.initY = y;
+	}
+	
+	/**
+	 * @return vertMover The block's vertical movement status.
+	 */
+	public boolean isVert() {
+		return vertMover;
+	}
+	
+	/**
+	 * @param isVert Sets the block's vertical movement status.
+	 */
+	public void setVert(boolean isVert) {
+		this.vertMover = isVert;
+	}
+	
+	/**
+	 * @return horiMover The block's horizontal movement status.
+	 */
+	public boolean isHor() {
+		return horiMover;
+	}
+	
+	/**
+	 * @param isHor Sets the character's horizontal status.
+	 */
+	public void setHor(boolean isHor) {
+		this.horiMover = isHor;
+	}
+	
+	/**
+	 * @return range The range of the block.
+	 */
+	public RangeType getRange(){
+		return this.range;
+	}
+	
 	
 	/**
 	 * @return type The type of the object.

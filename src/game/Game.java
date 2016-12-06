@@ -8,6 +8,7 @@ import java.awt.image.BufferStrategy;
 import javax.swing.*;
 
 import controller.GameController;
+import controller.MouseInput;
 import controller.PlayerKeyHandler;
 import model.Block;
 import model.Crabby;
@@ -50,7 +51,7 @@ public class Game extends JFrame implements Runnable{
 		private WinScreen winScreen;
 		private MouseListener mi;
 		public static Status status;
-		private static int level = 1;
+		private static int level = 0;
 		private static boolean gameOver = false;
 		
 		/**

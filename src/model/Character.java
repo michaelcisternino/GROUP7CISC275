@@ -11,6 +11,7 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 import controller.GameController;
+import game.Game;
 /**
  * Abstract class for characters.
  * @author Alex Addeo

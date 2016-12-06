@@ -120,9 +120,9 @@ public class PlayerKeyHandler implements KeyListener{
 		case KeyEvent.VK_RIGHT:
 			Game.gameControl.crabby.setxVel(0);
 			break;
-		case KeyEvent.VK_DOWN:
-			Game.gameControl.crabby.setyVel(0);
-			break;
+//		case KeyEvent.VK_DOWN:
+//			Game.gameControl.crabby.setyVel(0);
+//			break;
 		case KeyEvent.VK_UP:
 			Game.gameControl.crabby.setyVel(0);
 			break;
