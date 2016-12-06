@@ -51,29 +51,29 @@ public class LevelOne {
 	 */
 	public void fillObjects(){
 		// Oysters
-		levelObjects.add(new Item(1300,150,40,30,ObjectType.Oyster,Game.gameControl));
-		levelObjects.add(new Item(1500,250,40,30,ObjectType.Oyster,Game.gameControl));
-		levelObjects.add(new Item(2000,200,40,30,ObjectType.Oyster,Game.gameControl));
-		levelObjects.add(new Item(2400,450,40,30,ObjectType.Oyster,Game.gameControl));
-		levelObjects.add(new Item(2800,250,40,30,ObjectType.Oyster,Game.gameControl));
-		levelObjects.add(new Item(3100,350,40,30,ObjectType.Oyster,Game.gameControl));
-		levelObjects.add(new Item(3600,450,40,30,ObjectType.Oyster,Game.gameControl));
-		levelObjects.add(new Item(4000,150,40,30,ObjectType.Oyster,Game.gameControl));
-		levelObjects.add(new Item(4400,200,40,30,ObjectType.Oyster,Game.gameControl));
-		levelObjects.add(new Item(4800,300,40,30,ObjectType.Oyster,Game.gameControl));
-		levelObjects.add(new Item(5300,150,400,30,ObjectType.Oyster,Game.gameControl));
+		levelObjects.add(new Item(1300,150, 0, 0, 40,30,ObjectType.Oyster, RangeType.Short, false, false, Game.gameControl));
+		levelObjects.add(new Item(1500,250, 0, 0, 40,30,ObjectType.Oyster, RangeType.Short, false, false, Game.gameControl));
+		levelObjects.add(new Item(2000,200, 0, 0, 40,30,ObjectType.Oyster, RangeType.Short, false, false, Game.gameControl));
+		levelObjects.add(new Item(2400,450, 0, 0, 40,30,ObjectType.Oyster, RangeType.Short, false, false, Game.gameControl));
+		levelObjects.add(new Item(2800,250, 0, 0, 40,30,ObjectType.Oyster, RangeType.Short, false, false, Game.gameControl));
+		levelObjects.add(new Item(3100,350, 0, 0, 40,30,ObjectType.Oyster, RangeType.Short, false, false, Game.gameControl));
+		levelObjects.add(new Item(3600,450, 0, 0, 40,30,ObjectType.Oyster, RangeType.Short, false, false, Game.gameControl));
+		levelObjects.add(new Item(4000,150, 0, 0, 40,30,ObjectType.Oyster, RangeType.Short, false, false, Game.gameControl));
+		levelObjects.add(new Item(4400,200, 0, 0, 40,30,ObjectType.Oyster, RangeType.Short, false, false, Game.gameControl));
+		levelObjects.add(new Item(4800,300, 0, 0, 40,30,ObjectType.Oyster, RangeType.Short, false, false, Game.gameControl));
+		levelObjects.add(new Item(5300,150, 0, 0, 40,30,ObjectType.Oyster, RangeType.Short, false, false, Game.gameControl));
 	}
 	
 	/**
 	 * Creates obstacles for the level and adds them to the list of obstacles.
 	 */
 	public void fillObstacles(){
-		levelObjects.add(new Obstacle(2300,150,70,70,ObjectType.People,Game.gameControl));
-		levelObjects.add(new Obstacle(3000,550,70,70,ObjectType.People,Game.gameControl));
-		levelObjects.add(new Obstacle(3300,400,70,70,ObjectType.People,Game.gameControl));
-		levelObjects.add(new Obstacle(3600,550 ,70,70,ObjectType.People,Game.gameControl));
-		levelObjects.add(new Obstacle(4100,250,70,70,ObjectType.People,Game.gameControl));
-		levelObjects.add(new Obstacle(4950,300,70,70,ObjectType.People,Game.gameControl));
+		levelObjects.add(new Obstacle(2300,150, 0, 0, 70,70,ObjectType.People, RangeType.Short, false, false, Game.gameControl));
+		levelObjects.add(new Obstacle(3000,550, 0, 0, 70,70,ObjectType.People, RangeType.Short, false, false, Game.gameControl));
+		levelObjects.add(new Obstacle(3300,400, 0, 0, 70,70,ObjectType.People, RangeType.Short, false, false, Game.gameControl));
+		levelObjects.add(new Obstacle(3600,550, 0, 0, 70,70,ObjectType.People, RangeType.Short, false, false, Game.gameControl));
+		levelObjects.add(new Obstacle(4100,250, 0, 0, 70,70,ObjectType.People, RangeType.Short, false, false, Game.gameControl));
+		levelObjects.add(new Obstacle(4950,300, 0, 0, 70,70,ObjectType.People, RangeType.Short, false, false, Game.gameControl));
 	}
 	
 	/**
