@@ -2,6 +2,11 @@ package model;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import controller.GameController;
 /**
@@ -313,5 +318,17 @@ public abstract class Block {
 	 */
 	public Rectangle getRightBounds(){
 		return new Rectangle(this.getXPos()+width-5,this.getYPos()+10, 5, height-20);
+	}
+	
+	public BufferedImage createImage(String file) {
+		BufferedImage img;
+		try{
+			img = ImageIO.read(new File(file));
+			return img;
+		}
+		catch (IOException e){
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

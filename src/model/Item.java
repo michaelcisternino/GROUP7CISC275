@@ -49,6 +49,14 @@ public class Item extends InteractiveObject{
 				file = "Final Images/Animals/clam_left_2.png";
 				item = createImage(file);
 				break;
+			case Trash:
+ 				file = "Final Images/Objects/banana.png";
+ 				item = createImage(file);
+ 				break;
+ 			case Recycling:
+ 				file = "Final Images/Objects/soda.png";
+ 				item = createImage(file);
+ 				break;
 				
 		}
 		// TODO Auto-generated constructor stub
@@ -76,10 +84,18 @@ public class Item extends InteractiveObject{
 	 */
 	@Override
 	public void update() {
+		if(Game.getLevel() == 1){
+			setFalling(false);
+		}
+		move();
 		if(!isThrown){
-			move();
-			if (Game.gameControl.goingRight == true){
+			if(Game.gameControl.goingRight == true){
+				if(Game.getLevel() == 1){
+					setXPos(getXPos() - 1);
+				}
+				else{
 				setXPos(getXPos()-5);
+				}
 			}
 			else if (Game.gameControl.goingLeft == true){
 				setXPos(getXPos()+5);
@@ -117,7 +133,7 @@ public class Item extends InteractiveObject{
 					setxVel(-6);
 				}
 		}
-
+		
 		if(isFalling()){
 			if(getYPos() >= 750){
 				setyVel(0);

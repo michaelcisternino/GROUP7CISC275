@@ -29,19 +29,37 @@ public class Obstacle extends InteractiveObject{
 		super(x, y, width, height, t, gamecontrol);
 		switch(t){
 		case People:
-			this.obsCol = Color.black;
+			file = "Final Images/People and Humanoids/mr_evil.png";
+			item = createImage(file);
 			break;
 		case Chemicals: 
-			this.obsCol = Color.yellow;
+			file = "Final Images/Objects/StormDrain_01.png";
+			item = createImage(file);
 			break;
 		case EmptySoil:
-			this.obsCol = Color.green;
+			file = "Final Images/Plants/sadmilkweed.png";
+			item = createImage(file);
 			break;
 		case DeadSoil:
 			this.obsCol = Color.red;
+			file = "Final Images/Objects/soil.png";
+			item = createImage(file);
 			break;
+		case TrashBin:
+ 			file = "Final Images/Objects/trashcan_open.png";
+ 			item = createImage(file);
+ 			break;
+ 		case RecycleBin:
+ 			file = "Final Images/Objects/recycling.png";
+ 			item = createImage(file);
+ 			break;
+ 		case Erosion:
+ 			file = "Final Images/Environment Misc/no_erosion_icon.png";
+ 			item = createImage(file);
+ 			break;
 		}
 		// TODO Auto-generated constructor stub
+		//fall();
 	}
 
 	/**
@@ -80,7 +98,12 @@ public class Obstacle extends InteractiveObject{
 //		}
 		
 		if (Game.gameControl.goingRight == true){
+			if(Game.getLevel() == 1){
+				setXPos(getXPos() - 1);
+			}
+			else{
 			setXPos(getXPos()-5);
+			}
 		}
 		else if (Game.gameControl.goingLeft == true){
 			setXPos(getXPos()+5);

@@ -37,6 +37,8 @@ public abstract class Character {
 	private boolean isFalling = true;
 	private boolean isGone = false;
 	private boolean isRising = false;
+	private boolean isSwimUp = false;
+	private boolean isSwimDown = false;
 	
 	public GameController gamecontrol;
 	
@@ -68,6 +70,21 @@ public abstract class Character {
 	public void move(){
 		this.xPos+=this.xVel;
 		this.yPos+=this.yVel;
+	}
+	
+	public void swim(){
+		this.xPos+=1;
+		this.yPos+=this.yVel;
+	}
+	
+	public void swimUp(){
+		this.gravity -= 0.1;
+		this.yVel = -(int)this.gravity;
+	}
+	
+	public void swimDown(){
+		this.gravity += 0.1;
+		this.yVel = (int)this.gravity;
 	}
 	
 	public void jump(){
@@ -120,6 +137,38 @@ public abstract class Character {
 	 */
 	public void setLives(int l){
 		this.lives = l;
+	}
+	
+	/**
+	 * Gets the character's jumping status
+	 * @return isJumping
+	 */
+	public boolean isSwimUp() {
+		return isSwimUp;
+	}
+	
+	/**
+	 * Set's the character's jumping status
+	 * @param isJumping
+	 */
+	public void setSwimUp(boolean isSwimUp) {
+		this.isSwimUp = isSwimUp;
+	}
+	
+	/**
+	 * Gets the character's jumping status
+	 * @return isJumping
+	 */
+	public boolean isSwimDown() {
+		return isSwimDown;
+	}
+	
+	/**
+	 * Set's the character's jumping status
+	 * @param isJumping
+	 */
+	public void setSwimDown(boolean isSwimDown) {
+		this.isSwimDown = isSwimDown;
 	}
 	
 	/**

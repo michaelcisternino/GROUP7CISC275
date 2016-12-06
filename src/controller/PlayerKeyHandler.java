@@ -31,70 +31,73 @@ public class PlayerKeyHandler implements KeyListener{
 		int key = e.getKeyCode();
 		switch(key){
 		case KeyEvent.VK_LEFT:
+//			if(Game.getLevel() == 1){
+//				break;
+//			}
+//			else{
 			Game.gameControl.crabby.setxVel(-5);
+//			}
 			break;
 		case KeyEvent.VK_RIGHT:
+//			if(Game.getLevel() == 1){
+//				break;
+//			}
+//			else{
 			Game.gameControl.crabby.setxVel(5);
+//			}
 			break;
 //		case KeyEvent.VK_DOWN:
-//			MainController.gameControl.crabby.setyVel(5);
+//			if(Game.getLevel() == 1){
+//				Game.gameControl.crabby.setSwimDown(true);
+//				Game.gameControl.crabby.setGravity(-3.0);
+//				Game.gameControl.crabby.setyVel(10);
+//			}
+//			else{
+//				break;
+//			}
 //			break;
 		case KeyEvent.VK_UP:
+			if(Game.getLevel() == 1){
+				Game.gameControl.crabby.setSwimUp(true);
+				Game.gameControl.crabby.setGravity(4.0);
+			}
+			else{
 			if(!Game.gameControl.crabby.isJumping()){
 				Game.gameControl.crabby.setJumping(true);
 				Game.gameControl.crabby.setGravity(7.2);
+			}
 			}
 			break;
 		case KeyEvent.VK_T:
 			Game.gameControl.thrownType = ObjectType.TrashBag;
 			Game.gameControl.itemThrownC = true;
-//			thrownT.itemThrown = true;
-//			Game.gameControl.addItem(thrownT);
-//			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(thrownT.getType());
-			//Game.gameControl.crabby.trashBagCnt -= 1;
-
-			//Game.gameControl.unpause();
 			break;
 		case KeyEvent.VK_H:
 			Game.gameControl.thrownType = ObjectType.Hay;
 			Game.gameControl.itemThrownC = true;
-//			Item thrownH = new Item(Game.gameControl.crabby.xPos,Game.gameControl.crabby.yPos,30,30,ObjectType.Hay, Game.gameControl);
-//			thrownH.itemThrown = true;
-//			Game.gameControl.addItem(thrownH);
-//			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(thrownH.getType());
-			//Game.gameControl.crabby.hayCnt -= 1;
-			
-			//Game.gameControl.unpause();
 			break;
 		case KeyEvent.VK_S:
 			Game.gameControl.thrownType = ObjectType.Seeds;
 			Game.gameControl.itemThrownC = true;
-//			Item thrownS = new Item(Game.gameControl.crabby.xPos,Game.gameControl.crabby.yPos,30,30,ObjectType.Seeds, Game.gameControl);
-//			thrownS.itemThrown = true;
-//			Game.gameControl.addItem(thrownS);
-//			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(thrownS.getType());
-			//Game.gameControl.crabby.seedCnt -= 1;
-
-			//Game.gameControl.unpause();
 			break;
 		case KeyEvent.VK_C:
 			Game.gameControl.thrownType = ObjectType.Compost;
 			Game.gameControl.itemThrownC = true;
-//			Item thrownC = new Item(Game.gameControl.crabby.xPos,Game.gameControl.crabby.yPos,30,30,ObjectType.Compost, Game.gameControl);
-//			thrownC.itemThrown = true;
-//			Game.gameControl.addItem(thrownC);
-//			Game.gameControl.entities.get(Game.gameControl.entities.size()-1).useCorrect = Game.gameControl.entities.get(Game.gameControl.entities.size()-1).checkItem(thrownC.getType());
-			//Game.gameControl.crabby.compCnt -= 1;
-
-			//Game.gameControl.unpause();
 			break;
 		case KeyEvent.VK_X:
 			Game.gameControl.thrownType = ObjectType.Oyster;
 			Game.gameControl.itemThrownC = true;
 			break;
+		case KeyEvent.VK_W:
+ 			Game.gameControl.thrownType = ObjectType.Trash;
+ 			Game.gameControl.itemThrownC = true;
+ 			break;
+ 		case KeyEvent.VK_R:
+ 			Game.gameControl.thrownType = ObjectType.Recycling;
+ 			Game.gameControl.itemThrownC = true;
+ 			break;
 		}
 	}
-	//want to do a throw method so we can throw objects at the obstacles instead of just pausing it, and if obstacle hits then you lose health or some shit.
 		
 	
 	public void keyTyped(KeyEvent e) {

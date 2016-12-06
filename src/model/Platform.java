@@ -2,6 +2,7 @@ package model;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Random;
 
 import controller.GameController;
 import game.Game;
@@ -26,13 +27,26 @@ public class Platform extends Block{
 	 */
 	@Override
 	public void draw(Graphics g) {
+	Random ran = new Random();
+	int net = ran.nextInt(2);
 	if (isFinal()){
 	g.setColor(Color.YELLOW);
+	g.fillRect(getXPos(),getYPos(),getWidth(),getHeight());
+	}
+	else if(Game.getLevel() == 1){
+//		System.out.println(net);
+		g.drawImage(createImage("Final Images/Objects/net.png"), getXPos(), getYPos(), null);
+//		switch(net){
+//		case 0: g.drawImage(createImage("Final Images/Objects/net.png"), getXPos(), getYPos(), null);
+//		break;
+//		case 1: g.drawImage(createImage("Final Images/Objects/net(1).png"), getXPos(), getYPos(), null);
+//		break;
+//	}
 	}
 	else{
 	g.setColor(Color.WHITE);
-	}
 	g.fillRect(getXPos(),getYPos(),getWidth(),getHeight());
+	}
 	}
 
 	/**
@@ -56,10 +70,15 @@ public class Platform extends Block{
 			}
 		}
 		if (Game.gameControl.goingRight == true){
+			if(Game.getLevel() == 1){
+				setXPos(getXPos() - 2);
+			}
+			else{
 			setXPos(getXPos() - 5);
+			}
 		}
 		else if (Game.gameControl.goingLeft == true){
-			setXPos(getXPos() + 5);
+			setXPos(getXPos() + 2);
 		}
 		if (isHor()){
 			switch (getRange()) {

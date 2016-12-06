@@ -28,8 +28,13 @@ public class Floor extends Block{
 	 */
 	@Override
 	public void draw(Graphics g) {
+//		if(Game.getLevel() == 1){
+//			g.drawImage(createImage("Final Images/Backgrounds/sand_tile.jpg"), getXPos(), getYPos(), null);
+//		}
+//		else{
 		g.setColor(Color.darkGray);
 		g.fillRect(getXPos(),getYPos(),getWidth(),getHeight());
+//		}
 	}
 
 	@Override
@@ -38,7 +43,12 @@ public class Floor extends Block{
 	 */
 	public void update() {
 		if (Game.gameControl.goingRight == true){
+			if(Game.getLevel() == 1){
+				setXPos(getXPos() - 2);
+			}
+			else{
 			setXPos(getXPos()-5);
+			}
 		}
 		else if (Game.gameControl.goingLeft == true){
 			setXPos(getXPos()+5);

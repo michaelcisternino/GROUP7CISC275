@@ -82,6 +82,11 @@ public abstract class InteractiveObject {
 		this.yPos+=this.yVel;
 	}
 	
+	public void throwItem(){
+		this.xVel = 7;
+		this.xPos += this.xVel;
+	}
+	
 	public void fall(){
 		this.gravity += 0.1;
 		this.yVel = (int)this.gravity;
@@ -310,6 +315,30 @@ public abstract class InteractiveObject {
 				useCorrect = false;
 			}
 			break;
+		case TrashBin:
+ 			if(t == ObjectType.Trash){
+ 				useCorrect = true;
+ 			}
+ 			else{
+ 				useCorrect = false;
+ 			}
+ 			break;
+ 		case RecycleBin:
+ 			if(t == ObjectType.Recycling){
+ 				useCorrect = true;
+ 			}
+ 			else{
+ 				useCorrect = false;
+ 			}
+ 			break;
+ 		case Erosion:
+ 			if(t == ObjectType.Oyster){
+ 				useCorrect = true;
+ 			}
+ 			else{
+ 				useCorrect = false;
+ 			}
+ 			break;
 		}
 		System.out.println(useCorrect);
 		if(useCorrect == true){

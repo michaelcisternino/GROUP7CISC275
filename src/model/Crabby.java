@@ -16,8 +16,8 @@ import game.Game;
  */
 public class Crabby extends Character{
 	
-	public int trashBagCnt, hayCnt, seedCnt, compCnt, oysterCnt;
 	public LinkedList<InteractiveObject> items = new LinkedList<InteractiveObject>();
+	public int trashBagCnt, hayCnt, seedCnt, compCnt, oysterCnt, trashCnt, recycleCnt;
 
 	/**
 	 * Constructor for crabby. The image file containing the crab is defined in here.
@@ -63,7 +63,14 @@ public class Crabby extends Character{
 			//game stop
 			System.exit(0);
 		}
-		move();
+		if(Game.getLevel() == 1){
+			Game.gameControl.goingRight = true;
+//			swim();
+			setFalling(false);
+		}
+//		else{
+			move();
+//		}
 		//Screen-left bound
 		if(getXPos() <= Game.WIDTH){
 			setXPos(Game.WIDTH + 1);
@@ -90,9 +97,14 @@ public class Crabby extends Character{
 				if(isFalling()) {
 					setFalling(false);
 					}
-			}else if (!isFalling()&&!isJumping()){
+			}else if (!isFalling()&&!isJumping()&&Game.getLevel()!=1){
+					if(Game.getLevel() == 1){
+						break;
+					}
+					else{
 					setFalling(true);
 					setGravity(0.8);
+					}
 			}
 			if(getLeftBounds().intersects(b.getBounds())){
 				setxVel(0);
@@ -127,10 +139,20 @@ public class Crabby extends Character{
 					oysterCnt ++;
 					gamecontrol.useOyster = true;
 					break;
+				case Trash:
+ 					trashCnt ++;
+ 					gamecontrol.useTrash = true;
+ 					break;
+ 				case Recycling:
+ 					recycleCnt ++;
+ 					gamecontrol.useRecycling = true;
+ 					break;
 				case People:
 				case Chemicals:	
 				case EmptySoil:
 				case DeadSoil:
+				case TrashBin:
+				case RecycleBin:
 					System.out.println(this.getLives());
 					this.die();
 					break;
@@ -145,6 +167,19 @@ public class Crabby extends Character{
 			if(getGravity()<=0.0){
 				setJumping(false);
 				setFalling(true);
+			}
+		}
+		if(isSwimUp()){
+			swimUp();
+			if(getGravity() <= 0.0){
+				setSwimDown(true);
+				setSwimUp(false);
+			}
+		}
+		if(isSwimDown()){
+			swimDown();
+			if(getGravity() >= 3){
+				setSwimDown(false);
 			}
 		}
 		if(isFalling()){
