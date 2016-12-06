@@ -24,6 +24,9 @@ public class LevelOne {
 	 * Floors are then created and added to the list.
 	 */
 	public void fillBlocks(){
+		blocks.add(new Floor(1,1,1,1,1,1,ObjectType.Wall,RangeType.Short,false,false,Game.gameControl));
+		blocks.getLast().isLegend = true;
+		
 		blocks.add(new Platform(1000,300,0,0,30,300,ObjectType.Wall,RangeType.Mid,true,false, Game.gameControl));
 		blocks.add(new Platform(1600,100,0,0,20,300,ObjectType.Wall,RangeType.Short,true,false, Game.gameControl));
 		blocks.add(new Platform(2200,200,0,0,40,300,ObjectType.Wall,RangeType.Long,true,false, Game.gameControl));
