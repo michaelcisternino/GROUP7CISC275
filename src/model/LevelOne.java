@@ -27,17 +27,17 @@ public class LevelOne {
 		blocks.add(new Floor(1,1,1,1,1,1,ObjectType.Wall,RangeType.Short,false,false,Game.gameControl));
 		blocks.getLast().isLegend = true;
 		
-		blocks.add(new Platform(1000,300,0,0,30,300,ObjectType.Wall,RangeType.Mid,true,false, Game.gameControl));
-		blocks.add(new Platform(1600,100,0,0,20,300,ObjectType.Wall,RangeType.Short,true,false, Game.gameControl));
-		blocks.add(new Platform(2200,200,0,0,40,300,ObjectType.Wall,RangeType.Long,true,false, Game.gameControl));
-		blocks.add(new Platform(2700,50,0,0,30,300,ObjectType.Wall,RangeType.Short,true,false,Game.gameControl));
-		blocks.add(new Platform(3200,100,0,0,20,300,ObjectType.Wall,RangeType.Long,true,false,Game.gameControl));
-		blocks.add(new Platform(3700,300,0,0,30,300,ObjectType.Wall,RangeType.Mid,true,false,Game.gameControl));
-		blocks.add(new Platform(4200,100,0,0,20,300,ObjectType.Wall,RangeType.Long,true,false,Game.gameControl));
-		blocks.add(new Platform(4700,200,0,0,40,300,ObjectType.Wall,RangeType.Short,true,false,Game.gameControl));
-		blocks.add(new Platform(5200,100,0,0,30,300,ObjectType.Wall,RangeType.Long,true,false,Game.gameControl));
-		blocks.add(new Platform(5700,200,0,0,20,300,ObjectType.Wall,RangeType.Mid,true,false,Game.gameControl));
-		blocks.add(new Platform(6200,300,0,0,300,30,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
+		blocks.add(new Platform(1000,300,0,0,257,310,ObjectType.Net,RangeType.Mid,true,false, Game.gameControl));
+		blocks.add(new Platform(1600,100,0,0,257,310,ObjectType.Net,RangeType.Short,true,false, Game.gameControl));
+		blocks.add(new Platform(2200,200,0,0,257,310,ObjectType.Net,RangeType.Long,true,false, Game.gameControl));
+		blocks.add(new Platform(2700,50,0,0,257,310,ObjectType.Net,RangeType.Short,true,false,Game.gameControl));
+		blocks.add(new Platform(3200,100,0,0,257,310,ObjectType.Net,RangeType.Long,true,false,Game.gameControl));
+		blocks.add(new Platform(3700,300,0,0,257,310,ObjectType.Net,RangeType.Mid,true,false,Game.gameControl));
+		blocks.add(new Platform(4200,100,0,0,257,310,ObjectType.Net,RangeType.Long,true,false,Game.gameControl));
+		blocks.add(new Platform(4700,200,0,0,257,310,ObjectType.Net,RangeType.Short,true,false,Game.gameControl));
+		blocks.add(new Platform(5200,100,0,0,257,310,ObjectType.Net,RangeType.Long,true,false,Game.gameControl));
+		blocks.add(new Platform(5700,200,0,0,257,310,ObjectType.Net,RangeType.Mid,true,false,Game.gameControl));
+		blocks.add(new Platform(6200,300,0,0,257,310,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
 		
 		blocks.getLast().setFinal(true);
 		blocks.add(new Floor(300,Game.HEIGHT*Game.SCALE-100,0,0,1000,100,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
@@ -68,12 +68,7 @@ public class LevelOne {
 	 * Creates obstacles for the level and adds them to the list of obstacles.
 	 */
 	public void fillObstacles(){
-		levelObjects.add(new Obstacle(2300,150, 0, 0, 70,70,ObjectType.People, RangeType.Short, false, false, Game.gameControl));
-		levelObjects.add(new Obstacle(3000,550, 0, 0, 70,70,ObjectType.People, RangeType.Short, false, false, Game.gameControl));
-		levelObjects.add(new Obstacle(3300,400, 0, 0, 70,70,ObjectType.People, RangeType.Short, false, false, Game.gameControl));
-		levelObjects.add(new Obstacle(3600,550, 0, 0, 70,70,ObjectType.People, RangeType.Short, false, false, Game.gameControl));
-		levelObjects.add(new Obstacle(4100,250, 0, 0, 70,70,ObjectType.People, RangeType.Short, false, false, Game.gameControl));
-		levelObjects.add(new Obstacle(4950,300, 0, 0, 70,70,ObjectType.People, RangeType.Short, false, false, Game.gameControl));
+		
 	}
 	
 	/**

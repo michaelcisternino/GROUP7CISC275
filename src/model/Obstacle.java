@@ -32,33 +32,30 @@ public class Obstacle extends InteractiveObject{
 		switch(t){
 		case People:
 			file = "Final Images/People and Humanoids/mr_evil.png";
-			item = createImage(file);
 			break;
 		case Chemicals: 
 			file = "Final Images/Objects/StormDrain_01.png";
-			item = createImage(file);
 			break;
 		case EmptySoil:
 			file = "Final Images/Plants/sadmilkweed.png";
-			item = createImage(file);
 			break;
 		case DeadSoil:
 			file = "Final Images/Objects/soil.png";
-			item = createImage(file);
 			break;
 		case TrashBin:
 			file = "Final Images/Objects/trashcan_open.png";
-			item = createImage(file);
 			break;
 		case RecycleBin:
 			file = "Final Images/Objects/recycling.png";
-			item = createImage(file);
 			break;
 		case Erosion:
 			file = "Final Images/Environment Misc/no_erosion_icon.png";
-			item = createImage(file);
+			break;
+		case Net:
+			file = "Final Images/Objects/net.png";
 			break;
 		}
+		item = createImage(file);
 		// TODO Auto-generated constructor stub
 		//fall();
 	}
@@ -69,8 +66,7 @@ public class Obstacle extends InteractiveObject{
 	 */
 	@Override
 	public void draw(Graphics g) {
-		g.setColor(obsCol);
-		g.fillRect(getXPos(), getYPos(), getWidth(), getHeight());
+		g.drawImage(item, getXPos(), getYPos(), getWidth(), getHeight(), null);
 	}
 
 	/**
@@ -98,7 +94,9 @@ public class Obstacle extends InteractiveObject{
 //				this.yPos += 5;
 //			}
 //		}
-		
+		if(Game.getLevel() == 1){
+			setFalling(false);
+		}
 		if (Game.gameControl.goingRight == true){
 			if(Game.getLevel() == 1){
 				setXPos(getXPos() - 1);

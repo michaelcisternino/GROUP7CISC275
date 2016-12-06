@@ -2,6 +2,7 @@ package model;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import controller.GameController;
@@ -16,7 +17,9 @@ import game.Game;
  *
  */
 public class Platform extends Block{
-
+	
+	BufferedImage item;
+	
 	/**
 	 * Construtor for platform. Sends everything to the superclass constructor.
 	 * @param x The platform's x position.
@@ -33,6 +36,13 @@ public class Platform extends Block{
 	 */	
 	public Platform(int x, int y, int initx, int inity, int width, int height, ObjectType t, RangeType r, Boolean isVert, Boolean isHor, GameController gc){
 		super(x, y, initx, inity, width, height, t, r, isVert, isHor, gc);
+		switch(t){
+		case Net: file = "Final Images/Objects/net.png";
+			break;
+		case Wall: file = "Final Images/Backgrounds/sand_tile.jpg";
+			break;
+	}
+		item = createImage(file);
 	}
 
 	/**
@@ -48,20 +58,7 @@ public class Platform extends Block{
 	g.setColor(Color.YELLOW);
 	g.fillRect(getXPos(),getYPos(),getWidth(),getHeight());
 	}
-	else if(Game.getLevel() == 1){
-//		System.out.println(net);
-		g.drawImage(createImage("Final Images/Objects/net.png"), getXPos(), getYPos(), null);
-//		switch(net){
-//		case 0: g.drawImage(createImage("Final Images/Objects/net.png"), getXPos(), getYPos(), null);
-//		break;
-//		case 1: g.drawImage(createImage("Final Images/Objects/net(1).png"), getXPos(), getYPos(), null);
-//		break;
-//	}
-	}
-	else{
-	g.setColor(Color.WHITE);
-	g.fillRect(getXPos(),getYPos(),getWidth(),getHeight());
-	}
+	g.drawImage(item, getXPos(), getYPos(), getWidth(), getHeight(), null);
 	}
 
 	/**
@@ -93,7 +90,7 @@ public class Platform extends Block{
 			}
 		}
 		else if (Game.gameControl.goingLeft == true){
-			setXPos(getXPos() + 2);
+			setXPos(getXPos() + 5);
 		}
 		if (isHor()){
 			switch (getRange()) {

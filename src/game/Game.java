@@ -74,7 +74,7 @@ public class Game extends JFrame implements Runnable{
 			levelOne.fillObstacles();
 			gameControl.entities = levelOne.getObjects();
 			gameControl.blocks = levelOne.getBlocks();
-			gameControl.crabby.setFalling(true);
+			gameControl.crabby.setSwimDown(true);
 		}
 
 		/**
@@ -336,6 +336,5 @@ public class Game extends JFrame implements Runnable{
 		public void setPane(Container pane) {
 			this.pane = pane;
 		}
-
 		
 }

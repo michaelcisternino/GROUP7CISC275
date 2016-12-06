@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.util.LinkedList;
 
 import controller.GameController;
@@ -83,34 +84,39 @@ public class Crabby extends Character{
 		}
 		for(int i = 0; i < gamecontrol.blocks.size(); i++){
 			Block b = gamecontrol.blocks.get(i);
-			if(getTopBounds().intersects(b.getBounds())){
+			Rectangle bbounds;
+			if(b.getType() == ObjectType.Net){
+				bbounds = b.getNetBounds();
+			}
+			else{
+				bbounds = b.getBounds();
+			}
+			if(getTopBounds().intersects(bbounds)){
 				setyVel(0);
-				if(isJumping()){
+				if(isJumping()&&Game.getLevel()!=1){
 					setJumping(false);
 					setGravity(0.8);
 					setFalling(true);
 				}
 			}
-			if(getBottomBounds().intersects(b.getBounds())){
+			if(getBottomBounds().intersects(bbounds)){
 				setyVel(0);
 				setYPos(b.getYPos()-64);
 				if(isFalling()) {
 					setFalling(false);
 					}
 			}else if (!isFalling()&&!isJumping()&&Game.getLevel()!=1){
-					if(Game.getLevel() == 1){
-						break;
-					}
-					else{
 					setFalling(true);
 					setGravity(0.8);
-					}
 			}
-			if(getLeftBounds().intersects(b.getBounds())){
+			if(getLeftBounds().intersects(bbounds)){
 				setxVel(0);
 				setXPos(b.getXPos() + getWidth());
 			}
-			if(getRightBounds().intersects(b.getBounds())){
+			if(getRightBounds().intersects(bbounds)){
+				if(Game.getLevel() == 1){
+					die();
+				}
 				setxVel(0);
 				setXPos(b.getXPos() - getWidth());
 			}

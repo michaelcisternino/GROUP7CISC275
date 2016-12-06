@@ -37,6 +37,8 @@ public abstract class Block {
 	
 	public GameController gamecontrol;
 	
+	String file;
+	
 	/**
 	 * Constructor for block.
 	 * @param x The block's x position.
@@ -278,35 +280,12 @@ public abstract class Block {
 	}
 	
 	/**
-	 * Gets the top bounds of the block. Used when determining collisions.
-	 * @return Rectangle A rectangle containing the top bounds of the block.
+	 * 
+	 * @param file
+	 * @return
 	 */
-	public Rectangle getTopBounds(){
-		return new Rectangle(this.getXPos()+10,this.getYPos(), width-20, 5);
-	}
-	
-	/**
-	 * Gets the bottom bounds of the block. Used when determining collisions.
-	 * @return Rectangle A rectangle containing the bottom bounds of the block.
-	 */
-	public Rectangle getBottomBounds(){
-		return new Rectangle(this.getXPos()+10,this.getYPos()+height-5, width-20, 5);
-	}
-	
-	/**
-	 * Gets the left bounds of the block. Used when determining collisions.
-	 * @return Rectangle A rectangle containing the left bounds of the block.
-	 */
-	public Rectangle getLeftBounds(){
-		return new Rectangle(this.getXPos(),this.getYPos()+10, 5, height-20);
-	}
-	
-	/**
-	 * Gets the right bounds of the block. Used when determining collisions.
-	 * @return Rectangle A rectangle containing the right bounds of the block.
-	 */
-	public Rectangle getRightBounds(){
-		return new Rectangle(this.getXPos()+width-5,this.getYPos()+10, 5, height-20);
+	public Rectangle getNetBounds(){
+		return new Rectangle(this.getXPos(), this.getYPos(), width-150, height - 180);
 	}
 	
 	public BufferedImage createImage(String file) {
