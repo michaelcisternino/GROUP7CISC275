@@ -46,8 +46,11 @@ public class Game extends JFrame implements Runnable{
 		public static GameController gameControl;
 		public static Game game;
 		private StartScreen starter;
+		private GameOver endGame;
+		private WinScreen winScreen;
+		private MouseListener mi;
 		public static Status status;
-		private static int level = 2;
+		private static int level = 1;
 		private static boolean gameOver = false;
 		
 		/**
@@ -109,12 +112,12 @@ public class Game extends JFrame implements Runnable{
 			System.out.println("HERE");
 		}
 
-		/**
-		 * Sets the game over flag to true.
-		 */
-		public static void gameOver(){
-			gameOver = true;
-		}
+// 		/**
+// 		 * Sets the game over flag to true.
+// 		 */
+// 		public static void gameOver(){
+// 			gameOver = true;
+// 		}
 			
 		/**
 		 * Starts the game thread. Sets run to true.
@@ -207,6 +210,7 @@ public class Game extends JFrame implements Runnable{
 			view = new MainView();
 			status = new Status();
 			starter = new StartScreen(this);
+			this.addMouseListener(mi = new MouseInput());
 			getPane().add(starter, BorderLayout.CENTER);
 			getPane().add(status, BorderLayout.SOUTH);
 		}
@@ -227,6 +231,46 @@ public class Game extends JFrame implements Runnable{
 			this.startGame();
 			level = 1;
 			startNextLevel(level);
+		}
+	
+		public void resetPlaying(){
+			System.out.println("inside reset");
+			this.getContentPane().remove(endGame);
+			view = new MainView();
+			pane.add(view);
+			pane.validate();
+			this.playing = true;
+			this.startGame();
+			level = 1;
+			startNextLevel(level);
+		}
+		
+		public void newGame(){
+			System.out.println("inside reset");
+			this.getContentPane().remove(winScreen);
+			view = new MainView();
+			pane.add(view);
+			pane.validate();
+			this.playing = true;
+			this.startGame();
+			level = 1;
+			startNextLevel(level);
+		}
+		
+		public void gameOver(){
+			this.getContentPane().remove(view);
+			endGame = new GameOver(this);
+			pane.add(endGame, BorderLayout.CENTER);
+			pane.validate();
+			this.getContentPane().setFocusable(true);
+		}
+		
+		public void winScreen(){
+			this.getContentPane().remove(view);
+			winScreen = new WinScreen(this);
+			pane.add(winScreen, BorderLayout.CENTER);
+			pane.validate();
+			this.getContentPane().setFocusable(true);
 		}
 		
 		/**
