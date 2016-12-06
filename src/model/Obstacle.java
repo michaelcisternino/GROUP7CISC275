@@ -27,8 +27,8 @@ public class Obstacle extends InteractiveObject{
 	 * @param t The type of the obstacle.
 	 * @param gamecontrol The game controller.
 	 */
-	public Obstacle(int x, int y, int width, int height, ObjectType t, GameController gamecontrol) {
-		super(x, y, width, height, t, gamecontrol);
+	public Obstacle(int x, int y, int initx, int inity, int width, int height, ObjectType t, RangeType r, Boolean isVert, Boolean isHor, GameController gc){
+		super(x, y, initx, inity, width, height, t, r, isVert, isHor, gc);
 		switch(t){
 		case People:
 			file = "Final Images/People and Humanoids/mr_evil.png";
