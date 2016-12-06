@@ -118,6 +118,34 @@ public abstract class Character {
 	 */
 	public void die(){
 		this.lives--;
+		this.yPos = 512;
+		this.xPos = 300;
+		switch (Game.getLevel()){
+			case 1:
+				LevelOne resetOne = new LevelOne();
+				resetOne.fillBlocks();
+				resetOne.fillObjects();
+				resetOne.fillObstacles();
+				Game.gameControl.entities = resetOne.getObjects();
+				Game.gameControl.blocks = resetOne.getBlocks();
+				break;
+			case 2:
+				LevelTwo resetTwo = new LevelTwo();
+				resetTwo.fillBlocks();
+				resetTwo.fillObjects();
+				resetTwo.fillObstacles();
+				Game.gameControl.entities = resetTwo.getObjects();
+				Game.gameControl.blocks = resetTwo.getBlocks();
+				break;
+			case 3:
+				LevelThree resetThree = new LevelThree();
+				resetThree.fillBlocks();
+				resetThree.fillObjects();
+				resetThree.fillObstacles();
+				Game.gameControl.entities = resetThree.getObjects();
+				Game.gameControl.blocks = resetThree.getBlocks();
+				break;
+		}
 	}
 	
 	/**
