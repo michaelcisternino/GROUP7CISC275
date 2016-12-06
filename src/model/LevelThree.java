@@ -22,7 +22,10 @@ public class LevelThree {
 	 * The last block in the list is set as the level's final block.
 	 * Floors are then created and added to the list.
 	 */
-	public void fillBlocks(){		
+	public void fillBlocks(){
+		blocks.add(new Floor(1,1,1,1,1,1,ObjectType.Wall,RangeType.Short,false,false,Game.gameControl));
+		blocks.getLast().isLegend = true;
+		
 		blocks.add(new Platform(1000,500,-1,0,200,30,ObjectType.Wall,RangeType.Short, false, true, Game.gameControl));
 		blocks.add(new Platform(1300,300,0,1,200,30,ObjectType.Wall,RangeType.Short, true, false, Game.gameControl));
 		blocks.add(new Platform(1700,650,-1,0,200,30,ObjectType.Wall,RangeType.Short, false, true, Game.gameControl));
