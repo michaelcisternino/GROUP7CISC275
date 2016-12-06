@@ -25,6 +25,12 @@ public abstract class InteractiveObject {
 
 	private int xPos, yPos;
 	private int  xVel, yVel;
+	
+	public boolean vertMover = false;
+	public boolean horiMover = false;
+	public int initX = 0;	// The center of horizontal movement
+	public int initY = 0;	// The center of vertical movement
+	public RangeType range;
 
 	private int width, height;
 	private int colNum; 
@@ -49,13 +55,18 @@ public abstract class InteractiveObject {
 	 * @param t The type of the object.
 	 * @param gamecontrol The game controller.
 	 */
-	public InteractiveObject(int x, int y, int width, int height, ObjectType t, GameController gamecontrol){
+	public InteractiveObject(int x, int y, int initx, int inity, int width, int height, ObjectType t, RangeType r, Boolean isVert, Boolean isHor, GameController gc){
 		this.xPos = x;
 		this.yPos = y;
+		this.initX = initx;
+		this.initY = inity;
 		this.width = width;
 		this.height = height;
 		this.type = t;
-		this.gamecontrol = gamecontrol;
+		this.range = r;
+		this.vertMover = isVert;
+		this.horiMover = isHor;
+		this.gamecontrol = gc;
 		//this.colNum = color;
 	}
 	
