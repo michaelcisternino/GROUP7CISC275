@@ -49,6 +49,19 @@ public class Floor extends Block{
 		g.setColor(Color.darkGray);
 		g.fillRect(getXPos(),getYPos(),getWidth(),getHeight());
 //		}
+		if (this.isLegend == true){
+			switch(Game.getLevel()){
+			case 1:
+				g.drawImage(createImage("Final Images/Tutorials/tutorial_1.png"),this.xPos,this.yPos,400,500, Color.BLACK,null);	// 457x571
+				break;
+			case 2:
+				g.drawImage(createImage("Final Images/Tutorials/tutorial_2.png"),this.xPos,this.yPos,400,500, Color.BLACK,null);
+				break;
+			case 3:
+				g.drawImage(createImage("Final Images/Tutorials/tutorial_3.png"),this.xPos,this.yPos,400,500, Color.BLACK,null);
+				break;
+			}
+		}
 	}
 
 	@Override
