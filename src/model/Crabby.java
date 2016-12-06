@@ -61,7 +61,7 @@ public class Crabby extends Character{
 		if(getLives() == 0){
 			System.out.println("dead");
 			//game stop
-			System.exit(0);
+// 			System.exit(0);
 		}
 		if(Game.getLevel() == 1){
 			Game.gameControl.goingRight = true;
@@ -183,13 +183,13 @@ public class Crabby extends Character{
 			}
 		}
 		if(isFalling()){
-			if(getYPos() >= 750){
+			if(getYPos() >= 1500){
 				setGone(true);
 			}
 			fall();
 		}
 		if(isGone()){
-			setYPos(0);
+// 			setYPos(0);
 			setFalling(true);
 			die();
 			setGone(false);
