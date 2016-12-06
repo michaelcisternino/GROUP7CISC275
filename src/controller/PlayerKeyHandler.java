@@ -13,7 +13,6 @@ import model.ObjectType;
  * @author Katie Black
  * @author Michael Cisternino
  * @author Nick Hoffman
- *
  */
 public class PlayerKeyHandler implements KeyListener{
 	/**
@@ -26,6 +25,7 @@ public class PlayerKeyHandler implements KeyListener{
 	 * S throws seeds to fix bare soil.
 	 * C throws compost to fix bad soil.
 	 * X throws oysters to practice throwing.
+	 * @param e The keyevent to be acted on.
 	 */
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
@@ -89,17 +89,19 @@ public class PlayerKeyHandler implements KeyListener{
 			Game.gameControl.itemThrownC = true;
 			break;
 		case KeyEvent.VK_W:
- 			Game.gameControl.thrownType = ObjectType.Trash;
- 			Game.gameControl.itemThrownC = true;
- 			break;
- 		case KeyEvent.VK_R:
- 			Game.gameControl.thrownType = ObjectType.Recycling;
- 			Game.gameControl.itemThrownC = true;
- 			break;
+			Game.gameControl.thrownType = ObjectType.Trash;
+			Game.gameControl.itemThrownC = true;
+			break;
+		case KeyEvent.VK_R:
+			Game.gameControl.thrownType = ObjectType.Recycling;
+			Game.gameControl.itemThrownC = true;
+			break;
 		}
 	}
 		
-	
+	/**
+	 * Unused inherited method.
+	 */
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
@@ -107,6 +109,7 @@ public class PlayerKeyHandler implements KeyListener{
 
 	/**
 	 * When the key is released, movement is stopped.
+	 * @param e The keyevent being acted upon.
 	 */
 	public void keyReleased(KeyEvent e) {
 		int key = e.getKeyCode();

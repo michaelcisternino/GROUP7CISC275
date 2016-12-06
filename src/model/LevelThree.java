@@ -76,16 +76,14 @@ public class LevelThree {
 	}
 	
 	/**
-	 * Gets the list of blocks.
-	 * @return this.blocks.
+	 * @return blocks The list of blocks.
 	 */
 	public LinkedList<Block> getBlocks(){
 		return this.blocks;
 	}
 	
 	/**
-	 * Gets the list of objects.
-	 * @return this.levelObjects
+	 * @return levelObjects the list of objects.
 	 */
 	public LinkedList<InteractiveObject> getObjects(){
 		return this.levelObjects;

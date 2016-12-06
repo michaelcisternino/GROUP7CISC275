@@ -2,6 +2,7 @@ package model;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 import controller.GameController;
 import game.Game;
@@ -16,15 +17,16 @@ import game.Game;
  *
  */
 public class Item extends InteractiveObject{
-	public boolean isThrown = false;
+	private boolean isThrown = false;
+	BufferedImage item;
 	/**
 	 * Constructor for items. A switch statement selects the proper image based on the the type.
-	 * @param x
-	 * @param y
-	 * @param width
-	 * @param height
-	 * @param t
-	 * @param gamecontrol
+	 * @param x The item x position.
+	 * @param y The item y position.
+	 * @param width The width of the item.
+	 * @param height The height of the item.
+	 * @param t The type of the item.
+	 * @param gamecontrol The game controller.
 	 */
 	public Item(int x, int y, int width, int height, ObjectType t, GameController gamecontrol) {
 		super(x, y, width, height, t, gamecontrol);
@@ -57,19 +59,22 @@ public class Item extends InteractiveObject{
  				file = "Final Images/Objects/soda.png";
  				item = createImage(file);
  				break;
-				
 		}
 		// TODO Auto-generated constructor stub
 	}
 
 	/**
 	 * Draws the item based on the parameters.
+	 * @param g The graphics to be drawn on.
 	 */
 	@Override
 	public void draw(Graphics g) {
 		g.drawImage(item, getXPos(), getYPos(), getWidth(), getHeight(), null);
 	}
 	
+	/**
+	 * Throws the item. The thrown item has its x velocity set to 7.
+	 */
 	public void throwItem(){
 		setxVel(7);
 	}
@@ -88,7 +93,7 @@ public class Item extends InteractiveObject{
 			setFalling(false);
 		}
 		move();
-		if(!isThrown){
+		if(!isThrown()){
 			if(Game.gameControl.goingRight == true){
 				if(Game.getLevel() == 1){
 					setXPos(getXPos() - 1);
@@ -101,7 +106,7 @@ public class Item extends InteractiveObject{
 				setXPos(getXPos()+5);
 			}
 		}
-		if(isThrown){
+		if(isThrown()){
 			throwItem();
 			for(int i = 0; i < gamecontrol.entities.size(); i++){
 				InteractiveObject c = gamecontrol.entities.get(i);
@@ -110,7 +115,7 @@ public class Item extends InteractiveObject{
 						gamecontrol.removeObject(c);
 					};
 					gamecontrol.removeItem(this); 
-					isThrown = false;
+					setThrown(false);
 				}
 			}
 		}
@@ -141,6 +146,20 @@ public class Item extends InteractiveObject{
 			fall();
 		}
 		
+	}
+
+	/**
+	 * @return the isThrown
+	 */
+	public boolean isThrown() {
+		return isThrown;
+	}
+
+	/**
+	 * @param isThrown the isThrown to set
+	 */
+	public void setThrown(boolean isThrown) {
+		this.isThrown = isThrown;
 	}
 
 }

@@ -15,16 +15,30 @@ import controller.GameController;
  * @author Katie Black
  * @author Michael Cisternino
  * @author Nick Hoffman
- *
  */
 public class Floor extends Block{
 
+	/**
+	 * Construtor for floor. Sends everything to the superclass constructor.
+	 * @param x The floor's x position.
+	 * @param y The floor's y position.
+	 * @param initx The floor's initial x position.
+	 * @param inity The floor's initial y position.
+	 * @param width The width of the floor.
+	 * @param height The height of the floor.
+	 * @param t The type of the object.
+	 * @param r The distance the floor will move: short, medium, long.
+	 * @param isVert If the floor will move vertically when it moves.
+	 * @param isHor If the floor will move horizontally when it moves. 
+	 * @param gc The game controller.
+	 */	
 	public Floor(int x, int y, int initx, int inity, int width, int height, ObjectType t, RangeType r, Boolean isVert, Boolean isHor, GameController gc) {
 		super(x, y, initx, inity, width, height, t, r, isVert, isHor, gc);
 	}
 
 	/**
 	 * Draws a floor based on the obstacle's parameters.
+	 * @param g The graphics to be drawn on.
 	 */
 	@Override
 	public void draw(Graphics g) {

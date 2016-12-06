@@ -2,6 +2,7 @@ package model;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 import controller.GameController;
 import game.Game;
@@ -16,14 +17,15 @@ import game.Game;
  */
 public class Obstacle extends InteractiveObject{
 	Color obsCol;
+	BufferedImage item;
 	/**
 	 * Constructor for obstacle. A switch statement based on the type selects the object's picture.
-	 * @param x
-	 * @param y
-	 * @param width
-	 * @param height
-	 * @param t
-	 * @param gamecontrol
+	 * @param x The obstacle's x position.
+	 * @param y The obstacle's y position.
+	 * @param width The width of the obstacle.
+	 * @param height The height of the obstacle.
+	 * @param t The type of the obstacle.
+	 * @param gamecontrol The game controller.
 	 */
 	public Obstacle(int x, int y, int width, int height, ObjectType t, GameController gamecontrol) {
 		super(x, y, width, height, t, gamecontrol);
@@ -41,22 +43,21 @@ public class Obstacle extends InteractiveObject{
 			item = createImage(file);
 			break;
 		case DeadSoil:
-			this.obsCol = Color.red;
 			file = "Final Images/Objects/soil.png";
 			item = createImage(file);
 			break;
 		case TrashBin:
- 			file = "Final Images/Objects/trashcan_open.png";
- 			item = createImage(file);
- 			break;
- 		case RecycleBin:
- 			file = "Final Images/Objects/recycling.png";
- 			item = createImage(file);
- 			break;
- 		case Erosion:
- 			file = "Final Images/Environment Misc/no_erosion_icon.png";
- 			item = createImage(file);
- 			break;
+			file = "Final Images/Objects/trashcan_open.png";
+			item = createImage(file);
+			break;
+		case RecycleBin:
+			file = "Final Images/Objects/recycling.png";
+			item = createImage(file);
+			break;
+		case Erosion:
+			file = "Final Images/Environment Misc/no_erosion_icon.png";
+			item = createImage(file);
+			break;
 		}
 		// TODO Auto-generated constructor stub
 		//fall();
@@ -64,6 +65,7 @@ public class Obstacle extends InteractiveObject{
 
 	/**
 	 * Draws the obstacle based on the parameters.
+	 * @param g The graphics to be drawn on.
 	 */
 	@Override
 	public void draw(Graphics g) {

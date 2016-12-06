@@ -38,16 +38,16 @@ public abstract class InteractiveObject {
 	public GameController gamecontrol;
 	
 	String file;
-	BufferedImage item;
+	BufferedImage object;
 	
 	/**
 	 * Constructor for interactive objects. Contains parameters related to the object.
-	 * @param x
-	 * @param y
-	 * @param width
-	 * @param height
-	 * @param t
-	 * @param gamecontrol
+	 * @param x The object's x position.
+	 * @param y The object's y position.
+	 * @param width The width of the object.
+	 * @param height The height of the object.
+	 * @param t The type of the object.
+	 * @param gamecontrol The game controller.
 	 */
 	public InteractiveObject(int x, int y, int width, int height, ObjectType t, GameController gamecontrol){
 		this.xPos = x;
@@ -67,8 +67,7 @@ public abstract class InteractiveObject {
 	}
 	
 	/**
-	 * Adds an item to the game controller's list of entities.
-	 * @param go
+	 * @param go The item to be added to the game controller's list of entities.
 	 */
 	public void addObject(Item go){
 		gamecontrol.entities.add(go);
@@ -78,6 +77,9 @@ public abstract class InteractiveObject {
 	
 	public abstract void update();
 	
+	/**
+	 * Updates the object's position based on the current x and y velocities.
+	 */
 	public void move(){
 		this.yPos+=this.yVel;
 	}
@@ -87,6 +89,9 @@ public abstract class InteractiveObject {
 		this.xPos += this.xVel;
 	}
 	
+	/**
+	 * Updates the object's current gravity level and then updates the current y velocity to make the object fall.
+	 */
 	public void fall(){
 		this.gravity += 0.1;
 		this.yVel = (int)this.gravity;
@@ -94,192 +99,193 @@ public abstract class InteractiveObject {
 
 	
 	/**
-	 * Gets the object's width
-	 * @return width
-	 */
-	public int getWidth(){
-		return this.width;
-	}
-	
-	/**
-	 * Set's the object's width
-	 * @param w
-	 */
-	public void setWidth(int w){
-		this.width = w;
-	}
-	
-	/**
-	 * Gets the object's rising status
-	 * @return height
-	 */
-	public int getHeight(){
-		return this.height;
-	}
-	
-	/**
-	 * Set's the object's height
-	 * @param h
-	 */
-	public void setHeight(int h){
-		this.height = h;
-	}
-
-	/**
-	 * Gets the object's x position.
-	 * @return xPos
-	 */
-	public int getXPos(){
-		return this.xPos;
-	}
-	
-	/**
-	 * Set's the object's x position.
-	 * @param x
-	 */
-	public void setXPos(int x){
-		this.xPos = x;
-	}
-	
-	/**
-	 * Gets the object's y position.
-	 * @return yPos
-	 */
-	public int getYPos(){
-		return this.yPos;
-	}
-	
-	/**
-	 * Set's the obejct's y position.
-	 * @param y
-	 */
-	public void setYPos(int y){
-		this.yPos = y;
-	}
-	
-	/**
-	 * Gets the object's x velocity.
-	 * @return xVel
-	 */
-	public int getxVel() {
-		return xVel;
-	}
-	
-	/**
-	 * Sets the object's x velocity.
-	 * @param xVel
-	 */
-	public void setxVel(int xVel){
-		this.xVel = xVel;
-	}
-
-	/**
-	 * Gets the object's y velocity.
-	 * @return yVel
-	 */
-	public int getyVel() {
-		return yVel;
-	}
-
-	/**
-	 * Sets the object's y velocity.
-	 * @param yVel
-	 */
-	public void setyVel(int yVel) {
-		this.yVel = yVel;
-	}
-	
-	/**
-	 * Gets the character's falling status
-	 * @return isFalling
+	 * @return isFalling The object's falling status.
 	 */
 	public boolean isFalling() {
 		return isFalling;
 	}
 
 	/**
-	 * Set's the character's falling status
-	 * @param isFalling
+	 * @param isFalling Sets the object's falling status.
 	 */
 	public void setFalling(boolean isFalling) {
 		this.isFalling = isFalling;
 	}
+	/**
+	 * @return width The object's width.
+	 */
+	public int getWidth(){
+		return this.width;
+	}
+	
+	/**
+	 * @param w Sets the object's width.
+	 */
+	public void setWidth(int w){
+		this.width = w;
+	}
+	
+	/**
+	 * @return height The object's height.
+	 */
+	public int getHeight(){
+		return this.height;
+	}
+	
+	/**
+	 * @param h Sets the object's height.
+	 */
+	public void setHeight(int h){
+		this.height = h;
+	}
+
+	/**
+	 * @return xPos The object's x position.
+	 */
+	public int getXPos(){
+		return this.xPos;
+	}
+	
+	/**
+	 * @param x Sets the object's x position.
+	 */
+	public void setXPos(int x){
+		this.xPos = x;
+	}
+	
+	/**
+	 * @return yPos The object's y position.
+	 */
+	public int getYPos(){
+		return this.yPos;
+	}
+
+	
+	/**
+	 * @param y Sets the object's y position.
+	 */
+	public void setYPos(int y){
+		this.yPos = y;
+	}
+	
+	/**
+	 * @return xVel The object's x velocity.
+	 */
+	public int getxVel() {
+		return xVel;
+	}
+	
+	/**
+	 * @param xVel Sets the object's x velocity.
+	 */
+	public void setxVel(int xVel){
+		this.xVel = xVel;
+	}
+
+	/**
+	 * @return yVel The object's y velocity.
+	 */
+	public int getyVel() {
+		return yVel;
+	}
+	
+	/**
+	 * @param yVel Sets the object's y velocity.
+	 */
+	public void setyVel(int yVel) {
+		this.yVel = yVel;
+	}
 	
 	
 	/**
-	 * Gets the type of the object.
-	 * @return this.type
+	 * @return type The type of the object.
 	 */
 	public ObjectType getType(){
 		return this.type;
 	}
 	
 	/**
-	 * Gets the current gravity value of the object.
-	 * @return this.gravity
+	 * @return gravity The current gravity value of the objects.
 	 */
 	public double getGravity() {
 		return gravity;
 	}
 
 	/**
-	 * Sets the object's gravity
-	 * @param gravity
+	 * @param gravity Sets the object's gravity.
 	 */
 	public void setGravity(double gravity) {
 		this.gravity = gravity;
 	}
-	
+
 	/**
-	 * Gets the bounds of the block. Used when determining collisions. Returns a Java Rectangle.
-	 * @return Rectangle
+	 * Gets the bounds of the object. Used when determining collisions.
+	 * @return Rectangle A rectangle containing the bounds of the object.
 	 */
 	public Rectangle getBounds() {
 		return new Rectangle(this.getXPos(), this.getYPos(), width, height);
 	}
 	
 	/**
-	 * Gets the top bounds of the block. Used when determining collisions. Returns a Java Rectangle.
-	 * @return Rectangle
+	 * Gets the top bounds of the object. Used when determining collisions.
+	 * @return Rectangle A rectangle containing the top bounds of the object.
 	 */
 	public Rectangle getTopBounds(){
 		return new Rectangle(this.getXPos()+10,this.getYPos(), width-20, 5);
 	}
 	
 	/**
-	 * Gets the bottom bounds of the block. Used when determining collisions. Returns a Java Rectangle.
-	 * @return Rectangle
+	 * Gets the bottom bounds of the object. Used when determining collisions.
+	 * @return Rectangle A rectangle containing the bottom bounds of the object.
 	 */
 	public Rectangle getBottomBounds(){
 		return new Rectangle(this.getXPos()+10,this.getYPos()+height-5, width-20, 5);
 	}
 	
 	/**
-	 * Gets the left bounds of the block. Used when determining collisions. Returns a Java Rectangle.
-	 * @return Rectangle
+	 * Gets the left bounds of the object. Used when determining collisions.
+	 * @return Rectangle A rectangle containing the left bounds of the object.
 	 */
 	public Rectangle getLeftBounds(){
 		return new Rectangle(this.getXPos(),this.getYPos()+10, 5, height-20);
 	}
 	
 	/**
-	 * Gets the right bounds of the block. Used when determining collisions. Returns a Java Rectangle.
-	 * @return Rectangle
+	 * Gets the right bounds of the object. Used when determining collisions.
+	 * @return Rectangle A rectangle containing the right bounds of the object.
 	 */
 	public Rectangle getRightBounds(){
 		return new Rectangle(this.getXPos()+width-5,this.getYPos()+10, 5, height-20);
 	}
+
 	
 	/**
-	 * Checks if the correct item was used.
+	 * Attempts to load an image given a filename.
+	 * @param file The filename to be loaded.
+	 * @return img The image loaded from the file.
+	 */
+	public BufferedImage createImage(String file) {
+		BufferedImage img;
+		try{
+			img = ImageIO.read(new File(file));
+			return img;
+		}
+		catch (IOException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	/**
+	 * Checks if the correct object was used.
 	 * People get trashbags thrown at them to collect garbage.
 	 * Chemicals get hay thrown at them to soak it up.
 	 * Empty soil gets seeds thrown to grow plants.
 	 * Dead soil gets compost thrown to improve it.
-	 * If the correct item is used, the obstacle is removed.
-	 * A boolean is returned stating if the player used the correct item.
-	 * @param t
-	 * @return useCorrect
+	 * If the correct object is used, the obstacle is removed.
+	 * A boolean is returned stating if the player used the correct object.
+	 * @param t The type of the object used.
+	 * @return useCorrect Whether or not the player used the proper item.
 	 */
 	public boolean checkItem(ObjectType t){
 		switch(this.type){
@@ -347,22 +353,4 @@ public abstract class InteractiveObject {
 		}
 		return useCorrect;
 	}
-	
-	/**
-	 * Attempts to load an image given a filename.
-	 * @param file
-	 * @return img
-	 */
-	public BufferedImage createImage(String file) {
-		BufferedImage img;
-		try{
-			img = ImageIO.read(new File(file));
-			return img;
-		}
-		catch (IOException e){
-			e.printStackTrace();
-		}
-		return null;
-	}
-
 }
