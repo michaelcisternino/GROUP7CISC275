@@ -23,6 +23,7 @@ public abstract class Block {
 	public boolean isLegend = false;
 	private boolean vertMover = false;
 	private boolean horiMover = false;
+	private boolean caughtCrabby = false;
 	
 	private int xPos, yPos;
 	private int xVel, yVel;
@@ -257,6 +258,20 @@ public abstract class Block {
 	}
 	
 	/**
+	 * 
+	 */
+	public void setCaughtCrabby(boolean caughtCrabby){
+		this.caughtCrabby = caughtCrabby;
+	}
+	
+	/**
+	 * 
+	 */
+	public boolean getCaughtCrabby(){
+		return caughtCrabby;
+ 	}
+	
+	/**
 	 * @return type The block's type.
 	 */
 	public ObjectType getType(){
@@ -285,7 +300,7 @@ public abstract class Block {
 	 * @return
 	 */
 	public Rectangle getNetBounds(){
-		return new Rectangle(this.getXPos(), this.getYPos(), width-150, height - 180);
+		return new Rectangle(this.getXPos()+50, this.getYPos() + 190, width-170, height - 225);
 	}
 	
 	public BufferedImage createImage(String file) {

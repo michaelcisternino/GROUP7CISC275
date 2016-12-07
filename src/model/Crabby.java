@@ -17,6 +17,7 @@ import game.Game;
 public class Crabby extends Character{
 	
 	public int trashBagCnt, hayCnt, seedCnt, compCnt, oysterCnt, trashCnt, recycleCnt;
+	public boolean caught;
 	public LinkedList<InteractiveObject> items = new LinkedList<InteractiveObject>();
 
 	/**
@@ -61,17 +62,21 @@ public class Crabby extends Character{
 	public void update() {
 		if(getLives() == 0){
 			System.out.println("dead");
-			//game stop
-// 			System.exit(0);
 		}
 		if(Game.getLevel() == 1){
 			Game.gameControl.goingRight = true;
-//			swim();
 			setFalling(false);
 		}
-//		else{
 			move();
-//		}
+		if(isCaught()){
+			setxVel(0);
+			setSwimDown(false);
+			setSwimUp(false);
+			setyVel(-5);
+		}
+		if(getYPos() <= -100){
+			die();
+		}
 		//Screen-left bound
 		if(getXPos() <= Game.WIDTH){
 			setXPos(Game.WIDTH + 1);
@@ -92,14 +97,20 @@ public class Crabby extends Character{
 				bbounds = b.getBounds();
 			}
 			if(getTopBounds().intersects(bbounds)){
+				if(b.getType() == ObjectType.Net){
+					break;
+				}
 				setyVel(0);
-				if(isJumping()&&Game.getLevel()!=1){
+				if(isJumping()){
 					setJumping(false);
 					setGravity(0.8);
 					setFalling(true);
 				}
 			}
 			if(getBottomBounds().intersects(bbounds)){
+				if(b.getType() == ObjectType.Net){
+					break;
+				}
 				setyVel(0);
 				setYPos(b.getYPos()-64);
 				if(isFalling()) {
@@ -110,12 +121,15 @@ public class Crabby extends Character{
 					setGravity(0.8);
 			}
 			if(getLeftBounds().intersects(bbounds)){
+				if(b.getType() == ObjectType.Net){
+					break;
+				}
 				setxVel(0);
 				setXPos(b.getXPos() + getWidth());
 			}
 			if(getRightBounds().intersects(bbounds)){
 				if(Game.getLevel() == 1){
-					die();
+					setCaught(true);
 				}
 				setxVel(0);
 				setXPos(b.getXPos() - getWidth());
@@ -195,7 +209,6 @@ public class Crabby extends Character{
 			fall();
 		}
 		if(isGone()){
-// 			setYPos(0);
 			setFalling(true);
 			die();
 			setGone(false);

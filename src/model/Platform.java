@@ -69,6 +69,10 @@ public class Platform extends Block{
 	@Override
 	public void update() {
 		move();
+		if(Game.gameControl.crabby.isCaught() && getType() == ObjectType.Net){
+			setVert(false);
+			setyVel(-5);
+		}
 		if (isFinal()){
 			if (getYPos() == 200){
 				Game.setLevel(Game.getLevel()+1);
