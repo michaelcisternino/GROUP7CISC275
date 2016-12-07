@@ -48,12 +48,16 @@ public class StartScreen extends JPanel{
 	
 
 	/**
-	 * Constructor for the start screen. Sets the background, draws a nice border, and adds a button with an ActionListener.
-	 * @param game
+	 * Constructor for the start screen. Not currently used.
+	 * @param game The current game.
 	 */
 	public StartScreen(Game game){
 	}
 	
+	/**
+	 * Draws the start screen on the screen. Draws the background, buttons, and strings.
+	 * @param g The frame to be drawn on.
+	 */
 	public void paintComponent(Graphics g){
 //		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
@@ -77,8 +81,8 @@ public class StartScreen extends JPanel{
 	
 	/**
 	 * Attempts to load an image given the filename.
-	 * @param file
-	 * @return img
+	 * @param file Filename to be loaded.
+	 * @return img The loaded image
 	 */
 	private Image createImage(String file) {
 		Image img;
@@ -94,6 +98,9 @@ public class StartScreen extends JPanel{
 	
 	class Quit implements ActionListener{
 
+		/**
+		 * Exits the system when the quit button is pressed.
+		 */
 		public void actionPerformed(ActionEvent arg0) {
 			System.exit(0);
 		}

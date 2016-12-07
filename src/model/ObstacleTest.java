@@ -73,7 +73,9 @@ public class ObstacleTest {
 		o=new Obstacle(2300,150, 0, 0, 70,70,ObjectType.DeadSoil, RangeType.Short, false, false, Game.gameControl);
 		o=new Obstacle(2300,150, 0, 0, 70,70,ObjectType.EmptySoil, RangeType.Short, false, false, Game.gameControl);
 		o=new Obstacle(2300,150, 0, 0, 70,70,ObjectType.Erosion, RangeType.Short, false, false, Game.gameControl);
-		o=new Obstacle(2300,150, 0, 0, 70,70,ObjectType.Trash, RangeType.Short, false, false, Game.gameControl);
+		o=new Obstacle(2300,150, 0, 0, 70,70,ObjectType.TrashBin, RangeType.Short, false, false, Game.gameControl);
+		o=new Obstacle(2300,150, 0, 0, 70,70,ObjectType.RecycleBin, RangeType.Short, false, false, Game.gameControl);
+		o=new Obstacle(2300,150, 0, 0, 70,70,ObjectType.Net, RangeType.Short, false, false, Game.gameControl);
 		o.update();
 	}
 

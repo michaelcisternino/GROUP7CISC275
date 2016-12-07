@@ -97,7 +97,9 @@ public abstract class InteractiveObject {
 	 */
 	public void move(){
 		this.yPos+=this.yVel;
+		if(Game.getLevel()!=1){
 		this.xPos+=this.xVel;
+		}
 	}
 	
 	public void throwItem(){

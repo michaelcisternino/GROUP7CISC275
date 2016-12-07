@@ -37,7 +37,7 @@ public class Status extends JPanel {
 	 * Updates the status bar. Gets information on the quantities of items from the controller.
 	 */
 	public void update(){
-		statusLabel.setText("Lives: " + Game.gameControl.crabby.getLives() + " Trash Bags: " + Game.gameControl.crabby.trashBagCnt + " Hay: " + Game.gameControl.crabby.hayCnt + " Seeds: " + Game.gameControl.crabby.seedCnt + " Compost: " + Game.gameControl.crabby.compCnt + " Oysters: " + Game.gameControl.crabby.oysterCnt + " Trash: " + Game.gameControl.crabby.trashCnt + " Recyclables: " + Game.gameControl.crabby.recycleCnt + " Lives: " + Game.gameControl.crabby.getLives());
+		statusLabel.setText("Lives: " + Game.gameControl.crabby.getLives() + " Trash Bags: " + Game.gameControl.crabby.trashBagCnt + " Hay: " + Game.gameControl.crabby.hayCnt + " Seeds: " + Game.gameControl.crabby.seedCnt + " Compost: " + Game.gameControl.crabby.compCnt + " Oysters: " + Game.gameControl.crabby.oysterCnt + " Trash: " + Game.gameControl.crabby.trashCnt + " Recyclables: " + Game.gameControl.crabby.recycleCnt);
 	}
 
 }

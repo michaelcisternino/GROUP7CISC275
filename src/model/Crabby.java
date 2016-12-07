@@ -77,7 +77,7 @@ public class Crabby extends Character{
 			setSwimUp(false);
 			setyVel(-5);
 		}
-		if(getYPos() <= -100){
+		if(getYPos() <= -100 && Game.getLevel() == 1){
 			die();
 		}
 		//Screen-left bound
@@ -114,7 +114,11 @@ public class Crabby extends Character{
 				if(b.getType() == ObjectType.Net){
 					break;
 				}
-				setyVel(0);
+				//setyVel(b.getyVel());
+				if(b.isHor()){
+				setxVel(b.getxVel());
+				}
+//				setyVel(0);
 				setYPos(b.getYPos()-64);
 				if(isFalling()) {
 					setFalling(false);

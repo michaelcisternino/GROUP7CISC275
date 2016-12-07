@@ -74,12 +74,12 @@ public class Item extends InteractiveObject{
 		g.drawImage(item, getXPos(), getYPos(), getWidth(), getHeight(), null);
 	}
 	
-	/**
-	 * Throws the item. The thrown item has its x velocity set to 7.
-	 */
-	public void throwItem(){
-		setxVel(7);
-	}
+//	/**
+//	 * Throws the item. The thrown item has its x velocity set to 7.
+//	 */
+//	public void throwItem(){
+//		setxVel(7);
+//	}
 
 	/**
 	 * Updates the item based on the controller.
@@ -98,7 +98,7 @@ public class Item extends InteractiveObject{
 		if(!isThrown()){
 			if(Game.gameControl.goingRight == true){
 				if(Game.getLevel() == 1){
-					setXPos(getXPos() - 1);
+					setXPos(getXPos() - 2);
 				}
 				else{
 				setXPos(getXPos()-5);
@@ -259,14 +259,14 @@ public class Item extends InteractiveObject{
 	}
 
 	/**
-	 * @return the isThrown
+	 * @return The item's isThrown status.
 	 */
 	public boolean isThrown() {
 		return isThrown;
 	}
 
 	/**
-	 * @param isThrown the isThrown to set
+	 * @param isThrown Sets the items isThrown status.
 	 */
 	public void setThrown(boolean isThrown) {
 		this.isThrown = isThrown;

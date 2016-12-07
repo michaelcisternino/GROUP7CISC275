@@ -5,24 +5,44 @@ import game.Game;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
+/**
+ * Mouse input listener
+ * @author Alex Addeo
+ * @author Zion Aranda
+ * @author Katie Black
+ * @author Michael Cisternino
+ * @author Nick Hoffman
+ */
 public class MouseInput implements MouseListener{
 
+	/**
+	 * Inherited mouselistener method. Not currently used.
+	 */
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * Inherited mouselistener method. Not currently used.
+	 */
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * Inherited mouselistener method. Not currently used.
+	 */
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * Listens for mouse clicks. Used when clicking buttons to move between levels.
+	 * Checks the mouse coordinates. If they are within the bounds of a button and the mouse is clicked, the appropriate action is taken.
+	 */
 	public void mousePressed(MouseEvent e) {
 		int mx = e.getX();
 		int my = e.getY();

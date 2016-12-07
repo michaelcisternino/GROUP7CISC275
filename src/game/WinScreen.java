@@ -13,6 +13,14 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+/**
+ * Obstacles the player must beat. Subclass of InteractiveObject.
+ * @author Alex Addeo
+ * @author Zion Aranda
+ * @author Katie Black
+ * @author Michael Cisternino
+ * @author Nick Hoffman
+ */
 
 public class WinScreen extends JPanel {
 
@@ -22,9 +30,13 @@ public class WinScreen extends JPanel {
 	public WinScreen(Game game){
 	}
 	
+	/**
+	 * Draws the victory screen on the screen. Draws the background, buttons, and strings.
+	 * @param g The screen to be drawn on.
+	 */
 	public void paintComponent(Graphics g){
 		Graphics2D g2d = (Graphics2D) g;
-		g.drawImage(createImage("Final Images/Backgrounds/Estuary_Background_2_Bad.jpg"),0,0,Game.WIDTH*4,Game.HEIGHT*4, Color.BLACK,null);
+		g.drawImage(createImage("Final Images/Backgrounds/Estuary_Background_2.jpg"),0,0,Game.WIDTH*4,Game.HEIGHT*4, Color.BLACK,null);
 		g.drawImage(createImage("Final Images/UI Buttons, Icons, Symbols/smallButton.png"), playButton.x, playButton.y, 100, 50, Color.BLUE, null);
 		g.drawImage(createImage("Final Images/UI Buttons, Icons, Symbols/smallButton.png"), quitButton.x, quitButton.y, 100, 50, Color.BLUE, null);
 	
@@ -45,8 +57,8 @@ public class WinScreen extends JPanel {
 	
 	/**
 	 * Attempts to load an image given the filename.
-	 * @param file
-	 * @return img
+	 * @param file Filename to be loaded.
+	 * @return img The loaded image
 	 */
 	private Image createImage(String file) {
 		Image img;

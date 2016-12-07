@@ -113,13 +113,6 @@ public class Game extends JFrame implements Runnable{
 			gameControl.crabby.setYPos(gameControl.blocks.getFirst().getYPos() - 100);
 			gameControl.crabby.setFalling(true);
 		}
-
-// 		/**
-// 		 * Sets the game over flag to true.
-// 		 */
-// 		public static void gameOver(){
-// 			gameOver = true;
-// 		}
 			
 		/**
 		 * Starts the game thread. Sets run to true.
@@ -244,7 +237,7 @@ public class Game extends JFrame implements Runnable{
 		        level = 3;
 		    }
             //take this out to start like normal
-            level = 3;
+            level = 1;
 			startNextLevel(level);
 		}
 	

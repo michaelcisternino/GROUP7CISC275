@@ -13,13 +13,12 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 /**
- * A start screen for the game.
+ * A tutorial screen for the game.
  * @author Alex Addeo
  * @author Zion Aranda
  * @author Katie Black
  * @author Michael Cisternino
  * @author Nick Hoffman
- *
  */
 public class TutorialScreen extends JPanel{
 	
@@ -28,13 +27,17 @@ public class TutorialScreen extends JPanel{
 	public Rectangle playButton = new Rectangle(Game.WIDTH *2 - 50, 150, 100, 50);
 	public Rectangle quitButton = new Rectangle(Game.WIDTH *2 - 50, 350, 100, 50);
 	/**
-	 * Constructor for the start screen. Sets the background, draws a nice border, and adds a button with an ActionListener.
-	 * @param game
+	 * Constructor for the tutorial screen. 
+	 * @param s The screen to show, corresponding to a level.
 	 */
 	public TutorialScreen (int s){
 		this.screen = s;
 	}
 	
+	/**
+	 * Draws the tutorial on the screen. Draws the background, buttons, and strings based on the current level.
+	 * @param g The frame to be drawn on.
+	 */
 	public void paintComponent(Graphics g){
 		Graphics2D g2d = (Graphics2D) g;
 		
@@ -69,8 +72,8 @@ public class TutorialScreen extends JPanel{
 	
 	/**
 	 * Attempts to load an image given the filename.
-	 * @param file
-	 * @return img
+	 * @param file Filename to be loaded.
+	 * @return img The loaded image
 	 */
 	private Image createImage(String file) {
 		Image img;

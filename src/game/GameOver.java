@@ -13,6 +13,14 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+/**
+ * Obstacles the player must beat. Subclass of InteractiveObject.
+ * @author Alex Addeo
+ * @author Zion Aranda
+ * @author Katie Black
+ * @author Michael Cisternino
+ * @author Nick Hoffman
+ */
 
 public class GameOver extends JPanel {
 
