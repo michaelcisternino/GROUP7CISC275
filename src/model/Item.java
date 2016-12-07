@@ -33,33 +33,27 @@ public class Item extends InteractiveObject{
 		switch(t){
 			case TrashBag:
 				file = "Final Images/Objects/trashbag.png";
-				item = createImage(file);
 				break;
 			case Hay:
 				file = "Final Images/Objects/hay.png";
-				item = createImage(file);
 				break;
 			case Compost:
 				file = "Final Images/Objects/compost.png";
-				item = createImage(file);
 				break;
 			case Seeds:
 				file = "Final Images/Plants/seed.png";
-				item = createImage(file);
 				break;
 			case Oyster:
 				file = "Final Images/Animals/clam_left_2.png";
-				item = createImage(file);
 				break;
 			case Trash:
  				file = "Final Images/Objects/banana.png";
- 				item = createImage(file);
  				break;
  			case Recycling:
  				file = "Final Images/Objects/soda.png";
- 				item = createImage(file);
  				break;
 		}
+		item = createImage(file);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -40,6 +40,7 @@ public abstract class Character {
 	private boolean isRising = false;
 	private boolean isSwimUp = false;
 	private boolean isSwimDown = false;
+	private boolean caught = false;
 	
 	public GameController gamecontrol;
 	
@@ -129,6 +130,8 @@ public abstract class Character {
 				resetOne.fillObstacles();
 				Game.gameControl.entities = resetOne.getObjects();
 				Game.gameControl.blocks = resetOne.getBlocks();
+				Game.gameControl.crabby.setCaught(false);
+				Game.gameControl.crabby.setSwimDown(true);
 				break;
 			case 2:
 				LevelTwo resetTwo = new LevelTwo();
@@ -372,6 +375,20 @@ public abstract class Character {
 	 */
 	public void setGravity(double gravity) {
 		this.gravity = gravity;
+	}
+	
+	/**
+	 * 
+	 */
+	public void setCaught(boolean caught){
+		this.caught = caught;
+	}
+	
+	/**
+	 * 
+	 */
+	public boolean isCaught(){
+		return caught;
 	}
 
 	/**

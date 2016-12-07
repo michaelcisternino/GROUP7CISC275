@@ -15,7 +15,6 @@ import model.Crabby;
 import model.ObjectType;
 import model.Platform;
 import model.Status;
-import model.Floor;
 import model.Item;
 import model.LevelOne;
 import model.LevelThree;
@@ -74,7 +73,7 @@ public class Game extends JFrame implements Runnable{
 			levelOne.fillObstacles();
 			gameControl.entities = levelOne.getObjects();
 			gameControl.blocks = levelOne.getBlocks();
-			gameControl.crabby.setFalling(true);
+			gameControl.crabby.setSwimDown(true);
 		}
 
 		/**
@@ -92,7 +91,6 @@ public class Game extends JFrame implements Runnable{
 			gameControl.crabby.setXPos(gameControl.blocks.getFirst().getXPos() + 200);
 			gameControl.crabby.setYPos(gameControl.blocks.getFirst().getYPos() - 100);
 			gameControl.crabby.setFalling(true);
-			System.out.println("HERE");
 		}
 		
 		/**
@@ -110,7 +108,6 @@ public class Game extends JFrame implements Runnable{
 			gameControl.crabby.setXPos(gameControl.blocks.getFirst().getXPos() + 200);
 			gameControl.crabby.setYPos(gameControl.blocks.getFirst().getYPos() - 100);
 			gameControl.crabby.setFalling(true);
-			System.out.println("HERE");
 		}
 
 // 		/**
@@ -336,6 +333,5 @@ public class Game extends JFrame implements Runnable{
 		public void setPane(Container pane) {
 			this.pane = pane;
 		}
-
 		
 }

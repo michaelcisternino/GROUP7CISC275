@@ -23,6 +23,7 @@ public abstract class Block {
 	public boolean isLegend = false;
 	private boolean vertMover = false;
 	private boolean horiMover = false;
+	private boolean caughtCrabby = false;
 	
 	private int xPos, yPos;
 	private int xVel, yVel;
@@ -36,6 +37,8 @@ public abstract class Block {
 	private RangeType range;
 	
 	public GameController gamecontrol;
+	
+	String file;
 	
 	/**
 	 * Constructor for block.
@@ -255,6 +258,20 @@ public abstract class Block {
 	}
 	
 	/**
+	 * 
+	 */
+	public void setCaughtCrabby(boolean caughtCrabby){
+		this.caughtCrabby = caughtCrabby;
+	}
+	
+	/**
+	 * 
+	 */
+	public boolean getCaughtCrabby(){
+		return caughtCrabby;
+ 	}
+	
+	/**
 	 * @return type The block's type.
 	 */
 	public ObjectType getType(){
@@ -278,35 +295,12 @@ public abstract class Block {
 	}
 	
 	/**
-	 * Gets the top bounds of the block. Used when determining collisions.
-	 * @return Rectangle A rectangle containing the top bounds of the block.
+	 * 
+	 * @param file
+	 * @return
 	 */
-	public Rectangle getTopBounds(){
-		return new Rectangle(this.getXPos()+10,this.getYPos(), width-20, 5);
-	}
-	
-	/**
-	 * Gets the bottom bounds of the block. Used when determining collisions.
-	 * @return Rectangle A rectangle containing the bottom bounds of the block.
-	 */
-	public Rectangle getBottomBounds(){
-		return new Rectangle(this.getXPos()+10,this.getYPos()+height-5, width-20, 5);
-	}
-	
-	/**
-	 * Gets the left bounds of the block. Used when determining collisions.
-	 * @return Rectangle A rectangle containing the left bounds of the block.
-	 */
-	public Rectangle getLeftBounds(){
-		return new Rectangle(this.getXPos(),this.getYPos()+10, 5, height-20);
-	}
-	
-	/**
-	 * Gets the right bounds of the block. Used when determining collisions.
-	 * @return Rectangle A rectangle containing the right bounds of the block.
-	 */
-	public Rectangle getRightBounds(){
-		return new Rectangle(this.getXPos()+width-5,this.getYPos()+10, 5, height-20);
+	public Rectangle getNetBounds(){
+		return new Rectangle(this.getXPos()+50, this.getYPos() + 190, width-170, height - 225);
 	}
 	
 	public BufferedImage createImage(String file) {

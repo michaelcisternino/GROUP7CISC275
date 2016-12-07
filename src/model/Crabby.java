@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.util.LinkedList;
 
 import controller.GameController;
@@ -16,6 +17,7 @@ import game.Game;
 public class Crabby extends Character{
 	
 	public int trashBagCnt, hayCnt, seedCnt, compCnt, oysterCnt, trashCnt, recycleCnt;
+	public boolean caught;
 	public LinkedList<InteractiveObject> items = new LinkedList<InteractiveObject>();
 
 	/**
@@ -60,17 +62,21 @@ public class Crabby extends Character{
 	public void update() {
 		if(getLives() == 0){
 			System.out.println("dead");
-			//game stop
-// 			System.exit(0);
 		}
 		if(Game.getLevel() == 1){
 			Game.gameControl.goingRight = true;
-//			swim();
 			setFalling(false);
 		}
-//		else{
 			move();
-//		}
+		if(isCaught()){
+			setxVel(0);
+			setSwimDown(false);
+			setSwimUp(false);
+			setyVel(-5);
+		}
+		if(getYPos() <= -100){
+			die();
+		}
 		//Screen-left bound
 		if(getXPos() <= Game.WIDTH){
 			setXPos(Game.WIDTH + 1);
@@ -83,7 +89,17 @@ public class Crabby extends Character{
 		}
 		for(int i = 0; i < gamecontrol.blocks.size(); i++){
 			Block b = gamecontrol.blocks.get(i);
-			if(getTopBounds().intersects(b.getBounds())){
+			Rectangle bbounds;
+			if(b.getType() == ObjectType.Net){
+				bbounds = b.getNetBounds();
+			}
+			else{
+				bbounds = b.getBounds();
+			}
+			if(getTopBounds().intersects(bbounds)){
+				if(b.getType() == ObjectType.Net){
+					break;
+				}
 				setyVel(0);
 				if(isJumping()){
 					setJumping(false);
@@ -91,26 +107,30 @@ public class Crabby extends Character{
 					setFalling(true);
 				}
 			}
-			if(getBottomBounds().intersects(b.getBounds())){
+			if(getBottomBounds().intersects(bbounds)){
+				if(b.getType() == ObjectType.Net){
+					break;
+				}
 				setyVel(0);
 				setYPos(b.getYPos()-64);
 				if(isFalling()) {
 					setFalling(false);
 					}
 			}else if (!isFalling()&&!isJumping()&&Game.getLevel()!=1){
-					if(Game.getLevel() == 1){
-						break;
-					}
-					else{
 					setFalling(true);
 					setGravity(0.8);
-					}
 			}
-			if(getLeftBounds().intersects(b.getBounds())){
+			if(getLeftBounds().intersects(bbounds)){
+				if(b.getType() == ObjectType.Net){
+					break;
+				}
 				setxVel(0);
 				setXPos(b.getXPos() + getWidth());
 			}
-			if(getRightBounds().intersects(b.getBounds())){
+			if(getRightBounds().intersects(bbounds)){
+				if(b.getType() == ObjectType.Net){
+					setCaught(true);
+				}
 				setxVel(0);
 				setXPos(b.getXPos() - getWidth());
 			}
@@ -189,7 +209,6 @@ public class Crabby extends Character{
 			fall();
 		}
 		if(isGone()){
-// 			setYPos(0);
 			setFalling(true);
 			die();
 			setGone(false);

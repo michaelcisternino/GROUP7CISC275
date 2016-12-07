@@ -17,7 +17,6 @@ import model.ObjectType;
 import model.Obstacle;
 import model.RangeType;
 import model.Status;
-import model.Floor;
 import model.InteractiveObject;
 import model.Item;
 /**

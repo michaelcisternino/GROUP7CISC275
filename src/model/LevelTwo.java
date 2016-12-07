@@ -22,7 +22,7 @@ public class LevelTwo {
 	 * Floors are then created and added to the list.
 	 */
 	public void fillBlocks(){
-		blocks.add(new Floor(1,1,1,1,1,1,ObjectType.Wall,RangeType.Short,false,false,Game.gameControl));
+		blocks.add(new Platform(1,1,1,1,1,1,ObjectType.Wall,RangeType.Short,false,false,Game.gameControl));
 		blocks.getLast().isLegend = true;
 		
 		blocks.add(new Platform(1200,600,0,-1,300,30,ObjectType.Wall, RangeType.Short, true, false, Game.gameControl));
@@ -38,7 +38,7 @@ public class LevelTwo {
 		blocks.add(new Platform(6200,500,0,0,300,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 		
 		blocks.getLast().setFinal(true);
-		blocks.add(new Floor(300,Game.HEIGHT*Game.SCALE-100,0,0,1000,100,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+		blocks.add(new Platform(300,Game.HEIGHT*Game.SCALE-100,0,0,1000,100,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 	}
 	
 	/**
@@ -67,7 +67,6 @@ public class LevelTwo {
 		levelObjects.add(new Obstacle(3600,550 , 0, 0, 70,70,ObjectType.People, RangeType.Long, false, false, Game.gameControl));
 		levelObjects.add(new Obstacle(4100,250, 0, 0, 70,70,ObjectType.People, RangeType.Long, false, false, Game.gameControl));
 		levelObjects.add(new Obstacle(4950,300, 0, 0, 70,70,ObjectType.People, RangeType.Long, false, false, Game.gameControl));
-//		levelObjects.add(new Obstacle(5800,450,70,70,ObjectType.People,Game.gameControl));	
 	}
 	
 	/**
