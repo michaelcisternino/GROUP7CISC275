@@ -86,11 +86,18 @@ public class Platform extends Block{
 			setyVel(-5);
 		}
 		if (isFinal()){
-			if (getYPos() == 200){
-				Game.setLevel(Game.getLevel()+1);
-				Game.startNextLevel(Game.getLevel());
-				return;
-			}
+		    if (getYPos() == 200){
+		        if (Game.getLevel() == 1){
+		            Game.setLevel(6);
+		        }
+		        if (Game.getLevel() == 2){
+		            Game.setLevel(7);
+		        }
+		        if (Game.getLevel() == 3){
+		            Game.setLevel(8);
+		        }
+		        return;
+		    }
 			if (getXPos() == 600){
 				Game.gameControl.crabby.setRising(true);
 				rise();

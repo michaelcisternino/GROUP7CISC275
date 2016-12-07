@@ -42,59 +42,16 @@ import view.MainView;
  */
 public class StartScreen extends JPanel{
 
-//	public static JButton start = new JButton("Start!", new ImageIcon("Final Images/UI Buttons, Icons, Symbols/smallButton.png"));
-//	public static JButton easy = new JButton("Easy");
-//	public static JButton med = new JButton("Medium");
-//	public static JButton hard = new JButton("Hard");
-//	public static JButton quit = new JButton("Quit");
-//	public Container pane;
-//	public GridBagConstraints c;
-	
 	public Rectangle playButton = new Rectangle(Game.WIDTH *2 - 50, 150, 100, 50);
 	public Rectangle helpButton = new Rectangle(Game.WIDTH *2 - 50, 250, 100, 50);
 	public Rectangle quitButton = new Rectangle(Game.WIDTH *2 - 50, 350, 100, 50);
 	
-	
-	//public static StartScreen ss = new StartScreen();
-	
-//	public static void main(String[] args) {
-//		System.out.println("in start screen");
-//		//Game game = new Game();
-//		//JFrame frame = new JFrame(TITLE);;
-//		game.pack();
-//		game.setResizable(false);
-//		game.setLocationRelativeTo(null);
-//		//start.addActionListener(new Starter());
-//		game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		game.setVisible(true);
-//	}
-//
+
 	/**
 	 * Constructor for the start screen. Sets the background, draws a nice border, and adds a button with an ActionListener.
 	 * @param game
 	 */
 	public StartScreen(Game game){
-//		setBackground(Color.WHITE);
-//		JLabel label = new JLabel(new ImageIcon("Final Images/Backgrounds/Estuary_Background_1.jpg"));
-//		setOpaque(false);
-//		setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Super Estuary"));
-		//this.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
-//		this.add(start);
-////		this.add(quit);
-//		start.setPreferredSize(new Dimension(300,300));
-//		start.addActionListener(new Starter(game));
-//		game.addMouseListener(this);
-//		c = new GridBagConstraints();
-//		c.fill = GridBagConstraints.VERTICAL;
-//		c.gridx = 1;
-//		c.gridy = 1;
-//		this.add(start, c);
-//		this.add(quit,c);
-//		this.add(start);
-//		this.add(quit);
-//		quit.addActionListener(new Quit());
-//		this.setSize(new Dimension(Game.WIDTH*Game.SCALE,Game.HEIGHT*Game.SCALE));
-//		this.setPreferredSize(new Dimension(Game.WIDTH*3,Game.HEIGHT*3));
 	}
 	
 	public void paintComponent(Graphics g){
@@ -114,11 +71,8 @@ public class StartScreen extends JPanel{
 		Font fnt1 = new Font("arial", Font.BOLD, 30);
 		g.setFont(fnt1);
 		g.drawString("Play", playButton.x + 19, playButton.y + 35);
-//		g2d.draw(playButton);
 		g.drawString("Help", helpButton.x + 19, helpButton.y + 35);
-//		g2d.draw(helpButton);
 		g.drawString("Quit", quitButton.x + 19, quitButton.y + 35);
-//		g2d.draw(quitButton);
 	}
 	
 	/**

@@ -54,6 +54,9 @@ public class Obstacle extends InteractiveObject{
 		case Net:
 			file = "Final Images/Objects/net.png";
 			break;
+		case Gabion:
+			file = "Final Images/Objects/gabion.png";
+			break;
 		}
 		item = createImage(file);
 		// TODO Auto-generated constructor stub
@@ -80,26 +83,33 @@ public class Obstacle extends InteractiveObject{
 		
 		move();
 		// TODO
-//		if (Game.gameControl.isXMover == true){
-//			if (Game.gameControl.goingRight == true){
-//				this.xPos -= 5;
-//			}
-//			else if (Game.gameControl.goingLeft == true){
-//				this.xPos += 5;
-//			}
-//			if (this.up == true){
-//				this.yPos -= 5;
-//			}
-//			else if (this.up == false){
-//				this.yPos += 5;
-//			}
-//		}
 		if(Game.getLevel() == 1){
 			setFalling(false);
 		}
+		else{
+			setFalling(true);
+		}
+		System.out.println(getGabions());
+		if(getGabions() == 0){
+			setGabionsGone(true);
+		}
+		if (isFinal()){
+			if(getXPos() == 600 && Game.getLevel() == 1){
+				Game.gameControl.crabby.isdone = true;
+				Game.gameControl.goingRight = false;
+				if(gabionsGone()){
+					Game.setLevel(6);
+				}
+			}
+			if (getXPos() == 500){
+				Game.gameControl.crabby.setRising(true);
+				Game.gameControl.goingRight = false;
+				return;
+			}
+		}
 		if (Game.gameControl.goingRight == true){
 			if(Game.getLevel() == 1){
-				setXPos(getXPos() - 1);
+				setXPos(getXPos() - 2);
 			}
 			else{
 			setXPos(getXPos()-5);

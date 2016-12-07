@@ -90,7 +90,7 @@ public class Item extends InteractiveObject{
 		if(!isThrown()){
 			if(Game.gameControl.goingRight == true){
 				if(Game.getLevel() == 1){
-					setXPos(getXPos() - 1);
+					setXPos(getXPos() - 2);
 				}
 				else{
 				setXPos(getXPos()-5);
@@ -206,6 +206,7 @@ public class Item extends InteractiveObject{
 		}
 		if(isThrown()){
 			throwItem();
+			setXPos(getXPos() + getxVel());
 			for(int i = 0; i < gamecontrol.entities.size(); i++){
 				InteractiveObject c = gamecontrol.entities.get(i);
 				if(getBottomBounds().intersects(c.getBounds()) || getLeftBounds().intersects(c.getBounds()) || getRightBounds().intersects(c.getBounds())){

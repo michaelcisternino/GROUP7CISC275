@@ -41,6 +41,7 @@ public abstract class Character {
 	private boolean isSwimUp = false;
 	private boolean isSwimDown = false;
 	private boolean caught = false;
+	public boolean isdone = false;
 	
 	public GameController gamecontrol;
 	

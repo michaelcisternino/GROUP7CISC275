@@ -57,11 +57,31 @@ public class GameController{
 	 * @param g Graphics passed in to be drawn.
 	 */
 	public void draw(Graphics g) {
-		if (crabby.getLives() == 0){
-			crabby.setLives(5);
-			Game.setLevel(4);
-			Game.game.gameOver();
-		}
+        if (crabby.getLives() == 0){
+            Game.setLevel(4);
+            Game.startNextLevel(4);
+        }
+        
+        switch (Game.getLevel()){
+            case 4:
+                Game.setLevel(4);
+                Game.game.gameOver();
+                break;
+            case 5:
+                System.out.println("case 5");
+                Game.game.tutorialOne();
+                break;
+            case 6:
+                System.out.println("case 6");
+                Game.game.tutorialTwo();
+                break;
+            case 7:
+                System.out.println("case 7");
+                Game.game.tutorialThree();
+                break;
+            case 8:
+                Game.game.winScreen();
+        }
 		crabby.draw(g);
 		for(Block b: blocks){
 			b.draw(g);
@@ -221,7 +241,7 @@ public class GameController{
  				break;
 			}
 			if(haveItem){
-				Item thrownItem = new Item(crabby.getXPos(),crabby.getYPos(),-1,0,30,30,ObjectType.Oyster,RangeType.None,false,false,Game.gameControl);
+				Item thrownItem = new Item(crabby.getXPos(),crabby.getYPos(),-1,0,30,30,thrownType,RangeType.None,false,false,Game.gameControl);
 				thrownItem.setThrown(true);
 				addItem(thrownItem);
 			}

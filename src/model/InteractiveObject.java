@@ -28,12 +28,15 @@ public abstract class InteractiveObject {
 	
 	public boolean vertMover = false;
 	public boolean horiMover = false;
+	private boolean isFinal = false;
+	private boolean gabionsGone = false;
 	public int initX = 0;	// The center of horizontal movement
 	public int initY = 0;	// The center of vertical movement
 	public RangeType range;
 
 	private int width, height;
 	private int colNum; 
+	private int gabionCount = 5;
 	
 	private ObjectType type;
 	
@@ -236,6 +239,20 @@ public abstract class InteractiveObject {
 	}
 	
 	/**
+	 * @return isFinal The  object's final status.
+	 */
+	public boolean isFinal() {
+		return isFinal;
+	}
+	
+	/**
+	 * @param isFinal Sets the object's final status.
+	 */
+	public void setFinal(boolean isFinal) {
+		this.isFinal = isFinal;
+	}
+	
+	/**
 	 * @return vertMover The block's vertical movement status.
 	 */
 	public boolean isVert() {
@@ -290,6 +307,27 @@ public abstract class InteractiveObject {
 	 */
 	public void setGravity(double gravity) {
 		this.gravity = gravity;
+	}
+	
+	/**
+	 * @return count of gabions in game
+	 */
+	public int getGabions(){
+		return gabionCount;
+	}
+	
+	/**
+	 * @return status of gabions
+	 */
+	public boolean gabionsGone(){
+		return gabionsGone;
+	}
+	
+	/**
+	 * @param gone
+	 */
+	public void setGabionsGone(boolean gone){
+		gabionsGone = gone;
 	}
 
 	/**
@@ -411,7 +449,7 @@ public abstract class InteractiveObject {
  				useCorrect = false;
  			}
  			break;
- 		case Erosion:
+ 		case Gabion:
  			if(t == ObjectType.Oyster){
  				useCorrect = true;
  			}
@@ -424,6 +462,9 @@ public abstract class InteractiveObject {
 		if(useCorrect == true){
 			gamecontrol.removeObject(gamecontrol.entities.getLast());
 			gamecontrol.sendNext = true;
+			if(t == ObjectType.Oyster){
+				gabionCount--;
+			}
 		}
 		return useCorrect;
 	}

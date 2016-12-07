@@ -41,8 +41,7 @@ public class MouseInput implements MouseListener{
 				{
 					//Pressed Play Button
 					System.out.println("Pressed play button");
-//					Game.game.resetPlaying();
-					Game.game.setPlaying(true);
+					Game.game.tutorialOne();
 				}
 			}
 			
@@ -57,6 +56,65 @@ public class MouseInput implements MouseListener{
 			}
 		}
 		if (Game.game.getLevel() == 4){
+			//Play Button
+			if(mx >= Game.WIDTH * 2 - 50 && mx <= Game.WIDTH*2 + 50)
+			{
+				if(my >= 250 && my <= 325)
+				{
+					//Pressed Play Button
+					System.out.println("Pressed reset button");
+					Game.game.resetPlaying();
+				}
+			}
+			
+			//Quit Button
+			if(mx >= Game.WIDTH * 2 - 50 && mx <= Game.WIDTH*2 + 50)
+			{
+				if(my >= 350 && my <= 425)
+				{
+					//Pressed Quit Button
+					System.exit(0);
+				}
+			}
+		}
+		if (Game.game.getLevel() == 5){
+			//Play Button
+			if(mx >= Game.WIDTH * 3 / 2 && mx <= Game.WIDTH * 3 / 2 + 100)
+			{
+				if(my >= Game.HEIGHT * 3 && my <= Game.HEIGHT * 3 + 75)
+				{
+					//Pressed Play Button
+					System.out.println("Pressed level 5");
+					Game.game.setPlaying(true);
+				}
+			}
+		}
+		if (Game.game.getLevel() == 6){
+			//Play Button
+			if(mx >= Game.WIDTH * 3 / 2 && mx <= Game.WIDTH * 3 / 2 + 100)
+			{
+				if(my >= Game.HEIGHT * 3 && my <= Game.HEIGHT * 3 + 75)
+				{
+					//Pressed Play Button
+					System.out.println("Pressed level 6");
+					Game.game.setPlaying(true);
+//					Game.startNextLevel(Game.getLevel());
+				}
+			}
+		}
+		if (Game.game.getLevel() == 7){
+			//Play Button
+			if(mx >= Game.WIDTH * 3 / 2 && mx <= Game.WIDTH * 3 / 2 + 100)
+			{
+				if(my >= Game.HEIGHT * 3 && my <= Game.HEIGHT * 3 + 75)
+				{
+					//Pressed Play Button
+					System.out.println("Pressed level 7");
+					Game.game.setPlaying(true);
+				}
+			}
+		}
+		if (Game.game.getLevel() == 8){
 			//Play Button
 			if(mx >= Game.WIDTH * 2 - 50 && mx <= Game.WIDTH*2 + 50)
 			{

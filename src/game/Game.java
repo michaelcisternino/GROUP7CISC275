@@ -48,6 +48,9 @@ public class Game extends JFrame implements Runnable{
 		private StartScreen starter;
 		private GameOver endGame;
 		private WinScreen winScreen;
+		private TutorialScreen tut1 = new TutorialScreen(1);
+		private TutorialScreen tut2 = new TutorialScreen(2);
+		private TutorialScreen tut3 = new TutorialScreen(3);
 		private MouseListener mi;
 		public static Status status;
 		private static int level = 0;
@@ -74,6 +77,7 @@ public class Game extends JFrame implements Runnable{
 			gameControl.entities = levelOne.getObjects();
 			gameControl.blocks = levelOne.getBlocks();
 			gameControl.crabby.setSwimDown(true);
+			gameControl.goingRight = true;
 		}
 
 		/**
@@ -227,7 +231,18 @@ public class Game extends JFrame implements Runnable{
 			pane.addKeyListener(new PlayerKeyHandler());
 			this.playing = b;
 			this.startGame();
-			level = 1;
+            if (level == 5){
+	        this.getContentPane().remove(tut1);
+	        level = 1;
+		    }
+		    else if (level == 6){
+		        this.getContentPane().remove(tut2);
+		        level = 2;
+		    }
+		    else if (level == 7){
+		        this.getContentPane().remove(tut3);
+		        level = 3;
+		    }
 			startNextLevel(level);
 		}
 	
@@ -270,6 +285,30 @@ public class Game extends JFrame implements Runnable{
 			pane.validate();
 			this.getContentPane().setFocusable(true);
 		}
+		
+        public void tutorialOne(){
+            this.getContentPane().remove(view);
+            pane.add(tut1, BorderLayout.CENTER);
+            pane.validate();
+            this.getContentPane().setFocusable(true);
+            level = 5;
+        }
+        
+        public void tutorialTwo(){
+            this.getContentPane().remove(view);
+            pane.add(tut2, BorderLayout.CENTER);
+            pane.validate();
+            this.getContentPane().setFocusable(true);
+            level = 6;
+        }
+        
+        public void tutorialThree(){
+            this.getContentPane().remove(view);
+            pane.add(tut3, BorderLayout.CENTER);
+            pane.validate();
+            this.getContentPane().setFocusable(true);
+            level = 7;
+        }
 		
 		/**
 		 * Switch statement to select which level to initialize. Calls the chosen level.
