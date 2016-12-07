@@ -237,7 +237,7 @@ public class Game extends JFrame implements Runnable{
 		        level = 3;
 		    }
             //take this out to start like normal
-            level = 1;
+            level = 2;
 			startNextLevel(level);
 		}
 	
