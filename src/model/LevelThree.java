@@ -23,7 +23,7 @@ public class LevelThree {
 	 * Floors are then created and added to the list.
 	 */
 	public void fillBlocks(){
-		blocks.add(new Floor(1,1,1,1,1,1,ObjectType.Wall,RangeType.Short,false,false,Game.gameControl));
+		blocks.add(new Platform(1,1,1,1,1,1,ObjectType.Wall,RangeType.Short,false,false,Game.gameControl));
 		blocks.getLast().isLegend = true;
 		
 		blocks.add(new Platform(1000,500,-1,0,200,30,ObjectType.Wall,RangeType.Short, false, true, Game.gameControl));
@@ -46,8 +46,8 @@ public class LevelThree {
 		blocks.add(new Platform(6300,500,0,0,300,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 		
 		blocks.getLast().setFinal(true);
-		blocks.add(new Floor(300,Game.HEIGHT*Game.SCALE-100,0,0,1000,100,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
-		blocks.add(new Floor(2400,Game.HEIGHT*Game.SCALE-100,0,0,600,100,ObjectType.Wall,RangeType.Short,false, false, Game.gameControl));
+		blocks.add(new Platform(300,Game.HEIGHT*Game.SCALE-100,0,0,1000,100,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+		blocks.add(new Platform(2400,Game.HEIGHT*Game.SCALE-100,0,0,600,100,ObjectType.Wall,RangeType.Short,false, false, Game.gameControl));
 	}
 	
 	/**

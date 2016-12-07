@@ -15,7 +15,6 @@ import model.Crabby;
 import model.ObjectType;
 import model.Platform;
 import model.Status;
-import model.Floor;
 import model.Item;
 import model.LevelOne;
 import model.LevelThree;

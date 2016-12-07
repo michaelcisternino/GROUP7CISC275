@@ -24,12 +24,12 @@ public class LevelOne {
 	 * Floors are then created and added to the list.
 	 */
 	public void fillBlocks(){
-		blocks.add(new Floor(1,1,1,1,1,1,ObjectType.Wall,RangeType.Short,false,false,Game.gameControl));
+		blocks.add(new Platform(1,1,1,1,1,1,ObjectType.Wall,RangeType.Short,false,false,Game.gameControl));
 		blocks.getLast().isLegend = true;
 		
-		blocks.add(new Platform(1000,300,0,0,257,310,ObjectType.Net,RangeType.Mid,true,false, Game.gameControl));
+		blocks.add(new Platform(1000,200,0,0,257,310,ObjectType.Net,RangeType.Mid,true,false, Game.gameControl));
 		blocks.add(new Platform(1600,100,0,0,257,310,ObjectType.Net,RangeType.Short,true,false, Game.gameControl));
-		blocks.add(new Platform(2200,200,0,0,257,310,ObjectType.Net,RangeType.Long,true,false, Game.gameControl));
+		blocks.add(new Platform(2200,100,0,0,257,310,ObjectType.Net,RangeType.Long,true,false, Game.gameControl));
 		blocks.add(new Platform(2700,50,0,0,257,310,ObjectType.Net,RangeType.Short,true,false,Game.gameControl));
 		blocks.add(new Platform(3200,100,0,0,257,310,ObjectType.Net,RangeType.Long,true,false,Game.gameControl));
 		blocks.add(new Platform(3700,300,0,0,257,310,ObjectType.Net,RangeType.Mid,true,false,Game.gameControl));
@@ -40,9 +40,7 @@ public class LevelOne {
 		blocks.add(new Platform(6200,300,0,0,257,310,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
 		
 		blocks.getLast().setFinal(true);
-		blocks.add(new Floor(300,Game.HEIGHT*Game.SCALE-100,0,0,1000,100,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
-		blocks.add(new Floor(2400,Game.HEIGHT*Game.SCALE-100,0,0,600,100,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
-		blocks.add(new Floor(3000,Game.HEIGHT*Game.SCALE-100,0,0,1000,100,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
+		blocks.add(new Platform(0,Game.HEIGHT*Game.SCALE-100,0,0,7000,100,ObjectType.Wall,RangeType.None,false,false,Game.gameControl));
 	}
 	
 	/**

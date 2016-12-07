@@ -53,10 +53,22 @@ public class Platform extends Block{
 	@Override
 	public void draw(Graphics g) {
 	Random ran = new Random();
-	int net = ran.nextInt(2);
 	if (isFinal()){
 	g.setColor(Color.YELLOW);
 	g.fillRect(getXPos(),getYPos(),getWidth(),getHeight());
+	}
+	else if (this.isLegend == true){
+		switch(Game.getLevel()){
+		case 1:
+			g.drawImage(createImage("Final Images/Tutorials/tutorial_1.png"),this.getXPos(),this.getYPos(),400,500, Color.BLACK,null);	// 457x571
+			break;
+		case 2:
+			g.drawImage(createImage("Final Images/Tutorials/tutorial_2.png"),this.getXPos(),this.getYPos(),400,500, Color.BLACK,null);
+			break;
+		case 3:
+			g.drawImage(createImage("Final Images/Tutorials/tutorial_3.png"),this.getXPos(),this.getYPos(),400,500, Color.BLACK,null);
+			break;
+		}
 	}
 	g.drawImage(item, getXPos(), getYPos(), getWidth(), getHeight(), null);
 	}

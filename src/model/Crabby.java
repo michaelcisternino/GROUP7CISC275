@@ -128,7 +128,7 @@ public class Crabby extends Character{
 				setXPos(b.getXPos() + getWidth());
 			}
 			if(getRightBounds().intersects(bbounds)){
-				if(Game.getLevel() == 1){
+				if(b.getType() == ObjectType.Net){
 					setCaught(true);
 				}
 				setxVel(0);
