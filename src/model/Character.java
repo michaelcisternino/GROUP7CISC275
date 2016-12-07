@@ -33,6 +33,7 @@ public abstract class Character {
 	private ObjectType type;
 	
 	private double gravity = 0.0;
+	private int gabionCount = 4;
 	
 	private boolean isJumping = false;
 	private boolean isFalling = true;
@@ -41,6 +42,7 @@ public abstract class Character {
 	private boolean isSwimUp = false;
 	private boolean isSwimDown = false;
 	private boolean caught = false;
+	private boolean gabionsGone;
 	public boolean isdone = false;
 	
 	public GameController gamecontrol;
@@ -78,16 +80,25 @@ public abstract class Character {
 		this.yPos+=this.yVel;
 	}
 	
+	/**
+	 * Updates the character's position based on yVel and a given xPos offset.
+	 */
 	public void swim(){
 		this.xPos+=1;
 		this.yPos+=this.yVel;
 	}
 	
+	/**
+	 * Updates the character's y velocity based on gravity.
+	 */
 	public void swimUp(){
 		this.gravity -= 0.1;
 		this.yVel = -(int)this.gravity;
 	}
 	
+	/**
+	 * Updates the character's y velocity based on gravity.
+	 */
 	public void swimDown(){
 		this.gravity += 0.1;
 		this.yVel = (int)this.gravity;
@@ -384,9 +395,51 @@ public abstract class Character {
 	 * @return The character's caught status.
 	 */
 	public boolean isCaught(){
-		return caught;
+		return this.caught;
 	}
-
+	
+	/**
+	 * @param Sets the gabion gone status.
+	 */
+	public void setGabionsGone(boolean gone){
+		this.gabionsGone = gone;
+	}
+	
+	/**
+	 * @return gabionsGone If the gabions are gone. 
+	 */
+	public boolean getGabionsGone(){
+		return this.gabionsGone;
+	}
+	
+	/**
+	 * @return gabionCount Number of gabions.
+	 */
+	public int getGabions(){
+		return gabionCount;
+	}
+	
+	/**
+	 * Decrements gabion count by 1.
+	 */
+	public void removeGabion(){
+		this.gabionCount--;
+	}
+	
+	/**
+	 * @return isdone If the player is done.
+	 */
+	public boolean isDone(){
+		return this.isdone;
+	}
+	
+	/**
+	 * @param done Sets the done status.
+	 */
+	public void isDone(boolean done){
+		this.isdone = done;
+	}
+	
 	/**
 	 * Gets the bounds of the character. Used when determining collisions.
 	 * @return Rectangle A rectangle containing the bounds of the character.
