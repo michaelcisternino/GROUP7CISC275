@@ -67,10 +67,7 @@ public class PlatformTest {
 	@Test
 	public void testBounds(){
 		f.getBounds();
-		f.getBottomBounds();
-		f.getTopBounds();
-		f.getLeftBounds();
-		f.getRightBounds();
+
 	}
 	
 	@Test
