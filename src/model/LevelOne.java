@@ -18,6 +18,15 @@ public class LevelOne {
 	private LinkedList<InteractiveObject> levelObjects = new LinkedList<InteractiveObject>();
 //	private LinkedList<InteractiveObject> enemies = new LinkedList<InteractiveObject>();
 
+	
+	
+	//Need to fix touching gabions removes them
+	//if you hit a net after we make goingRight false
+	// then it doesnt reset that if you die.
+	// thatll be fixed in reset level area
+	// oysters fly across the screen prob bc the move func in inter obj
+	
+	
 	/**
 	 * Creates blocks for the level and adds them to the level's list of blocks. Block positions are predetermined.
 	 * The last block in the list is set as the level's final block.

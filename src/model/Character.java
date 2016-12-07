@@ -33,6 +33,7 @@ public abstract class Character {
 	private ObjectType type;
 	
 	private double gravity = 0.0;
+	private int gabionCount = 4;
 	
 	private boolean isJumping = false;
 	private boolean isFalling = true;
@@ -41,6 +42,7 @@ public abstract class Character {
 	private boolean isSwimUp = false;
 	private boolean isSwimDown = false;
 	private boolean caught = false;
+	private boolean gabionsGone;
 	public boolean isdone = false;
 	
 	public GameController gamecontrol;
@@ -379,19 +381,61 @@ public abstract class Character {
 	}
 	
 	/**
-	 * 
+	 * @param caught
 	 */
 	public void setCaught(boolean caught){
 		this.caught = caught;
 	}
 	
 	/**
-	 * 
+	 * @return caught
 	 */
 	public boolean isCaught(){
-		return caught;
+		return this.caught;
 	}
-
+	
+	/**
+	 * @param gone
+	 */
+	public void setGabionsGone(boolean gone){
+		this.gabionsGone = gone;
+	}
+	
+	/**
+	 * @return gabionsGone
+	 */
+	public boolean getGabionsGone(){
+		return this.gabionsGone;
+	}
+	
+	/**
+	 * @return gabionCount
+	 */
+	public int getGabions(){
+		return gabionCount;
+	}
+	
+	/**
+	 * 
+	 */
+	public void removeGabion(){
+		this.gabionCount--;
+	}
+	
+	/**
+	 * @return isdone
+	 */
+	public boolean isDone(){
+		return this.isdone;
+	}
+	
+	/**
+	 * @param done
+	 */
+	public void isDone(boolean done){
+		this.isdone = done;
+	}
+	
 	/**
 	 * Gets the bounds of the character. Used when determining collisions.
 	 * @return Rectangle A rectangle containing the bounds of the character.

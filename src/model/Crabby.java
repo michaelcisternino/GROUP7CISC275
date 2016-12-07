@@ -63,11 +63,14 @@ public class Crabby extends Character{
 		if(getLives() == 0){
 			System.out.println("dead");
 		}
-		if(Game.getLevel() == 1&&!isdone){
+		move();
+		if(Game.getLevel() == 1&&!isDone()){
 			Game.gameControl.goingRight = true;
 			setFalling(false);
 		}
-			move();
+		if(getGabions() == 0){
+			setGabionsGone(true);
+		}
 		if(isCaught()){
 			setxVel(0);
 			setSwimDown(false);
@@ -220,4 +223,5 @@ public class Crabby extends Character{
 			}
 	}
 	}
+
 }
