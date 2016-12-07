@@ -461,9 +461,8 @@ public abstract class InteractiveObject {
  			break;
 		}
 		if(useCorrect == true){
-			gamecontrol.sendNext = true;
-			if(Game.getLevel() == 1){
-				Game.gameControl.crabby.removeGabion();
+			if(t == ObjectType.Oyster){
+				gabionCount--;
 			}
 		}
 		return useCorrect;

@@ -89,8 +89,8 @@ public class Obstacle extends InteractiveObject{
 		else{
 			setFalling(true);
 		}
-		if(Game.gameControl.crabby.getGabions() == 0){
-			Game.gameControl.crabby.setGabionsGone(true);
+		if(getGabions() == 0){
+			setGabionsGone(true);
 		}
 		if(isFinal()){
 			if(getXPos() == 800 && Game.getLevel() == 1){
