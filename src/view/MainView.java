@@ -39,6 +39,9 @@ public class MainView extends JComponent { // extend canvas and use
 	public Status statusPanel = new Status();
 	Image background;
 
+	/**
+	 * Constructor for MainView. Not currently used.
+	 */
 	public MainView() {
 
 	}
@@ -48,9 +51,7 @@ public class MainView extends JComponent { // extend canvas and use
 	 * the level, sets the background to the appropriate image. Draws the
 	 * background on the image, adds the status panel to the game, and draws
 	 * everything.
-	 * 
-	 * @param g
-	 *            The graphics to be drawn on.
+	 * @param g The graphics to be drawn on.
 	 */
 	public void paintComponent(Graphics g) {
 		int curr_level = Game.getLevel();

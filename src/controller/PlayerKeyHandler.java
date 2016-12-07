@@ -24,7 +24,7 @@ public class PlayerKeyHandler implements KeyListener{
 	 * H throws hay to soak up chemicals.
 	 * S throws seeds to fix bare soil.
 	 * C throws compost to fix bad soil.
-	 * X throws oysters to practice throwing.
+	 * X throws oysters to fill gabions.
 	 * @param e The keyevent to be acted on.
 	 */
 	public void keyPressed(KeyEvent e) {

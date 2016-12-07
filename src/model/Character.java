@@ -183,39 +183,35 @@ public abstract class Character {
 	}
 	
 	/**
-	 * @return isJumping The character's jumping status.
+	 * @return isJumping The character's swimming up status.
 	 */
 	public boolean isSwimUp() {
 		return isSwimUp;
 	}
 	
 	/**
-	 * Set's the character's jumping status
-	 * @param isJumping
+	 * @param isJumping Sets the character's swimming up status.
 	 */
 	public void setSwimUp(boolean isSwimUp) {
 		this.isSwimUp = isSwimUp;
 	}
 	
 	/**
-	 * Gets the character's jumping status
-	 * @return isJumping
+	 * @return isJumping The character's swimming down status.
 	 */
 	public boolean isSwimDown() {
 		return isSwimDown;
 	}
 	
 	/**
-	 * Set's the character's jumping status
-	 * @param isJumping
+	 * @param isJumping Sets the character's swimming up status.
 	 */
 	public void setSwimDown(boolean isSwimDown) {
 		this.isSwimDown = isSwimDown;
 	}
 	
 	/**
-	 * Gets the character's jumping status
-	 * @return isJumping
+	 * @return isJumping The character's jumping status.
 	 */
 	public boolean isJumping() {
 		return isJumping;
@@ -243,7 +239,6 @@ public abstract class Character {
 	}
 
 	/**
-	 * Returns true if character is off screen, false if not.
 	 * @return isGone If the character is off-screen.
 	 */
 	public boolean isGone() {
@@ -379,14 +374,14 @@ public abstract class Character {
 	}
 	
 	/**
-	 * 
+	 * @param caught Sets the character's caught status.
 	 */
 	public void setCaught(boolean caught){
 		this.caught = caught;
 	}
 	
 	/**
-	 * 
+	 * @return The character's caught status.
 	 */
 	public boolean isCaught(){
 		return caught;

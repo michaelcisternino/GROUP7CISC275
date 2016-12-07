@@ -295,14 +295,18 @@ public abstract class Block {
 	}
 	
 	/**
-	 * 
-	 * @param file
-	 * @return
+	 * Gets the bounds of a net. Used when determining if a character is caught in the net part of the image.
+	 * @return Rectangle A rectangle containing the bounds of the net part of the net image.
 	 */
 	public Rectangle getNetBounds(){
 		return new Rectangle(this.getXPos()+50, this.getYPos() + 190, width-170, height - 225);
 	}
 	
+	/**
+	 * Attempts to load an image given a filename.
+	 * @param file The filename to be loaded.
+	 * @return img The image loaded from the file.
+	 */
 	public BufferedImage createImage(String file) {
 		BufferedImage img;
 		try{

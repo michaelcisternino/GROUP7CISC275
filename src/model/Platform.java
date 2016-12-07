@@ -52,12 +52,11 @@ public class Platform extends Block{
 	 */
 	@Override
 	public void draw(Graphics g) {
-		Random ran = new Random();
-		if (isFinal()){
-			g.setColor(Color.YELLOW);
-			g.fillRect(getXPos(),getYPos(),getWidth(),getHeight());
-		}
-
+	Random ran = new Random();
+	if (isFinal()){
+		g.setColor(Color.YELLOW);
+		g.fillRect(getXPos(),getYPos(),getWidth(),getHeight());
+	}
 	g.drawImage(item, getXPos(), getYPos(), getWidth(), getHeight(), null);
 	}
 

@@ -259,14 +259,14 @@ public class Item extends InteractiveObject{
 	}
 
 	/**
-	 * @return the isThrown
+	 * @return The item's isThrown status.
 	 */
 	public boolean isThrown() {
 		return isThrown;
 	}
 
 	/**
-	 * @param isThrown the isThrown to set
+	 * @param isThrown Sets the items isThrown status.
 	 */
 	public void setThrown(boolean isThrown) {
 		this.isThrown = isThrown;
