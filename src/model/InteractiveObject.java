@@ -96,6 +96,7 @@ public abstract class InteractiveObject {
 	 */
 	public void move(){
 		this.yPos+=this.yVel;
+		this.xPos+=this.xVel;
 	}
 	
 	public void throwItem(){
@@ -460,8 +461,8 @@ public abstract class InteractiveObject {
 		}
 		System.out.println(useCorrect);
 		if(useCorrect == true){
-			gamecontrol.removeObject(gamecontrol.entities.getLast());
-			gamecontrol.sendNext = true;
+//			gamecontrol.removeObject(gamecontrol.entities.getLast());
+//			gamecontrol.sendNext = true;
 			if(t == ObjectType.Oyster){
 				gabionCount--;
 			}

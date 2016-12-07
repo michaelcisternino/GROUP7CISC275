@@ -33,27 +33,35 @@ public class Item extends InteractiveObject{
 		switch(t){
 			case TrashBag:
 				file = "Final Images/Objects/trashbag.png";
+				item = createImage(file);
 				break;
 			case Hay:
 				file = "Final Images/Objects/hay.png";
+				item = createImage(file);
 				break;
 			case Compost:
 				file = "Final Images/Objects/compost.png";
+				item = createImage(file);
 				break;
 			case Seeds:
 				file = "Final Images/Plants/seed.png";
+				item = createImage(file);
 				break;
 			case Oyster:
 				file = "Final Images/Animals/clam_left_2.png";
+				item = createImage(file);
 				break;
 			case Trash:
  				file = "Final Images/Objects/banana.png";
+ 				item = createImage(file);
  				break;
  			case Recycling:
  				file = "Final Images/Objects/soda.png";
+ 				item = createImage(file);
  				break;
+		default:
+			break;
 		}
-		item = createImage(file);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -90,7 +98,7 @@ public class Item extends InteractiveObject{
 		if(!isThrown()){
 			if(Game.gameControl.goingRight == true){
 				if(Game.getLevel() == 1){
-					setXPos(getXPos() - 2);
+					setXPos(getXPos() - 1);
 				}
 				else{
 				setXPos(getXPos()-5);
@@ -110,10 +118,10 @@ public class Item extends InteractiveObject{
 						setxVel(4);
 						setInitX(getInitX()+1);
 					}
-					if(getInitX() == -50){
+					if(getInitX() == -51){
 						setInitX(0);
 					}
-					if(getInitX() == 50){
+					if(getInitX() == 51){
 						setInitX(-1);
 					}
 					break;
@@ -126,10 +134,10 @@ public class Item extends InteractiveObject{
 						setxVel(3);
 						setInitX(getInitX()+1);
 					}
-					if(this.getInitX() == -75){
+					if(this.getInitX() == -76){
 						setInitX(0);
 					}
-					if(this.getInitX() == 75){
+					if(this.getInitX() == 76){
 						setInitX(-1);
 					}
 					break;
@@ -142,12 +150,14 @@ public class Item extends InteractiveObject{
 						setxVel(4);
 						setInitX(getInitX()+1);
 					}
-					if(this.getInitX() == -100){
+					if(this.getInitX() == -101){
 						setInitX(0);
 					}
-					if(this.getInitX() == 100){
+					if(this.getInitX() == 101){
 						setInitX(-1);
 					}
+					break;
+				default:
 					break;
 				}
 			}
@@ -162,10 +172,10 @@ public class Item extends InteractiveObject{
 						setyVel(4);
 						setInitY(getInitY()+1);
 					}
-					if(getInitY() == -50){
+					if(getInitY() == -51){
 						setInitY(0);
 					}
-					if(getInitY() == 50){
+					if(getInitY() == 51){
 						setInitY(-1);
 					}
 					break;
@@ -178,10 +188,10 @@ public class Item extends InteractiveObject{
 						setyVel(3);
 						setInitY(getInitY()+1);
 					}
-					if(getInitY() == -75){
+					if(getInitY() == -76){
 						setInitY(0);
 					}
-					if(getInitY() == 75){
+					if(getInitY() == 76){
 						setInitY(-1);
 					}
 					break;
@@ -194,19 +204,20 @@ public class Item extends InteractiveObject{
 						setyVel(4);
 						setInitY(getInitY()+1);
 					}
-					if(getInitY() == -100){
+					if(getInitY() == -101){
 						setInitY(0);
 					}
-					if(getInitY() == 100){
+					if(getInitY() == 101){
 						setInitY(-1);
 					}
+					break;
+				default:
 					break;
 				}
 			}
 		}
 		if(isThrown()){
 			throwItem();
-			setXPos(getXPos() + getxVel());
 			for(int i = 0; i < gamecontrol.entities.size(); i++){
 				InteractiveObject c = gamecontrol.entities.get(i);
 				if(getBottomBounds().intersects(c.getBounds()) || getLeftBounds().intersects(c.getBounds()) || getRightBounds().intersects(c.getBounds())){

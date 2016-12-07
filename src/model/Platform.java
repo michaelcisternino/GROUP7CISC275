@@ -52,24 +52,12 @@ public class Platform extends Block{
 	 */
 	@Override
 	public void draw(Graphics g) {
-	Random ran = new Random();
-	if (isFinal()){
-	g.setColor(Color.YELLOW);
-	g.fillRect(getXPos(),getYPos(),getWidth(),getHeight());
-	}
-	else if (this.isLegend == true){
-		switch(Game.getLevel()){
-		case 1:
-			g.drawImage(createImage("Final Images/Tutorials/tutorial_1.png"),this.getXPos(),this.getYPos(),400,500, Color.BLACK,null);	// 457x571
-			break;
-		case 2:
-			g.drawImage(createImage("Final Images/Tutorials/tutorial_2.png"),this.getXPos(),this.getYPos(),400,500, Color.BLACK,null);
-			break;
-		case 3:
-			g.drawImage(createImage("Final Images/Tutorials/tutorial_3.png"),this.getXPos(),this.getYPos(),400,500, Color.BLACK,null);
-			break;
+		Random ran = new Random();
+		if (isFinal()){
+			g.setColor(Color.YELLOW);
+			g.fillRect(getXPos(),getYPos(),getWidth(),getHeight());
 		}
-	}
+
 	g.drawImage(item, getXPos(), getYPos(), getWidth(), getHeight(), null);
 	}
 
@@ -126,10 +114,10 @@ public class Platform extends Block{
 					setxVel(4);
 					setInitX(getInitX()+1);
 				}
-				if(getInitX() == -50){
+				if(getInitX() == -51){
 					setInitX(0);
 				}
-				if(getInitX() == 50){
+				if(getInitX() == 51){
 					setInitX(-1);
 				}
 				break;
@@ -142,10 +130,10 @@ public class Platform extends Block{
 					setxVel(3);
 					setInitX(getInitX()+1);
 				}
-				if(this.getInitX() == -75){
+				if(this.getInitX() == -76){
 					setInitX(0);
 				}
-				if(this.getInitX() == 75){
+				if(this.getInitX() == 76){
 					setInitX(-1);
 				}
 				break;
@@ -158,10 +146,10 @@ public class Platform extends Block{
 					setxVel(4);
 					setInitX(getInitX()+1);
 				}
-				if(this.getInitX() == -100){
+				if(this.getInitX() == -101){
 					setInitX(0);
 				}
-				if(this.getInitX() == 100){
+				if(this.getInitX() == 101){
 					setInitX(-1);
 				}
 				break;
@@ -178,10 +166,10 @@ public class Platform extends Block{
 					setyVel(4);
 					setInitY(getInitY()+1);
 				}
-				if(getInitY() == -50){
+				if(getInitY() == -51){
 					setInitY(0);
 				}
-				if(getInitY() == 50){
+				if(getInitY() == 51){
 					setInitY(-1);
 				}
 				break;
@@ -194,10 +182,10 @@ public class Platform extends Block{
 					setyVel(3);
 					setInitY(getInitY()+1);
 				}
-				if(getInitY() == -75){
+				if(getInitY() == -76){
 					setInitY(0);
 				}
-				if(getInitY() == 75){
+				if(getInitY() == 76){
 					setInitY(-1);
 				}
 				break;
@@ -210,10 +198,10 @@ public class Platform extends Block{
 					setyVel(4);
 					setInitY(getInitY()+1);
 				}
-				if(getInitY() == -100){
+				if(getInitY() == -101){
 					setInitY(0);
 				}
-				if(getInitY() == 100){
+				if(getInitY() == 101){
 					setInitY(-1);
 				}
 				break;

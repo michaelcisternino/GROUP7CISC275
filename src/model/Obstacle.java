@@ -89,7 +89,6 @@ public class Obstacle extends InteractiveObject{
 		else{
 			setFalling(true);
 		}
-		System.out.println(getGabions());
 		if(getGabions() == 0){
 			setGabionsGone(true);
 		}
