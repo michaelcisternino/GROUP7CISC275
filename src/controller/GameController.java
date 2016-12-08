@@ -28,7 +28,7 @@ public class GameController{
 	public LinkedList<InteractiveObject> entities = new LinkedList<InteractiveObject>();
 	public LinkedList<Item> thrownItems = new LinkedList<Item>();
 	public LinkedList<Item> items = new LinkedList<Item>();
-	public Crabby crabby = new Crabby(300,512,64,64,ObjectType.Crabby,this);
+	public Crabby crabby = new Crabby(300,512,130,64,ObjectType.Crabby,this);
 	public boolean sendNext = false;
 	Random randItem = new Random();
 	int itemNum;
