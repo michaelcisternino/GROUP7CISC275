@@ -86,6 +86,8 @@ public class LevelTwo {
 		levelObjects.add(new Obstacle(8700,300, 0, 0, 70,70,ObjectType.RecycleBin, RangeType.Long, false, false, Game.gameControl));
 		levelObjects.add(new Obstacle(9200,100, 0, 0, 70,70,ObjectType.People, RangeType.Long, false, false, Game.gameControl));
 		levelObjects.add(new Obstacle(9700,200, 0, 0, 70,70,ObjectType.RecycleBin, RangeType.Long, false, false, Game.gameControl));
+	
+	
 	}
 	
 	/**

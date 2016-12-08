@@ -25,13 +25,13 @@ public class LevelThree {
 	public void fillBlocks(){
 
 		
-		blocks.add(new Platform(900,500,900,0,300,30,ObjectType.Wall,RangeType.Long, false, true, Game.gameControl));
+		blocks.add(new Platform(1200,500,1200,0,300,30,ObjectType.Wall,RangeType.Long, false, true, Game.gameControl));
 		blocks.add(new Platform(1600,350,1600,0,200,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 		blocks.add(new Platform(2000,500,2000,0,200,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 		blocks.add(new Platform(2500,350,2500,0,300,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
-		blocks.add(new Platform(2500,300,2500,0,50,30,ObjectType.Wall,RangeType.Long, false, true, Game.gameControl));
+		blocks.add(new Platform(2700,300,2700,0,50,30,ObjectType.Wall,RangeType.Long, false, true, Game.gameControl));
 		blocks.add(new Platform(2900,250,2900,0,300,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
-		blocks.add(new Platform(3000,300,3000,0,50,30,ObjectType.Wall,RangeType.Long, false, true, Game.gameControl));
+		blocks.add(new Platform(3200,300,3200,0,50,30,ObjectType.Wall,RangeType.Long, false, true, Game.gameControl));
 		blocks.add(new Platform(3300,350,3300,0,300,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 		blocks.add(new Platform(2900,500,2900,0,300,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 		blocks.add(new Platform(3800,450,3800,-1,200,30,ObjectType.Wall,RangeType.Long, true, false, Game.gameControl));
