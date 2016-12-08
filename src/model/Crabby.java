@@ -140,8 +140,15 @@ public class Crabby extends Character implements java.io.Serializable{
 				}
 				setYPos(b.getYPos()-64);
 			    if (b.isHor() ==true && pkh == false){
-			    	// changed from 3 to 10
-			        this.setxVel((int) (10*Math.cos(Math.PI*(b.ticks)/120)));
+				if (b.getRange() == RangeType.Long){
+			    		this.setxVel((int) (10*Math.cos(Math.PI*(b.ticks)/120)));
+			    	}
+			    	else if (b.getRange() == RangeType.Mid){
+			    		this.setxVel((int) (7*Math.cos(Math.PI*(b.ticks)/120)));
+			    	}
+			    	else if (b.getRange() == RangeType.Short){
+			    		this.setxVel((int) (3*Math.cos(Math.PI*(b.ticks)/120)));
+			    	}
 			    }
 				if(isFalling()) {
 					setFalling(false);
