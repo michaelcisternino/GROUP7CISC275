@@ -157,6 +157,10 @@ public class MouseInput implements MouseListener{
 		}
 	}
 
+
+	/**
+	 * Inherited mouselistener method. Not currently used.
+	 */
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		

@@ -22,7 +22,6 @@ import javax.swing.JPanel;
  * @author Katie Black
  * @author Michael Cisternino
  * @author Nick Hoffman
- *
  */
 public class StartScreen extends JPanel{
 
