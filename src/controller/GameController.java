@@ -49,7 +49,7 @@ public class GameController{
 	public boolean goingRight = false;
 	public boolean goingLeft = false;
 	//Status statusPanel = new Status();
-	public GUI gui = new GUI();
+	public transient GUI gui = new GUI();
 	
 	public GameController(){
 		

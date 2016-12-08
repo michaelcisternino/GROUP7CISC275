@@ -19,7 +19,7 @@ import game.Game;
  * @author Michael Cisternino
  * @author Nick Hoffman
  */
-public class Crabby extends Character{
+public class Crabby extends Character implements java.io.Serializable{
 	
     public boolean pkh;    // player key handler check (for movement)
     

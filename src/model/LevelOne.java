@@ -13,7 +13,7 @@ import java.util.LinkedList;
  * @author Nick Hoffman
  *
  */
-public class LevelOne {
+public class LevelOne implements java.io.Serializable{
 	private LinkedList<Block> blocks = new LinkedList<Block>();
 	private LinkedList<InteractiveObject> levelObjects = new LinkedList<InteractiveObject>();
 //	private LinkedList<InteractiveObject> enemies = new LinkedList<InteractiveObject>();

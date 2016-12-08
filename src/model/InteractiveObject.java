@@ -20,7 +20,7 @@ import game.Game;
  * @author Nick Hoffman
  *
  */
-public abstract class InteractiveObject {
+public abstract class InteractiveObject implements java.io.Serializable {
 	
 	private boolean useCorrect = false;
 
@@ -47,7 +47,7 @@ public abstract class InteractiveObject {
 	public GameController gamecontrol;
 	
 	String file;
-	BufferedImage object;
+	transient BufferedImage object;
 	
 	/**
 	 * Constructor for interactive objects. Contains parameters related to the object.

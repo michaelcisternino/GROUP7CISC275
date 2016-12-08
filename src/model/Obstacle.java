@@ -15,7 +15,7 @@ import game.Game;
  * @author Nick Hoffman
  *
  */
-public class Obstacle extends InteractiveObject{
+public class Obstacle extends InteractiveObject implements java.io.Serializable{
 	Color obsCol;
 	BufferedImage item;
 	/**

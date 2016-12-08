@@ -21,7 +21,7 @@ import game.Game;
  * @author Nick Hoffman
  *
  */
-public abstract class Character {
+public abstract class Character implements java.io.Serializable {
 
 	private int xPos, yPos;
 	private int  xVel, yVel;
@@ -48,7 +48,7 @@ public abstract class Character {
 	public GameController gamecontrol;
 	
 	String file;
-	BufferedImage character;
+	transient BufferedImage character;
 	
 	/**
 	 * Constructor for character.

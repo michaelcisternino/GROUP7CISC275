@@ -37,7 +37,7 @@ public class MainView extends JComponent { // extend canvas and use
 	// private GameController gc = game.gameControl;
 	// JFrame frame = new JFrame();
 	public Status statusPanel = new Status();
-	Image background;
+	transient Image background;
 
 	/**
 	 * Constructor for MainView. Not currently used.
@@ -72,7 +72,7 @@ public class MainView extends JComponent { // extend canvas and use
 		// g.setColor(Color.CYAN);
 		// g.fillRect(0, 0, getWidth(), getHeight());
 		g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
-		Game.getPane().add(statusPanel, BorderLayout.SOUTH);
+		//Game.getPane().add(statusPanel, BorderLayout.SOUTH);
 		Game.gameControl.draw(g);
 	}
 

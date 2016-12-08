@@ -7,6 +7,6 @@ package model;
  * @author Michael Cisternino
  * @author Nick Hoffman
  */
-public enum RangeType {
+public enum RangeType implements java.io.Serializable{
 	None, Short, Mid, Long;
 }
