@@ -142,6 +142,7 @@ public class Game extends JFrame implements Runnable, Serializable{
 		
 		/**
 		 * Pauses the game thread. Run is set to false.
+		 * @throws InterruptedException Exception if the thread can't be paused.
 		 */
 		public void pauseThread() throws InterruptedException{
 			run = false;
@@ -194,7 +195,7 @@ public class Game extends JFrame implements Runnable, Serializable{
 		 * Creates a pane for the game with specified size and creates the view and status bars.
 		 * The start screen and the status bar are added to the pane.
 		 */
-		public Game() {
+		public Game(){
 			System.out.println("in game constructor");
 			setPane(getContentPane());
 			Dimension size = new Dimension(WIDTH*SCALE, HEIGHT*SCALE);
@@ -338,7 +339,7 @@ public class Game extends JFrame implements Runnable, Serializable{
 		//Main 
 		/**
 		 * Main function for the game. Links the thread and sets visible.
-		 * @param args
+		 * @param args Arguements we don't use.
 		 */
 		public static void main(String[] args) {
 			game = new Game();

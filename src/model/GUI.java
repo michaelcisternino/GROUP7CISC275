@@ -11,6 +11,14 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+/**
+ * The game's user interface and status bar.
+ * @author Alex Addeo
+ * @author Zion Aranda
+ * @author Katie Black
+ * @author Michael Cisternino
+ * @author Nick Hoffman
+ */
 
 public class GUI {
 	public int xPos = 15;
@@ -18,6 +26,10 @@ public class GUI {
 	public int WIDTH = 300;
 	public int HEIGHT = 50;
 
+	/**
+	 * Draws the user interface and status bar on the screen. Gets the item and health counts from the character and draws them.
+	 * @param g The graphics to be drawn on.
+	 */
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
 		g.drawImage(createImage("Final Images/UI Buttons, Icons, Symbols/button2.png"), xPos, yPos, WIDTH, HEIGHT, null, null);
@@ -70,11 +82,10 @@ public class GUI {
 	
 	}
 	
-	
 	/**
-	 * Attempts to load an image given the filename.
-	 * @param file
-	 * @return img
+	 * Attempts to load an image given a filename.
+	 * @param file The filename to be loaded.
+	 * @return img The image loaded from the file.
 	 */
 	private Image createImage(String file) {
 		Image img;

@@ -12,7 +12,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 /**
- * Obstacles the player must beat. Subclass of InteractiveObject.
+ * Victory screen for the game.
  * @author Alex Addeo
  * @author Zion Aranda
  * @author Katie Black

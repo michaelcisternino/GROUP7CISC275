@@ -125,7 +125,7 @@ public abstract class Character implements java.io.Serializable {
 	}
 	
 	/**
-	 * If the character dies, it loses a life.
+	 * If the character dies, it loses a life. The correct level will then be reset.
 	 */
 	public void die(){
 		this.lives--;
@@ -182,8 +182,7 @@ public abstract class Character implements java.io.Serializable {
 	}
 	
 	/**
-	 * Adds an item to the game controller's list of entities.
-	 * @param go The item to be added to the list of entities.
+	 * @param go The item to be added to the game controller's list of entities.
 	 */
 	public void addObject(Item go){
 		gamecontrol.entities.add(go);
@@ -204,28 +203,28 @@ public abstract class Character implements java.io.Serializable {
 	}
 	
 	/**
-	 * @return isJumping The character's swimming up status.
+	 * @return isSwimUp The character's swimming up status.
 	 */
 	public boolean isSwimUp() {
 		return isSwimUp;
 	}
 	
 	/**
-	 * @param isJumping Sets the character's swimming up status.
+	 * @param isSwimUp Sets the character's swimming up status.
 	 */
 	public void setSwimUp(boolean isSwimUp) {
 		this.isSwimUp = isSwimUp;
 	}
 	
 	/**
-	 * @return isJumping The character's swimming down status.
+	 * @return isSwimDown The character's swimming down status.
 	 */
 	public boolean isSwimDown() {
 		return isSwimDown;
 	}
 	
 	/**
-	 * @param isJumping Sets the character's swimming up status.
+	 * @param isSwimDown Sets the character's swimming up status.
 	 */
 	public void setSwimDown(boolean isSwimDown) {
 		this.isSwimDown = isSwimDown;
@@ -409,7 +408,7 @@ public abstract class Character implements java.io.Serializable {
 	}
 	
 	/**
-	 * @param Sets the gabion gone status.
+	 * @param gone Sets the gabion gone status.
 	 */
 	public void setGabionsGone(boolean gone){
 		this.gabionsGone = gone;

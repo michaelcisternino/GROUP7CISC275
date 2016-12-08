@@ -52,10 +52,15 @@ public abstract class InteractiveObject implements java.io.Serializable {
 	 * Constructor for interactive objects. Contains parameters related to the object.
 	 * @param x The object's x position.
 	 * @param y The object's y position.
+	 * @param initx The object's initial x position.
+	 * @param inity The object's initial y position.
 	 * @param width The width of the object.
 	 * @param height The height of the object.
 	 * @param t The type of the object.
-	 * @param gamecontrol The game controller.
+	 * @param r The distance the object will move.
+	 * @param isVert If the object moves vertically.
+	 * @param isHor If the object moves horizontally.
+	 * @param gc The game controller.
 	 */
 	public InteractiveObject(int x, int y, int initx, int inity, int width, int height, ObjectType t, RangeType r, Boolean isVert, Boolean isHor, GameController gc){
 		this.xPos = x;
@@ -100,6 +105,9 @@ public abstract class InteractiveObject implements java.io.Serializable {
 		}
 	}
 	
+	/**
+	 * Sets the object's x velocity to 7 and then updates the object's x position based on the new x velocity.
+	 */
 	public void throwItem(){
 		this.xVel = 7;
 		this.xPos += this.xVel;
@@ -319,7 +327,7 @@ public abstract class InteractiveObject implements java.io.Serializable {
 	}
 	
 	/**
-	 * @param gone
+	 * @param gone If the gabions are gone.
 	 */
 	public void setGabionsGone(boolean gone){
 		gabionsGone = gone;
@@ -389,6 +397,9 @@ public abstract class InteractiveObject implements java.io.Serializable {
 	 * Chemicals get hay thrown at them to soak it up.
 	 * Empty soil gets seeds thrown to grow plants.
 	 * Dead soil gets compost thrown to improve it.
+	 * Trash bins get trash/waste thrown into them.
+	 * Recycle bins get recyclables thrown into them.
+	 * Empty gabions get oysters thrown into them to fill them up.
 	 * If the correct object is used, the obstacle is removed.
 	 * A boolean is returned stating if the player used the correct object.
 	 * @param t The type of the object used.

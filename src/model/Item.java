@@ -20,12 +20,17 @@ public class Item extends InteractiveObject implements java.io.Serializable{
 	BufferedImage item;
 	/**
 	 * Constructor for items. A switch statement selects the proper image based on the the type.
-	 * @param x The item x position.
-	 * @param y The item y position.
+	 * @param x The item's x position.
+	 * @param y The item's y position.
+	 * @param initx The item's initial x position.
+	 * @param inity The item's initial y position.
 	 * @param width The width of the item.
 	 * @param height The height of the item.
 	 * @param t The type of the item.
-	 * @param gamecontrol The game controller.
+	 * @param r The distance the item will move.
+	 * @param isVert If the item moves vertically.
+	 * @param isHor If the item moves horizontally.
+	 * @param gc The game controller.
 	 */
 	public Item(int x, int y, int initx, int inity, int width, int height, ObjectType t, RangeType r, Boolean isVert, Boolean isHor, GameController gc){
 		super(x, y, initx, inity, width, height, t, r, isVert, isHor, gc);

@@ -261,6 +261,10 @@ public class Crabby extends Character implements java.io.Serializable{
 	}
 	}
 
+	/**
+	 * Attempts to create the animated bufferedimage of the crab.
+	 * @return bufferedImage The crab's animated image.
+	 */
 	private BufferedImage[] createImage(){
 	    BufferedImage[] bufferedImage = new BufferedImage[1];
 	        try {
