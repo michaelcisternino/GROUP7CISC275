@@ -58,6 +58,7 @@ public class ItemTest {
 		assertEquals("Range type should be Short",i.getRange(), RangeType.Short);
 		i.setThrown(true);
 		assertEquals("isThrown should be true",i.isThrown(), true);
+		i.fall();
 	}
 	
 	@Test
@@ -69,15 +70,22 @@ public class ItemTest {
 		i.getRightBounds();
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testOtherStuff(){
+		i.addObject(i);
 		i.remove();
+		i.setGravity(0);
+		i.setGabionsGone(true);
+		assertEquals("GabionsGone should be true",i.gabionsGone(),true);
+		i.isFalling();
 		i=new Item(1300,150, 0, 0, 40,30,ObjectType.TrashBag, RangeType.Short, false, false, gc);
 		i=new Item(1300,150, 0, 0, 40,30,ObjectType.Hay, RangeType.Short, false, false, gc);
 		i=new Item(1300,150, 0, 0, 40,30,ObjectType.Compost, RangeType.Short, false, false, gc);
 		i=new Item(1300,150, 0, 0, 40,30,ObjectType.Seeds, RangeType.Short, false, false, gc);
 		i=new Item(1300,150, 0, 0, 40,30,ObjectType.Trash, RangeType.Short, false, false, gc);
 		i=new Item(1300,150, 0, 0, 40,30,ObjectType.Recycling, RangeType.Short, false, false, gc);
+		assertEquals("Gravity should be 0",i.getGravity(),0);
 		i.update();
 	}
 

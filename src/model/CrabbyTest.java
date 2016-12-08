@@ -120,7 +120,6 @@ public class CrabbyTest {
 		assertEquals("isRising should be true",c.isRising(),true);
 		c.setGone(true);
 		assertEquals("isGone should be true",c.isGone(),true);
-		c.setGone(false);
 	}
 	
 	@Test
