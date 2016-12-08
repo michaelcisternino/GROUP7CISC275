@@ -240,7 +240,7 @@ public class Crabby extends Character implements java.io.Serializable{
 			}
 		}
 		if(isFalling()){
-			if(getYPos() >= 1500){
+			if(getYPos() >= 750){
 				setGone(true);
 			}
 			fall();
