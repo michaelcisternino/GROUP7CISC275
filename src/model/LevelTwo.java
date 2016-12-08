@@ -17,9 +17,8 @@ public class LevelTwo implements java.io.Serializable{
 	private LinkedList<InteractiveObject> levelObjects = new LinkedList<InteractiveObject>();
 
 	/**
-	 * Creates blocks for the level and adds them to the level's list of blocks. Block positions are predetermined.
-	 * The last block in the list is set as the level's final block.
-	 * Floors are then created and added to the list.
+	 * Creates platforms for the level and adds them to the level's list of blocks. Block positions are predetermined.
+	 * The last platform in the list is set as the level's final platform.
 	 */
 	public void fillBlocks(){
 		blocks.add(new Platform(1,1,1,1,1,1,ObjectType.Wall,RangeType.Short,false,false,Game.gameControl));
@@ -51,7 +50,7 @@ public class LevelTwo implements java.io.Serializable{
 	}
 	
 	/**
-	 * Creates items for the level. Level two uses trash bags.
+	 * Creates items for the level. Level two uses trash bags, recyclables, and trash.
 	 * Items are added to the level's list of items.
 	 */
 	public void fillObjects(){
@@ -73,7 +72,8 @@ public class LevelTwo implements java.io.Serializable{
 	
 	/**
 	 * Creates obstacles for the level and adds them to the list of obstacles.
-	 * Level two uses people as obstacles.
+	 * Level two uses people, trash bins, and recycle bins as obstacles.
+	 * Full gabions are shown at the beginning to show the player what their actions in the previous level did.
 	 */
 	public void fillObstacles(){
 		levelObjects.add(new Obstacle(200,0,0,0,500,400,ObjectType.Gabion,RangeType.None,false,false,Game.gameControl));

@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 import controller.GameController;
 import game.Game;
 /**
- * Obstacles the player must beat. Subclass of InteractiveObject.
+ * Obstacles the player must destroy or avoid. Subclass of InteractiveObject.
  * @author Alex Addeo
  * @author Zion Aranda
  * @author Katie Black
@@ -18,6 +18,7 @@ import game.Game;
 public class Obstacle extends InteractiveObject implements java.io.Serializable{
 	Color obsCol;
 	BufferedImage item;
+	
 	/**
 	 * Constructor for obstacle. A switch statement based on the type selects the object's picture.
 	 * @param x The obstacle's x position.

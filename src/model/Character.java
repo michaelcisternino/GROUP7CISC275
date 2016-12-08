@@ -125,7 +125,7 @@ public abstract class Character implements java.io.Serializable {
 	}
 	
 	/**
-	 * If the character dies, it loses a life.
+	 * If the character dies, it loses a life. The correct level will then be reset.
 	 */
 	public void die(){
 		this.lives--;
@@ -182,8 +182,7 @@ public abstract class Character implements java.io.Serializable {
 	}
 	
 	/**
-	 * Adds an item to the game controller's list of entities.
-	 * @param go The item to be added to the list of entities.
+	 * @param go The item to be added to the game controller's list of entities.
 	 */
 	public void addObject(Item go){
 		gamecontrol.entities.add(go);

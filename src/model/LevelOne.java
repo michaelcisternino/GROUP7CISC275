@@ -16,20 +16,10 @@ import java.util.LinkedList;
 public class LevelOne implements java.io.Serializable{
 	private LinkedList<Block> blocks = new LinkedList<Block>();
 	private LinkedList<InteractiveObject> levelObjects = new LinkedList<InteractiveObject>();
-
-	
-	
-	//Need to fix touching gabions removes them
-	//if you hit a net after we make goingRight false
-	// then it doesnt reset that if you die.
-	// thatll be fixed in reset level area
-	// oysters fly across the screen prob bc the move func in inter obj
-	
 	
 	/**
-	 * Creates blocks for the level and adds them to the level's list of blocks. Block positions are predetermined.
+	 * Creates platforms and nets for the level and adds them to the level's list of blocks. Block positions are predetermined.
 	 * The last block in the list is set as the level's final block.
-	 * Floors are then created and added to the list.
 	 */
 	public void fillBlocks(){
 		blocks.add(new Platform(1,1,1,1,1,1,ObjectType.Wall,RangeType.Short,false,false,Game.gameControl));
@@ -85,7 +75,7 @@ public class LevelOne implements java.io.Serializable{
 	}
 	
 	/**
-	 * Creates obstacles for the level and adds them to the list of obstacles.
+	 * Creates empty gabions at the end and adds them to the list of obstacles.
 	 */
 	public void fillObstacles(){
 		levelObjects.add(new Obstacle(6200,0,0,0,500,400,ObjectType.EmptyGabion,RangeType.None,false,false,Game.gameControl));

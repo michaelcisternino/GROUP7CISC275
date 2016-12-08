@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 /**
- * A tutorial screen for the game.
+ * Tutorial screens for the game.
  * @author Alex Addeo
  * @author Zion Aranda
  * @author Katie Black

@@ -100,6 +100,9 @@ public abstract class InteractiveObject implements java.io.Serializable {
 		}
 	}
 	
+	/**
+	 * Sets the object's x velocity to 7 and then updates the object's x position based on the new x velocity.
+	 */
 	public void throwItem(){
 		this.xVel = 7;
 		this.xPos += this.xVel;
@@ -389,6 +392,9 @@ public abstract class InteractiveObject implements java.io.Serializable {
 	 * Chemicals get hay thrown at them to soak it up.
 	 * Empty soil gets seeds thrown to grow plants.
 	 * Dead soil gets compost thrown to improve it.
+	 * Trash bins get trash/waste thrown into them.
+	 * Recycle bins get recyclables thrown into them.
+	 * Empty gabions get oysters thrown into them to fill them up.
 	 * If the correct object is used, the obstacle is removed.
 	 * A boolean is returned stating if the player used the correct object.
 	 * @param t The type of the object used.
