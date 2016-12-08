@@ -145,7 +145,8 @@ public class Crabby extends Character{
 //				setyVel(0);
 				setYPos(b.getYPos()-64);
 			    if (b.isHor() ==true && pkh == false){
-			        this.setxVel((int) (3*Math.cos(Math.PI*(b.ticks)/120)));
+			    	// changed from 3 to 10
+			        this.setxVel((int) (10*Math.cos(Math.PI*(b.ticks)/120)));
 			    }
 				if(isFalling()) {
 					setFalling(false);
