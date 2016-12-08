@@ -74,7 +74,7 @@ public class PlatformTest {
 	public void testOtherStuff(){
 		f.addBlock((Block) f);
 		f.remove();
-		f.createImage(null);
+		f.createImage("Final Images/Backgrounds/sand_tile.jpg");
 	}
 
 }

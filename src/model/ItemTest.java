@@ -85,7 +85,7 @@ public class ItemTest {
 		i=new Item(1300,150, 0, 0, 40,30,ObjectType.Seeds, RangeType.Short, false, false, gc);
 		i=new Item(1300,150, 0, 0, 40,30,ObjectType.Trash, RangeType.Short, false, false, gc);
 		i=new Item(1300,150, 0, 0, 40,30,ObjectType.Recycling, RangeType.Short, false, false, gc);
-		assertEquals("Gravity should be 0",i.getGravity(),0);
+		assertEquals("Gravity should be 0",(int) i.getGravity(),0);
 		i.update();
 	}
 

@@ -149,6 +149,15 @@ public class CrabbyTest {
 		c.setLives(4);
 		Game.setLevel(1);
 		assertEquals("Lives should be 4",c.getLives(), 4);
+		c.addObject(new Item(1300,150, 0, 0, 40,30,ObjectType.TrashBag, RangeType.Short, false, false, gc));
+		c.remove();
+		c.setCaught(true);
+		assertEquals("Caught should be true",c.isCaught(), true);
+		c.setGabionsGone(true);
+		assertEquals("GabionsGone should be true",c.getGabionsGone(), true);
+		c.isDone(true);
+		c.getGabions();
+		c.removeGabion();
 		//c.die();
 	}
 	
