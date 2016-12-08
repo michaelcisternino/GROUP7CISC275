@@ -70,18 +70,30 @@ public class ObstacleTest {
 	@Test
 	public void testOtherStuff(){
 		assertEquals("CheckItem should be true",o.checkItem(ObjectType.TrashBag), true);
+		assertEquals("CheckItem should be false",o.checkItem(ObjectType.People), false);
 		o=new Obstacle(2300,150, 0, 0, 70,70,ObjectType.Chemicals, RangeType.Short, false, false, Game.gameControl);
 		assertEquals("CheckItem should be true",o.checkItem(ObjectType.Hay), true);
+		assertEquals("CheckItem should be false",o.checkItem(ObjectType.People), false);
 		o=new Obstacle(2300,150, 0, 0, 70,70,ObjectType.DeadSoil, RangeType.Short, false, false, Game.gameControl);
 		assertEquals("CheckItem should be true",o.checkItem(ObjectType.Compost), true);
+		assertEquals("CheckItem should be false",o.checkItem(ObjectType.People), false);
 		o=new Obstacle(2300,150, 0, 0, 70,70,ObjectType.EmptySoil, RangeType.Short, false, false, Game.gameControl);
 		assertEquals("CheckItem should be true",o.checkItem(ObjectType.Seeds), true);
+		assertEquals("CheckItem should be false",o.checkItem(ObjectType.People), false);
 		o=new Obstacle(2300,150, 0, 0, 70,70,ObjectType.Erosion, RangeType.Short, false, false, Game.gameControl);
+		assertEquals("CheckItem should be false",o.checkItem(ObjectType.People), false);
 		o=new Obstacle(2300,150, 0, 0, 70,70,ObjectType.TrashBin, RangeType.Short, false, false, Game.gameControl);
 		assertEquals("CheckItem should be true",o.checkItem(ObjectType.Trash), true);
+		assertEquals("CheckItem should be false",o.checkItem(ObjectType.People), false);
 		o=new Obstacle(2300,150, 0, 0, 70,70,ObjectType.RecycleBin, RangeType.Short, false, false, Game.gameControl);
 		assertEquals("CheckItem should be true",o.checkItem(ObjectType.Recycling), true);
+		assertEquals("CheckItem should be false",o.checkItem(ObjectType.People), false);
 		o=new Obstacle(2300,150, 0, 0, 70,70,ObjectType.Net, RangeType.Short, false, false, Game.gameControl);
+		assertEquals("CheckItem should be false",o.checkItem(ObjectType.People), false);
+		o=new Obstacle(2300,150, 0, 0, 70,70,ObjectType.Gabion, RangeType.Short, false, false, Game.gameControl);
+		assertEquals("CheckItem should be false",o.checkItem(ObjectType.People), false);
+		
+		
 		o.update();
 	}
 }
