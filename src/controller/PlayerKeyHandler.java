@@ -103,7 +103,7 @@ public class PlayerKeyHandler implements KeyListener{
 			Game.game.writeMyObjectToFile(Game.game, "tempdata.ser");
 			break;
 		}
-	}
+	}		
 		
 	/**
 	 * Unused inherited method.

@@ -18,8 +18,12 @@ import game.Game;
  * @author Michael Cisternino
  * @author Nick Hoffman
  */
-public class MainView extends JComponent { 
-	
+
+public class MainView extends JComponent {  // extend canvas and use
+											// bufferedimage here?
+	// private Game game;
+	// private GameController gc = game.gameControl;
+	// JFrame frame = new JFrame();
 	transient Image background;
 
 	/**

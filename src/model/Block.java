@@ -17,7 +17,7 @@ import controller.GameController;
  * @author Michael Cisternino
  * @author Nick Hoffman
  */
-public abstract class Block {
+public abstract class Block implements java.io.Serializable{
 	
 	public int periodPos = 0;    // for new movement function
     public int deltaX= 0;
@@ -43,6 +43,7 @@ public abstract class Block {
 	public GameController gamecontrol;
 	
 	String file;
+	transient BufferedImage img;
 	
 	/**
 	 * Constructor for block.
@@ -312,7 +313,6 @@ public abstract class Block {
 	 * @return img The image loaded from the file.
 	 */
 	public BufferedImage createImage(String file) {
-		BufferedImage img;
 		try{
 			img = ImageIO.read(new File(file));
 			return img;

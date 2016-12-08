@@ -3,7 +3,6 @@ package game;
 import java.util.Random;
 import java.awt.*;
 import java.awt.event.*;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -45,13 +44,15 @@ public class Game extends JFrame implements Runnable, Serializable{
 		public transient MainView view;
 		public static transient GameController gameControl;
 		public static Game game;
-		private StartScreen starter;
-		private GameOver endGame;
-		private WinScreen winScreen;
-		private TutorialScreen tut1 = new TutorialScreen(1);
-		private TutorialScreen tut2 = new TutorialScreen(2);
-		private TutorialScreen tut3 = new TutorialScreen(3);
-		private MouseListener mi;
+		
+		private transient StartScreen starter;
+		private transient GameOver endGame;
+		private transient WinScreen winScreen;
+		private transient TutorialScreen tut1 = new TutorialScreen(1);
+		private transient TutorialScreen tut2 = new TutorialScreen(2);
+		private transient TutorialScreen tut3 = new TutorialScreen(3);
+		private transient MouseListener mi;
+		
 		private static int level = 0;
 		
 		/**
@@ -221,8 +222,8 @@ public class Game extends JFrame implements Runnable, Serializable{
 			this.playing = b;
 			this.startGame();
             if (level == 5){
-	        this.getContentPane().remove(tut1);
-	        level = 1;
+		        this.getContentPane().remove(tut1);
+		        level = 1;
 		    }
 		    else if (level == 6){
 		        this.getContentPane().remove(tut2);
@@ -232,7 +233,8 @@ public class Game extends JFrame implements Runnable, Serializable{
 		        this.getContentPane().remove(tut3);
 		        level = 3;
 		    }
-//            level = 3;
+            //take this out to start like normal
+            //level = 3;
 			startNextLevel(level);
 		}
 	
