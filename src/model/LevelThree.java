@@ -25,7 +25,7 @@ public class LevelThree implements java.io.Serializable{
 	public void fillBlocks(){
 
 		
-		blocks.add(new Platform(1200,500,1200,0,300,30,ObjectType.Wall,RangeType.Long, false, true, Game.gameControl));
+		blocks.add(new Platform(1200,500,1200,0,300,30,ObjectType.Wall,RangeType.Long, false, false, Game.gameControl));
 		blocks.add(new Platform(1600,350,1600,0,200,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 		blocks.add(new Platform(2000,500,2000,0,200,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 		blocks.add(new Platform(2500,350,2500,0,300,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));

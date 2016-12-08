@@ -213,6 +213,9 @@ public class Crabby extends Character implements java.io.Serializable{
 					System.out.println(this.getLives());
 					this.die();
 					break;
+				case EmptyGabion:
+					gabionCount--;
+					break;
 				}
 				gamecontrol.removeObject(c);
 				gamecontrol.sendNext = true;

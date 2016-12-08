@@ -88,15 +88,15 @@ public class LevelOne implements java.io.Serializable{
 	 * Creates obstacles for the level and adds them to the list of obstacles.
 	 */
 	public void fillObstacles(){
-		levelObjects.add(new Obstacle(6200,0,0,0,500,400,ObjectType.EmptyGabion,RangeType.None,false,false,Game.gameControl));
+		levelObjects.add(new Obstacle(6400,0,0,0,400,400,ObjectType.EmptyGabion,RangeType.None,false,false,Game.gameControl));
 		levelObjects.getLast().setFinal(true);
-		levelObjects.add(new Obstacle(6200,100,0,0,500,400,ObjectType.EmptyGabion,RangeType.None,false,false,Game.gameControl));
+		levelObjects.add(new Obstacle(6400,100,0,0,400,400,ObjectType.EmptyGabion,RangeType.None,false,false,Game.gameControl));
 		levelObjects.getLast().setFinal(true);
-		levelObjects.add(new Obstacle(6200,200,0,0,500,400,ObjectType.EmptyGabion,RangeType.None,false,false,Game.gameControl));
+		levelObjects.add(new Obstacle(6400,200,0,0,400,400,ObjectType.EmptyGabion,RangeType.None,false,false,Game.gameControl));
 		levelObjects.getLast().setFinal(true);
-		levelObjects.add(new Obstacle(6200,300,0,0,500,400,ObjectType.EmptyGabion,RangeType.None,false,false,Game.gameControl));
+		levelObjects.add(new Obstacle(6400,300,0,0,400,400,ObjectType.EmptyGabion,RangeType.None,false,false,Game.gameControl));
 		levelObjects.getLast().setFinal(true);
-		levelObjects.add(new Obstacle(6200,400,0,0,500,400,ObjectType.EmptyGabion,RangeType.None,false,false,Game.gameControl));
+		levelObjects.add(new Obstacle(6400,400,0,0,400,400,ObjectType.EmptyGabion,RangeType.None,false,false,Game.gameControl));
 		levelObjects.getLast().setFinal(true);
 	}
 	

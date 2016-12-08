@@ -31,7 +31,7 @@ public class Obstacle extends InteractiveObject implements java.io.Serializable{
 		super(x, y, initx, inity, width, height, t, r, isVert, isHor, gc);
 		switch(t){
 		case People:
-			file = "Final Images/People and Humanoids/mr_evil.png";
+			file = "Final Images/People and Humanoids/volunteer_blueshirt_walk_left_0.png";
 			break;
 		case Chemicals: 
 			file = "Final Images/Objects/StormDrain_01.png";
