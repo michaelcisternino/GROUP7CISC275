@@ -15,7 +15,7 @@ import game.Game;
  * @author Nick Hoffman
  *
  */
-public class Item extends InteractiveObject{
+public class Item extends InteractiveObject implements java.io.Serializable{
 	private boolean isThrown = false;
 	BufferedImage item;
 	/**

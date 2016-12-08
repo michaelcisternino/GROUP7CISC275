@@ -20,7 +20,7 @@ import game.Game;
  * @author Nick Hoffman
  *
  */
-public abstract class InteractiveObject {
+public abstract class InteractiveObject implements java.io.Serializable {
 	
 	private boolean useCorrect = false;
 
@@ -46,7 +46,7 @@ public abstract class InteractiveObject {
 	public GameController gamecontrol;
 	
 	String file;
-	BufferedImage object;
+	transient BufferedImage object;
 	
 	/**
 	 * Constructor for interactive objects. Contains parameters related to the object.
@@ -444,22 +444,16 @@ public abstract class InteractiveObject {
  				useCorrect = false;
  			}
  			break;
- 		case Gabion:
+ 		case EmptyGabion:
  			if(t == ObjectType.Oyster){
  				useCorrect = true;
  				Game.gameControl.crabby.gabionCount--;
- 				System.out.println(Game.gameControl.crabby.gabionCount);
  			}
  			else{
  				useCorrect = false;
  			}
  			break;
 		}
-//		if(useCorrect == true){
-//			if(t == ObjectType.Oyster){
-//				gabionCount--;
-//			}
-//		}
 		return useCorrect;
 	}
 }

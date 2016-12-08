@@ -16,7 +16,7 @@ import game.Game;
  * @author Nick Hoffman
  *
  */
-public class Platform extends Block{
+public class Platform extends Block implements java.io.Serializable{
 	
 	BufferedImage item;
 	

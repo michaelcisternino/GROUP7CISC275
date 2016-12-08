@@ -19,7 +19,7 @@ import game.Game;
  * @author Michael Cisternino
  * @author Nick Hoffman
  */
-public class Crabby extends Character{
+public class Crabby extends Character implements java.io.Serializable{
 	
     public boolean pkh;    // player key handler check (for movement)
     
@@ -138,11 +138,6 @@ public class Crabby extends Character{
 				if(b.getType() == ObjectType.Net){
 					break;
 				}
-				//setyVel(b.getyVel());
-				if(b.isHor()){
-				setxVel(b.getxVel());
-				}
-//				setyVel(0);
 				setYPos(b.getYPos()-64);
 			    if (b.isHor() ==true && pkh == false){
 			    	// changed from 3 to 10

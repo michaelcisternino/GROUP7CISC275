@@ -12,7 +12,7 @@ import java.util.LinkedList;
  * @author Nick Hoffman
  *
  */
-public class LevelThree {
+public class LevelThree implements java.io.Serializable{
 	
 	private LinkedList<Block> blocks = new LinkedList<Block>();
 	private LinkedList<InteractiveObject> levelObjects = new LinkedList<InteractiveObject>();
@@ -38,22 +38,54 @@ public class LevelThree {
 		blocks.add(new Platform(4200,200,4200,0,400,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 		blocks.add(new Platform(4200,400,4200,0,400,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 		blocks.add(new Platform(4900,500,4900,0,300,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
-		blocks.add(new Platform(5700,450,5700,0,400,30,ObjectType.Wall,RangeType.Mid, false, true, Game.gameControl));
+		blocks.add(new Platform(5800,450,5800,0,400,30,ObjectType.Wall,RangeType.Mid, false, true, Game.gameControl));
 		blocks.add(new Platform(5700,150,5700,0,300,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 		blocks.add(new Platform(6300,300,6300,0,300,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 		blocks.add(new Platform(6800,250,6800,0,200,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 		blocks.add(new Platform(7300,200,7300,0,100,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
-		blocks.add(new Platform(7500,200,7500,1,300,30,ObjectType.Wall,RangeType.Long, true, false, Game.gameControl));
+		blocks.add(new Platform(7500,100,7500,1,300,30,ObjectType.Wall,RangeType.Long, true, false, Game.gameControl));
 		blocks.add(new Platform(8000,500,8000,0,400,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
-		blocks.add(new Platform(8400,450,8400,0,300,30,ObjectType.Wall,RangeType.Long, false, true, Game.gameControl));
+		blocks.add(new Platform(8600,450,8600,0,300,30,ObjectType.Wall,RangeType.Long, false, true, Game.gameControl));
 		blocks.add(new Platform(9000,300,9000,0,200,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
-		blocks.add(new Platform(9200,300,9200,-1,200,30,ObjectType.Wall,RangeType.Short, true, false, Game.gameControl));
+		blocks.add(new Platform(9200,200,9200,-1,200,30,ObjectType.Wall,RangeType.Short, true, false, Game.gameControl));
 		blocks.add(new Platform(9400,250,9400,0,200,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
-		blocks.add(new Platform(9800,400,9800,0,200,30,ObjectType.Wall,RangeType.Short, false, true, Game.gameControl));
+		blocks.add(new Platform(10000,400,10000,0,200,30,ObjectType.Wall,RangeType.Short, false, true, Game.gameControl));
 		blocks.add(new Platform(10100,500,10100,0,200,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 		blocks.add(new Platform(10700,500,10700,0,400,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 		blocks.add(new Platform(11300,400,11300,0,300,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 		blocks.add(new Platform(11700,250,11700,0,200,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+		
+		
+		//unmoving
+//		blocks.add(new Platform(1200,500,1200,0,300,30,ObjectType.Wall,RangeType.Long, false, false, Game.gameControl));
+//		blocks.add(new Platform(1600,350,1600,0,200,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+//		blocks.add(new Platform(2000,500,2000,0,200,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+//		blocks.add(new Platform(2500,350,2500,0,300,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+//		blocks.add(new Platform(2700,300,2700,0,50,30,ObjectType.Wall,RangeType.Long, false, false, Game.gameControl));
+//		blocks.add(new Platform(2900,250,2900,0,300,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+//		blocks.add(new Platform(3200,300,3200,0,50,30,ObjectType.Wall,RangeType.Long, false, false, Game.gameControl));
+//		blocks.add(new Platform(3300,350,3300,0,300,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+//		blocks.add(new Platform(2900,500,2900,0,300,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+//		blocks.add(new Platform(3800,450,3800,-1,200,30,ObjectType.Wall,RangeType.Long, true, false, Game.gameControl));
+//		blocks.add(new Platform(4200,200,4200,0,400,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+//		blocks.add(new Platform(4200,400,4200,0,400,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+//		blocks.add(new Platform(4900,500,4900,0,300,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+//		blocks.add(new Platform(5800,450,5800,0,400,30,ObjectType.Wall,RangeType.Mid, false, false, Game.gameControl));
+//		blocks.add(new Platform(5700,150,5700,0,300,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+//		blocks.add(new Platform(6300,300,6300,0,300,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+//		blocks.add(new Platform(6800,250,6800,0,200,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+//		blocks.add(new Platform(7300,200,7300,0,100,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+//		blocks.add(new Platform(7500,100,7500,1,300,30,ObjectType.Wall,RangeType.Long, false, false, Game.gameControl));
+//		blocks.add(new Platform(8000,500,8000,0,400,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+//		blocks.add(new Platform(8600,450,8600,0,300,30,ObjectType.Wall,RangeType.Long, false, false, Game.gameControl));
+//		blocks.add(new Platform(9000,300,9000,0,200,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+//		blocks.add(new Platform(9200,200,9200,-1,200,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+//		blocks.add(new Platform(9400,250,9400,0,200,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+//		blocks.add(new Platform(10000,400,10000,0,200,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+//		blocks.add(new Platform(10100,500,10100,0,200,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+//		blocks.add(new Platform(10700,500,10700,0,400,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+//		blocks.add(new Platform(11300,400,11300,0,300,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
+//		blocks.add(new Platform(11700,250,11700,0,200,30,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 		
 		blocks.add(new Platform(0,Game.HEIGHT*Game.SCALE-100,0,0,1000,100,ObjectType.Wall,RangeType.Short, false, false, Game.gameControl));
 		blocks.add(new Platform(5500,Game.HEIGHT*Game.SCALE-100,0,0,600,100,ObjectType.Wall,RangeType.Short,false, false, Game.gameControl));
@@ -69,17 +101,23 @@ public class LevelThree {
 	 * Items are added to the level's list of items.
 	 */
 	public void fillObjects(){
-		// Oysters
-//		levelObjects.add(new Item(1000,150, -1, 0, 40,30,ObjectType.Hay, RangeType.Short, false, true, Game.gameControl));
-//		levelObjects.add(new Item(2800,250, 0, 0, 40,30,ObjectType.Hay, RangeType.Long, false, false, Game.gameControl));
-//		levelObjects.add(new Item(3300,200, 0, 0, 40,30,ObjectType.Compost, RangeType.Long, false, false, Game.gameControl));
-//		levelObjects.add(new Item(3800,450, 0, 0, 40,30,ObjectType.Compost, RangeType.Long, false, false, Game.gameControl));
-//		levelObjects.add(new Item(4300,350, 0, 0, 40,30,ObjectType.Compost, RangeType.Long, false, false, Game.gameControl));
-//		levelObjects.add(new Item(4800,350, 0, 0, 40,30,ObjectType.Seeds, RangeType.Long, false, false, Game.gameControl));
-//		levelObjects.add(new Item(5800,450, 0, 0, 40,30,ObjectType.Seeds, RangeType.Long, false, false, Game.gameControl));		
+
+		//hay gurl
+		levelObjects.add(new Item(2100,320,1000, 0, 40,30,ObjectType.Hay, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Item(6300,550,1000, 0, 40,30,ObjectType.Hay, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Item(11300,550,1000, 0, 40,30,ObjectType.Hay, RangeType.Long, false, false, Game.gameControl));
 		
-		levelObjects.add(new Item(1000,470, 1, 0, 40,30,ObjectType.Hay, RangeType.Long, false, true, Game.gameControl));
+		//seeds r 4 sukers
+		levelObjects.add(new Item(3000,220,1000, 0, 40,30,ObjectType.Seeds, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Item(4400,170,1000, 0, 40,30,ObjectType.Seeds, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Item(7325,170,1000, 0, 40,30,ObjectType.Seeds, RangeType.Long, false, false, Game.gameControl));
 		
+		//i feel like compost
+		levelObjects.add(new Item(3000,470,1000, 0, 40,30,ObjectType.Compost, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Item(5800,120,1000, 0, 40,30,ObjectType.Compost, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Item(8300,470,1000, 0, 40,30,ObjectType.Compost, RangeType.Long, false, false, Game.gameControl));
+		
+
 	}
 	
 	/**
@@ -87,12 +125,29 @@ public class LevelThree {
 	 * Level three uses chemicals, dead soil, and empty soil as obstacles.
 	 */
 	public void fillObstacles(){
-		levelObjects.add(new Obstacle(2300,150, 0, 0, 70,70,ObjectType.Chemicals, RangeType.Long, false, false, Game.gameControl));
-		levelObjects.add(new Obstacle(3000,550, 0, 0, 70,70,ObjectType.Chemicals, RangeType.Long, false, false, Game.gameControl));
-		levelObjects.add(new Obstacle(3300,400, 0, 0, 70,70,ObjectType.DeadSoil, RangeType.Long, false, false, Game.gameControl));
-		levelObjects.add(new Obstacle(3600,550 , 0, 0, 70,70,ObjectType.DeadSoil, RangeType.Long, false, false, Game.gameControl));
-		levelObjects.add(new Obstacle(4100,250, 0, 0, 70,70,ObjectType.EmptySoil, RangeType.Long, false, false, Game.gameControl));
-		levelObjects.add(new Obstacle(4950,300, 0, 0, 70,70,ObjectType.EmptySoil, RangeType.Long, false, false, Game.gameControl));
+//		levelObjects.add(new Obstacle(2300,150, 0, 0, 70,70,ObjectType.Chemicals, RangeType.Long, false, false, Game.gameControl));
+//		levelObjects.add(new Obstacle(3000,550, 0, 0, 70,70,ObjectType.Chemicals, RangeType.Long, false, false, Game.gameControl));
+//		levelObjects.add(new Obstacle(3300,400, 0, 0, 70,70,ObjectType.DeadSoil, RangeType.Long, false, false, Game.gameControl));
+//		levelObjects.add(new Obstacle(3600,550 , 0, 0, 70,70,ObjectType.DeadSoil, RangeType.Long, false, false, Game.gameControl));
+//		levelObjects.add(new Obstacle(4100,250, 0, 0, 70,70,ObjectType.EmptySoil, RangeType.Long, false, false, Game.gameControl));
+//		levelObjects.add(new Obstacle(4950,300, 0, 0, 70,70,ObjectType.EmptySoil, RangeType.Long, false, false, Game.gameControl));
+		
+		//Run run runoff
+		levelObjects.add(new Item(5000,470,1000, 0, 40,30,ObjectType.Chemicals, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Item(10800,470,1000, 0, 40,30,ObjectType.Chemicals, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Item(11800,220,1000, 0, 40,30,ObjectType.Chemicals, RangeType.Long, false, false, Game.gameControl));
+		
+		////This soil is empty like my soul
+		levelObjects.add(new Item(4400,370,1000, 0, 40,30,ObjectType.EmptySoil, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Item(9100,270,1000, 0, 40,30,ObjectType.EmptySoil, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Item(9500,220,1000, 0, 40,30,ObjectType.EmptySoil, RangeType.Long, false, false, Game.gameControl));
+		
+		//this soil is literally so ded 
+		levelObjects.add(new Item(6400,270,1000, 0, 40,30,ObjectType.DeadSoil, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Item(6875,220,1000, 0, 40,30,ObjectType.DeadSoil, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Item(10200,470,1000, 0, 40,30,ObjectType.DeadSoil, RangeType.Long, false, false, Game.gameControl));
+
+		
 	}
 	
 	/**

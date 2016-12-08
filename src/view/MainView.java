@@ -20,7 +20,7 @@ import game.Game;
  */
 public class MainView extends JComponent { 
 	
-	Image background;
+	transient Image background;
 
 	/**
 	 * Constructor for MainView. Not currently used.

@@ -99,6 +99,9 @@ public class PlayerKeyHandler implements KeyListener{
 			Game.gameControl.thrownType = ObjectType.Recycling;
 			Game.gameControl.itemThrownC = true;
 			break;
+		case KeyEvent.VK_E:
+			Game.game.writeMyObjectToFile(Game.game, "tempdata.ser");
+			break;
 		}
 	}
 		

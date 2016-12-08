@@ -3,6 +3,14 @@ package game;
 import java.util.Random;
 import java.awt.*;
 import java.awt.event.*;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
 import javax.swing.*;
 
 import controller.GameController;
@@ -20,7 +28,7 @@ import view.MainView;
  * @author Michael Cisternino
  * @author Nick Hoffman
  */
-public class Game extends JFrame implements Runnable{
+public class Game extends JFrame implements Runnable, Serializable{
 
 		public static final int WIDTH = 270;
 		public static final int HEIGHT = WIDTH/14*10;
@@ -29,13 +37,13 @@ public class Game extends JFrame implements Runnable{
 		Random randItem = new Random();
 		int itemNum;
 		private static Container pane;
-		private Thread gameThread;
+		private transient Thread gameThread;
 		
 		private boolean run = false;
 		public static boolean playing = true;
 		
-		public MainView view;
-		public static GameController gameControl;
+		public transient MainView view;
+		public static transient GameController gameControl;
 		public static Game game;
 		private StartScreen starter;
 		private GameOver endGame;
@@ -45,7 +53,6 @@ public class Game extends JFrame implements Runnable{
 		private TutorialScreen tut3 = new TutorialScreen(3);
 		private MouseListener mi;
 		private static int level = 0;
-//		private static boolean gameOver = false;
 		
 		/**
 		 *  Initializes the game. Creates a game controller and the key listener. Sets focus on the game.
@@ -225,7 +232,7 @@ public class Game extends JFrame implements Runnable{
 		        this.getContentPane().remove(tut3);
 		        level = 3;
 		    }
-            level = 3;
+//            level = 3;
 			startNextLevel(level);
 		}
 	
@@ -333,6 +340,7 @@ public class Game extends JFrame implements Runnable{
 		 */
 		public static void main(String[] args) {
 			game = new Game();
+			//game = readMyObjectFromFile("tempdata.ser");
 			game.pack();
 			game.setResizable(false);
 			game.setLocationRelativeTo(null);
@@ -355,5 +363,34 @@ public class Game extends JFrame implements Runnable{
 		public void setPane(Container pane) {
 			this.pane = pane;
 		}
+		
+		public void writeMyObjectToFile(Game runner, String fileName){
+	        FileOutputStream fos = null;
+	        ObjectOutputStream oos = null;
+	        try{
+	            fos = new FileOutputStream(fileName);
+	            oos = new ObjectOutputStream(fos);
+	            oos.writeObject(runner);
+	            oos.close();
+	        }catch(IOException e){
+	            e.printStackTrace();
+	        }
+	    }
+	    public static Game readMyObjectFromFile(String fileName){
+	        FileInputStream fis = null;
+	        ObjectInputStream ois = null;
+	        Game runner = null;
+	        try{
+	            fis = new FileInputStream(fileName);
+	            ois = new ObjectInputStream(fis);
+	            runner = (Game)ois.readObject();
+	            ois.close();
+	        }catch(IOException e){
+	            e.printStackTrace();
+	        }catch(ClassNotFoundException ex){
+	            ex.printStackTrace();
+	        }
+	        return runner;
+	    }		
 		
 }

@@ -13,7 +13,7 @@ import java.util.LinkedList;
  * @author Nick Hoffman
  *
  */
-public class LevelOne {
+public class LevelOne implements java.io.Serializable{
 	private LinkedList<Block> blocks = new LinkedList<Block>();
 	private LinkedList<InteractiveObject> levelObjects = new LinkedList<InteractiveObject>();
 //	private LinkedList<InteractiveObject> enemies = new LinkedList<InteractiveObject>();
@@ -89,15 +89,15 @@ public class LevelOne {
 	 * Creates obstacles for the level and adds them to the list of obstacles.
 	 */
 	public void fillObstacles(){
-		levelObjects.add(new Obstacle(6300,0,0,0,250,250,ObjectType.Gabion,RangeType.None,false,false,Game.gameControl));
+		levelObjects.add(new Obstacle(6300,0,0,0,250,250,ObjectType.EmptyGabion,RangeType.None,false,false,Game.gameControl));
 		levelObjects.getLast().setFinal(true);
-		levelObjects.add(new Obstacle(6300,100,0,0,250,250,ObjectType.Gabion,RangeType.None,false,false,Game.gameControl));
+		levelObjects.add(new Obstacle(6300,100,0,0,250,250,ObjectType.EmptyGabion,RangeType.None,false,false,Game.gameControl));
 		levelObjects.getLast().setFinal(true);
-		levelObjects.add(new Obstacle(6300,200,0,0,250,250,ObjectType.Gabion,RangeType.None,false,false,Game.gameControl));
+		levelObjects.add(new Obstacle(6300,200,0,0,250,250,ObjectType.EmptyGabion,RangeType.None,false,false,Game.gameControl));
 		levelObjects.getLast().setFinal(true);
-		levelObjects.add(new Obstacle(6300,300,0,0,250,250,ObjectType.Gabion,RangeType.None,false,false,Game.gameControl));
+		levelObjects.add(new Obstacle(6300,300,0,0,250,250,ObjectType.EmptyGabion,RangeType.None,false,false,Game.gameControl));
 		levelObjects.getLast().setFinal(true);
-		levelObjects.add(new Obstacle(6300,400,0,0,250,250,ObjectType.Gabion,RangeType.None,false,false,Game.gameControl));
+		levelObjects.add(new Obstacle(6300,400,0,0,250,250,ObjectType.EmptyGabion,RangeType.None,false,false,Game.gameControl));
 		levelObjects.getLast().setFinal(true);
 	}
 	
