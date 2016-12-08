@@ -27,7 +27,6 @@ import javax.swing.JPanel;
 public class StartScreen extends JPanel{
 
 	public Rectangle playButton = new Rectangle(Game.WIDTH *2 - 50, 150, 100, 50);
-	public Rectangle helpButton = new Rectangle(Game.WIDTH *2 - 50, 250, 100, 50);
 	public Rectangle quitButton = new Rectangle(Game.WIDTH *2 - 50, 350, 100, 50);
 	
 
@@ -48,7 +47,6 @@ public class StartScreen extends JPanel{
 		Graphics2D g2d = (Graphics2D) g;
 		g.drawImage(createImage("Final Images/Backgrounds/Estuary_Background_1.jpg"),0,0,Game.WIDTH*4,Game.HEIGHT*4, Color.BLACK,null);
 		g.drawImage(createImage("Final Images/UI Buttons, Icons, Symbols/smallButton.png"), playButton.x, playButton.y, 100, 50, Color.BLUE, null);
-		g.drawImage(createImage("Final Images/UI Buttons, Icons, Symbols/smallButton.png"), helpButton.x, helpButton.y, 100, 50, Color.BLUE, null);
 		g.drawImage(createImage("Final Images/UI Buttons, Icons, Symbols/smallButton.png"), quitButton.x, quitButton.y, 100, 50, Color.BLUE, null);
 	
 		
@@ -60,7 +58,6 @@ public class StartScreen extends JPanel{
 		Font fnt1 = new Font("arial", Font.BOLD, 30);
 		g.setFont(fnt1);
 		g.drawString("Play", playButton.x + 19, playButton.y + 35);
-		g.drawString("Help", helpButton.x + 19, helpButton.y + 35);
 		g.drawString("Quit", quitButton.x + 19, quitButton.y + 35);
 	}
 	
@@ -79,44 +76,5 @@ public class StartScreen extends JPanel{
 			e.printStackTrace();
 		}
 		return null;
-	}
-	
-	class Quit implements ActionListener{
-
-		/**
-		 * Exits the system when the quit button is pressed.
-		 */
-		public void actionPerformed(ActionEvent arg0) {
-			System.exit(0);
-		}
-		
-	}
-	
-	class Starter implements ActionListener{
-		
-		Game g;
-		
-		/**
-		 * Constructor for the starter actionlistener.
-		 * Takes in a game.
-		 * @param g
-		 */
-		Starter(Game g){
-			this.g = g;
-		}
-		
-		/**
-		 * Action listener calls DoIt().
-		 */
-		public void actionPerformed(ActionEvent e) {
-			DoIt();
-		}
-		/**
-		 * Sets the game playing status to true.
-		 */
-		public void DoIt(){
-			g.setPlaying(true);
-		}
-		
 	}
 }
