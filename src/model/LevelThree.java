@@ -133,19 +133,19 @@ public class LevelThree implements java.io.Serializable{
 //		levelObjects.add(new Obstacle(4950,300, 0, 0, 70,70,ObjectType.EmptySoil, RangeType.Long, false, false, Game.gameControl));
 		
 		//Run run runoff
-		levelObjects.add(new Obstacle(5000,470,1000, 0, 40,30,ObjectType.Chemicals, RangeType.Long, false, false, Game.gameControl));
-		levelObjects.add(new Obstacle(10800,470,1000, 0, 40,30,ObjectType.Chemicals, RangeType.Long, false, false, Game.gameControl));
-		levelObjects.add(new Obstacle(11800,220,1000, 0, 40,30,ObjectType.Chemicals, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Obstacle(5000,440,1000, 0, 80,60,ObjectType.Chemicals, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Obstacle(10800,440,1000, 0, 80,60,ObjectType.Chemicals, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Obstacle(11800,190,1000, 0, 80,60,ObjectType.Chemicals, RangeType.Long, false, false, Game.gameControl));
 		
 		////This soil is empty like my soul
-		levelObjects.add(new Obstacle(4400,370,1000, 0, 40,30,ObjectType.EmptySoil, RangeType.Long, false, false, Game.gameControl));
-		levelObjects.add(new Obstacle(9100,270,1000, 0, 40,30,ObjectType.EmptySoil, RangeType.Long, false, false, Game.gameControl));
-		levelObjects.add(new Obstacle(9500,220,1000, 0, 40,30,ObjectType.EmptySoil, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Obstacle(4400,340,1000, 0, 80,60,ObjectType.EmptySoil, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Obstacle(9100,240,1000, 0, 80,60,ObjectType.EmptySoil, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Obstacle(9500,190,1000, 0, 80,60,ObjectType.EmptySoil, RangeType.Long, false, false, Game.gameControl));
 		
 		//this soil is literally so ded 
-		levelObjects.add(new Obstacle(6400,270,1000, 0, 40,30,ObjectType.DeadSoil, RangeType.Long, false, false, Game.gameControl));
-		levelObjects.add(new Obstacle(6875,220,1000, 0, 40,30,ObjectType.DeadSoil, RangeType.Long, false, false, Game.gameControl));
-		levelObjects.add(new Obstacle(10200,470,1000, 0, 40,30,ObjectType.DeadSoil, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Obstacle(6400,240,1000, 0, 80,60,ObjectType.DeadSoil, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Obstacle(6875,190,1000, 0, 80,60,ObjectType.DeadSoil, RangeType.Long, false, false, Game.gameControl));
+		levelObjects.add(new Obstacle(10200,440,1000, 0, 80,60,ObjectType.DeadSoil, RangeType.Long, false, false, Game.gameControl));
 
 		
 	}
