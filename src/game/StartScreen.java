@@ -53,7 +53,7 @@ public class StartScreen extends JPanel{
 		Font fnt0 = new Font("arial", Font.BOLD, 50);
 		g.setFont(fnt0);
 		g.setColor(Color.white);
-		g.drawString("Super Estuary!", 350, 100);
+		g.drawString("Crabby Quest: Estuary Edition!", 200, 100);
 		
 		Font fnt1 = new Font("arial", Font.BOLD, 30);
 		g.setFont(fnt1);

@@ -129,14 +129,15 @@ public abstract class Character implements java.io.Serializable {
 	 */
 	public void die(){
 		this.lives--;
-		this.yPos = 512;
-		this.xPos = 300;
+
 		switch (Game.getLevel()){
 			case 1:
 				LevelOne resetOne = new LevelOne();
 				resetOne.fillBlocks();
 				resetOne.fillObjects();
 				resetOne.fillObstacles();
+				this.yPos = 512;
+				this.xPos = 300;
 				Game.gameControl.crabby.oysterCnt = 0;
 				Game.gameControl.crabby.gabionCount = 5;
 				Game.gameControl.entities = resetOne.getObjects();
@@ -149,6 +150,7 @@ public abstract class Character implements java.io.Serializable {
 				resetTwo.fillBlocks();
 				resetTwo.fillObjects();
 				resetTwo.fillObstacles();
+				this.yPos = 512;
 				this.xPos = 800;
 				Game.gameControl.crabby.trashBagCnt = 0;
 				Game.gameControl.crabby.trashCnt = 0;
@@ -166,6 +168,8 @@ public abstract class Character implements java.io.Serializable {
 				Game.gameControl.crabby.compCnt = 0;
 				Game.gameControl.entities = resetThree.getObjects();
 				Game.gameControl.blocks = resetThree.getBlocks();
+				this.yPos = 512;
+				this.xPos = 300;
 				break;
 		}
 	}

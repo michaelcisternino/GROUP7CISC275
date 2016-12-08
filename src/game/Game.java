@@ -234,7 +234,7 @@ public class Game extends JFrame implements Runnable, Serializable{
 		        level = 3;
 		    }
             //take this out to start like normal
-            level = 2;
+            //level = 2;
 			startNextLevel(level);
 		}
 	

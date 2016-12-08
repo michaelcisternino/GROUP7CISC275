@@ -85,7 +85,7 @@ public class Crabby extends Character implements java.io.Serializable{
 	@Override
 	public void update() {
 		if(getLives() == 0){
-			System.out.println("dead");
+//			System.out.println("dead");
 		}
 		move();
 		if(Game.getLevel() == 1&&!isDone()){
