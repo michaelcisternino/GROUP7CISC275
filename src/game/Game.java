@@ -225,7 +225,6 @@ public class Game extends JFrame implements Runnable{
 		        this.getContentPane().remove(tut3);
 		        level = 3;
 		    }
-//            take this out to start like normal
             level = 3;
 			startNextLevel(level);
 		}
