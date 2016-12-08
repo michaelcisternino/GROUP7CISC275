@@ -12,6 +12,7 @@ import javax.swing.border.BevelBorder;
 import game.Game;
 import model.Block;
 import model.Crabby;
+import model.GUI;
 //import model.Blocks;
 import model.ObjectType;
 import model.Obstacle;
@@ -48,6 +49,7 @@ public class GameController{
 	public boolean goingRight = false;
 	public boolean goingLeft = false;
 	//Status statusPanel = new Status();
+	public GUI gui = new GUI();
 	
 	public GameController(){
 		
@@ -99,6 +101,7 @@ public class GameController{
 //		for(Item item: items){
 //			item.draw(g);
 //		}
+		gui.draw(g);
 	}
 	/**
 	 * Adds an interactive object to the list of entities.

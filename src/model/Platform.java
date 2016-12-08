@@ -96,63 +96,35 @@ public class Platform extends Block{
 				setXPos(getXPos() - 2);
 			}
 			else{
-			setXPos(getXPos() - 5);
+				deltaX = -5;
 			}
 		}
 		else if (Game.gameControl.goingLeft == true){
-			setXPos(getXPos() + 5);
+			deltaX = 5;
 		}
+		else{
+		    deltaX = 0;
+		}
+		this.setInitX(this.getInitX() + deltaX);
+		this.setXPos(this.getXPos() + deltaX);
 		if (isHor()){
-			switch (getRange()) {
-			case Short:
-				if(getInitX() <0){
-					setxVel(-4);
-					setInitX(getInitX()-1);
-				}
-				if(getInitX() >=0){
-					setxVel(4);
-					setInitX(getInitX()+1);
-				}
-				if(getInitX() == -51){
-					setInitX(0);
-				}
-				if(getInitX() == 51){
-					setInitX(-1);
-				}
-				break;
-			case Mid:
-				if(this.getInitX() <0){
-					setxVel(-3);
-					setInitX(getInitX()-1);
-				}
-				if(this.getInitX() >=0){
-					setxVel(3);
-					setInitX(getInitX()+1);
-				}
-				if(this.getInitX() == -76){
-					setInitX(0);
-				}
-				if(this.getInitX() == 76){
-					setInitX(-1);
-				}
-				break;
-			case Long:
-				if(this.getInitX() <0){
-					setxVel(-4);
-					setInitX(getInitX()-1);
-				}
-				if(this.getInitX() >=0){
-					setxVel(4);
-					setInitX(getInitX()+1);
-				}
-				if(this.getInitX() == -101){
-					setInitX(0);
-				}
-				if(this.getInitX() == 101){
-					setInitX(-1);
-				}
-				break;
-			}
+		    switch (getRange()) {
+		    case Short:
+		        ticks++;
+		        periodPos = (int) (100*Math.sin(ticks * .5 * Math.PI / 60));
+		        this.setXPos(this.getInitX() + periodPos);
+		        break;
+		    case Mid:
+		        ticks++;
+		        periodPos = (int) (100*Math.sin(ticks * .5 * Math.PI / 60));
+		        this.setXPos(this.getInitX() + 2*periodPos);
+		        break;
+		    case Long:
+		        ticks++;
+		        periodPos = (int) (100*Math.sin(ticks * .5 * Math.PI / 60));
+		        this.setXPos(this.getInitX() + 3*periodPos);
+		        break;
+		    }
 		}
 		if (isVert()){
 			switch (getRange()) {

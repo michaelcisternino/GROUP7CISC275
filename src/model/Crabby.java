@@ -2,7 +2,12 @@ package model;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
+
+import javax.imageio.ImageIO;
 
 import controller.GameController;
 import game.Game;
@@ -15,6 +20,14 @@ import game.Game;
  * @author Nick Hoffman
  */
 public class Crabby extends Character{
+	
+    public boolean pkh;    // player key handler check (for movement)
+    
+    public final int frameCount = 3;
+    public int picNum = 0;
+    BufferedImage[] pics;
+    public int imgWidth = 130;
+    public int imgHeight = 64;
 	
 	public int trashBagCnt, hayCnt, seedCnt, compCnt, oysterCnt, trashCnt, recycleCnt;
 	public boolean caught;
@@ -34,6 +47,12 @@ public class Crabby extends Character{
 		super(x, y, width, height, t, gamecontrol);
 		file = "Final Images/Animals/bluecrab_0.png";
 		character = createImage(file);
+		
+	    BufferedImage[] img = createImage();
+	    pics = new BufferedImage[3];
+	    for (int j = 0; j < frameCount; j++){
+	        pics[j] = img[0].getSubimage(imgWidth*j, 0, imgWidth, imgHeight);
+	    }
 	}
 
 	/**
@@ -42,7 +61,11 @@ public class Crabby extends Character{
 	 */
 	@Override
 	public void draw(Graphics g) {
-		g.drawImage(character, this.getXPos(), this.getYPos(), getWidth(), getHeight(), null);
+//		g.drawImage(character, this.getXPos(), this.getYPos(), getWidth(), getHeight(), null);
+	    if (getxVel() != 0){
+	        picNum = (picNum+1) % frameCount;
+	    }
+	    g.drawImage(pics[picNum], this.getXPos(), this.getYPos(), null, null);
 	}
 
 	/**
@@ -121,6 +144,9 @@ public class Crabby extends Character{
 				}
 //				setyVel(0);
 				setYPos(b.getYPos()-64);
+			    if (b.isHor() ==true && pkh == false){
+			        this.setxVel((int) (3*Math.cos(Math.PI*(b.ticks)/120)));
+			    }
 				if(isFalling()) {
 					setFalling(false);
 					}
@@ -228,5 +254,15 @@ public class Crabby extends Character{
 			}
 	}
 	}
+
+	private BufferedImage[] createImage(){
+	    BufferedImage[] bufferedImage = new BufferedImage[1];
+	        try {
+	            bufferedImage[0] = ImageIO.read(new File("Final Images/Animals/bluecrab_animated4.png"));
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	        return bufferedImage;
+	    }
 
 }

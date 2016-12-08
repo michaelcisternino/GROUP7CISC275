@@ -19,6 +19,10 @@ import controller.GameController;
  */
 public abstract class Block {
 	
+	public int periodPos = 0;    // for new movement function
+    public int deltaX= 0;
+    public     int ticks = 0;
+	
 	private boolean isFinal = false;
 	public boolean isLegend = false;
 	private boolean vertMover = false;

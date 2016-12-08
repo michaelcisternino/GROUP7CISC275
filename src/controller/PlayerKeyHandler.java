@@ -33,6 +33,7 @@ public class PlayerKeyHandler implements KeyListener{
 		int key = e.getKeyCode();
 		switch(key){
 		case KeyEvent.VK_LEFT:
+			Game.gameControl.crabby.pkh = true;
 //			if(Game.getLevel() == 1){
 //				break;
 //			}
@@ -41,6 +42,7 @@ public class PlayerKeyHandler implements KeyListener{
 //			}
 			break;
 		case KeyEvent.VK_RIGHT:
+			Game.gameControl.crabby.pkh = true;
 //			if(Game.getLevel() == 1){
 //				break;
 //			}
@@ -117,9 +119,11 @@ public class PlayerKeyHandler implements KeyListener{
 		int key = e.getKeyCode();
 		switch(key){
 		case KeyEvent.VK_LEFT:
+			Game.gameControl.crabby.pkh = false;
 			Game.gameControl.crabby.setxVel(0);
 			break;
 		case KeyEvent.VK_RIGHT:
+			Game.gameControl.crabby.pkh = false;
 			Game.gameControl.crabby.setxVel(0);
 			break;
 //		case KeyEvent.VK_DOWN:
