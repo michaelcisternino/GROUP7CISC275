@@ -4,7 +4,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import game.Game;
-import model.Item;
 import model.ObjectType;
 /**
  * Takes player input and sends it to the the controller.

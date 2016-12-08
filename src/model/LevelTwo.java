@@ -76,6 +76,16 @@ public class LevelTwo {
 	 * Level two uses people as obstacles.
 	 */
 	public void fillObstacles(){
+		levelObjects.add(new Obstacle(300,0,0,0,250,250,ObjectType.Gabion,RangeType.None,false,false,Game.gameControl));
+		levelObjects.getLast().setFalling(false);
+		levelObjects.add(new Obstacle(300,100,0,0,250,250,ObjectType.Gabion,RangeType.None,false,false,Game.gameControl));
+		levelObjects.getLast().setFalling(false);
+		levelObjects.add(new Obstacle(300,200,0,0,250,250,ObjectType.Gabion,RangeType.None,false,false,Game.gameControl));
+		levelObjects.getLast().setFalling(false);
+		levelObjects.add(new Obstacle(300,300,0,0,250,250,ObjectType.Gabion,RangeType.None,false,false,Game.gameControl));
+		levelObjects.getLast().setFalling(false);
+		levelObjects.add(new Obstacle(300,400,0,0,250,250,ObjectType.Gabion,RangeType.None,false,false,Game.gameControl));
+		levelObjects.getLast().setFalling(false);
 		levelObjects.add(new Obstacle(3680,200, 0, 0, 70,70,ObjectType.People, RangeType.Long, false, false, Game.gameControl));
 		levelObjects.add(new Obstacle(4700,350, 0, 0, 70,70,ObjectType.TrashBin, RangeType.Long, false, false, Game.gameControl));
 		levelObjects.add(new Obstacle(5100,200, 0, 0, 70,70,ObjectType.RecycleBin, RangeType.Long, false, false, Game.gameControl));
@@ -86,6 +96,8 @@ public class LevelTwo {
 		levelObjects.add(new Obstacle(8700,300, 0, 0, 70,70,ObjectType.RecycleBin, RangeType.Long, false, false, Game.gameControl));
 		levelObjects.add(new Obstacle(9200,100, 0, 0, 70,70,ObjectType.People, RangeType.Long, false, false, Game.gameControl));
 		levelObjects.add(new Obstacle(9700,200, 0, 0, 70,70,ObjectType.RecycleBin, RangeType.Long, false, false, Game.gameControl));
+	
+	
 	}
 	
 	/**

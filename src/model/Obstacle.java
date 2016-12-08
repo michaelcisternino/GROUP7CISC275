@@ -83,7 +83,7 @@ public class Obstacle extends InteractiveObject{
 		
 		move();
 		// TODO
-		if(Game.getLevel() == 1){
+		if(Game.getLevel() == 1 || getType() == ObjectType.Gabion){
 			setFalling(false);
 		}
 		else{

@@ -3,19 +3,11 @@ package game;
 import java.util.Random;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferStrategy;
-
 import javax.swing.*;
 
 import controller.GameController;
 import controller.MouseInput;
 import controller.PlayerKeyHandler;
-import model.Block;
-import model.Crabby;
-import model.ObjectType;
-import model.Platform;
-import model.Status;
-import model.Item;
 import model.LevelOne;
 import model.LevelThree;
 import model.LevelTwo;
@@ -52,9 +44,8 @@ public class Game extends JFrame implements Runnable{
 		private TutorialScreen tut2 = new TutorialScreen(2);
 		private TutorialScreen tut3 = new TutorialScreen(3);
 		private MouseListener mi;
-		public static Status status;
 		private static int level = 0;
-		private static boolean gameOver = false;
+//		private static boolean gameOver = false;
 		
 		/**
 		 *  Initializes the game. Creates a game controller and the key listener. Sets focus on the game.
@@ -92,7 +83,7 @@ public class Game extends JFrame implements Runnable{
 			levelTwo.fillObstacles();
 			gameControl.blocks = levelTwo.getBlocks();
 			gameControl.entities = levelTwo.getObjects();
-			gameControl.crabby.setXPos(gameControl.blocks.getFirst().getXPos() + 200);
+			gameControl.crabby.setXPos(gameControl.blocks.getFirst().getXPos() + 800);
 			gameControl.crabby.setYPos(gameControl.blocks.getFirst().getYPos() - 100);
 			gameControl.crabby.setFalling(true);
 		}
@@ -203,11 +194,9 @@ public class Game extends JFrame implements Runnable{
 			setMaximumSize(size);
 			setMinimumSize(size);
 			view = new MainView();
-			status = new Status();
 			starter = new StartScreen(this);
 			this.addMouseListener(mi = new MouseInput());
 			getPane().add(starter, BorderLayout.CENTER);
-			getPane().add(status, BorderLayout.SOUTH);
 		}
 		
 		/**
@@ -236,8 +225,8 @@ public class Game extends JFrame implements Runnable{
 		        this.getContentPane().remove(tut3);
 		        level = 3;
 		    }
-            //take this out to start like normal
-            //level = 2;
+//            take this out to start like normal
+            level = 3;
 			startNextLevel(level);
 		}
 	

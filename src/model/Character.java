@@ -1,13 +1,10 @@
 package model;
 
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Random;
-
 import javax.imageio.ImageIO;
 
 import controller.GameController;
@@ -140,6 +137,8 @@ public abstract class Character {
 				resetOne.fillBlocks();
 				resetOne.fillObjects();
 				resetOne.fillObstacles();
+				Game.gameControl.crabby.oysterCnt = 0;
+				Game.gameControl.crabby.gabionCount = 5;
 				Game.gameControl.entities = resetOne.getObjects();
 				Game.gameControl.blocks = resetOne.getBlocks();
 				Game.gameControl.crabby.setCaught(false);
@@ -150,6 +149,10 @@ public abstract class Character {
 				resetTwo.fillBlocks();
 				resetTwo.fillObjects();
 				resetTwo.fillObstacles();
+				this.xPos = 800;
+				Game.gameControl.crabby.trashBagCnt = 0;
+				Game.gameControl.crabby.trashCnt = 0;
+				Game.gameControl.crabby.recycleCnt = 0;
 				Game.gameControl.entities = resetTwo.getObjects();
 				Game.gameControl.blocks = resetTwo.getBlocks();
 				break;
@@ -158,6 +161,9 @@ public abstract class Character {
 				resetThree.fillBlocks();
 				resetThree.fillObjects();
 				resetThree.fillObstacles();
+				Game.gameControl.crabby.hayCnt = 0;
+				Game.gameControl.crabby.seedCnt = 0;
+				Game.gameControl.crabby.compCnt = 0;
 				Game.gameControl.entities = resetThree.getObjects();
 				Game.gameControl.blocks = resetThree.getBlocks();
 				break;

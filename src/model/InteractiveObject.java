@@ -36,7 +36,6 @@ public abstract class InteractiveObject {
 	public RangeType range;
 
 	private int width, height;
-	private int colNum; 
 	
 	private ObjectType type;
 	

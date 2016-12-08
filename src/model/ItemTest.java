@@ -7,7 +7,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import controller.GameController;
-import game.Game;
 
 public class ItemTest {
 

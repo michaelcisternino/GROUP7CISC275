@@ -3,21 +3,12 @@ package controller;
 import java.util.Random;
 import java.awt.Graphics;
 import java.util.LinkedList;
-import java.util.concurrent.ThreadLocalRandom;
-
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.border.BevelBorder;
-
 import game.Game;
 import model.Block;
 import model.Crabby;
 import model.GUI;
-//import model.Blocks;
 import model.ObjectType;
-import model.Obstacle;
 import model.RangeType;
-import model.Status;
 import model.InteractiveObject;
 import model.Item;
 /**
@@ -98,9 +89,6 @@ public class GameController{
 		for(InteractiveObject i: thrownItems){
 			i.draw(g);
 		}
-//		for(Item item: items){
-//			item.draw(g);
-//		}
 		gui.draw(g);
 	}
 	/**
@@ -150,9 +138,6 @@ public class GameController{
 	public void removeItem(Item i){
 		thrownItems.remove(i);
 	}
-	// when we run into an obstacle, it doesnt actually pause. it just stops movement, but then when it unpases
-	// it brings it back to the state it would be in if it kept moving/if the vel didnt go to zero.
-	// need to stop the entire map/timer, not just the velocity.
 	
 	/**
 	 * Updates the game. Updates the character.
@@ -174,7 +159,6 @@ public class GameController{
 		for(Item item: items){
 			item.update();
 		}
-		Game.status.update();
 		if(itemThrownC){
 			boolean haveItem = false;
 			itemThrownC = false;
