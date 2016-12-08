@@ -203,28 +203,28 @@ public abstract class Character implements java.io.Serializable {
 	}
 	
 	/**
-	 * @return isJumping The character's swimming up status.
+	 * @return isSwimUp The character's swimming up status.
 	 */
 	public boolean isSwimUp() {
 		return isSwimUp;
 	}
 	
 	/**
-	 * @param isJumping Sets the character's swimming up status.
+	 * @param isSwimUp Sets the character's swimming up status.
 	 */
 	public void setSwimUp(boolean isSwimUp) {
 		this.isSwimUp = isSwimUp;
 	}
 	
 	/**
-	 * @return isJumping The character's swimming down status.
+	 * @return isSwimDown The character's swimming down status.
 	 */
 	public boolean isSwimDown() {
 		return isSwimDown;
 	}
 	
 	/**
-	 * @param isJumping Sets the character's swimming up status.
+	 * @param isSwimDown Sets the character's swimming up status.
 	 */
 	public void setSwimDown(boolean isSwimDown) {
 		this.isSwimDown = isSwimDown;
@@ -408,7 +408,7 @@ public abstract class Character implements java.io.Serializable {
 	}
 	
 	/**
-	 * @param Sets the gabion gone status.
+	 * @param gone Sets the gabion gone status.
 	 */
 	public void setGabionsGone(boolean gone){
 		this.gabionsGone = gone;

@@ -23,10 +23,15 @@ public class Obstacle extends InteractiveObject implements java.io.Serializable{
 	 * Constructor for obstacle. A switch statement based on the type selects the object's picture.
 	 * @param x The obstacle's x position.
 	 * @param y The obstacle's y position.
+	 * @param initx The obstacle's initial x position.
+	 * @param inity The obstacle's initial y position.
 	 * @param width The width of the obstacle.
 	 * @param height The height of the obstacle.
 	 * @param t The type of the obstacle.
-	 * @param gamecontrol The game controller.
+	 * @param r The distance the object will move.
+	 * @param isVert If the object moves vertically.
+	 * @param isHor If the object moves horizontally.
+	 * @param gc The game controller.
 	 */
 	public Obstacle(int x, int y, int initx, int inity, int width, int height, ObjectType t, RangeType r, Boolean isVert, Boolean isHor, GameController gc){
 		super(x, y, initx, inity, width, height, t, r, isVert, isHor, gc);

@@ -263,14 +263,14 @@ public abstract class Block implements java.io.Serializable{
 	}
 	
 	/**
-	 * 
+	 * @param caughtCrabby Sets the caught status of the crab.
 	 */
 	public void setCaughtCrabby(boolean caughtCrabby){
 		this.caughtCrabby = caughtCrabby;
 	}
 	
 	/**
-	 * 
+	 * @return caughtCrabby If the crab is caught.
 	 */
 	public boolean getCaughtCrabby(){
 		return caughtCrabby;
