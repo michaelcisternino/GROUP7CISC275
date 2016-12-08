@@ -59,13 +59,13 @@ public class TutorialScreen extends JPanel{
 				g.drawString("Play", Game.WIDTH * 3 / 2 + 19, Game.HEIGHT * 3 + 35);
 				break;
 		case 3:
-			g.drawImage(createImage("Final Images/Backgrounds/Estuary_Background_1.jpg"),0,0,Game.WIDTH*4,Game.HEIGHT*4, Color.BLACK,null);
-			g.drawImage(createImage("Final Images/Tutorials/tutorial_3.png"),Game.WIDTH,Game.HEIGHT / 4,400,500, Color.BLACK,null);	// 457x571
-			g.drawImage(createImage("Final Images/UI Buttons, Icons, Symbols/smallButton.png"), Game.WIDTH * 3 / 2, Game.HEIGHT * 3, 100, 50, Color.BLUE, null);
-			g.drawString("Play", Game.WIDTH * 3 / 2 + 19, Game.HEIGHT * 3 + 35);
-			break;
+				g.drawImage(createImage("Final Images/Backgrounds/Estuary_Background_1.jpg"),0,0,Game.WIDTH*4,Game.HEIGHT*4, Color.BLACK,null);
+				g.drawImage(createImage("Final Images/Tutorials/tutorial_3.png"),Game.WIDTH,Game.HEIGHT / 4,400,500, Color.BLACK,null);	// 457x571
+				g.drawImage(createImage("Final Images/UI Buttons, Icons, Symbols/smallButton.png"), Game.WIDTH * 3 / 2, Game.HEIGHT * 3, 100, 50, Color.BLUE, null);
+				g.drawString("Play", Game.WIDTH * 3 / 2 + 19, Game.HEIGHT * 3 + 35);
+				break;
 		default:
-			g.drawImage(createImage("Final Images/UI Buttons, Icons, Symbols/smallButton.png"), quitButton.x, quitButton.y, 100, 50, Color.BLUE, null);
+				g.drawImage(createImage("Final Images/UI Buttons, Icons, Symbols/smallButton.png"), quitButton.x, quitButton.y, 100, 50, Color.BLUE, null);
 		}
 		
 	}

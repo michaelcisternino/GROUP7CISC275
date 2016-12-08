@@ -18,6 +18,7 @@ public class Crabby extends Character{
 	
 	public int trashBagCnt, hayCnt, seedCnt, compCnt, oysterCnt, trashCnt, recycleCnt;
 	public boolean caught;
+	public int gabionCount = 5;
 	public LinkedList<InteractiveObject> items = new LinkedList<InteractiveObject>();
 
 	/**
@@ -68,8 +69,8 @@ public class Crabby extends Character{
 			Game.gameControl.goingRight = true;
 			setFalling(false);
 		}
-		if(getGabions() == 0){
-			setGabionsGone(true);
+		if(gabionCount <= 0){
+			Game.setLevel(6);
 		}
 		if(isCaught()){
 			setxVel(0);
@@ -132,7 +133,7 @@ public class Crabby extends Character{
 					break;
 				}
 				setxVel(0);
-				setXPos(b.getXPos() + getWidth());
+				setXPos(b.getXPos() + b.getWidth());
 			}
 			if(getRightBounds().intersects(bbounds)){
 				if(b.getType() == ObjectType.Net){
@@ -186,7 +187,7 @@ public class Crabby extends Character{
 				}
 				gamecontrol.removeObject(c);
 				gamecontrol.sendNext = true;
-				System.out.println("trashbag: " + trashBagCnt + ", hay: " + hayCnt + ", seeds: " + seedCnt + ", compost: " + compCnt);
+//				System.out.println("trashbag: " + trashBagCnt + ", hay: " + hayCnt + ", seeds: " + seedCnt + ", compost: " + compCnt);
 			}
 		}
 		if(isJumping()){

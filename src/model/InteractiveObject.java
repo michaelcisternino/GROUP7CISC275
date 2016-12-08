@@ -37,7 +37,6 @@ public abstract class InteractiveObject {
 
 	private int width, height;
 	private int colNum; 
-	private int gabionCount = 5;
 	
 	private ObjectType type;
 	
@@ -314,13 +313,6 @@ public abstract class InteractiveObject {
 	}
 	
 	/**
-	 * @return count of gabions in game
-	 */
-	public int getGabions(){
-		return gabionCount;
-	}
-	
-	/**
 	 * @return status of gabions
 	 */
 	public boolean gabionsGone(){
@@ -456,17 +448,19 @@ public abstract class InteractiveObject {
  		case Gabion:
  			if(t == ObjectType.Oyster){
  				useCorrect = true;
+ 				Game.gameControl.crabby.gabionCount--;
+ 				System.out.println(Game.gameControl.crabby.gabionCount);
  			}
  			else{
  				useCorrect = false;
  			}
  			break;
 		}
-		if(useCorrect == true){
-			if(t == ObjectType.Oyster){
-				gabionCount--;
-			}
-		}
+//		if(useCorrect == true){
+//			if(t == ObjectType.Oyster){
+//				gabionCount--;
+//			}
+//		}
 		return useCorrect;
 	}
 }

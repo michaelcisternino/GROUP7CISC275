@@ -89,23 +89,11 @@ public class Obstacle extends InteractiveObject{
 		else{
 			setFalling(true);
 		}
-		if(getGabions() == 0){
-			setGabionsGone(true);
-		}
 		if(isFinal()){
 			if(getXPos() == 800 && Game.getLevel() == 1){
 				Game.gameControl.crabby.isDone(true);
 				Game.gameControl.goingRight = false;
-				System.out.println(Game.gameControl.crabby.getGabions());
-				if(Game.gameControl.crabby.getGabionsGone()){
-				Game.setLevel(6);
-				}
-			}
-//			if (getXPos() == 500){
-//				Game.gameControl.crabby.setRising(true);
-//				Game.gameControl.goingRight = false;
-//				return;
-//			}
+		}
 		}
 		if (Game.gameControl.goingRight == true){
 			if(Game.getLevel() == 1){
