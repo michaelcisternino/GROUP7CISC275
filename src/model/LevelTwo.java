@@ -76,15 +76,15 @@ public class LevelTwo implements java.io.Serializable{
 	 * Level two uses people as obstacles.
 	 */
 	public void fillObstacles(){
-		levelObjects.add(new Obstacle(400,0,0,0,300,400,ObjectType.Gabion,RangeType.None,false,false,Game.gameControl));
+		levelObjects.add(new Obstacle(200,0,0,0,500,400,ObjectType.Gabion,RangeType.None,false,false,Game.gameControl));
 		levelObjects.getLast().setFalling(false);
-		levelObjects.add(new Obstacle(400,100,0,0,300,400,ObjectType.Gabion,RangeType.None,false,false,Game.gameControl));
+		levelObjects.add(new Obstacle(200,100,0,0,500,400,ObjectType.Gabion,RangeType.None,false,false,Game.gameControl));
 		levelObjects.getLast().setFalling(false);
-		levelObjects.add(new Obstacle(400,200,0,0,300,400,ObjectType.Gabion,RangeType.None,false,false,Game.gameControl));
+		levelObjects.add(new Obstacle(200,200,0,0,500,400,ObjectType.Gabion,RangeType.None,false,false,Game.gameControl));
 		levelObjects.getLast().setFalling(false);
-		levelObjects.add(new Obstacle(400,300,0,0,300,400,ObjectType.Gabion,RangeType.None,false,false,Game.gameControl));
+		levelObjects.add(new Obstacle(200,300,0,0,500,400,ObjectType.Gabion,RangeType.None,false,false,Game.gameControl));
 		levelObjects.getLast().setFalling(false);
-		levelObjects.add(new Obstacle(400,400,0,0,300,400,ObjectType.Gabion,RangeType.None,false,false,Game.gameControl));
+		levelObjects.add(new Obstacle(200,400,0,0,500,400,ObjectType.Gabion,RangeType.None,false,false,Game.gameControl));
 		levelObjects.getLast().setFalling(false);
 		levelObjects.add(new Obstacle(3680,200, 0, 0, 70,70,ObjectType.People, RangeType.Long, false, false, Game.gameControl));
 		levelObjects.add(new Obstacle(4700,350, 0, 0, 70,70,ObjectType.TrashBin, RangeType.Long, false, false, Game.gameControl));

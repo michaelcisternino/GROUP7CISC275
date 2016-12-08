@@ -92,6 +92,14 @@ public class Obstacle extends InteractiveObject implements java.io.Serializable{
 		else{
 			setFalling(true);
 		}
+		if(Game.getLevel()!=1 && getType() == ObjectType.Gabion){
+			if(Game.gameControl.goingRight){
+				setxVel(-6);
+			}
+			else{
+				setxVel(0);
+			}
+		}
 		if(isFinal()){
 			if(getXPos() == 800 && Game.getLevel() == 1){
 				Game.gameControl.crabby.isDone(true);

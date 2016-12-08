@@ -91,7 +91,7 @@ public class Game extends JFrame implements Runnable, Serializable{
 			levelTwo.fillObstacles();
 			gameControl.blocks = levelTwo.getBlocks();
 			gameControl.entities = levelTwo.getObjects();
-			gameControl.crabby.setXPos(gameControl.blocks.getFirst().getXPos() + 800);
+			gameControl.crabby.setXPos(gameControl.blocks.getFirst().getXPos() + 700);
 			gameControl.crabby.setYPos(gameControl.blocks.getFirst().getYPos() - 100);
 			gameControl.crabby.setFalling(true);
 		}
@@ -234,7 +234,7 @@ public class Game extends JFrame implements Runnable, Serializable{
 		        level = 3;
 		    }
             //take this out to start like normal
-            //level = 3;
+            level = 2;
 			startNextLevel(level);
 		}
 	
