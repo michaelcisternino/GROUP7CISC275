@@ -79,7 +79,7 @@ public class MouseInput implements MouseListener{
 			//Play Button
 			if(mx >= Game.WIDTH * 2 - 50 && mx <= Game.WIDTH*2 + 50)
 			{
-				if(my >= 250 && my <= 325)
+				if(my >= 150 && my <= 250)
 				{
 					//Pressed Play Button
 					System.out.println("Pressed reset button");
