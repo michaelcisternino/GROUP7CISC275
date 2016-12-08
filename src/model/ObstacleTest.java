@@ -69,14 +69,19 @@ public class ObstacleTest {
 	
 	@Test
 	public void testOtherStuff(){
+		assertEquals("CheckItem should be true",o.checkItem(ObjectType.TrashBag), true);
 		o=new Obstacle(2300,150, 0, 0, 70,70,ObjectType.Chemicals, RangeType.Short, false, false, Game.gameControl);
+		assertEquals("CheckItem should be true",o.checkItem(ObjectType.Hay), true);
 		o=new Obstacle(2300,150, 0, 0, 70,70,ObjectType.DeadSoil, RangeType.Short, false, false, Game.gameControl);
+		assertEquals("CheckItem should be true",o.checkItem(ObjectType.Compost), true);
 		o=new Obstacle(2300,150, 0, 0, 70,70,ObjectType.EmptySoil, RangeType.Short, false, false, Game.gameControl);
+		assertEquals("CheckItem should be true",o.checkItem(ObjectType.Seeds), true);
 		o=new Obstacle(2300,150, 0, 0, 70,70,ObjectType.Erosion, RangeType.Short, false, false, Game.gameControl);
 		o=new Obstacle(2300,150, 0, 0, 70,70,ObjectType.TrashBin, RangeType.Short, false, false, Game.gameControl);
+		assertEquals("CheckItem should be true",o.checkItem(ObjectType.Trash), true);
 		o=new Obstacle(2300,150, 0, 0, 70,70,ObjectType.RecycleBin, RangeType.Short, false, false, Game.gameControl);
+		assertEquals("CheckItem should be true",o.checkItem(ObjectType.Recycling), true);
 		o=new Obstacle(2300,150, 0, 0, 70,70,ObjectType.Net, RangeType.Short, false, false, Game.gameControl);
 		o.update();
 	}
-
 }
