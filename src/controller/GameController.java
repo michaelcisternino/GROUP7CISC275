@@ -1,6 +1,5 @@
 package controller;
 
-import java.util.Random;
 import java.awt.Graphics;
 import java.util.LinkedList;
 import game.Game;
@@ -22,34 +21,36 @@ import model.Item;
 public class GameController{
 	
 	public boolean useTrashb, useHay, useSeeds, useComp, useOyster, useTrash, useRecycling;
+	public boolean isThrown = false;
+	public boolean goingRight = false;
+	public boolean goingLeft = false;
+	
 	public ObjectType thrownType;
-	public boolean itemThrownC = false;
+	
+	public Crabby crabby = new Crabby(300,512,130,64,ObjectType.Crabby,this);
+	
 	public LinkedList<Block> blocks = new LinkedList<Block>();
 	public LinkedList<InteractiveObject> entities = new LinkedList<InteractiveObject>();
 	public LinkedList<Item> thrownItems = new LinkedList<Item>();
-	public LinkedList<Item> items = new LinkedList<Item>();
-	public Crabby crabby = new Crabby(300,512,130,64,ObjectType.Crabby,this);
-	public boolean sendNext = false;
-	Random randItem = new Random();
-	int itemNum;
-	public int blockNum;
-	int whatsNext;
-	int spawnXpos;
-	int spawnYpos;
-	public static int erryXVel;
-	public boolean goingRight = false;
-	public boolean goingLeft = false;
-	//Status statusPanel = new Status();
+	
 	public transient GUI gui = new GUI();
 	
+	/**
+	 * default constructor
+	 */
 	public GameController(){
 		
 	}
+	
 	/**
 	 * Draws objects on the screen. Draws blocks, the entities, and the thrown items.	
 	 * @param g Graphics passed in to be drawn.
 	 */
 	public void draw(Graphics g) {
+		
+		this.goingRight = false;
+		this.goingLeft = false;
+		
         if (crabby.getLives() == 0){
             Game.setLevel(4);
             Game.startNextLevel(4);
@@ -61,27 +62,22 @@ public class GameController{
                 Game.game.gameOver();
                 break;
             case 5:
-                System.out.println("case 5");
                 Game.game.tutorialOne();
                 break;
             case 6:
-                System.out.println("case 6");
                 Game.game.tutorialTwo();
                 break;
             case 7:
-                System.out.println("case 7");
                 Game.game.tutorialThree();
                 break;
             case 8:
                 Game.game.winScreen();
         }
+        
 		crabby.draw(g);
 		for(Block b: blocks){
 			b.draw(g);
 		}
-		this.goingRight = false;
-		this.goingLeft = false;
-		
 		for(InteractiveObject c: entities){
 			c.draw(g);
 		}
@@ -90,7 +86,9 @@ public class GameController{
 			i.draw(g);
 		}
 		gui.draw(g);
+		
 	}
+	
 	/**
 	 * Adds an interactive object to the list of entities.
 	 * @param g The object to be added to the list of entities.
@@ -103,7 +101,7 @@ public class GameController{
 	 * Removes the given interactive object from the list of entities.
 	 * @param g The object to be removed from the list of entities.
 	 */
-	public void removeObject(InteractiveObject g){
+	public void removeEntity(InteractiveObject g){
 		entities.remove(g);
 	}
 	
@@ -127,7 +125,7 @@ public class GameController{
 	 * Adds an item to the list of items.
 	 * @param i The item to be added to the list of items.
 	 */
-	public void addItem(Item i){
+	public void addThrownItem(Item i){
 		thrownItems.add(i);
 	}
 	
@@ -135,7 +133,7 @@ public class GameController{
 	 * Removes the given item from the list of items.
 	 * @param i The item to be removed from the list of items.
 	 */
-	public void removeItem(Item i){
+	public void removeThrownItem(Item i){
 		thrownItems.remove(i);
 	}
 	
@@ -156,12 +154,9 @@ public class GameController{
 		for(Item i: thrownItems){
 			i.update();
 		}
-		for(Item item: items){
-			item.update();
-		}
-		if(itemThrownC){
+		if(isThrown){
 			boolean haveItem = false;
-			itemThrownC = false;
+			isThrown = false;
 			switch(thrownType){
 			case TrashBag:
 				if(useTrashb){
@@ -230,7 +225,7 @@ public class GameController{
 			if(haveItem){
 				Item thrownItem = new Item(crabby.getXPos(),crabby.getYPos(),-1,0,30,30,thrownType,RangeType.None,false,false,Game.gameControl);
 				thrownItem.setThrown(true);
-				addItem(thrownItem);
+				addThrownItem(thrownItem);
 			}
 			else{
 				System.out.println("Can't use that item!");

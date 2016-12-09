@@ -48,9 +48,7 @@ public class WinScreen extends JPanel {
 		Font fnt1 = new Font("arial", Font.BOLD, 30);
 		g.setFont(fnt1);
 		g.drawString("Play", playButton.x + 19, playButton.y + 35);
-//		g2d.draw(playButton);
 		g.drawString("Quit", quitButton.x + 19, quitButton.y + 35);
-//		g2d.draw(quitButton);
 	}
 	
 	/**

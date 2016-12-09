@@ -77,13 +77,6 @@ public class Item extends InteractiveObject implements java.io.Serializable{
 	public void draw(Graphics g) {
 		g.drawImage(item, getXPos(), getYPos(), getWidth(), getHeight(), null);
 	}
-	
-//	/**
-//	 * Throws the item. The thrown item has its x velocity set to 7.
-//	 */
-//	public void throwItem(){
-//		setxVel(7);
-//	}
 
 	/**
 	 * Updates the item based on the controller.
@@ -226,9 +219,9 @@ public class Item extends InteractiveObject implements java.io.Serializable{
 				InteractiveObject c = gamecontrol.entities.get(i);
 				if(getBottomBounds().intersects(c.getBounds()) || getLeftBounds().intersects(c.getBounds()) || getRightBounds().intersects(c.getBounds())){
 					if(c.checkItem(getType())){
-						gamecontrol.removeObject(c);
+						gamecontrol.removeEntity(c);
 					};
-					gamecontrol.removeItem(this); 
+					gamecontrol.removeThrownItem(this); 
 					setThrown(false);
 				}
 			}

@@ -27,8 +27,8 @@ public abstract class InteractiveObject implements java.io.Serializable {
 	private int xPos, yPos;
 	private int  xVel, yVel;
 	
-	public boolean vertMover = false;
-	public boolean horiMover = false;
+	private boolean isVert = false;
+	private boolean isHor = false;
 	private boolean isFinal = false;
 	private boolean gabionsGone = false;
 	public int initX = 0;	// The center of horizontal movement
@@ -71,10 +71,9 @@ public abstract class InteractiveObject implements java.io.Serializable {
 		this.height = height;
 		this.type = t;
 		this.range = r;
-		this.vertMover = isVert;
-		this.horiMover = isHor;
+		this.isVert = isVert;
+		this.isVert = isHor;
 		this.gamecontrol = gc;
-		//this.colNum = color;
 	}
 	
 	/**
@@ -266,28 +265,28 @@ public abstract class InteractiveObject implements java.io.Serializable {
 	 * @return vertMover The block's vertical movement status.
 	 */
 	public boolean isVert() {
-		return vertMover;
+		return isVert;
 	}
 	
 	/**
 	 * @param isVert Sets the block's vertical movement status.
 	 */
 	public void setVert(boolean isVert) {
-		this.vertMover = isVert;
+		this.isVert = isVert;
 	}
 	
 	/**
 	 * @return horiMover The block's horizontal movement status.
 	 */
 	public boolean isHor() {
-		return horiMover;
+		return isHor;
 	}
 	
 	/**
 	 * @param isHor Sets the character's horizontal status.
 	 */
 	public void setHor(boolean isHor) {
-		this.horiMover = isHor;
+		this.isHor = isHor;
 	}
 	
 	/**
@@ -332,6 +331,7 @@ public abstract class InteractiveObject implements java.io.Serializable {
 	public void setGabionsGone(boolean gone){
 		gabionsGone = gone;
 	}
+
 
 	/**
 	 * Gets the bounds of the object. Used when determining collisions.

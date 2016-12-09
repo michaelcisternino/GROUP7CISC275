@@ -7,8 +7,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -42,7 +40,7 @@ public class StartScreen extends JPanel{
 	 * @param g The frame to be drawn on.
 	 */
 	public void paintComponent(Graphics g){
-//		super.paintComponent(g);
+		
 		Graphics2D g2d = (Graphics2D) g;
 		g.drawImage(createImage("Final Images/Backgrounds/Estuary_Background_1.jpg"),0,0,Game.WIDTH*4,Game.HEIGHT*4, Color.BLACK,null);
 		g.drawImage(createImage("Final Images/UI Buttons, Icons, Symbols/smallButton.png"), playButton.x, playButton.y, 100, 50, Color.BLUE, null);

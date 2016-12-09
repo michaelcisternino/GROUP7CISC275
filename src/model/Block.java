@@ -21,10 +21,9 @@ public abstract class Block implements java.io.Serializable{
 	
 	public int periodPos = 0;    // for new movement function
     public int deltaX= 0;
-    public     int ticks = 0;
+    public int ticks = 0;
 	
 	private boolean isFinal = false;
-	public boolean isLegend = false;
 	private boolean vertMover = false;
 	private boolean horiMover = false;
 	private boolean caughtCrabby = false;
@@ -262,19 +261,6 @@ public abstract class Block implements java.io.Serializable{
 		this.horiMover = isHor;
 	}
 	
-	/**
-	 * @param caughtCrabby Sets the caught status of the crab.
-	 */
-	public void setCaughtCrabby(boolean caughtCrabby){
-		this.caughtCrabby = caughtCrabby;
-	}
-	
-	/**
-	 * @return caughtCrabby If the crab is caught.
-	 */
-	public boolean getCaughtCrabby(){
-		return caughtCrabby;
- 	}
 	
 	/**
 	 * @return type The block's type.

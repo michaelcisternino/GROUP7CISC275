@@ -40,7 +40,7 @@ public abstract class Character implements java.io.Serializable {
 	private boolean isSwimDown = false;
 	private boolean caught = false;
 	private boolean gabionsGone;
-	public boolean isdone = false;
+	private boolean isdone = false;
 	
 	public GameController gamecontrol;
 	
@@ -65,8 +65,15 @@ public abstract class Character implements java.io.Serializable {
 		this.gamecontrol = gamecontrol;
 	}
 	
+	/**
+	 * abstract draw method
+	 * @param g graphics to be drawn
+	 */
 	public abstract void draw(Graphics g);
 	
+	/**
+	 * abstract update method
+	 */
 	public abstract void update();
 	
 	/**

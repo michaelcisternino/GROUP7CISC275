@@ -32,9 +32,6 @@ public class Game extends JFrame implements Runnable, Serializable{
 		public static final int WIDTH = 270;
 		public static final int HEIGHT = WIDTH/14*10;
 		public static final int SCALE = 4;
-		public static final String TITLE = "Crabby";
-		Random randItem = new Random();
-		int itemNum;
 		private static Container pane;
 		private transient Thread gameThread;
 		
@@ -196,7 +193,6 @@ public class Game extends JFrame implements Runnable, Serializable{
 		 * The start screen and the status bar are added to the pane.
 		 */
 		public Game(){
-			System.out.println("in game constructor");
 			setPane(getContentPane());
 			Dimension size = new Dimension(WIDTH*SCALE, HEIGHT*SCALE);
 			setPreferredSize(size);
@@ -234,13 +230,15 @@ public class Game extends JFrame implements Runnable, Serializable{
 		        this.getContentPane().remove(tut3);
 		        level = 3;
 		    }
-            //take this out to start like normal
-//            level = 3;
+            //uncomment to start at chosen level
+            // level = 3;
 			startNextLevel(level);
 		}
 	
+		/**
+		 * called when player loses and presses 'play' - starts level 1
+		 */
 		public void resetPlaying(){
-			System.out.println("inside reset");
 			this.getContentPane().remove(endGame);
 			view = new MainView();
 			pane.add(view);
@@ -251,8 +249,10 @@ public class Game extends JFrame implements Runnable, Serializable{
 			startNextLevel(level);
 		}
 		
+		/**
+		 * called when player wins game and presses 'play' - starts level 1
+		 */
 		public void newGame(){
-			System.out.println("inside reset");
 			this.getContentPane().remove(winScreen);
 			view = new MainView();
 			pane.add(view);
@@ -263,6 +263,9 @@ public class Game extends JFrame implements Runnable, Serializable{
 			startNextLevel(level);
 		}
 		
+		/**
+		 * called when all lives are lost, displays GameOver screen
+		 */
 		public void gameOver(){
 			this.getContentPane().remove(view);
 			endGame = new GameOver(this);
@@ -271,6 +274,9 @@ public class Game extends JFrame implements Runnable, Serializable{
 			this.getContentPane().setFocusable(true);
 		}
 		
+		/**
+		 * called when player wins game, displays new WinScreen
+		 */
 		public void winScreen(){
 			this.getContentPane().remove(view);
 			winScreen = new WinScreen(this);
@@ -279,6 +285,9 @@ public class Game extends JFrame implements Runnable, Serializable{
 			this.getContentPane().setFocusable(true);
 		}
 		
+		/**
+		 * called when player starts game initially, displays level one tutorial
+		 */
         public void tutorialOne(){
             this.getContentPane().remove(view);
             pane.add(tut1, BorderLayout.CENTER);
@@ -287,6 +296,9 @@ public class Game extends JFrame implements Runnable, Serializable{
             level = 5;
         }
         
+        /**
+		 * called when player completes level one, displays level two tutorial
+		 */
         public void tutorialTwo(){
             this.getContentPane().remove(view);
             pane.add(tut2, BorderLayout.CENTER);
@@ -295,6 +307,9 @@ public class Game extends JFrame implements Runnable, Serializable{
             level = 6;
         }
         
+        /**
+		 * called when player completes level two, displays level three tutorial
+		 */
         public void tutorialThree(){
             this.getContentPane().remove(view);
             pane.add(tut3, BorderLayout.CENTER);
@@ -367,6 +382,11 @@ public class Game extends JFrame implements Runnable, Serializable{
 			this.pane = pane;
 		}
 		
+		/**
+		 * writes serialized data to file at given file name
+		 * @param runner
+		 * @param fileName
+		 */
 		public void writeMyObjectToFile(Game runner, String fileName){
 	        FileOutputStream fos = null;
 	        ObjectOutputStream oos = null;
@@ -379,6 +399,11 @@ public class Game extends JFrame implements Runnable, Serializable{
 	            e.printStackTrace();
 	        }
 	    }
+		
+		/**
+		 * reads serialized data in file at given file name
+		 * @param fileName
+		 */
 	    public static Game readMyObjectFromFile(String fileName){
 	        FileInputStream fis = null;
 	        ObjectInputStream ois = null;

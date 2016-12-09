@@ -43,6 +43,7 @@ public class MouseInput implements MouseListener{
 	 * Checks the mouse coordinates. If they are within the bounds of a button and the mouse is clicked, the appropriate action is taken.
 	 */
 	public void mousePressed(MouseEvent e) {
+		
 		int mx = e.getX();
 		int my = e.getY();
 		
@@ -81,7 +82,6 @@ public class MouseInput implements MouseListener{
 				if(my >= 150 && my <= 250)
 				{
 					//Pressed Play Button
-					System.out.println("Pressed reset button");
 					Game.game.resetPlaying();
 				}
 			}
@@ -103,7 +103,6 @@ public class MouseInput implements MouseListener{
 				if(my >= Game.HEIGHT * 3 && my <= Game.HEIGHT * 3 + 75)
 				{
 					//Pressed Play Button
-					System.out.println("Pressed level 5");
 					Game.game.setPlaying(true);
 				}
 			}
@@ -115,9 +114,7 @@ public class MouseInput implements MouseListener{
 				if(my >= Game.HEIGHT * 3 && my <= Game.HEIGHT * 3 + 75)
 				{
 					//Pressed Play Button
-					System.out.println("Pressed level 6");
 					Game.game.setPlaying(true);
-//					Game.startNextLevel(Game.getLevel());
 				}
 			}
 		}
@@ -128,7 +125,6 @@ public class MouseInput implements MouseListener{
 				if(my >= Game.HEIGHT * 3 && my <= Game.HEIGHT * 3 + 75)
 				{
 					//Pressed Play Button
-					System.out.println("Pressed level 7");
 					Game.game.setPlaying(true);
 				}
 			}
@@ -140,7 +136,6 @@ public class MouseInput implements MouseListener{
 				if(my >= 350 && my <= 425)
 				{
 					//Pressed Play Button
-					System.out.println("Pressed reset button");
 					Game.game.newGame();
 				}
 			}

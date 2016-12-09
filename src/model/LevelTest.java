@@ -1,5 +1,7 @@
 package model;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -34,8 +36,8 @@ public class LevelTest {
 		l1.fillBlocks();
 		l1.fillObjects();
 		l1.fillObstacles();
-		l1.getBlocks();
-		l1.getObjects();
+		assertEquals(" ",l1.getBlocks().size(),11);
+		assertEquals(" ",l1.getObjects().size(),15);
 	}
 	
 	@Test
@@ -43,8 +45,8 @@ public class LevelTest {
 		l2.fillBlocks();
 		l2.fillObjects();
 		l2.fillObstacles();
-		l2.getBlocks();
-		l2.getObjects();
+		assertEquals(" ",l2.getBlocks().size(),20);
+		assertEquals(" ",l2.getObjects().size(),28);
 	}
 	
 	@Test
@@ -52,7 +54,7 @@ public class LevelTest {
 		l3.fillBlocks();
 		l3.fillObjects();
 		l3.fillObstacles();
-		l3.getBlocks();
-		l3.getObjects();
+		assertEquals(" ",l3.getBlocks().size(),33);
+		assertEquals(" ",l3.getObjects().size(),18);
 	}
 }

@@ -52,7 +52,7 @@ public class Platform extends Block implements java.io.Serializable{
 	 */
 	@Override
 	public void draw(Graphics g) {
-	Random ran = new Random();
+		
 	if (isFinal()){
 		g.setColor(Color.YELLOW);
 		g.fillRect(getXPos(),getYPos(),getWidth(),getHeight());
@@ -105,24 +105,24 @@ public class Platform extends Block implements java.io.Serializable{
 		else{
 		    deltaX = 0;
 		}
-		this.setInitX(this.getInitX() + deltaX);
-		this.setXPos(this.getXPos() + deltaX);
+		setInitX(getInitX() + deltaX);
+		setXPos(getXPos() + deltaX);
 		if (isHor()){
 		    switch (getRange()) {
 		    case Short:
 		        ticks++;
 		        periodPos = (int) (100*Math.sin(ticks * .5 * Math.PI / 60));
-		        this.setXPos(this.getInitX() + periodPos);
+		        setXPos(getInitX() + periodPos);
 		        break;
 		    case Mid:
 		        ticks++;
 		        periodPos = (int) (100*Math.sin(ticks * .5 * Math.PI / 60));
-		        this.setXPos(this.getInitX() + 2*periodPos);
+		        setXPos(getInitX() + 2*periodPos);
 		        break;
 		    case Long:
 		        ticks++;
 		        periodPos = (int) (100*Math.sin(ticks * .5 * Math.PI / 60));
-		        this.setXPos(this.getInitX() + 3*periodPos);
+		        setXPos(getInitX() + 3*periodPos);
 		        break;
 		    }
 		}

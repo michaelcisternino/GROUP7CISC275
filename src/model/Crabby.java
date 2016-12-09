@@ -23,15 +23,15 @@ public class Crabby extends Character implements java.io.Serializable{
 	
     public boolean pkh;    // player key handler check (for movement)
     
-    public final int frameCount = 3;
+    public final int FRAMECOUNT = 3;
     public int picNum = 0;
     BufferedImage[] pics;
-    public int imgWidth = 130;
-    public int imgHeight = 64;
+    public final int IMGWIDTH = 130;
+    public final int IMGHEIGHT = 64;
 	
+    public int gabionCount = 5;
 	public int trashBagCnt, hayCnt, seedCnt, compCnt, oysterCnt, trashCnt, recycleCnt;
 	public boolean caught;
-	public int gabionCount = 5;
 	public LinkedList<InteractiveObject> items = new LinkedList<InteractiveObject>();
 
 	/**
@@ -50,8 +50,8 @@ public class Crabby extends Character implements java.io.Serializable{
 		
 	    BufferedImage[] img = createImage();
 	    pics = new BufferedImage[3];
-	    for (int j = 0; j < frameCount; j++){
-	        pics[j] = img[0].getSubimage(imgWidth*j, 0, imgWidth, imgHeight);
+	    for (int j = 0; j < FRAMECOUNT; j++){
+	        pics[j] = img[0].getSubimage(IMGWIDTH*j, 0, IMGWIDTH, IMGHEIGHT);
 	    }
 	}
 
@@ -63,7 +63,7 @@ public class Crabby extends Character implements java.io.Serializable{
 	public void draw(Graphics g) {
 //		g.drawImage(character, this.getXPos(), this.getYPos(), getWidth(), getHeight(), null);
 	    if (getxVel() != 0){
-	        picNum = (picNum+1) % frameCount;
+	        picNum = (picNum+1) % FRAMECOUNT;
 	    }
 	    g.drawImage(pics[picNum], this.getXPos(), this.getYPos(), null, null);
 	}
@@ -217,8 +217,7 @@ public class Crabby extends Character implements java.io.Serializable{
 					gabionCount--;
 					break;
 				}
-				gamecontrol.removeObject(c);
-				gamecontrol.sendNext = true;
+				gamecontrol.removeEntity(c);
 //				System.out.println("trashbag: " + trashBagCnt + ", hay: " + hayCnt + ", seeds: " + seedCnt + ", compost: " + compCnt);
 			}
 		}

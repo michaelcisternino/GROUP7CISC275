@@ -69,7 +69,6 @@ public class ItemTest {
 		i.getRightBounds();
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Test
 	public void testOtherStuff(){
 		i.addObject(i);

@@ -68,8 +68,6 @@ public class Obstacle extends InteractiveObject implements java.io.Serializable{
 			break;
 		}
 		item = createImage(file);
-		// TODO Auto-generated constructor stub
-		//fall();
 	}
 
 	/**

@@ -18,11 +18,8 @@ import model.Platform;
 import model.RangeType;
 
 public class GameControllerTest {
+	
 	static GameController gc;
-//	public LinkedList<Block> blocks = new LinkedList<Block>();
-//	public LinkedList<InteractiveObject> entities = new LinkedList<InteractiveObject>();
-//	public LinkedList<Item> thrownItems = new LinkedList<Item>();
-//	public LinkedList<Item> items = new LinkedList<Item>();
 	Item item = new Item(1300,250, 0, 0, 50,40,ObjectType.Oyster, RangeType.Short, false, false, gc);
 	Platform block = new Platform(1000,150,0,0,257,310,ObjectType.Net,RangeType.Mid,true,false, gc);
 	Item thrownItem = new Item(1300,250,-1,0,30,30,ObjectType.Hay,RangeType.None,false,false,Game.gameControl);
@@ -67,14 +64,14 @@ public class GameControllerTest {
 	public void addItemTest(){
 		int curr_size = gc.thrownItems.size();
 		thrownItem.setThrown(true);
-		gc.addItem(item);
+		gc.addThrownItem(item);
 		assertEquals("Length of thrown items should increase by 1, so there should be 1 thrown item", gc.thrownItems.size(), curr_size + 1);
 	}
 	
 	@Test void removeItemTest(){
 		int curr_size = gc.thrownItems.size();
 		thrownItem.setThrown(true);
-		gc.removeItem(item);
+		gc.removeThrownItem(item);
 		assertEquals("Length of thrown items should decrease by 1, so there should be 0 thrown items", gc.thrownItems.size(), curr_size - 1);
 	}
 	

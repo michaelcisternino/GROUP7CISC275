@@ -21,8 +21,6 @@ public class LevelTwo implements java.io.Serializable{
 	 * The last platform in the list is set as the level's final platform.
 	 */
 	public void fillBlocks(){
-		blocks.add(new Platform(1,1,1,1,1,1,ObjectType.Wall,RangeType.Short,false,false,Game.gameControl));
-		blocks.getLast().isLegend = true;
 		
 		blocks.add(new Platform(1200,600,0,-1,300,30,ObjectType.Wall, RangeType.Short, false, false, Game.gameControl));
 		blocks.add(new Platform(1600,400,0,-1,200,30,ObjectType.Wall, RangeType.Mid, false, false, Game.gameControl));
@@ -96,8 +94,6 @@ public class LevelTwo implements java.io.Serializable{
 		levelObjects.add(new Obstacle(8700,300, 0, 0, 70,70,ObjectType.RecycleBin, RangeType.Long, false, false, Game.gameControl));
 		levelObjects.add(new Obstacle(9200,100, 0, 0, 70,70,ObjectType.People, RangeType.Long, false, false, Game.gameControl));
 		levelObjects.add(new Obstacle(9700,200, 0, 0, 70,70,ObjectType.RecycleBin, RangeType.Long, false, false, Game.gameControl));
-	
-	
 	}
 	
 	/**

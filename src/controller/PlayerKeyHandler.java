@@ -33,32 +33,12 @@ public class PlayerKeyHandler implements KeyListener{
 		switch(key){
 		case KeyEvent.VK_LEFT:
 			Game.gameControl.crabby.pkh = true;
-//			if(Game.getLevel() == 1){
-//				break;
-//			}
-//			else{
 			Game.gameControl.crabby.setxVel(-5);
-//			}
 			break;
 		case KeyEvent.VK_RIGHT:
 			Game.gameControl.crabby.pkh = true;
-//			if(Game.getLevel() == 1){
-//				break;
-//			}
-//			else{
 			Game.gameControl.crabby.setxVel(5);
-//			}
 			break;
-//		case KeyEvent.VK_DOWN:
-//			if(Game.getLevel() == 1){
-//				Game.gameControl.crabby.setSwimDown(true);
-//				Game.gameControl.crabby.setGravity(-3.0);
-//				Game.gameControl.crabby.setyVel(10);
-//			}
-//			else{
-//				break;
-//			}
-//			break;
 		case KeyEvent.VK_UP:
 			if(Game.getLevel() == 1){
 				Game.gameControl.crabby.setSwimUp(true);
@@ -73,31 +53,31 @@ public class PlayerKeyHandler implements KeyListener{
 			break;
 		case KeyEvent.VK_T:
 			Game.gameControl.thrownType = ObjectType.TrashBag;
-			Game.gameControl.itemThrownC = true;
+			Game.gameControl.isThrown = true;
 			break;
 		case KeyEvent.VK_H:
 			Game.gameControl.thrownType = ObjectType.Hay;
-			Game.gameControl.itemThrownC = true;
+			Game.gameControl.isThrown = true;
 			break;
 		case KeyEvent.VK_S:
 			Game.gameControl.thrownType = ObjectType.Seeds;
-			Game.gameControl.itemThrownC = true;
+			Game.gameControl.isThrown = true;
 			break;
 		case KeyEvent.VK_C:
 			Game.gameControl.thrownType = ObjectType.Compost;
-			Game.gameControl.itemThrownC = true;
+			Game.gameControl.isThrown = true;
 			break;
 		case KeyEvent.VK_X:
 			Game.gameControl.thrownType = ObjectType.Oyster;
-			Game.gameControl.itemThrownC = true;
+			Game.gameControl.isThrown = true;
 			break;
 		case KeyEvent.VK_W:
 			Game.gameControl.thrownType = ObjectType.Trash;
-			Game.gameControl.itemThrownC = true;
+			Game.gameControl.isThrown = true;
 			break;
 		case KeyEvent.VK_R:
 			Game.gameControl.thrownType = ObjectType.Recycling;
-			Game.gameControl.itemThrownC = true;
+			Game.gameControl.isThrown = true;
 			break;
 		case KeyEvent.VK_E:
 			Game.game.writeMyObjectToFile(Game.game, "tempdata.ser");
@@ -128,9 +108,6 @@ public class PlayerKeyHandler implements KeyListener{
 			Game.gameControl.crabby.pkh = false;
 			Game.gameControl.crabby.setxVel(0);
 			break;
-//		case KeyEvent.VK_DOWN:
-//			Game.gameControl.crabby.setyVel(0);
-//			break;
 		case KeyEvent.VK_UP:
 			Game.gameControl.crabby.setyVel(0);
 			break;
