@@ -3,4 +3,4 @@ Authors: Alex Addeo, Zion Aranda, Katie Black, Michael Cisternino, Nick Hoffman
 
 Main is located in Game.java. Run this file in eclipse.
 
-To write a file out, press e during gameplay.
+To write a file out, press 'e' during gameplay.
