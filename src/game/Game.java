@@ -33,21 +33,22 @@ public class Game extends JFrame implements Runnable, Serializable{
 		public static final int HEIGHT = WIDTH/14*10;
 		public static final int SCALE = 4;
 		private static Container pane;
-		private transient Thread gameThread;
 		
+		private transient Thread gameThread;
 		private boolean run = false;
 		public static boolean playing = true;
 		
 		public transient MainView view;
 		public static transient GameController gameControl;
 		public static Game game;
-		
 		private transient StartScreen starter;
 		private transient GameOver endGame;
 		private transient WinScreen winScreen;
+		
 		private transient TutorialScreen tut1 = new TutorialScreen(1);
 		private transient TutorialScreen tut2 = new TutorialScreen(2);
 		private transient TutorialScreen tut3 = new TutorialScreen(3);
+		
 		private transient MouseListener mi;
 		
 		private static int level = 0;
